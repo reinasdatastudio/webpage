@@ -84,11 +84,32 @@
     "text": "Please fill in the form below and I’ll get back to you shortly.\n\n\n\n First Name  \n Last Name  \n\n Email  \n Message\n\n\n\nSend"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Expert R Solutions for Your Data.",
-    "section": "",
-    "text": "I was a pharmacist before I discovered data science. Now I use my unique skills to assist anyone from scientists to students understand data using R.\nR is a programming language specialising in data analysis. It produces beautiful graphs, tables and can create live dashboards."
+    "objectID": "index.html#expert-r-solutions-for-your-data",
+    "href": "index.html#expert-r-solutions-for-your-data",
+    "title": "Reina's Data Studio",
+    "section": "Expert R Solutions for Your Data",
+    "text": "Expert R Solutions for Your Data\nI help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.\n\nWork with me"
+  },
+  {
+    "objectID": "index.html#who-i-help",
+    "href": "index.html#who-i-help",
+    "title": "Reina's Data Studio",
+    "section": "Who I help",
+    "text": "Who I help\n\nResearchers working with messy data\nStudents learning R or statistics\nHealthcare and pharmacy industry teams needing analysis or forecasting\nAnyone overwhelmed by data and spreadsheets"
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "Reina's Data Studio",
+    "section": "How it works",
+    "text": "How it works\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
+  },
+  {
+    "objectID": "index.html#tools",
+    "href": "index.html#tools",
+    "title": "Reina's Data Studio",
+    "section": "Tools",
+    "text": "Tools\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
   },
   {
     "objectID": "index.html#services",
@@ -103,6 +124,13 @@
     "title": "Reina's Data Studio",
     "section": "Check out my YouTube tutorials on R",
     "text": "Check out my YouTube tutorials on R\n\n\nEnglish ver.\nReina’s Data Studio\n\n\n\n\nJapanese ver.\nReina’s Data Studio JP"
+  },
+  {
+    "objectID": "index.html#language-support",
+    "href": "index.html#language-support",
+    "title": "Reina's Data Studio",
+    "section": "Language Support",
+    "text": "Language Support\nI can support projects in English or Japanese"
   },
   {
     "objectID": "index.html#contact",
@@ -222,61 +250,5 @@
     "title": "Hypertension Clinical Treatment Analysis",
     "section": "Multicollinearity check",
     "text": "Multicollinearity check\n\ncar::vif(model)\n\n                      GVIF Df GVIF^(1/(2*Df))\nTreatment_Group   1.011396  2        1.002837\nAge               1.002592  1        1.001295\nCholesterol_Level 1.006929  1        1.003459\nAdverse_Events    1.007916  1        1.003950\nGender            1.006296  1        1.003143\n\n\nNo multicollinearity detected."
-  },
-  {
-    "objectID": "index.html#expert-r-solutions-for-your-data.",
-    "href": "index.html#expert-r-solutions-for-your-data.",
-    "title": "Reina's Data Studio",
-    "section": "Expert R Solutions for Your Data.",
-    "text": "Expert R Solutions for Your Data."
-  },
-  {
-    "objectID": "index.html#expert-r-solutions-for-your-data",
-    "href": "index.html#expert-r-solutions-for-your-data",
-    "title": "Reina's Data Studio",
-    "section": "Expert R Solutions for Your Data",
-    "text": "Expert R Solutions for Your Data\nI help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.\n\nWork with me"
-  },
-  {
-    "objectID": "index.html#who-i-help",
-    "href": "index.html#who-i-help",
-    "title": "Reina's Data Studio",
-    "section": "Who I help",
-    "text": "Who I help\n\nResearchers working with messy data\nStudents learning R or statistics\nHealthcare and pharmacy industry teams needing analysis or forecasting\nAnyone overwhelmed by data and spreadsheets"
-  },
-  {
-    "objectID": "index.html#how-it-works",
-    "href": "index.html#how-it-works",
-    "title": "Reina's Data Studio",
-    "section": "How it works",
-    "text": "How it works\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
-  },
-  {
-    "objectID": "index.html#tools-expertise",
-    "href": "index.html#tools-expertise",
-    "title": "Reina's Data Studio",
-    "section": "Tools & Expertise",
-    "text": "Tools & Expertise\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
-  },
-  {
-    "objectID": "index.html#tools",
-    "href": "index.html#tools",
-    "title": "Reina's Data Studio",
-    "section": "Tools",
-    "text": "Tools\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
-  },
-  {
-    "objectID": "index.html#language-support",
-    "href": "index.html#language-support",
-    "title": "Reina's Data Studio",
-    "section": "Language Support",
-    "text": "Language Support\nI can support projects in English or Japanese"
-  },
-  {
-    "objectID": "blog/index.html#blog-posts",
-    "href": "blog/index.html#blog-posts",
-    "title": "Blog",
-    "section": "Blog Posts",
-    "text": "Blog Posts"
   }
 ]

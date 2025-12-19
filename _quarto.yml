@@ -28,10 +28,10 @@ website:
       
 format:
   html:
-    css: styles.scss
     theme: 
       light: Lux
       dark: Cyborg
+    css: site.scss
     title-block-style: plain
 
 editor: visual

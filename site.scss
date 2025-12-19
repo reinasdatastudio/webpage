@@ -317,6 +317,10 @@ textarea {
 }
 
 @media (max-width: 500px) {
+  
+  .hero-image {
+    width: 100%;
+  }
   .card-container {grid-template-columns: 1fr;}
   .channels {
     display: flex;
