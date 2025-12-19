@@ -1,7 +1,7 @@
 ---
 format:
   html:
-    page-layout: custom
+    page-layout: full
     toc: false
 ---
 
@@ -151,13 +151,14 @@ and many other offers available!
 ::::::
 :::::::
 
-:::: {.section-contacts .banner}
+::::: {.section-contacts .banner}
 ::: language
 ## Language Support
 
 I can support projects in **English or Japanese**
 :::
 
+::: contact
 ## Contact
 
 If you have a dataset, question or project in mind, please feel free to reach out.
@@ -167,4 +168,5 @@ If you have a dataset, question or project in mind, please feel free to reach ou
 [Send an enquiry](enquiry.qmd)
 
 </button>
-::::
+:::
+:::::

@@ -22,16 +22,15 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/reijkg2904/
       - icon: github
-        href: https://github.com/reijkg2904
+        href: https://github.com/reinasdatastudio
       - icon: youtube
         href: https://www.youtube.com/@reinas_data.studio
       
 format:
   html:
     theme: 
-      light: Lux
-      dark: Cyborg
-    css: site.scss
+      - Lux
+      - site.scss
     title-block-style: plain
 
 editor: visual
