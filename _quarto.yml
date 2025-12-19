@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "Reina's Data Studio"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: blog/index.qmd
+        text: Blog
+      - href: enquiry.qmd
+        text: Enquiry
+
+  page-footer:
+    left: "© 2025 Reina's Data Studio"
+    center:
+      - icon: instagram
+        href: https://www.instagram.com/reinas_data.studio/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/reijkg2904/
+      - icon: github
+        href: https://github.com/reijkg2904
+      - icon: youtube
+        href: https://www.youtube.com/@reinas_data.studio
+      
+format:
+  html:
+    css: styles.scss
+    theme: 
+      light: Lux
+      dark: Cyborg
+    title-block-style: plain
+
+editor: visual
+

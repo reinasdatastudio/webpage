@@ -1,0 +1,6 @@
+---
+title: "Blog"
+format: html
+---
+
+## Blog Posts

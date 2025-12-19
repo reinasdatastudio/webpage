@@ -1,0 +1,170 @@
+---
+format:
+  html:
+    page-layout: custom
+    toc: false
+---
+
+::::: {.hero-banner .banner}
+:::: hero
+::: hero-image
+<img src="intro-logo.png" alt="Reina&apos;s Data Studio logo" class="hero-logo"/>
+:::
+
+## Expert R Solutions for Your Data
+
+I help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.
+
+<button class="button">
+
+[Work with me](enquiry.qmd)
+
+</button>
+::::
+:::::
+
+:::::: {.banner .section-story}
+::: box
+## Who I help
+
+-   Researchers working with messy data
+
+-   Students learning R or statistics
+
+-   Healthcare and pharmacy industry teams needing analysis or forecasting
+
+-   Anyone overwhelmed by data and spreadsheets
+:::
+
+::: box
+## How it works
+
+-   You send an enquiry describing your project or data
+
+-   We discuss your goals and timeline
+
+-   I analyse or build your solution in R
+
+-   You receive clean data, code and clear explanations
+:::
+
+::: box
+## Tools
+
+-   R / tidyverse
+-   ggplot2
+-   Shiny
+-   Quarto / R Markdown
+-   Statistical modelling
+-   Forecasting (ARIMA, Prophet)
+-   Healthcare & pharmacy data
+:::
+::::::
+
+:::::::::::::: {.section-services .banner}
+::::::::::::: section-inner
+## Services
+
+From one-off help to ongoing support, I offer practical R solutions tailored to your needs.
+
+:::::::::::: card-container
+::: card
+{{< fa broom size=3x >}}
+
+Data Cleaning
+:::
+
+::: card
+{{< fa chart-pie size=3x >}}
+
+Data Visualisation
+:::
+
+::: card
+{{< fa chart-bar size=3x >}}
+
+Statistical Analysis Assistance
+:::
+
+::: card
+{{< fa chart-line size=3x >}}
+
+Forecasting
+:::
+
+::: card
+{{< fa code size=3x >}}
+
+Provide code chunks
+:::
+
+::: card
+{{< fa clipboard-list size=3x >}}
+
+Create dashboard
+:::
+
+::: card
+{{< fa note-sticky size=3x >}}
+
+Create R markdown
+:::
+
+::: card
+{{< fa brands youtube size=3x >}}
+
+R tutorials (Available on YouTube)
+:::
+
+::: {#lastcard .card}
+and many other offers available!
+:::
+::::::::::::
+:::::::::::::
+::::::::::::::
+
+::::::: {.youtube-section .banner}
+:::::: youtube
+## Check out my YouTube tutorials on R
+
+::::: channels
+::: youtube-channel
+### English ver.
+
+[Reina's Data Studio](https://www.youtube.com/@reinas_data.studio)
+
+<iframe src="https://www.youtube.com/embed/ViNVCBWXYak?si=ewS521FpIrfK0TtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+:::
+
+::: youtube-channel
+### Japanese ver.
+
+[Reina's Data Studio JP](https://www.youtube.com/@reinas_data.studio_jp)
+
+<iframe src="https://www.youtube.com/embed/9rVpTYfIIoE?si=5LiSqHWX3YTB0clA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+:::
+:::::
+::::::
+:::::::
+
+:::: {.section-contacts .banner}
+::: language
+## Language Support
+
+I can support projects in **English or Japanese**
+:::
+
+## Contact
+
+If you have a dataset, question or project in mind, please feel free to reach out.
+
+<button class="button">
+
+[Send an enquiry](enquiry.qmd)
+
+</button>
+::::

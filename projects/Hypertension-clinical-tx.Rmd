@@ -1,0 +1,401 @@
+---
+title: "Hypertension Clinical Treatment Analysis"
+author: "Reina Kaino"
+date: "2025-12-03"
+format:
+  html:
+    page-layout: article
+    toc: true
+    toc-location: right
+    include-after-body: footer-hypertension.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{=html}
+<style>
+
+section {
+  align-items: start !important;
+}
+
+h2 {
+    margin-top: 1rem !important;
+}
+
+#title-block-header {
+  margin-bottom: 2rem;
+}
+
+</style>
+```
+
+This dataset was taken from: <https://www.kaggle.com/datasets/isabelladil/phase-iii-clinical-trial-dataset/data> It is a synthetic data and does not contain any data of individuals in real life.
+
+## Study Design and Dataset
+
+This study used a synthetic clinical trial dataset consisting of 1,000 patients enrolled across multiple study sites. Each patient record included demographic variables (age, gender), clinical measurements (systolic and diastolic blood pressure, cholesterol level), treatment allocation, adverse event counts, and dropout status. Three treatment groups were evaluated: Drug A (CardioX), Drug B (active comparator), and Placebo.
+
+## Data Preparation and Cleaning
+
+**Missing data**: Checked using colSums(is.na()); no missing values were present.
+
+**Outliers**: Potential outliers in cholesterol levels were identified using the IQR method within age-stratified groups to avoid age-related confounding.
+
+**Age grouping**: Patients were categorised into four age groups (6–19, 20–39, 40–59, 60–98 years) using the cut() function to support visualisation and subgroup comparisons.
+
+A binary variable hypertension was created to classify patients based on commonly accepted thresholds (≥140 mmHg systolic or ≥90 mmHg diastolic), reflecting individuals likely in need of treatment.
+
+## Exploratory Data Analysis
+
+Descriptive statistics and graphical visualisations (bar charts, histograms, scatterplots, and boxplots) were generated using the tidyverse and ggplot2 packages. These visualisations were used to: - Assess treatment group balance - Evaluate distributions of age, blood pressure, and cholesterol - Examine relationships between age, cholesterol level, and blood pressure - Compare blood pressure outcomes across treatment groups - Explore dropout patterns
+
+## Statistical Analysis
+
+### Group Comparisons
+
+Because blood pressure values were not assumed to be normally distributed, non-parametric tests were used: - Kruskal–Wallis tests were applied to compare systolic and diastolic blood pressure across the three treatment groups. - Pairwise Wilcoxon rank-sum tests with Benjamini–Hochberg correction were used for post-hoc comparisons.
+
+### Categorical Outcomes
+
+To compare the proportion of patients with hypertension across treatment groups, a Chi-squared test was conducted using a contingency table of hypertension status by treatment group.
+
+### Predictors of Persistent Hypertension
+
+A multivariable logistic regression model was fitted to identify factors associated with remaining hypertensive after treatment. Predictors included: - Treatment group - Age - Gender - Cholesterol level - Number of adverse events
+
+The model was fitted using the glm() function with a binomial link. Multicollinearity was assessed using Variance Inflation Factors (VIF) via the car::vif() function.
+
+### Software
+
+All analyses were conducted in R (version 4.5.2). Key libraries included tidyverse, ggplot2, rstatix, and car.
+
+```{r include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(rstatix)
+```
+
+# Data cleaning
+
+```{r }
+df <- read.csv("synthetic_clinical_trial_data.csv")
+
+summary(df)
+```
+
+-   Subject_ID: Unique ID for each patient
+-   Site_ID: The location of the study carried out
+-   Age: Each patient's age
+-   Gender: Male or Female
+-   Enrollment_Date: The date the patient started the treatment
+-   Treatment_group: Drug A(CardioX), Drug B(Active comparator) and Placebo
+-   Adverse_Events: Number of adverse events reported by patients
+-   Dropout: 0 for staying, 1 for dropping out of the study
+-   Systolic BP: Systolic blood pressure (mmHg)
+-   Diastolic_BP: Diastolic blood pressure (mmHg)
+-   Cholesterol_Level: Cholesterol level (mg/dL)
+
+From the summary there are no obvious outliers found. Cholesterol of 350 mg/dL is very high, although it is not impossible for a patient with medical conditions.
+
+```{r}
+colSums(is.na(df))
+```
+
+There are no missing values in the dataset.
+
+# Data visualisation
+
+## Number of patients in each treatment group
+
+```{r tx_group_count, fig.align="center", echo=FALSE}
+ggplot(df, aes(x = Treatment_Group)) +
+  geom_bar(fill = "#d9cac1", width = 0.6) +
+  stat_count(geom = "text", aes(label = after_stat(count)), vjust = -0.5) +
+  labs(title = "Number of each treatment group",
+       x = "Treatment Group",
+       y = "Count") +
+  theme_classic()
+```
+
+There are fairly equal numbers of each treatment group.
+
+## Age group
+
+```{r age_group_count, fig.align="center", echo=FALSE}
+ggplot(df, aes(x = Age)) +
+  geom_bar(fill = "#d9cac1") +
+  labs(title = "Age distribution",
+       x = "Age",
+       y = "Count") +
+  theme_classic()
+```
+
+As seen in the summary, the youngest is 6 years old while the oldest patient is 98 years old. The mean age is 50, which is a great age group to conduct the study on.
+
+## Age vs Cholesterol Level
+
+```{r age_cholesterol_scatter, fig.align="center", echo=FALSE}
+plot(x = df$Age, y = df$Cholesterol_Level)
+```
+
+Here we will check for outliers for cholesterol level.
+
+```{r age_cholesterol_outlier, fig.align="center", echo=FALSE}
+df <- df %>%
+  mutate(
+    age_group = cut(Age, breaks = c(6, 19, 39, 59, 98), include.lowest = TRUE)
+  )
+
+is_outlier <- function(x) {
+  x < quantile(x, 0.25, na.rm = TRUE) - 1.5 * IQR(x, na.rm = TRUE) |
+  x > quantile(x, 0.75, na.rm = TRUE) + 1.5 * IQR(x, na.rm = TRUE)
+}
+
+# Identify outliers within each age group
+outliers_cholesterol <- df %>%
+  group_by(age_group) %>%
+  mutate(is_outlier = is_outlier(Cholesterol_Level)) %>%
+  filter(is_outlier == TRUE)
+
+print.data.frame(outliers_cholesterol)
+```
+
+The table shows 17 individuals are identified as outliers.
+
+```{r age_cholesterol_box, fig.align="center", echo=FALSE}
+ggplot(df, aes(x=age_group, y=Cholesterol_Level)) +
+  geom_boxplot(alpha = 0.5, fill = "#9c9189") +
+  theme_classic()
+
+```
+
+\*There are a few overlapping outliers hence total of 14 outlier dots are visible (There are total of 17 outliers)
+
+## Age vs Systolic Blood Pressure
+
+```{r age_systolic, fig.align="center", echo=FALSE}
+plot(x = df$Age, y = df$Systolic_BP)
+
+```
+
+```{r age_systolic_box, fig.align="center", echo=FALSE}
+ggplot(df, aes(x = age_group, y = Systolic_BP)) +
+  geom_boxplot(alpha=0.5, fill = "9c9189") +
+  theme_classic()
+```
+
+```{r fig.align="center", echo=FALSE}
+ggplot(df, aes(x = age_group, y = Diastolic_BP)) +
+  geom_boxplot(alpha=0.5, fill = "9c9189") +
+  theme_classic()
+```
+
+Outliers can be seen on both systolic and diastolic blood pressures.
+
+We will separate those who actually have hypertension vs those who do not have hypertension.
+
+<https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings> states that Stage 1 high blood pressure starts from 130/80mmHg, although for this experiment, we will categorise those with more than 140/90mmHg as hypertension. This is because the experiment is to see the effects of the medication, and medications are normally given to those with BP above 140/90mmHg. Those who most definitely needing medications are those with BP more then 140/90mmHg.
+
+```{r hypertension_group}
+
+df <- df %>%
+  group_by(hypertension = (Systolic_BP>=140 | Diastolic_BP >= 90))
+
+drug_A <- df %>%
+  filter(Treatment_Group == "Drug A")
+
+drug_B <- df %>%
+  filter(Treatment_Group == "Drug B")
+
+placebo <- df %>%
+  filter(Treatment_Group == "Placebo")
+
+```
+
+## Summary of systolic and diastolic BP
+
+```{r}
+df %>%
+  group_by(Treatment_Group) %>%
+  summarise(
+    mean_sys = mean(Systolic_BP),
+    sd_sys = sd(Systolic_BP),
+    mean_dia = mean(Diastolic_BP),
+    n = n()
+  )
+```
+
+```{r fig.align="center", echo=FALSE}
+df$hypertension <- factor(
+  df$hypertension,
+  levels = c("FALSE", "TRUE")
+)
+
+ggplot(df, aes(x = Treatment_Group, fill = hypertension)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(
+    values = c("FALSE" = "#deb4d8", "TRUE" = "#78f5dd")) +
+  labs(
+    title = "Patients with hypertension",
+    x = "Treatment Group",
+    y = "Count of Patients",
+    fill = "Hypertensive"
+  ) +
+  theme_minimal()
+
+```
+
+Surprisingly (or not surprisingly) those with placebo treatment had more success than the real drugs.
+
+### Percentage:
+
+```{r echo=FALSE}
+df %>%
+  group_by(Treatment_Group) %>%
+  count(hypertension) %>%
+  mutate(percentage = (n / sum(n)) * 100) %>%
+  filter(hypertension == "FALSE") %>%
+  arrange(desc(percentage))
+```
+
+```{r echo=FALSE}
+df <- df %>% ungroup()
+```
+
+They all have about the same success rate of 73 to 75%.
+
+```{r dropout_bar, fig.align="center", echo=FALSE}
+ggplot(df, aes(x=Dropout)) +
+  geom_bar(fill = "#d9cac1", width = 0.6) +
+  stat_count(geom = "text", aes(label = after_stat(count)), vjust = -0.5) +
+  labs(title = "Drop-Out Rate",
+       x = "Drop-Out",
+       y = "Count") +
+  theme_classic()
+```
+
+## Cholesterol vs Blood Pressure
+
+```{r fig.align="center", echo=FALSE}
+plot(x = df$Systolic_BP, y = df$Cholesterol_Level)
+```
+
+## Histogram of Systolic BP
+
+```{r fig.align="center", echo=FALSE}
+ggplot(df, aes(x = Systolic_BP)) +
+  geom_histogram(binwidth = 10)
+```
+
+```{r fig.align="center", echo=FALSE}
+ggplot(df, aes(x = Treatment_Group, y = Systolic_BP)) +
+  geom_boxplot(fill = "#d9dad1") +
+  labs(title = "Systolic BP by Treatment Group",
+       x = "Treatment",
+       y = "Systolic BP (mmHg)") +
+  theme_minimal()
+```
+
+# Statistical Tests
+
+The null hypothesis is that there are no significant difference in the systolic BP between the different treatment groups.
+
+### For systolic BP:
+
+```{r}
+kruskal.test(Systolic_BP ~ Treatment_Group, data = df)
+
+pairwise.wilcox.test(df$Systolic_BP,
+                     df$Treatment_Group,
+                     p.adjust.method = "BH")   # Benjamini–Hochberg recommended
+
+
+```
+
+**Kruskal-Wallis test**: The large p-value of 0.79 shows that there is no evidence that the median systolic BP differs across different treatment groups. The distributions are statistically similar.
+
+**Wilcoxon Pairwise test**: - Again the very high p-value shows that no treatment groups significantly differ - All groups have similar systolic BP pressure results,
+
+### For diastolic BP:
+
+```{r}
+kruskal.test(Diastolic_BP ~ Treatment_Group, data = df)
+
+pairwise.wilcox.test(df$Diastolic_BP,
+                     df$Treatment_Group,
+                     p.adjust.method = "BH") 
+```
+
+Also very high p-values observed.
+
+## Chi-squared
+
+To again check the proportion of patients with high BP across different treatment groups.
+
+```{r}
+bp <- matrix(c(
+  80, 231,   # Drug A: high, normal
+  87, 239,   # Drug B
+  88, 275    # Placebo
+), 
+nrow = 3, 
+byrow = TRUE)
+
+# Add row/column names
+rownames(bp) <- c("DrugA", "DrugB", "Placebo")
+colnames(bp) <- c("HighBP", "NormalBP")
+
+# Chi-square test
+chisq.test(bp)
+```
+
+The very high p-value shows that there is no statistically significant difference between the three treatment groups.
+
+## Logistic Regression
+
+This answers the question "Which patient factors predict hypertension even after the treatment?"
+
+```{r}
+model <- glm(hypertension ~ Treatment_Group + Age + Cholesterol_Level + Adverse_Events+ Gender, data = df, family = binomial)
+
+summary(model)
+```
+
+The large p-values of Drug B and Placebo show that there is no evidence that Drug A or B reduces hypertension compared to placebo, after adjusting for age, cholesterol, adverse events and gender.
+
+**Age**: Estimate is a negative value of -0.0048, with p-value of 0.31, meaning older patients are slightly less likely to remain hypertensive, but this is not enough to be meaningful.
+
+**Cholesterol**: p-value of 0.093 is borderline, but it is not statistically significant enough to conclude that cholesterol increases risk of hypertension remaining.
+
+High p-value for adverse events, and gender indicates there is no relationship between those and hypertension.
+
+After adjusting for other variables, none of the treatments show a statistically significant effect on whether hypertension remains after treatment. i.e. Between the treatments there are no significant differences (Drug A/B vs Placebo).
+
+## Summary in a table (Cleaner output)
+
+```{r echo=FALSE}
+broom::tidy(model, exponentiate = TRUE, conf.int = TRUE)
+```
+
+## Multicollinearity check
+
+```{r}
+car::vif(model)
+```
+
+No multicollinearity detected.
+
+# Summary
+
+From the Kruskal-Wallis and Chi-squared results, we can conclude that the treatment groups are very similar. This means that any observed differences in the future are due to the treatments themselves and are not due to pre-existing conditions.
+
+The logistic regression did not show any variables as statistically significant in predicting hypertension remaining. Cholesterol is marginally significant, meaning that higher cholesterol levels might slightly increase the odds of remaining hypertension.
+
+This had been quite obvious from the beginning when we observed that placebo group had almost the same percentage of patients with reduced hypertension compared with those on Drug A and B.
+
+This concludes that Drug A and B are just as effective as placebo.
+
+This dataset is great for a simple clinical analysis report. The dataset was simple, so a more comprehensive data, for example, including variables such as pre- and post- treatment blood pressure, heart rate, other underlying medical conditions etc. would have given deeper analysis and more significant results. This is a synthetic dataset though, so for a comprehensive data, a real-life data would be required.

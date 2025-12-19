@@ -1,0 +1,38 @@
+---
+title: "Enquiry"
+format: 
+  html:
+    page-layout: full
+---
+
+::::: enquiry-page
+Please fill in the form below and I’ll get back to you shortly.
+
+:::: {#enquiry-box .enquiry}
+<form action="https://formspree.io/f/mdkqleoj" method="POST">
+
+::: name
+<label> First Name<br> <input type="text" name="name" required> </label>
+
+<label> Last Name <br><input type="text" name="name" required> </label>
+:::
+
+<label> Email <br><input type="email" name="email" required> </label>
+
+<label for="message"> Message
+
+```{=html}
+<textarea name="message" rows="5" required></textarea>
+```
+
+</label>
+
+<button class="button" id="send" type="submit">
+
+Send
+
+</button>
+
+</form>
+::::
+:::::

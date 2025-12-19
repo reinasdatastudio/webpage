@@ -1,0 +1,282 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "These are some of my projects done in the past - Includes R markdown and R Shiny Dashboards.\nMostly using ggplot for creating graphs.\n\n\n\n\n\nHypertension Clinical Treatment Analysis\n\nR markdown document analysing the effect of Drug A, Drug B (Alternative generic form) and placebo for the treatment of hypertension\nData cleaning, comprehensive data visualisation and analysis\nUsing linear regression, chi-squared test and other statistical tests to compare the effectiveness of Drug A\n\n\n\n\n\ne-commerce Sales Analysis Dashboard\n\nR Shiny Dashboard with comprehensive analysis of an e-commerce dataset\nEach section contains sales, customer behaviour and product analysis\n\n\n\n\n\n\n\n\n\n\n\nSuperstore R Shiny Dashboard\nSimple dashboard where users can select to view different data of four different store locations.\n\n\n\n\n\nForecasting prices of diamonds\nUsing linear regression and random forest classifier to predict the price of diamonds, and further analysis to compare the accuracy of the results."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html",
+    "href": "projects/diamonds_portfolio.html",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "",
+    "text": "This dataset contains the prices and other attributes of almost 54,000 diamonds. The dataset is used to predict the price of a diamond based on its characteristics such as carat, cut, color, clarity, and dimensions. The project involves data cleaning, exploratory data analysis, and building predictive models to understand the factors that influence diamond prices. The goal is to create a model that can accurately predict the price of a diamond based on its attributes."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#summary-of-diamonds-dataset",
+    "href": "projects/diamonds_portfolio.html#summary-of-diamonds-dataset",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Summary of Diamonds dataset",
+    "text": "Summary of Diamonds dataset\n\ndata(diamonds)\nhead(diamonds)\n\n# A tibble: 6 × 10\n  carat cut       color clarity depth table price     x     y     z\n  &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43\n2  0.21 Premium   E     SI1      59.8    61   326  3.89  3.84  2.31\n3  0.23 Good      E     VS1      56.9    65   327  4.05  4.07  2.31\n4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63\n5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75\n6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48\n\n\n\nPrice: Price in US dollars (Range: $326-$18823)\nCarat: Weight of the diamond (0.2-5.01)\nCut: Quality of the cut (Fair, Good, Very Good, Premium, Ideal)\nColor: Diamond colour, from D (best) to J (worst)\nClarity: A measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))\nx: Length in mm (0-10.74)\ny: Width in mm (0-58.9)\nz: Depth in mm(0-31.8)\nDepth: Total depth percentage = z/mean(x,y)=2*z/(x+y)(43-79)\nTable: Width of top of diamond relative to widest point (43-95)\n\n\nData Cleaning & Feature Engineering\n\nCheck for any impossible measurements (x, y, or z = 0) and remove them:\n\nsum(diamonds$x == 0)\n\n[1] 8\n\nsum(diamonds$y == 0)\n\n[1] 7\n\nsum(diamonds$z == 0)\n\n[1] 20\n\ndiamonds &lt;- subset(diamonds, x &gt; 0 & y &gt; 0 & z &gt; 0)\n\nCheck for any missing values that are significant:\n\nsum(is.na(diamonds))\n\n[1] 0\n\nany(diamonds == \"\")\n\n[1] FALSE\n\n\n\nCreate price per carat.\nApply log transformation to reduce skewness (As seen in the later observations)\n\n\ndiamonds &lt;- diamonds %&gt;%\n  mutate(price_per_carat = price / carat,\n         log_price = log(price),\n         log_carat = log(carat))\n\nOutliers are kept for this instance as most of the outliers are assumed to be true observations - They are not data errors, they are the expensive range. Removing these from the dataset would cause bias and underestimate prices for higher-end diamonds.\n\nExploratory Data Analysis"
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#price-distribution",
+    "href": "projects/diamonds_portfolio.html#price-distribution",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Price Distribution",
+    "text": "Price Distribution\n\nggplot(diamonds, aes(price)) +\n  geom_histogram(bins = 50, fill = \"steelblue\", color = \"white\") +\n  labs(title = \"Distribution of Diamond Prices\")\n\n\n\n\n\n\n\nhist(diamonds$carat, main = \"Carat\", xlab = \"\", col = \"purple\")\n\n\n\n\n\n\n\nhist(diamonds$depth, xlim=c(43,79), main = \"Depth\", xlab = \"\", col = \"purple\")\n\n\n\n\n\n\n\nhist(diamonds$table, main = \"Table\", xlab = \"\", col = \"purple\")\n\n\n\n\n\n\n\nhist(diamonds$price, main = \"Price\", xlab = \"\", col = \"purple\")\n\n\n\n\n\n\n\n\n\nggplot(diamonds, aes(x = cut)) +\n  geom_bar(fill = \"pink\") +\n  labs(title = \"Number of Diamonds by Cut\", x = \"Cut\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\nggplot(diamonds, aes(x = color)) +\n  geom_bar(fill = \"pink\") +\n  labs(title = \"Number of Diamonds by Colour\", x = \"Colour\", y = \"Count\") +\n  theme_minimal()\n\n\n\n\n\n\n\nggplot(diamonds, aes(x = clarity)) +\n  geom_bar(fill = \"pink\") +\n  labs(title = \"Number of Diamonds by Clarity\", x = \"Clarity\", y = \"Count\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#price-per-carat-by-cut",
+    "href": "projects/diamonds_portfolio.html#price-per-carat-by-cut",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Price per Carat by Cut",
+    "text": "Price per Carat by Cut\n\nggplot(diamonds, aes(cut, price_per_carat, fill = cut)) +\n  geom_boxplot() +\n  labs(title = \"Price per Carat by Cut\")\n\n\n\n\n\n\n\n\nThis box plot shows that the quality of cut does not have such a significant effect in price change."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#correlation-table",
+    "href": "projects/diamonds_portfolio.html#correlation-table",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Correlation Table",
+    "text": "Correlation Table\n\nnum_vars &lt;- diamonds %&gt;% select(price, carat, x, y, z)\ncor_table &lt;- cor(num_vars)\ncorrplot(cor_table, method = 'number')\n\n\n\n\n\n\n\n\nOnly numerical variables are used for correlation matrix. It makes sense that carat is highly correlated with x, y and z: the bigger the diamond the heavier. The most interesting observation here is the high correlation between price and carat.\n\nModelling\n\nBoth Linear Regression and Random Forest are used to compare the accuracy of the predictions.\nlog_price and log_carat were used in the linear regression model whereas Random Forest used variables without conversion. This is due to Linear Regression assumeing linearity and constant variance.\nRandom Forest, on the other hand, handles skewed distribution and heteroscedasticity much better. It is easier to interpret raw data.\nBoth of these exclude variables such as x, y, z etc. as they are variables strongly related to each other. Including them in these models may lead to multicollinearity and the over-fitting of the data."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#traintest-split",
+    "href": "projects/diamonds_portfolio.html#traintest-split",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Train/Test Split",
+    "text": "Train/Test Split\n\nset.seed(123)\nn &lt;- nrow(diamonds)\ntrain_idx &lt;- sample(1:n, size = 0.7*n)\ntrain &lt;- diamonds[train_idx, ]\ntest  &lt;- diamonds[-train_idx, ]"
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#linear-regression",
+    "href": "projects/diamonds_portfolio.html#linear-regression",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Linear Regression",
+    "text": "Linear Regression\n\ntrain$cut    &lt;- factor(train$cut, ordered = FALSE)\ntrain$color  &lt;- factor(train$color, ordered = FALSE)\ntrain$clarity &lt;- factor(train$clarity, ordered = FALSE)\n\nfit &lt;- lm(log_price ~ log_carat + cut + color + clarity, data = train)\nsummary(fit)\n\n\nCall:\nlm(formula = log_price ~ log_carat + cut + color + clarity, data = train)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-0.80910 -0.08649 -0.00053  0.08326  1.94709 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   7.858968   0.006917 1136.22   &lt;2e-16 ***\nlog_carat     1.884210   0.001348 1397.29   &lt;2e-16 ***\ncutGood       0.080864   0.004698   17.21   &lt;2e-16 ***\ncutVery Good  0.118504   0.004377   27.07   &lt;2e-16 ***\ncutPremium    0.140622   0.004331   32.47   &lt;2e-16 ***\ncutIdeal      0.163565   0.004295   38.08   &lt;2e-16 ***\ncolorE       -0.055266   0.002539  -21.77   &lt;2e-16 ***\ncolorF       -0.095487   0.002566  -37.21   &lt;2e-16 ***\ncolorG       -0.160786   0.002512  -64.01   &lt;2e-16 ***\ncolorH       -0.252847   0.002655  -95.23   &lt;2e-16 ***\ncolorI       -0.372178   0.002981 -124.84   &lt;2e-16 ***\ncolorJ       -0.510427   0.003697 -138.06   &lt;2e-16 ***\nclaritySI2    0.424950   0.006244   68.06   &lt;2e-16 ***\nclaritySI1    0.589894   0.006208   95.03   &lt;2e-16 ***\nclarityVS2    0.739311   0.006243  118.42   &lt;2e-16 ***\nclarityVS1    0.809302   0.006331  127.83   &lt;2e-16 ***\nclarityVVS2   0.942938   0.006527  144.48   &lt;2e-16 ***\nclarityVVS1   1.017447   0.006712  151.59   &lt;2e-16 ***\nclarityIF     1.109134   0.007252  152.95   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.1336 on 37725 degrees of freedom\nMultiple R-squared:  0.9826,    Adjusted R-squared:  0.9826 \nF-statistic: 1.185e+05 on 18 and 37725 DF,  p-value: &lt; 2.2e-16\n\n\nThe R-squared and the adjusted R-squared values are both 0.9826. 98% of the variation in log(price) is explained by the model: The regression fits the data very well.\nThe p-value is very small (&lt;0.05) meaning we can reject the null hypothesis that there are no correlations between the dependent (Price) and the independent variables.\nLooking at the coefficient, along with the lowest standard error and the highest t-value, log(carat) is concluded to be the highest predictor of price. One unit of increase in carat increases price by exp(1.88) = 6.55x."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#random-forest",
+    "href": "projects/diamonds_portfolio.html#random-forest",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Random Forest",
+    "text": "Random Forest\nRanger is used for faster computation.\n\nset.seed(123)\ntrain_sample &lt;- train %&gt;% sample_n(10000)\nrf_model &lt;- ranger(price ~ carat + cut + color + clarity,\n                   data = train_sample,\n                   num.trees = 100,\n                   importance = 'impurity')\nrf_model\n\nRanger result\n\nCall:\n ranger(price ~ carat + cut + color + clarity, data = train_sample,      num.trees = 100, importance = \"impurity\") \n\nType:                             Regression \nNumber of trees:                  100 \nSample size:                      10000 \nNumber of independent variables:  4 \nMtry:                             2 \nTarget node size:                 5 \nVariable importance mode:         impurity \nSplitrule:                        variance \nOOB prediction error (MSE):       345647.8 \nR squared (OOB):                  0.9770426 \n\n\nR-squared value was 0.977. As later seen in the evaluation, the linear regression model has heteroscedasticity. This Random Forest model predicts prices more accurately especially for more expensive, bigger carat diamonds.\n\nModel Evaluation"
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#linear-regression-diagnostics",
+    "href": "projects/diamonds_portfolio.html#linear-regression-diagnostics",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Linear Regression Diagnostics",
+    "text": "Linear Regression Diagnostics\n\nObserved vs Predicted\n\npred &lt;- exp(predict(fit, newdata = test))\nobs &lt;- test$price\n\nplot(obs, pred,\n     xlab = \"Observed Price\", ylab = \"Predicted Price\",\n     main = \"Observed vs Predicted (Linear Regression)\", pch = 19, col = rgb(0,0,1,0.4))\nabline(0, 1, col = \"red\", lwd = 2)\n\n\n\n\n\n\n\n\n\n\nResiduals vs Predicted\n\nresiduals &lt;- obs - pred\nplot(pred, residuals,\n     xlab = \"Predicted Price\", ylab = \"Residuals\",\n     main = \"Residuals vs Predicted\", pch = 19, col = rgb(1,0.5,0,0.5))\nabline(h = 0, col = \"red\", lwd = 2)\n\n\n\n\n\n\n\n\n\n\nQQ-Plot of Residuals\n\nqqnorm(residuals, main = \"QQ-Plot of Residuals\")\nqqline(residuals, col = \"red\", lwd = 2)\n\n\n\n\n\n\n\n\n\n\nMetrics (Linear Regression)\n\nrmse_lm &lt;- rmse(obs, pred)\nr2_lm &lt;- 1 - sum((obs - pred)^2) / sum((obs - mean(obs))^2)\nrmse_lm; r2_lm\n\n[1] 792.1002\n\n\n[1] 0.9607776\n\n\nlog() was transformed back to the raw data with exp().\nAlthough the lines shown on these graphs are straight, the dots spread out as higher the price becomes. The higher the price becomes, more errors in prediction becomes obvious. The increase in values of residuals is visible, therefore the conclusions are that:\n\nLinear regression assumption of constant variance are not met\nModel predictions are less reliable for more expensive diamonds as errors are larger\n\nDespite these results, the residuals are small for typical diamonds, so the linear regression model predicts well in the common price range.\nRandom Forest handles this better because it does not assume constant variance."
+  },
+  {
+    "objectID": "projects/diamonds_portfolio.html#random-forest-evaluation",
+    "href": "projects/diamonds_portfolio.html#random-forest-evaluation",
+    "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
+    "section": "Random Forest Evaluation",
+    "text": "Random Forest Evaluation\n\nrf_pred &lt;- predict(rf_model, data = test)$predictions\nrmse_rf &lt;- rmse(obs, rf_pred)\nr2_rf &lt;- 1 - sum((obs - rf_pred)^2) / sum((obs - mean(obs))^2)\nrmse_rf; r2_rf\n\n[1] 600.003\n\n\n[1] 0.9774949\n\nimportance(rf_model)\n\n       carat          cut        color      clarity \n134362873572   1263539745   4621682773   7710461114 \n\n\nRandom Forest showed r-squared value of 0.977 which is higher than that of linear regression (0.961). RMSE (Root means squared error) was also lower for Random Forest, meaning that this model predicts the price better.\n\nConclusions\n\n\nCarat is the strongest predictor of diamond price.\nCut, color, and clarity refine predictions.\nIn this case where the null hypothesis of constant variance was rejected, Random Forest performed better in accurate predictions of prices."
+  },
+  {
+    "objectID": "enquiry.html",
+    "href": "enquiry.html",
+    "title": "Enquiry",
+    "section": "",
+    "text": "Please fill in the form below and I’ll get back to you shortly.\n\n\n\n First Name  \n Last Name  \n\n Email  \n Message\n\n\n\nSend"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Expert R Solutions for Your Data.",
+    "section": "",
+    "text": "I was a pharmacist before I discovered data science. Now I use my unique skills to assist anyone from scientists to students understand data using R.\nR is a programming language specialising in data analysis. It produces beautiful graphs, tables and can create live dashboards."
+  },
+  {
+    "objectID": "index.html#services",
+    "href": "index.html#services",
+    "title": "Reina's Data Studio",
+    "section": "Services",
+    "text": "Services\nFrom one-off help to ongoing support, I offer practical R solutions tailored to your needs.\n\n\n\nData Cleaning\n\n\n\nData Visualisation\n\n\n\nStatistical Analysis Assistance\n\n\n\nForecasting\n\n\n\nProvide code chunks\n\n\n\nCreate dashboard\n\n\n\nCreate R markdown\n\n\n\nR tutorials (Available on YouTube)\n\n\nand many other offers available!"
+  },
+  {
+    "objectID": "index.html#check-out-my-youtube-tutorials-on-r",
+    "href": "index.html#check-out-my-youtube-tutorials-on-r",
+    "title": "Reina's Data Studio",
+    "section": "Check out my YouTube tutorials on R",
+    "text": "Check out my YouTube tutorials on R\n\n\nEnglish ver.\nReina’s Data Studio\n\n\n\n\nJapanese ver.\nReina’s Data Studio JP"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Reina's Data Studio",
+    "section": "Contact",
+    "text": "Contact\nIf you have a dataset, question or project in mind, please feel free to reach out.\n\nSend an enquiry"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html",
+    "href": "projects/Hypertension-clinical-tx.html",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "",
+    "text": "This dataset was taken from: https://www.kaggle.com/datasets/isabelladil/phase-iii-clinical-trial-dataset/data It is a synthetic data and does not contain any data of individuals in real life."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#study-design-and-dataset",
+    "href": "projects/Hypertension-clinical-tx.html#study-design-and-dataset",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Study Design and Dataset",
+    "text": "Study Design and Dataset\nThis study used a synthetic clinical trial dataset consisting of 1,000 patients enrolled across multiple study sites. Each patient record included demographic variables (age, gender), clinical measurements (systolic and diastolic blood pressure, cholesterol level), treatment allocation, adverse event counts, and dropout status. Three treatment groups were evaluated: Drug A (CardioX), Drug B (active comparator), and Placebo."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#data-preparation-and-cleaning",
+    "href": "projects/Hypertension-clinical-tx.html#data-preparation-and-cleaning",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Data Preparation and Cleaning",
+    "text": "Data Preparation and Cleaning\nMissing data: Checked using colSums(is.na()); no missing values were present.\nOutliers: Potential outliers in cholesterol levels were identified using the IQR method within age-stratified groups to avoid age-related confounding.\nAge grouping: Patients were categorised into four age groups (6–19, 20–39, 40–59, 60–98 years) using the cut() function to support visualisation and subgroup comparisons.\nA binary variable hypertension was created to classify patients based on commonly accepted thresholds (≥140 mmHg systolic or ≥90 mmHg diastolic), reflecting individuals likely in need of treatment."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#exploratory-data-analysis",
+    "href": "projects/Hypertension-clinical-tx.html#exploratory-data-analysis",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nDescriptive statistics and graphical visualisations (bar charts, histograms, scatterplots, and boxplots) were generated using the tidyverse and ggplot2 packages. These visualisations were used to: - Assess treatment group balance - Evaluate distributions of age, blood pressure, and cholesterol - Examine relationships between age, cholesterol level, and blood pressure - Compare blood pressure outcomes across treatment groups - Explore dropout patterns"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#statistical-analysis",
+    "href": "projects/Hypertension-clinical-tx.html#statistical-analysis",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Statistical Analysis",
+    "text": "Statistical Analysis\n\nGroup Comparisons\nBecause blood pressure values were not assumed to be normally distributed, non-parametric tests were used: - Kruskal–Wallis tests were applied to compare systolic and diastolic blood pressure across the three treatment groups. - Pairwise Wilcoxon rank-sum tests with Benjamini–Hochberg correction were used for post-hoc comparisons.\n\n\nCategorical Outcomes\nTo compare the proportion of patients with hypertension across treatment groups, a Chi-squared test was conducted using a contingency table of hypertension status by treatment group.\n\n\nPredictors of Persistent Hypertension\nA multivariable logistic regression model was fitted to identify factors associated with remaining hypertensive after treatment. Predictors included: - Treatment group - Age - Gender - Cholesterol level - Number of adverse events\nThe model was fitted using the glm() function with a binomial link. Multicollinearity was assessed using Variance Inflation Factors (VIF) via the car::vif() function.\n\n\nSoftware\nAll analyses were conducted in R (version 4.5.2). Key libraries included tidyverse, ggplot2, rstatix, and car."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#number-of-patients-in-each-treatment-group",
+    "href": "projects/Hypertension-clinical-tx.html#number-of-patients-in-each-treatment-group",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Number of patients in each treatment group",
+    "text": "Number of patients in each treatment group\n\n\n\n\n\n\n\n\n\nThere are fairly equal numbers of each treatment group."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#age-group",
+    "href": "projects/Hypertension-clinical-tx.html#age-group",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Age group",
+    "text": "Age group\n\n\n\n\n\n\n\n\n\nAs seen in the summary, the youngest is 6 years old while the oldest patient is 98 years old. The mean age is 50, which is a great age group to conduct the study on."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#age-vs-cholesterol-level",
+    "href": "projects/Hypertension-clinical-tx.html#age-vs-cholesterol-level",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Age vs Cholesterol Level",
+    "text": "Age vs Cholesterol Level\n\n\n\n\n\n\n\n\n\nHere we will check for outliers for cholesterol level.\n\n\n   Subject_ID Site_ID Age Gender Enrollment_Date Treatment_Group Adverse_Events\n1          41       8  43 Female         2/10/22          Drug A              1\n2          77      20  65   Male         3/18/22         Placebo              1\n3          99      36  32 Female          4/9/22          Drug B              2\n4         117      38  34 Female         4/27/22         Placebo              2\n5         183      14  38   Male          7/2/22          Drug B              0\n6         290      25  54   Male        10/17/22          Drug B              0\n7         294      44  82 Female        10/21/22         Placebo              0\n8         299      10  50   Male        10/26/22          Drug B              1\n9         441      27  70 Female         3/17/23         Placebo              1\n10        457      28  46   Male          4/2/23          Drug B              5\n11        466       1  45   Male         4/11/23          Drug A              0\n12        504      45  20 Female         5/19/23         Placebo              2\n13        559      31  61 Female         7/13/23          Drug B              0\n14        622      25  69   Male         9/14/23         Placebo              0\n15        662      39  70   Male        10/24/23         Placebo              1\n16        780      50  66 Female         2/19/24          Drug A              0\n17        957      30  28 Female         8/14/24         Placebo              0\n   Dropout Systolic_BP Diastolic_BP Cholesterol_Level age_group is_outlier\n1        0         101           92               300   (39,59]       TRUE\n2        0         125           82               280   (59,98]       TRUE\n3        1         113           67               121   (19,39]       TRUE\n4        0         126           87               298   (19,39]       TRUE\n5        0         100           88               350   (19,39]       TRUE\n6        0         124           82                83   (39,59]       TRUE\n7        1         120           73               284   (59,98]       TRUE\n8        0         104           79               350   (39,59]       TRUE\n9        0          91           79               303   (59,98]       TRUE\n10       0         112           75               110   (39,59]       TRUE\n11       0         138           80               350   (39,59]       TRUE\n12       0         107           92               350   (19,39]       TRUE\n13       0          93           85               274   (59,98]       TRUE\n14       0         117           75               271   (59,98]       TRUE\n15       0         132           59               119   (59,98]       TRUE\n16       0         107           79               115   (59,98]       TRUE\n17       0         128           62               350   (19,39]       TRUE\n\n\nThe table shows 17 individuals are identified as outliers.\n\n\n\n\n\n\n\n\n\n*There are a few overlapping outliers hence total of 14 outlier dots are visible (There are total of 17 outliers)"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#age-vs-systolic-blood-pressure",
+    "href": "projects/Hypertension-clinical-tx.html#age-vs-systolic-blood-pressure",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Age vs Systolic Blood Pressure",
+    "text": "Age vs Systolic Blood Pressure\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutliers can be seen on both systolic and diastolic blood pressures.\nWe will separate those who actually have hypertension vs those who do not have hypertension.\nhttps://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings states that Stage 1 high blood pressure starts from 130/80mmHg, although for this experiment, we will categorise those with more than 140/90mmHg as hypertension. This is because the experiment is to see the effects of the medication, and medications are normally given to those with BP above 140/90mmHg. Those who most definitely needing medications are those with BP more then 140/90mmHg.\n\ndf &lt;- df %&gt;%\n  group_by(hypertension = (Systolic_BP&gt;=140 | Diastolic_BP &gt;= 90))\n\ndrug_A &lt;- df %&gt;%\n  filter(Treatment_Group == \"Drug A\")\n\ndrug_B &lt;- df %&gt;%\n  filter(Treatment_Group == \"Drug B\")\n\nplacebo &lt;- df %&gt;%\n  filter(Treatment_Group == \"Placebo\")"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#summary-of-systolic-and-diastolic-bp",
+    "href": "projects/Hypertension-clinical-tx.html#summary-of-systolic-and-diastolic-bp",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Summary of systolic and diastolic BP",
+    "text": "Summary of systolic and diastolic BP\n\ndf %&gt;%\n  group_by(Treatment_Group) %&gt;%\n  summarise(\n    mean_sys = mean(Systolic_BP),\n    sd_sys = sd(Systolic_BP),\n    mean_dia = mean(Diastolic_BP),\n    n = n()\n  )\n\n# A tibble: 3 × 5\n  Treatment_Group mean_sys sd_sys mean_dia     n\n  &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;\n1 Drug A              120.   15.4     80.3   311\n2 Drug B              119.   14.4     80.3   326\n3 Placebo             119.   17.4     80.0   363\n\n\n\n\n\n\n\n\n\n\n\nSurprisingly (or not surprisingly) those with placebo treatment had more success than the real drugs.\n\nPercentage:\n\n\n# A tibble: 3 × 4\n# Groups:   Treatment_Group [3]\n  Treatment_Group hypertension     n percentage\n  &lt;chr&gt;           &lt;fct&gt;        &lt;int&gt;      &lt;dbl&gt;\n1 Placebo         FALSE          275       75.8\n2 Drug A          FALSE          231       74.3\n3 Drug B          FALSE          239       73.3\n\n\nThey all have about the same success rate of 73 to 75%."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#cholesterol-vs-blood-pressure",
+    "href": "projects/Hypertension-clinical-tx.html#cholesterol-vs-blood-pressure",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Cholesterol vs Blood Pressure",
+    "text": "Cholesterol vs Blood Pressure"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#histogram-of-systolic-bp",
+    "href": "projects/Hypertension-clinical-tx.html#histogram-of-systolic-bp",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Histogram of Systolic BP",
+    "text": "Histogram of Systolic BP"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#chi-squared",
+    "href": "projects/Hypertension-clinical-tx.html#chi-squared",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Chi-squared",
+    "text": "Chi-squared\nTo again check the proportion of patients with high BP across different treatment groups.\n\nbp &lt;- matrix(c(\n  80, 231,   # Drug A: high, normal\n  87, 239,   # Drug B\n  88, 275    # Placebo\n), \nnrow = 3, \nbyrow = TRUE)\n\n# Add row/column names\nrownames(bp) &lt;- c(\"DrugA\", \"DrugB\", \"Placebo\")\ncolnames(bp) &lt;- c(\"HighBP\", \"NormalBP\")\n\n# Chi-square test\nchisq.test(bp)\n\n\n    Pearson's Chi-squared test\n\ndata:  bp\nX-squared = 0.55219, df = 2, p-value = 0.7587\n\n\nThe very high p-value shows that there is no statistically significant difference between the three treatment groups."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#logistic-regression",
+    "href": "projects/Hypertension-clinical-tx.html#logistic-regression",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nThis answers the question “Which patient factors predict hypertension even after the treatment?”\n\nmodel &lt;- glm(hypertension ~ Treatment_Group + Age + Cholesterol_Level + Adverse_Events+ Gender, data = df, family = binomial)\n\nsummary(model)\n\n\nCall:\nglm(formula = hypertension ~ Treatment_Group + Age + Cholesterol_Level + \n    Adverse_Events + Gender, family = binomial, data = df)\n\nCoefficients:\n                        Estimate Std. Error z value Pr(&gt;|z|)   \n(Intercept)            -1.626554   0.548004  -2.968   0.0030 **\nTreatment_GroupDrug B   0.047951   0.181043   0.265   0.7911   \nTreatment_GroupPlacebo -0.093418   0.179441  -0.521   0.6026   \nAge                    -0.004771   0.004738  -1.007   0.3140   \nCholesterol_Level       0.003829   0.002276   1.682   0.0926 . \nAdverse_Events          0.031001   0.049146   0.631   0.5282   \nGenderMale              0.015844   0.145915   0.109   0.9135   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 1135.5  on 999  degrees of freedom\nResidual deviance: 1130.7  on 993  degrees of freedom\nAIC: 1144.7\n\nNumber of Fisher Scoring iterations: 4\n\n\nThe large p-values of Drug B and Placebo show that there is no evidence that Drug A or B reduces hypertension compared to placebo, after adjusting for age, cholesterol, adverse events and gender.\nAge: Estimate is a negative value of -0.0048, with p-value of 0.31, meaning older patients are slightly less likely to remain hypertensive, but this is not enough to be meaningful.\nCholesterol: p-value of 0.093 is borderline, but it is not statistically significant enough to conclude that cholesterol increases risk of hypertension remaining.\nHigh p-value for adverse events, and gender indicates there is no relationship between those and hypertension.\nAfter adjusting for other variables, none of the treatments show a statistically significant effect on whether hypertension remains after treatment. i.e. Between the treatments there are no significant differences (Drug A/B vs Placebo)."
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#summary-in-a-table-cleaner-output",
+    "href": "projects/Hypertension-clinical-tx.html#summary-in-a-table-cleaner-output",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Summary in a table (Cleaner output)",
+    "text": "Summary in a table (Cleaner output)\n\n\n# A tibble: 7 × 7\n  term                   estimate std.error statistic p.value conf.low conf.high\n  &lt;chr&gt;                     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)               0.197   0.548      -2.97  0.00300   0.0668     0.574\n2 Treatment_GroupDrug B     1.05    0.181       0.265 0.791     0.736      1.50 \n3 Treatment_GroupPlacebo    0.911   0.179      -0.521 0.603     0.641      1.30 \n4 Age                       0.995   0.00474    -1.01  0.314     0.986      1.00 \n5 Cholesterol_Level         1.00    0.00228     1.68  0.0926    0.999      1.01 \n6 Adverse_Events            1.03    0.0491      0.631 0.528     0.932      1.13 \n7 GenderMale                1.02    0.146       0.109 0.914     0.763      1.35"
+  },
+  {
+    "objectID": "projects/Hypertension-clinical-tx.html#multicollinearity-check",
+    "href": "projects/Hypertension-clinical-tx.html#multicollinearity-check",
+    "title": "Hypertension Clinical Treatment Analysis",
+    "section": "Multicollinearity check",
+    "text": "Multicollinearity check\n\ncar::vif(model)\n\n                      GVIF Df GVIF^(1/(2*Df))\nTreatment_Group   1.011396  2        1.002837\nAge               1.002592  1        1.001295\nCholesterol_Level 1.006929  1        1.003459\nAdverse_Events    1.007916  1        1.003950\nGender            1.006296  1        1.003143\n\n\nNo multicollinearity detected."
+  },
+  {
+    "objectID": "index.html#expert-r-solutions-for-your-data.",
+    "href": "index.html#expert-r-solutions-for-your-data.",
+    "title": "Reina's Data Studio",
+    "section": "Expert R Solutions for Your Data.",
+    "text": "Expert R Solutions for Your Data."
+  },
+  {
+    "objectID": "index.html#expert-r-solutions-for-your-data",
+    "href": "index.html#expert-r-solutions-for-your-data",
+    "title": "Reina's Data Studio",
+    "section": "Expert R Solutions for Your Data",
+    "text": "Expert R Solutions for Your Data\nI help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.\n\nWork with me"
+  },
+  {
+    "objectID": "index.html#who-i-help",
+    "href": "index.html#who-i-help",
+    "title": "Reina's Data Studio",
+    "section": "Who I help",
+    "text": "Who I help\n\nResearchers working with messy data\nStudents learning R or statistics\nHealthcare and pharmacy industry teams needing analysis or forecasting\nAnyone overwhelmed by data and spreadsheets"
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "Reina's Data Studio",
+    "section": "How it works",
+    "text": "How it works\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
+  },
+  {
+    "objectID": "index.html#tools-expertise",
+    "href": "index.html#tools-expertise",
+    "title": "Reina's Data Studio",
+    "section": "Tools & Expertise",
+    "text": "Tools & Expertise\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
+  },
+  {
+    "objectID": "index.html#tools",
+    "href": "index.html#tools",
+    "title": "Reina's Data Studio",
+    "section": "Tools",
+    "text": "Tools\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
+  },
+  {
+    "objectID": "index.html#language-support",
+    "href": "index.html#language-support",
+    "title": "Reina's Data Studio",
+    "section": "Language Support",
+    "text": "Language Support\nI can support projects in English or Japanese"
+  },
+  {
+    "objectID": "blog/index.html#blog-posts",
+    "href": "blog/index.html#blog-posts",
+    "title": "Blog",
+    "section": "Blog Posts",
+    "text": "Blog Posts"
+  }
+]

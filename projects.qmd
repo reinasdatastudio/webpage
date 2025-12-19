@@ -1,0 +1,64 @@
+---
+title: "Projects"
+format:
+  html:
+    page-layout: full
+---
+
+These are some of my projects done in the past - Includes R markdown and R Shiny Dashboards.
+
+Mostly using ggplot for creating graphs.
+
+::::: project-container
+::: project-image
+![](images/Screenshot%202025-12-08%20164619.png)
+:::
+
+::: projects
+### [Hypertension Clinical Treatment Analysis](projects/Hypertension-clinical-tx.Rmd)
+
+-   R markdown document analysing the effect of Drug A, Drug B (Alternative generic form) and placebo for the treatment of hypertension
+
+-   Data cleaning, comprehensive data visualisation and analysis
+
+-   Using linear regression, chi-squared test and other statistical tests to compare the effectiveness of Drug A
+:::
+:::::
+
+::::: project-container
+::: projects
+### [e-commerce Sales Analysis Dashboard](https://thequeenofdata.shinyapps.io/ecommerceDashboardExample/)
+
+-   R Shiny Dashboard with comprehensive analysis of an e-commerce dataset
+
+-   Each section contains sales, customer behaviour and product analysis
+:::
+
+::: project-image
+![](ecommerce.png)
+:::
+:::::
+
+::::: project-container
+::: project-image
+### ![](images/clipboard-4088233443.png)
+:::
+
+::: projects
+### [Superstore R Shiny Dashboard](https://thequeenofdata.shinyapps.io/Superstore/)
+
+Simple dashboard where users can select to view different data of four different store locations.
+:::
+:::::
+
+::::: project-container
+::: {#diamonds .projects}
+### [Forecasting prices of diamonds](projects/diamonds_portfolio.Rmd)
+
+Using linear regression and random forest classifier to predict the price of diamonds, and further analysis to compare the accuracy of the results.
+:::
+
+::: project-image
+![](images/clipboard-977871984.png)
+:::
+:::::
