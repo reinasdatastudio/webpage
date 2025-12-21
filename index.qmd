@@ -5,50 +5,56 @@ format:
     toc: false
 ---
 
-::::: {.hero-banner .banner}
-:::: hero
+:::::: {.hero-banner .banner}
+::::: hero
 ::: hero-image
 <img src="intro-logo.png" alt="Reina&apos;s Data Studio logo" class="hero-logo"/>
 :::
 
-## Expert R Solutions for Your Data
+# R Consulting for Healthcare & Research
 
-I help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.
+::: hero-sentence
+*By a former pharmacist with clinical context*
+:::
 
 <button class="button">
 
 [Work with me](enquiry.qmd)
 
 </button>
-::::
+
+## Why work with me?
+
+-   Healthcare background
+-   Experience with real clinical data structures
+-   Clear communication for non-programmers
+-   Reproducible, well-documented R workflows
+-   Respect for data privacy and ethics
 :::::
+::::::
 
 :::::: {.banner .section-story}
-::: box
+::: box-1
+## Process
+
+\*Example of a process
+
+1.  **Initial enquiry:** Send me a short message about your data, project or what you'd like help with
+2.  **Quick discussion:** To understand your goals and the type of support that would suit you best
+3.  **Tailored assistance:** I work with you to provide clear explanations, well-structured R code and helpful next steps
+:::
+
+::: box-2
 ## Who I help
 
--   Researchers working with messy data
-
+-   Researchers
 -   Students learning R or statistics
-
--   Healthcare and pharmacy industry teams needing analysis or forecasting
-
--   Anyone overwhelmed by data and spreadsheets
+-   Healthcare professionals
+-   Teams needing R support
+-   Anyone else wanting R consultation
 :::
 
-::: box
-## How it works
-
--   You send an enquiry describing your project or data
-
--   We discuss your goals and timeline
-
--   I analyse or build your solution in R
-
--   You receive clean data, code and clear explanations
-:::
-
-::: box
+::: box-3
 ## Tools
 
 -   R / tidyverse
@@ -61,67 +67,62 @@ I help researchers, students, healthcare professionals and anyone with passion c
 :::
 ::::::
 
-:::::::::::::: {.section-services .banner}
-::::::::::::: section-inner
+::::::::: {.section-services .banner}
+:::::::: section-inner
 ## Services
 
 From one-off help to ongoing support, I offer practical R solutions tailored to your needs.
 
-:::::::::::: card-container
+::::::: card-container
 ::: card
 {{< fa broom size=3x >}}
 
-Data Cleaning
-:::
+### Data Cleaning & Preparation
 
-::: card
-{{< fa chart-pie size=3x >}}
+I turn messy clinical or research datasets into clean, analysis-ready data using R - with correct variable handling and documentation.
 
-Data Visualisation
+Deliverables include but not limited to:
+
+-   Clean dataset
+-   R script
+-   Summary of assumptions
 :::
 
 ::: card
 {{< fa chart-bar size=3x >}}
 
-Statistical Analysis Assistance
-:::
+### Statistical Analysis and Interpretation
 
-::: card
-{{< fa chart-line size=3x >}}
+I help analyse healthcare and research data using appropriate statistical methods - and explain the results in plain English.
 
-Forecasting
-:::
+Deliverables include but not limited to:
 
-::: card
-{{< fa code size=3x >}}
-
-Provide code chunks
-:::
-
-::: card
-{{< fa clipboard-list size=3x >}}
-
-Create dashboard
-:::
-
-::: card
-{{< fa note-sticky size=3x >}}
-
-Create R markdown
+-   R analysis
+-   Graphs
+-   Clear interpretation
+-   Forecasting
 :::
 
 ::: card
 {{< fa brands youtube size=3x >}}
 
-R tutorials (Available on YouTube)
+### R Consulting and Teaching (1:1 or Team)
+
+I provide tailored R support, mentoring and consulting for healthcare and research teams as well as any individuals.
+
+Deliverables include but not limited to:
+
+-   Live sessions
+-   Code reviews
+-   Workflow improvements
 :::
 
 ::: {#lastcard .card}
 and many other offers available!
 :::
-::::::::::::
-:::::::::::::
-::::::::::::::
+:::::::
+::::::::
+:::::::::
 
 ::::::: {.youtube-section .banner}
 :::::: youtube
@@ -155,18 +156,18 @@ and many other offers available!
 ::: language
 ## Language Support
 
-I can support projects in **English or Japanese**
+I can provide support and consultations in **English or Japanese**
 :::
 
 ::: contact
 ## Contact
 
 If you have a dataset, question or project in mind, please feel free to reach out.
+:::
 
 <button class="button">
 
 [Send an enquiry](enquiry.qmd)
 
 </button>
-:::
 :::::

@@ -25,6 +25,7 @@ website:
         href: https://github.com/reinasdatastudio
       - icon: youtube
         href: https://www.youtube.com/@reinas_data.studio
+    right: "Webpage made with Quarto"
       
 format:
   html:

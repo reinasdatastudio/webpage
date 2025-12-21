@@ -27,18 +27,18 @@ footer .nav-link {
   background-color: $body-bg;
 }
 
+.nav-footer-right > p{
+  text-align: right;
+}
+
 p {
   text-align: justify;
 }
 
 .banner {
-  padding: 50px 5% !important;
+  padding: 50px 10% !important;
   min-height: 60vh;
   align-content: center;
-}
-
-h2 {
-  margin-top: 0 !important;
 }
 
 /*--- Home ---*/
@@ -56,7 +56,12 @@ h2 {
   align-content: center;
 }
 
-.hero h2 {
+.hero h1 {
+  text-align: center;
+}
+
+.hero-sentence p {
+  margin: 30px 0;
   text-align: center;
 }
 
@@ -78,7 +83,7 @@ h2 {
 }
 
 .button {
-  margin: 30px auto 0;
+  margin: 20px auto;
   border-radius: 20px;
   display: flex !important;
   justify-content: center;
@@ -103,10 +108,17 @@ a {
 
 .section-story {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0 30px;
 }
 
+.box-1 {
+  grid-column: span 12;
+}
+
+.box-2, .box-3 {
+  grid-column: span 6;
+}
 
 /*- Services -*/
   
@@ -116,21 +128,22 @@ a {
 
 .card-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   padding-top: 40px;
 }
 
 .card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   border: none;
   background-color: #f4f2f1;
   padding: 0 10px 20px;
 }
 
-.card p { 
-  text-align: center;
-  margin-top: 5px;
-  margin-bottom: 0;
+.card > p {
+  margin: auto 5%;
 }
 
 #lastcard {
@@ -267,7 +280,9 @@ textarea {
   .hero-image {
     width: 100%;
   }
-  .card-container {grid-template-columns: 1fr;}
+  .card {flex-direction: column;}
+  .card > p {text-align: center;}
+  
   .channels {
     display: flex;
     flex-direction: column;

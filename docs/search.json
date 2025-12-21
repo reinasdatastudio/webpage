@@ -86,9 +86,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "",
-    "text": "I help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.\n\nWork with me"
+    "text": "By a former pharmacist with clinical context\n\n\nWork with me\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
   },
   {
     "objectID": "index.html#expert-r-solutions-for-your-data",
@@ -100,51 +100,51 @@
   {
     "objectID": "index.html#who-i-help",
     "href": "index.html#who-i-help",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Who I help",
-    "text": "Who I help\n\nResearchers working with messy data\nStudents learning R or statistics\nHealthcare and pharmacy industry teams needing analysis or forecasting\nAnyone overwhelmed by data and spreadsheets"
+    "text": "Who I help\n\nResearchers\nStudents learning R or statistics\nHealthcare professionals\nTeams needing R support\nAnyone else wanting R consultation"
   },
   {
     "objectID": "index.html#how-it-works",
     "href": "index.html#how-it-works",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "How it works",
     "text": "How it works\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
   },
   {
     "objectID": "index.html#tools",
     "href": "index.html#tools",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Tools",
     "text": "Tools\n\nR / tidyverse\nggplot2\nShiny\nQuarto / R Markdown\nStatistical modelling\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy data"
   },
   {
     "objectID": "index.html#services",
     "href": "index.html#services",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Services",
-    "text": "Services\nFrom one-off help to ongoing support, I offer practical R solutions tailored to your needs.\n\n\n\nData Cleaning\n\n\n\nData Visualisation\n\n\n\nStatistical Analysis Assistance\n\n\n\nForecasting\n\n\n\nProvide code chunks\n\n\n\nCreate dashboard\n\n\n\nCreate R markdown\n\n\n\nR tutorials (Available on YouTube)\n\n\nand many other offers available!"
+    "text": "Services\nFrom one-off help to ongoing support, I offer practical R solutions tailored to your needs.\n\n\n\n\nData Cleaning & Preparation\nI turn messy clinical or research datasets into clean, analysis-ready data using R - with correct variable handling and documentation.\nDeliverables include but not limited to:\n\nClean dataset\nR script\nSummary of assumptions\n\n\n\n\n\n\nStatistical Analysis and Interpretation\nI help analyse healthcare and research data using appropriate statistical methods - and explain the results in plain English.\nDeliverables include but not limited to:\n\nR analysis\nGraphs\nClear interpretation\nForecasting\n\n\n\n\n\n\nR Consulting and Teaching (1:1 or Team)\nI provide tailored R support, mentoring and consulting for healthcare and research teams as well as any individuals.\nDeliverables include but not limited to:\n\nLive sessions\nCode reviews\nWorkflow improvements\n\n\n\n\nand many other offers available!"
   },
   {
     "objectID": "index.html#check-out-my-youtube-tutorials-on-r",
     "href": "index.html#check-out-my-youtube-tutorials-on-r",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Check out my YouTube tutorials on R",
     "text": "Check out my YouTube tutorials on R\n\n\nEnglish ver.\nReina’s Data Studio\n\n\n\n\nJapanese ver.\nReina’s Data Studio JP"
   },
   {
     "objectID": "index.html#language-support",
     "href": "index.html#language-support",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Language Support",
-    "text": "Language Support\nI can support projects in English or Japanese"
+    "text": "Language Support\nI can provide support and consultations in English or Japanese"
   },
   {
     "objectID": "index.html#contact",
     "href": "index.html#contact",
-    "title": "Reina's Data Studio",
+    "title": "R Consulting for Healthcare & Research",
     "section": "Contact",
-    "text": "Contact\nIf you have a dataset, question or project in mind, please feel free to reach out.\n\nSend an enquiry"
+    "text": "Contact\nIf you have a dataset, question or project in mind, please feel free to reach out."
   },
   {
     "objectID": "projects/Hypertension-clinical-tx.html",
@@ -257,5 +257,33 @@
     "title": "Hypertension Clinical Treatment Analysis",
     "section": "Multicollinearity check",
     "text": "Multicollinearity check\n\ncar::vif(model)\n\n                      GVIF Df GVIF^(1/(2*Df))\nTreatment_Group   1.011396  2        1.002837\nAge               1.002592  1        1.001295\nCholesterol_Level 1.006929  1        1.003459\nAdverse_Events    1.007916  1        1.003950\nGender            1.006296  1        1.003143\n\n\nNo multicollinearity detected."
+  },
+  {
+    "objectID": "index.html#r-consulting-for-healthcare-research",
+    "href": "index.html#r-consulting-for-healthcare-research",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "By a former pharmacist with clinical context\n\nWork with me\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
+  },
+  {
+    "objectID": "index.html#why-work-with-me",
+    "href": "index.html#why-work-with-me",
+    "title": "R Consulting for Healthcare & Research",
+    "section": "",
+    "text": "Healthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
+  },
+  {
+    "objectID": "index.html#basic-process",
+    "href": "index.html#basic-process",
+    "title": "R Consulting for Healthcare & Research",
+    "section": "Basic Process",
+    "text": "Basic Process\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
+  },
+  {
+    "objectID": "index.html#process",
+    "href": "index.html#process",
+    "title": "R Consulting for Healthcare & Research",
+    "section": "Process",
+    "text": "Process\n*Example of a process\n\nInitial enquiry: Send me a short message about your data, project or what you’d like help with\nQuick discussion: To understand your goals and the type of support that would suit you best\nTailored assistance: I work with you to provide clear explanations, well-structured R code and helpful next steps"
   }
 ]
