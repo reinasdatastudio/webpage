@@ -5,9 +5,14 @@ format:
     page-layout: full
 ---
 
-These are some of my projects done in the past - Includes R markdown and R Shiny Dashboards.
+These selected projects demonstrate how I approach data: with **clarity, reproducibility, and practical outcomes**.
 
-Mostly using ggplot for creating graphs.
+For confidential client work, details may be limited.
+
+:::::: healthcare-box
+## Healthcare and Research Projects
+
+Projects demonstrating clinical context, statistical analysis and reproducible R workflows.
 
 ::::: project-container
 ::: project-image
@@ -17,25 +22,87 @@ Mostly using ggplot for creating graphs.
 ::: projects
 ### [Hypertension Clinical Treatment Analysis](projects/Hypertension-clinical-tx.Rmd)
 
--   R markdown document analysing the effect of Drug A, Drug B (Alternative generic form) and placebo for the treatment of hypertension
+Reproducible clinical data analysis with clear interpretation for treatment comparison.
 
--   Data cleaning, comprehensive data visualisation and analysis
+#### **Context**
 
--   Using linear regression, chi-squared test and other statistical tests to compare the effectiveness of Drug A
+Simulated clinical trial dataset comparing treatment outcomes for hypertension patients.
+
+-   Cleaned and structured clinical variables
+-   Performed statistical comparison between treatment groups
+-   Created publication-style visualisations
+-   Documented assumptions and analytical workflow
+
+#### **Outcome**
+
+Delivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.
+
+-   Structured R analysis script
+-   Cleaned dataset
+-   Visualisations suitable for reporting
+-   Written interpretation of results
+:::
+:::::
+::::::
+
+:::::::::::: general-box
+## Data Science and General Analytics
+
+Broader data science projects showcasing modelling, visualisation and application design.
+
+::::: project-container
+::: project-image
+![](images/clipboard-977871984.png)
+:::
+
+::: projects
+### [Forecasting prices of diamonds](projects/diamonds_portfolio.Rmd)
+
+**Statistical exploration and modelling of pricing factors in a high-dimensional dataset.**
+
+#### **Context**
+
+Dataset analysing how characteristics influence diamond pricing.
+
+-   Cleaned and explored multivariate data
+-   Built regression models to assess price drivers
+-   Visualised relationships between features and pricing
+
+#### **Outcome**
+
+Identified key variables influencing price and demonstrated reproducible modelling workflow.
+
+-   Reproducible R script
+-   Model output and interpretation
+-   Visualisations
 :::
 :::::
 
 ::::: project-container
+::: project-image
+![](images/clipboard-2376314093.png)
+:::
+
 ::: projects
 ### [e-commerce Sales Analysis Dashboard](https://thequeenofdata.shinyapps.io/ecommerceDashboardExample/)
 
--   R Shiny Dashboard with comprehensive analysis of an e-commerce dataset
+**Interactive R Shiny dashboard enabling non-technical users to explore sales performance.**
 
--   Each section contains sales, customer behaviour and product analysis
-:::
+#### **Context**
 
-::: project-image
-![](ecommerce.png)
+Retail-style dataset requiring dynamic filtering and real-time data exploration.
+
+-   Designed and built an interactive Shiny application
+-   Implemented reactive filters and summary panels
+-   Created dynamic visualisations for performance tracking
+
+#### **Outcome**
+
+Delivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.
+
+-   Fully functional Shiny application
+-   Structured and documented R code
+-   Deployment-ready project structure
 :::
 :::::
 
@@ -47,18 +114,34 @@ Mostly using ggplot for creating graphs.
 ::: projects
 ### [Superstore R Shiny Dashboard](https://thequeenofdata.shinyapps.io/Superstore/)
 
-Simple dashboard where users can select to view different data of four different store locations.
+**Exploratory data analysis and visualisation of retail sales data.**
+
+#### **Context**
+
+Multi-variable retail dataset examining sales performance across regions and categories.
+
+-   Cleaned and prepared transactional data
+-   Conducted exploratory data analysis
+-   Built visualisations to highlight key trends and patterns
+-   Identified performance drivers and segment differences
+
+#### **Outcome**
+
+Produced actionable insights into sales distribution, regional performance, and product trends.
+
+-   Structured R analysis script
+-   Clear visualisations
+-   Summary of findings
 :::
 :::::
+::::::::::::
 
-::::: project-container
-::: {#diamonds .projects}
-### [Forecasting prices of diamonds](projects/diamonds_portfolio.Rmd)
+\
 
-Using linear regression and random forest classifier to predict the price of diamonds, and further analysis to compare the accuracy of the results.
-:::
+If you're working on a healthcare, research, or data-driven project and need clear, reproducible R support, feel free to get in touch.
 
-::: project-image
-![](images/clipboard-977871984.png)
-:::
-:::::
+<button class="button">
+
+[Send an enquiry](enquiry.qmd)
+
+</button>

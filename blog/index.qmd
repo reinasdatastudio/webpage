@@ -1,6 +1,11 @@
 ---
-title: "Blog"
-format: html
+title: "Blog Posts"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: false
+  date-format: "MMM DD, YYYY"
+  fields: [date, title, description]
+  page-size: 10
 ---
-
-## Blog Posts

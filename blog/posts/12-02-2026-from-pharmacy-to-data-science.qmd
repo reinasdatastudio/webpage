@@ -1,0 +1,122 @@
+---
+title: "From Pharmacy to Data Science: Why I Chose R"
+date: 2026-02-12
+description: "My journey from pharmacy to data science—and why R became my go-to language for reproducible analysis."
+format:
+  html:
+    page-layout: article
+    title-block-style: plain
+    title-block-banner: false
+    title-block-categories: false
+    title-block-author: false
+    title-block-date: true
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
+    include-after-body: blog-footer.html
+toc: true
+---
+
+When people see that I started my career in pharmacy and now work in data science, the first question is usually:
+
+“How did that happen?”
+
+The short answer is curiosity.
+
+The longer answer is that I’ve always been drawn to understanding systems — whether that system is the human body or a dataset.
+
+## Starting in Pharmacy
+
+Pharmacy taught me something that still shapes how I work today: precision matters.
+
+In healthcare, small details are not small. A misplaced decimal, a misunderstood value, or an incorrect assumption can have serious consequences. You learn to check carefully, to document properly, and to understand what each number actually represents.
+
+But over time, I realised that what I enjoyed most was not memorising information — it was analysing it.
+
+I enjoyed understanding patterns.
+
+I enjoyed interpreting results.
+
+I enjoyed asking: Why does this happen?
+
+That curiosity eventually led me toward computer science.
+
+## Discovering Programming
+
+While studying engineering at the University of Auckland, I discovered computer science — and immediately fell in love with programming.
+
+Programming felt different. It was logical, structured, and creative at the same time. It rewarded curiosity and precision. It gave immediate feedback. Most importantly, it felt like something I could continuously grow in.
+
+I later completed a one-year computer science programme with a focus on data science, where I was introduced more deeply to R.
+
+And that’s where something clicked.
+
+## Why R?
+
+R stood out to me for several reasons.
+
+First, it was built for statistics and analysis. It wasn’t just a general programming language — it was designed for thinking about data.
+
+Second, it encouraged reproducibility. Tools like R Markdown and Quarto made it possible to combine analysis, interpretation, and reporting in a single, transparent workflow. That felt aligned with the healthcare mindset I came from.
+
+Third, it made complex analysis accessible. With the right structure, R allows you to move from raw data to meaningful insight in a clear and systematic way.
+
+To me, R felt like a bridge between:
+
+-   clinical precision
+-   statistical reasoning
+-   and structured programming
+
+It wasn’t just about writing code. It was about creating clarity.
+
+## From Employment to Independence
+
+After transitioning into data science, I worked in system engineering to broaden my technical experience while continuing to develop my data skills.
+
+Eventually, I realised that I wanted to focus fully on what I enjoyed most: working directly with data and helping others understand it.
+
+Starting Reina’s Data Studio was a natural step. It allowed me to:
+
+-   Work independently
+-   Support researchers and healthcare professionals
+-   Share my enthusiasm for R
+-   Build something aligned with my values
+
+## How Pharmacy Still Shapes My Work
+
+My healthcare background continues to influence how I approach every project.
+
+I don’t treat data as abstract numbers. I think about:
+
+-   What does this variable really represent?
+-   Where did this data come from?
+-   What assumptions are we making?
+-   Can this analysis be reproduced and audited later?
+
+That mindset makes me careful — but also practical. Clean data. Clear documentation. Transparent decisions.
+
+In healthcare and research, that matters.
+
+## Teaching and Sharing
+
+One of my core values is continuous learning. I genuinely believe that knowledge never betrays you.
+
+That belief is why I share tutorials on YouTube and write about R here. Many R resources are in English, and I enjoy helping both English and Japanese speakers feel more confident navigating data and programming.
+
+R is constantly evolving. I am, too.
+
+## Looking Forward
+
+Reina’s Data Studio is built on three things:
+
+-   Transparency
+
+-   Precision
+
+-   A genuine passion for learning
+
+Whether I’m debugging a script, building a reproducible report, or explaining a statistical result, my goal is always the same:
+
+To help people work with data clearly, ethically, and confidently.

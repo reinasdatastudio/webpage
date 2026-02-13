@@ -37,7 +37,6 @@ p {
 
 .banner {
   padding: 50px 10% !important;
-  min-height: 60vh;
   align-content: center;
 }
 
@@ -61,7 +60,7 @@ p {
 }
 
 .hero-sentence p {
-  margin: 30px 0;
+  margin: 40px 0;
   text-align: center;
 }
 
@@ -105,6 +104,10 @@ a {
   text-decoration: none;
 }
 
+#about-button {
+  margin: 50px auto 0px;
+}
+
 
 .section-story {
   display: grid;
@@ -124,31 +127,18 @@ a {
   
 .section-services {
   background-color: #f4f2f1;
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: none;
+  border: 3px solid #e5e5e5;
+  border-radius: 20px;
   background-color: #f4f2f1;
-  padding: 0 10px 20px;
+  padding: 10px 20px;
+  margin: 30px;
 }
 
-.card > p {
-  margin: auto 5%;
-}
-
-#lastcard {
-  justify-content: center;
-}
 
 /*- YouTube -*/
   
@@ -176,6 +166,11 @@ a {
 
 .language {
   margin-bottom: 30px;
+}
+
+/*-- About --*/
+.about {
+  background-color: #f4f2f1;
 }
 
 /*-- Projects --*/
@@ -218,7 +213,14 @@ a {
   
 .enquiry-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.enquiry-left {
+  padding: 20px;
+  margin-top: 30px;
+  max-width: 45%;
 }
 
 .enquiry {
@@ -226,13 +228,9 @@ a {
   flex-direction: column;
   border-radius: 10px;
   border: 1px solid;
-  padding: 20px 10%;
+  padding: 20px 5%;
   background-color: #f4f2f1;
-  margin-top: 50px;
-}
-
-body.quarto-dark .enquiry {
-  background-color: #290029;
+  margin-top: 30px;
 }
 
 .name {
@@ -294,7 +292,7 @@ textarea {
   
   .enquiry-page {flex-direction: column;}
   
-  .enquiry-left {width: 100%; padding-bottom: 5%;}
+  .enquiry-left {max-width: 100%; padding-bottom: 5%;}
   
   .name {
     flex-direction: column;

@@ -14,7 +14,7 @@ format:
 # R Consulting for Healthcare & Research
 
 ::: hero-sentence
-*By a former pharmacist with clinical context*
+*Practical, ethical data solutions - By a former pharmacist with clinical context*
 :::
 
 <button class="button">
@@ -22,6 +22,8 @@ format:
 [Work with me](enquiry.qmd)
 
 </button>
+
+<center>Send your problem - Get a reply within 24-48 hours.</center>
 
 ## Why work with me?
 
@@ -35,23 +37,33 @@ format:
 
 :::::: {.banner .section-story}
 ::: box-1
-## Process
+## How it works
 
-\*Example of a process
+1.  <strong>**Initial enquiry**</strong>
 
-1.  **Initial enquiry:** Send me a short message about your data, project or what you'd like help with
-2.  **Quick discussion:** To understand your goals and the type of support that would suit you best
-3.  **Tailored assistance:** I work with you to provide clear explanations, well-structured R code and helpful next steps
+    You send a short message describing your data, question or problem.
+
+2.  <strong>**Quick discussion**</strong>
+
+    We clarify your goals, timeline and the type of support that suits you best.
+
+3.  <strong>**Tailored support and delivery**</strong>
+
+    I provide clean R code, clear explanations, and practical next steps you can reuse with confidence.
+
+4.  <strong>**Optional: Ongoing support**</strong>
 :::
 
 ::: box-2
 ## Who I help
 
--   Researchers
+-   Healthcare & life-science researchers
 -   Students learning R or statistics
--   Healthcare professionals
--   Teams needing R support
--   Anyone else wanting R consultation
+-   Healthcare professionals working with data
+-   Small teams needing reliable R support
+-   Anyone who wants clear, ethical data analysis
+
+If you’re unsure whether your project fits, feel free to ask.
 :::
 
 ::: box-3
@@ -59,78 +71,139 @@ format:
 
 -   R / tidyverse
 -   ggplot2
--   Shiny
+-   Shiny dashboards
 -   Quarto / R Markdown
--   Statistical modelling
+-   Statistical modelling and inference
 -   Forecasting (ARIMA, Prophet)
--   Healthcare & pharmacy data
+-   Healthcare & pharmacy-related data
 :::
 ::::::
 
-::::::::: {.section-services .banner}
-:::::::: section-inner
-## Services
+::::::: {.section-services .banner}
+# Services
 
-From one-off help to ongoing support, I offer practical R solutions tailored to your needs.
-
-::::::: card-container
-::: card
-{{< fa broom size=3x >}}
-
-### Data Cleaning & Preparation
-
-I turn messy clinical or research datasets into clean, analysis-ready data using R - with correct variable handling and documentation.
-
-Deliverables include but not limited to:
-
--   Clean dataset
--   R script
--   Summary of assumptions
-:::
+I offer **clear, practical R support** — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch and I’ll guide you.
 
 ::: card
-{{< fa chart-bar size=3x >}}
+## Quick Fix (1-2 hours)
 
-### Statistical Analysis and Interpretation
+#### **Best for**
 
-I help analyse healthcare and research data using appropriate statistical methods - and explain the results in plain English.
+Small problems, urgent questions or when you are stuck and need clarity fast.
 
-Deliverables include but not limited to:
+Typical use cases:
 
--   R analysis
--   Graphs
--   Clear interpretation
--   Forecasting
+-   Debugging R scripts
+-   Help with plots, statistics or models
+-   Data wrangling issues
+-   Understanding error messages or unexpected results
+
+#### **What you get**
+
+-   Live 1:1 session (or async support, if preferred)
+-   Clear explanation in plain English
+-   Improved or corrected R code you can reuse
+
+#### **Pricing**
+
+From NZD 200 to 300 per hour (1-2 hour sessions)
 :::
 
 ::: card
-{{< fa brands youtube size=3x >}}
+## Reproducible Analysis & Report
 
-### R Consulting and Teaching (1:1 or Team)
+#### **Best for**
 
-I provide tailored R support, mentoring and consulting for healthcare and research teams as well as any individuals.
+Healthcare and research projects that need clean, defensible, and reusable results.
 
-Deliverables include but not limited to:
+Typical use cases:
 
--   Live sessions
--   Code reviews
--   Workflow improvements
+-   Clinical or research data analysis
+-   Statistical modelling and interpretation
+-   Automated reports using Quarto / R Markdown
+-   Forecasting and exploratory analysis
+
+#### **What you get**
+
+-   Clean, well-structured R code
+-   Reproducible analysis pipeline
+-   Publication- or stakeholder-ready report
+-   Clear written interpretation of results
+
+#### **Pricing**
+
+From NZD 1,990-5,700 per project
+
+*(Scope and pricing depend on scope, project size and timeline)*
 :::
 
-::: {#lastcard .card}
-and many other offers available!
+::: card
+## Ongoing R Support (Retainer)
+
+#### **Best for**
+
+Teams or individuals who want reliable, long-term R support without hiring full-time.
+
+Typical use cases:
+
+-   Regular analysis or reporting work
+-   Code review and workflow improvement
+-   Mentoring and upskilling
+-   Ongoing troubleshooting and advice
+
+#### **What you get**
+
+-   A fixed number of support hours per month
+-   Priority response
+-   Consistent, context-aware support
+-   A long-term collaborator who understands your data
+
+*Available on a monthly basis.*
+
+#### **Pricing**
+
+From NZD 1,490-4000 per month
+
+*(e.g. 6-20 hours/month; custom arrangements available)*
 :::
+
+::: card
+## R Teaching and Mentoring
+
+If you’re learning R or want to improve how you work with data, I also offer **1:1 or small-group teaching** tailored to your background and goals.
+
+This may include:
+
+-   Learning R from a healthcare or research perspective
+-   Understanding statistics through practical examples
+-   Building reproducible workflows with confidence
+
+#### **Pricing**
+
+From NZD 160-250 per hour
+
+*(Discounts available for students)*
+:::
+
+### Not sure which option fits?
+
+If you have a dataset, question, or project in mind, feel free to reach out. I’ll help you choose the most suitable option at no cost.
+
+<button class="button">
+
+[Enquiry](enquiry.qmd)
+
+</button>
 :::::::
-::::::::
-:::::::::
 
-::::::: {.youtube-section .banner}
-:::::: youtube
-## Check out my YouTube tutorials on R
+:::::: {.youtube-section .banner}
+## Learn with me on YouTube
+
+I share practical R tutorials focused on real-world data problems.
 
 ::::: channels
 ::: youtube-channel
-### English ver.
+## English version
 
 [Reina's Data Studio](https://www.youtube.com/@reinas_data.studio)
 
@@ -140,7 +213,7 @@ and many other offers available!
 :::
 
 ::: youtube-channel
-### Japanese ver.
+## Japanese version
 
 [Reina's Data Studio JP](https://www.youtube.com/@reinas_data.studio_jp)
 
@@ -150,19 +223,20 @@ and many other offers available!
 :::
 :::::
 ::::::
-:::::::
 
 ::::: {.section-contacts .banner}
 ::: language
 ## Language Support
 
-I can provide support and consultations in **English or Japanese**
+Consultations and support available in **English or Japanese**
 :::
 
 ::: contact
 ## Contact
 
-If you have a dataset, question or project in mind, please feel free to reach out.
+If you have a dataset, question or project in mind, feel free to reach out.
+
+I typically respond within **24-48 hours**.
 :::
 
 <button class="button">
