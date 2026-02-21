@@ -15,6 +15,8 @@ website:
         text: Blog
       - href: enquiry.qmd
         text: Enquiry
+      - href: ja.qmd
+        text: 日本語
 
   page-footer:
     left: "© 2025 Reina's Data Studio"

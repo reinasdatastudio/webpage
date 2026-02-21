@@ -9,10 +9,37 @@ These selected projects demonstrate how I approach data: with **clarity, reprodu
 
 For confidential client work, details may be limited.
 
-:::::: healthcare-box
+::::::::: healthcare-box
 ## Healthcare and Research Projects
 
 Projects demonstrating clinical context, statistical analysis and reproducible R workflows.
+
+::::: project-container
+::: project-image
+![](images/clipboard-3704079679.png)
+:::
+
+::: projects
+### [Reproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)](projects/FAERS2025Q3.qmd)
+
+Reproducible exploratory analysis of pharmacovigilance data using FAERS.
+
+#### **Context**
+
+Analysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).
+
+-   Case-level aggregation
+-   Handling duplicate reports
+-   Cautious interpretation of spontaneous reporting data.
+
+#### **Outcome**
+
+Delivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.
+
+-   Frequently reported reactions do not necessarily correspond to severe outcomes
+-   Importance of separating reporting frequency from clinical significance
+:::
+:::::
 
 ::::: project-container
 ::: project-image
@@ -43,7 +70,7 @@ Delivered a reproducible analysis pipeline and clear statistical interpretation 
 -   Written interpretation of results
 :::
 :::::
-::::::
+:::::::::
 
 :::::::::::: general-box
 ## Data Science and General Analytics

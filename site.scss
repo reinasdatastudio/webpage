@@ -123,6 +123,11 @@ a {
   grid-column: span 6;
 }
 
+/*- Japanese Version -*/
+#ja-banner {
+  background-color: #f4f2f1;
+}
+
 /*- Services -*/
   
 .section-services {
@@ -146,6 +151,10 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+}
+
+.channels h2 {
+  margin-top: 1rem;
 }
 
 .youtube-channel iframe {
@@ -271,6 +280,10 @@ textarea {
     display: flex;
     flex-direction: column;
   }
+  
+  .channels {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 500px) {
@@ -280,11 +293,6 @@ textarea {
   }
   .card {flex-direction: column;}
   .card > p {text-align: center;}
-  
-  .channels {
-    display: flex;
-    flex-direction: column;
-  }
   
   .project-container {flex-direction: column;}
   .project-image {width: 100%;}

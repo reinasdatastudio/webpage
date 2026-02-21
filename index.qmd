@@ -8,7 +8,7 @@ format:
 :::::: {.hero-banner .banner}
 ::::: hero
 ::: hero-image
-<img src="intro-logo.png" alt="Reina&apos;s Data Studio logo" class="hero-logo"/>
+![](intro-logo.png){.hero-logo alt="Reina's Data Studio logo"}
 :::
 
 # R Consulting for Healthcare & Research

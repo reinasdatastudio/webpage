@@ -9,7 +9,7 @@
 <meta name="author" content="Reina Kaino">
 <meta name="dcterms.date" content="2025-12-21">
 
-<title>Adverse Event Trend Analysis with FAERS data – Reina’s Data Studio</title>
+<title>Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3) – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a7f7ad77aeaf4ed6089a91b8c4ac3d54.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-7a5500592fea5c6e6f2f678dcf2f26b8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -133,6 +133,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
@@ -143,6 +147,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link" href="../enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../ja.html"> 
+<span class="menu-text">日本語</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -155,13 +163,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link active" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#analytical-objective" id="toc-analytical-objective" class="nav-link" data-scroll-target="#analytical-objective">Analytical Objective</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data Source</a></li>
+  <li><a href="#data-and-structural-consideration" id="toc-data-and-structural-consideration" class="nav-link" data-scroll-target="#data-and-structural-consideration">Data and Structural Consideration</a></li>
+  <li><a href="#reproducible-workflow" id="toc-reproducible-workflow" class="nav-link" data-scroll-target="#reproducible-workflow">Reproducible Workflow</a></li>
+  <li><a href="#analytical-approach" id="toc-analytical-approach" class="nav-link" data-scroll-target="#analytical-approach">Analytical Approach</a></li>
+  <li><a href="#reac-table-overview" id="toc-reac-table-overview" class="nav-link" data-scroll-target="#reac-table-overview">REAC Table Overview</a>
+  <ul class="collapse">
+  <li><a href="#reac-data-preparation" id="toc-reac-data-preparation" class="nav-link" data-scroll-target="#reac-data-preparation">REAC Data Preparation</a></li>
+  <li><a href="#reac-data-analysis" id="toc-reac-data-analysis" class="nav-link" data-scroll-target="#reac-data-analysis">REAC Data Analysis</a></li>
+  <li><a href="#outcome-severity-perspective-outc" id="toc-outcome-severity-perspective-outc" class="nav-link" data-scroll-target="#outcome-severity-perspective-outc">Outcome Severity Perspective (OUTC)</a></li>
+  </ul></li>
+  <li><a href="#outc-table-overview" id="toc-outc-table-overview" class="nav-link" data-scroll-target="#outc-table-overview">OUTC Table Overview</a>
+  <ul class="collapse">
+  <li><a href="#outc-data-preparation" id="toc-outc-data-preparation" class="nav-link" data-scroll-target="#outc-data-preparation">OUTC Data Preparation</a></li>
+  <li><a href="#outc-data-analysis" id="toc-outc-data-analysis" class="nav-link" data-scroll-target="#outc-data-analysis">OUTC Data Analysis</a></li>
+  <li><a href="#combining-reac-and-outc-tables" id="toc-combining-reac-and-outc-tables" class="nav-link" data-scroll-target="#combining-reac-and-outc-tables">Combining REAC and OUTC Tables</a></li>
+  </ul></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#clinical-context" id="toc-clinical-context" class="nav-link" data-scroll-target="#clinical-context">Clinical Context</a></li>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
+  </ul></li>
+  <li><a href="#potential-use-cases" id="toc-potential-use-cases" class="nav-link" data-scroll-target="#potential-use-cases">Potential Use Cases</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#about-the-author" id="toc-about-the-author" class="nav-link" data-scroll-target="#about-the-author">About the Author</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Adverse Event Trend Analysis with FAERS data</h1>
+<h1 class="title">Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)</h1>
 </div>
 
 
@@ -190,20 +232,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="purpose" class="level2">
-<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>To demonstrate how adverse event data can be analysed using R, with appropriate clinical interpretation.</p>
-</section>
-<section id="background-problem" class="level2">
-<h2 class="anchored" data-anchor-id="background-problem">Background &amp; Problem</h2>
-<p>Adverse event databases contain large volumes of spontaneous reports. However, these data are often misinterpreted due to reporting bias, duplication, and missing context.</p>
-<p>Healthcare professionals need:</p>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>This project demonstrates a reproducible workflow for exploratory pharmacovigilance analysis using the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset.</p>
+<p>Using structured R scripts and case-level aggregation, I examined:</p>
 <ul>
-<li>Trend awareness</li>
-<li>Signal prioritisation</li>
-<li>Cautious interpretation</li>
+<li>Frequently reported adverse reaction terms</li>
+<li>Case-level reporting patterns</li>
+<li>Data structure and duplication considerations</li>
 </ul>
-<p>This report demonstrates one approach using R.</p>
+<p>This analysis is exploratory and intended for structured signal awareness rather than causal inference.</p>
+<p>This case study reflects how I structure large healthcare datasets with clarity, traceability and cautious interpretation.</p>
+</section>
+<section id="analytical-objective" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-objective">Analytical Objective</h2>
+<p>To examine reporting patterns in FAERS 2025 Q3 data by combining:</p>
+<p>• Reaction reporting behaviour (REAC table)<br>
+• Outcome severity indicators (OUTC table)</p>
+<p>The goal is exploratory signal awareness using case-level aggregation, not estimation of clinical risk.</p>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Spontaneous adverse event databases such as FAERS contain large volumes of real-world safety reports.<br>
+However, these data are frequently misinterpreted because reporting frequency is influenced by awareness, reporting behaviour, and follow-up submissions rather than true incidence.</p>
+<p>For healthcare and research teams, the practical value of FAERS lies in structured signal awareness rather than causal inference.</p>
+<p>This project explores how reporting patterns can be examined cautiously using a reproducible R workflow.</p>
 </section>
 <section id="data-source" class="level2">
 <h2 class="anchored" data-anchor-id="data-source">Data Source</h2>
@@ -229,41 +282,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Figure 1: ASCII Entity Relationship Diagram (ERD)</figcaption>
 </figure>
 </div>
-<p>This analysis uses the FDA Adverse Event Reporting System (FAERS) public dataset, specifically the REAC table from 2025 Q3.</p>
+<p>This analysis uses the FDA Adverse Event Reporting System (FAERS) public dataset, specifically the REAC and OUTC table from 2025 Q3.</p>
 <p>The REAC table contains adverse reaction terms reported for individual case reports. Each row represents a reported reaction linked to a case identifier (<code>primaryid</code>).</p>
-<p>It is important to note that FAERS data is based on spontaneous reports and does not represent confirmed adverse drug reactions.</p>
-<section id="reac-table-overview" class="level3">
-<h3 class="anchored" data-anchor-id="reac-table-overview">REAC Table Overview</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>    primaryid   caseid                         pt drug_rec_act
-        &lt;i64&gt;    &lt;int&gt;                     &lt;char&gt;       &lt;char&gt;
-1:  100289774 10028977             Fixed eruption             
-2:  100289774 10028977   Stevens-Johnson syndrome             
-3:  100289774 10028977 Toxic epidermal necrolysis             
-4: 1005762123 10057621                   Dyspnoea             
-5: 1005762123 10057621                Hypotension             
-6: 1005762123 10057621                     Asthma             </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(reac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "primaryid"    "caseid"       "pt"           "drug_rec_act"</code></pre>
-</div>
-</div>
-<p>Key variables include:</p>
-<ul>
-<li><code>primaryid</code>: Unique identifier for each case report</li>
-<li><code>pt</code>: Preferred Term describing the adverse reaction (MedDRA)</li>
-<li><code>caseid</code>: Case-level identifier</li>
-<li><code>drug_rec_act</code>: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.</li>
-</ul>
-<p>Multiple adverse reactions may be reported for a single case.</p>
+<p>The OUTC table contains patient outcome information for each adverse event report, indicating the result of the event (Such as death, hospitalisation etc.)</p>
 </section>
-<section id="key-limitations" class="level3">
-<h3 class="anchored" data-anchor-id="key-limitations">Key Limitations</h3>
-<p>Several limitations must be considered when interpreting FAERS adverse reaction data:</p>
+<section id="data-and-structural-consideration" class="level2">
+<h2 class="anchored" data-anchor-id="data-and-structural-consideration">Data and Structural Consideration</h2>
+<p>It is important to note that FAERS data is based on spontaneous reports and does not represent confirmed adverse drug reactions.</p>
+<p>Several limitations must be considered when interpreting FAERS adverse reaction data such as:</p>
 <ul>
 <li>A single case may include multiple reported reactions</li>
 <li>Reporting frequency does not equal incidence or risk</li>
@@ -273,191 +299,348 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As a result, counts and trends should be interpreted cautiously and used for signal exploration rather than causal inference.</p>
 <p><strong>Important:</strong><br>
 This analysis is exploratory and does not imply causality.</p>
+<p>All analyses were conducted at the case level (<code>caseid</code>) to reduce over-counting from follow-up submissions.</p>
 </section>
+<section id="reproducible-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="reproducible-workflow">Reproducible Workflow</h2>
+<p>To ensure traceability and repeatability, the analysis was performed using a scripted workflow in R rather than manual data manipulation.</p>
+<p>The workflow consisted of:</p>
+<ul>
+<li>Importing raw FAERS ASCII files directly into R</li>
+<li>Performing case-level aggregation to avoid double counting follow-up reports</li>
+<li>Applying cleaning and transformation steps through documented code</li>
+<li>Generating tables and figures automatically from the analysis script</li>
+</ul>
+<p>This approach ensures the results can be regenerated whenever the dataset is updated and provides a clear audit trail of all processing steps.</p>
 </section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<section id="analytical-approach" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-approach">Analytical Approach</h2>
+<p>The analysis is structured in two complementary parts.</p>
+<p>First, the REAC table is used to understand what types of reactions are most frequently reported and how reports are distributed across cases.</p>
+<p>Second, the OUTC table is used to examine how serious those reported cases are.</p>
+<p>Together, these perspectives allow cautious interpretation:<br>
+frequently reported events are not necessarily severe, and severe outcomes are not necessarily frequent.</p>
+</section>
+<section id="reac-table-overview" class="level2">
+<h2 class="anchored" data-anchor-id="reac-table-overview">REAC Table Overview</h2>
+<div class="cell" data-tbl-cap="REAC table">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>REAC table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">primaryid</th>
+<th style="text-align: right;">caseid</th>
+<th style="text-align: left;">pt</th>
+<th style="text-align: left;">drug_rec_act</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100289774</td>
+<td style="text-align: right;">10028977</td>
+<td style="text-align: left;">Fixed eruption</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100289774</td>
+<td style="text-align: right;">10028977</td>
+<td style="text-align: left;">Stevens-Johnson syndrome</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100289774</td>
+<td style="text-align: right;">10028977</td>
+<td style="text-align: left;">Toxic epidermal necrolysis</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1005762123</td>
+<td style="text-align: right;">10057621</td>
+<td style="text-align: left;">Dyspnoea</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1005762123</td>
+<td style="text-align: right;">10057621</td>
+<td style="text-align: left;">Hypotension</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1005762123</td>
+<td style="text-align: right;">10057621</td>
+<td style="text-align: left;">Asthma</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Key variables include:</p>
+<ul>
+<li><code>primaryid</code>: Unique identifier for each case report</li>
+<li><code>pt</code>: Preferred Term describing the adverse reaction (MedDRA)</li>
+<li><code>caseid</code>: Case-level identifier</li>
+<li><code>drug_rec_act</code>: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.</li>
+</ul>
+<section id="reac-data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="reac-data-preparation">REAC Data Preparation</h3>
 <p>Data exploration of REAC table.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(reac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows in REAC table</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(reac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1535133</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(reac<span class="sc">$</span>primaryid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many primary IDs are in the table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(reac<span class="sc">$</span>primaryid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 438512</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(reac<span class="sc">$</span>caseid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many unique case IDs are there</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(reac<span class="sc">$</span>caseid))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 438512</code></pre>
 </div>
 </div>
 <p>“How many adverse reaction terms are reported per case?”</p>
 <p>In the 25Q3 version the number of <code>caseid</code> are the same as the number of <code>primaryid</code>, but for the purpose of clarification, as FAERS cases may include multiple report versions due to follow-up submissions, analyses in this report are conducted at the case level (<code>caseid</code>) to avoid over-counting reactions associated with report updates.</p>
-<section id="remove-duplicate-rows" class="level3">
-<h3 class="anchored" data-anchor-id="remove-duplicate-rows">Remove duplicate rows</h3>
-<p>In this analysis we will remove <code>primaryid</code> as it is not necessary to answer the objective.</p>
+<section id="remove-duplicate-rows" class="level4">
+<h4 class="anchored" data-anchor-id="remove-duplicate-rows">Remove duplicate rows</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reac_new <span class="ot">&lt;-</span> <span class="fu">select</span>(reac, <span class="sc">-</span><span class="st">"primaryid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove `primaryid`</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reac_new <span class="ot">&lt;-</span> <span class="fu">select</span>(reac, <span class="sc">-</span><span class="st">"primaryid"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>reac_new <span class="ot">&lt;-</span> reac_new <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove duplicate rows</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>reac_new <span class="ot">&lt;-</span> reac_new <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="check-for-missing-data" class="level4">
+<h4 class="anchored" data-anchor-id="check-for-missing-data">Check for missing data</h4>
+<div class="cell" data-tbl-cap="Check for missing data">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Check for missing data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">caseid</th>
+<th style="text-align: right;">pt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>No missing data observed in <code>caseid</code> and <code>pt</code>.</p>
+</section>
+</section>
+<section id="reac-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="reac-data-analysis">REAC Data Analysis</h3>
+<section id="frequency-of-reactions-per-case" class="level4">
+<h4 class="anchored" data-anchor-id="frequency-of-reactions-per-case">Frequency of reactions per case</h4>
 <p>Count how many cases have n number of adverse reactions.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>reac_per_case <span class="ot">&lt;-</span> reac_new <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(caseid, pt) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(caseid, <span class="at">name =</span> <span class="st">"pt_count"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Same as reac_per_case &lt;- reac |&gt; dplyr::count(primaryid)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">num_reactions</th>
+<th style="text-align: right;">num_cases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">165032</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">96560</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">56754</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">35258</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">22402</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Count the count of reactions per case (E.g. 100 cases have 1 reaction etc.) </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reac_count <span class="ot">&lt;-</span> reac_per_case <span class="sc">%&gt;%</span> <span class="fu">count</span>(pt_count, <span class="at">name =</span> <span class="st">"Number of cases with n reactions"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reac_per_case<span class="sc">$</span>pt_count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Summary of number of reactions</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reac_per_case<span class="sc">$</span><span class="st">`</span><span class="at">Number of reaction</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
    1.00    1.00    2.00    3.46    4.00  226.00 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(reac_per_case<span class="sc">$</span>pt_count)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#IQR of number of reactions</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(reac_per_case<span class="sc">$</span><span class="st">`</span><span class="at">Number of reaction</span><span class="st">`</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#binwidth = sqrt(number of observation)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reac_per_case, <span class="fu">aes</span>(pt_count)) <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 2: Histogram of count of Number of Reactions</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As the histogram is skewed to the left, it is more reliable to look at the median and IQR.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>reac_new <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(caseid, pt), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  caseid pt
-1      0  0</code></pre>
-</div>
-</div>
-<p>No missing data observed in <code>caseid</code> and <code>pt</code>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(reac_new<span class="sc">$</span>pt))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 13126</code></pre>
-</div>
-</div>
+</section>
+<section id="reaction-reporting-behaviour" class="level4">
+<h4 class="anchored" data-anchor-id="reaction-reporting-behaviour">Reaction Reporting Behaviour</h4>
+<p>Most cases report only a small number of reaction terms, with a long tail of multi-reaction cases.<br>
+This reflects reporting behaviour rather than clinical complexity alone.</p>
+<p>The median number of reported reactions per case is low, indicating that single-event reporting is common in spontaneous submissions.</p>
 <p>As expected, the number of cases decreases as the number of adverse reactions increase. About a quarter of the cases only had one adverse events, with median of 2 pts per case, suggesting that single-event reporting is common.</p>
 </section>
-<section id="most-common-adverse-reaction" class="level3">
-<h3 class="anchored" data-anchor-id="most-common-adverse-reaction">Most common adverse reaction</h3>
-<p>At this stage the drugs are not known therefore the purpose here is to only view the most common adverse effects regardless of the medication.</p>
+<section id="frequently-reported-reaction-terms" class="level4">
+<h4 class="anchored" data-anchor-id="frequently-reported-reaction-terms">Frequently Reported Reaction Terms</h4>
+<p>The following table summarises the most frequently reported preferred terms in the dataset.<br>
+These represent reporting concentration rather than confirmed drug risk.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>top_pt <span class="ot">&lt;-</span> reac_new <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pt) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>top_pt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                             pt     n
-                         &lt;char&gt; &lt;int&gt;
- 1:               Off label use 30127
- 2:            Drug ineffective 24151
- 3:                     Fatigue 20698
- 4:                       Death 19165
- 5:                      Nausea 18412
- 6:                   Diarrhoea 16955
- 7: Product dose omission issue 15936
- 8:                    Headache 14143
- 9:                    Dyspnoea 13040
-10:                        Pain 12296</code></pre>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">pt</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Off label use</td>
+<td style="text-align: right;">30127</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Drug ineffective</td>
+<td style="text-align: right;">24151</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fatigue</td>
+<td style="text-align: right;">20698</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Death</td>
+<td style="text-align: right;">19165</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nausea</td>
+<td style="text-align: right;">18412</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diarrhoea</td>
+<td style="text-align: right;">16955</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Product dose omission issue</td>
+<td style="text-align: right;">15936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Headache</td>
+<td style="text-align: right;">14143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dyspnoea</td>
+<td style="text-align: right;">13040</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pain</td>
+<td style="text-align: right;">12296</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 3: A bar graph of top 15 pt terms</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="reaction-summary-table" class="level3">
-<h3 class="anchored" data-anchor-id="reaction-summary-table">Reaction Summary Table</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>reac_summary <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">caseid =</span> reac_per_case<span class="sc">$</span>caseid,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_reactions =</span> reac_per_case<span class="sc">$</span>pt_count,</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">five_or_more_reactions =</span> reac_per_case<span class="sc">$</span>pt_count <span class="sc">&gt;=</span> <span class="dv">5</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(reac_summary, <span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     caseid n_reactions five_or_more_reactions
-      &lt;int&gt;       &lt;int&gt;                 &lt;lgcl&gt;
- 1: 3731857           3                  FALSE
- 2: 4119816           1                  FALSE
- 3: 4197637           2                  FALSE
- 4: 5815921           9                   TRUE
- 5: 5821261           6                   TRUE
- 6: 5962033           5                   TRUE
- 7: 6047261           3                  FALSE
- 8: 6171681           2                  FALSE
- 9: 6171682           5                   TRUE
-10: 6171684           2                  FALSE
-11: 6171685           2                  FALSE
-12: 6171694           2                  FALSE
-13: 6171695           2                  FALSE
-14: 6171697           2                  FALSE
-15: 6171708           5                   TRUE
-16: 6171711           2                  FALSE
-17: 6171712           2                  FALSE
-18: 6178016           1                  FALSE
-19: 6254162           6                   TRUE
-20: 6303036           3                  FALSE
-21: 6303654           2                  FALSE
-22: 6318887          11                   TRUE
-23: 6371539           3                  FALSE
-24: 6371540           3                  FALSE
-25: 6371543           2                  FALSE
-26: 6371544           2                  FALSE
-27: 6371545           2                  FALSE
-28: 6371553           2                  FALSE
-29: 6372175           1                  FALSE
-30: 6451725           2                  FALSE
-     caseid n_reactions five_or_more_reactions</code></pre>
-</div>
-</div>
 </section>
-<section id="outc-table" class="level3">
-<h3 class="anchored" data-anchor-id="outc-table">OUTC Table</h3>
+<section id="outcome-severity-perspective-outc" class="level3">
+<h3 class="anchored" data-anchor-id="outcome-severity-perspective-outc">Outcome Severity Perspective (OUTC)</h3>
+<p>Reaction frequency alone cannot indicate clinical importance.<br>
+To add context, outcome information is examined to understand how serious reported cases are.</p>
+<p>While REAC shows what is reported, OUTC shows the consequence of those reports.</p>
+</section>
+</section>
+<section id="outc-table-overview" class="level2">
+<h2 class="anchored" data-anchor-id="outc-table-overview">OUTC Table Overview</h2>
 <p>Now we will look at the OUTC25Q3.txt file to find the distribution of the severity of adverse effects.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>outc <span class="ot">&lt;-</span> <span class="fu">fread</span>(</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FAERS/OUTC25Q3.txt"</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep=</span><span class="st">"$"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">""</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">encoding =</span> <span class="st">"UTF-8"</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(outc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    primaryid   caseid outc_cod
-        &lt;i64&gt;    &lt;int&gt;   &lt;char&gt;
-1:  100289774 10028977       HO
-2:  100289774 10028977       OT
-3: 1005762123 10057621       HO
-4:  100789263 10078926       DE
-5:  101573482 10157348       HO
-6:  101573482 10157348       OT</code></pre>
+<div class="cell" data-tbl-cap="Convert OUTC25Q3.txt to a table">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Convert OUTC25Q3.txt to a table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">primaryid</th>
+<th style="text-align: right;">caseid</th>
+<th style="text-align: left;">outc_cod</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">100289774</td>
+<td style="text-align: right;">10028977</td>
+<td style="text-align: left;">HO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100289774</td>
+<td style="text-align: right;">10028977</td>
+<td style="text-align: left;">OT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1005762123</td>
+<td style="text-align: right;">10057621</td>
+<td style="text-align: left;">HO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100789263</td>
+<td style="text-align: right;">10078926</td>
+<td style="text-align: left;">DE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">101573482</td>
+<td style="text-align: right;">10157348</td>
+<td style="text-align: left;">HO</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">101573482</td>
+<td style="text-align: right;">10157348</td>
+<td style="text-align: left;">OT</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Key variables include:</p>
@@ -475,211 +658,448 @@ This analysis is exploratory and does not imply causality.</p>
 <li>OT = Other</li>
 </ul></li>
 </ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>outc <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(primaryid, caseid, outc_cod), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  primaryid caseid outc_cod
-1         0      0        0</code></pre>
+<section id="outc-data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="outc-data-preparation">OUTC Data Preparation</h3>
+<div class="cell" data-tbl-cap="Checking for any missing data">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Checking for any missing data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">primaryid</th>
+<th style="text-align: right;">caseid</th>
+<th style="text-align: right;">outc_cod</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="outc-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="outc-data-analysis">OUTC Data Analysis</h3>
+<div class="cell" data-tbl-cap="Count of Outcome Code">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Count of Outcome Code</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">outc_cod</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">OT</td>
+<td style="text-align: right;">191229</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HO</td>
+<td style="text-align: right;">91722</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DE</td>
+<td style="text-align: right;">34803</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LT</td>
+<td style="text-align: right;">15461</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DS</td>
+<td style="text-align: right;">7226</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CA</td>
+<td style="text-align: right;">1758</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RI</td>
+<td style="text-align: right;">1052</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>outc_cleaned <span class="ot">&lt;-</span> outc <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>primaryid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>top_outc <span class="ot">&lt;-</span> outc_cleaned <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(outc_cod) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>top_outc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   outc_cod      n
-     &lt;char&gt;  &lt;int&gt;
-1:       OT 191229
-2:       HO  91722
-3:       DE  34803
-4:       LT  15461
-5:       DS   7226
-6:       CA   1758
-7:       RI   1052</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_outc, <span class="fu">aes</span>(<span class="fu">reorder</span>(<span class="at">x=</span>outc_cod, <span class="sc">-</span>n), <span class="at">y=</span>n)) <span class="sc">+</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Outcome Code"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Bar graph for easier visualisation</figcaption>
+<p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 4: Bar graph for easier visualisation</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Total of 34,803 deaths, possibly caused by drugs, is an astonishing number considering this data is only one quarter of a year.</p>
-<p>As the codes are quite broad, we cannot determine what exactly “Others” is, but according to the FAERS document () it is all important medical event. “Requiring intervention” (To Prevent Permanent Impairment/Damage) scored the lowest which indicates most of the adverse effects are unpreventable, or are unnoticed before it is too late.</p>
+<p>As the codes are quite broad, we cannot determine what exactly “Others” is, but according to the FAERS document it is all important medical event. “Requiring intervention” (To Prevent Permanent Impairment/Damage) scored the lowest which indicates most of the adverse effects are unpreventable, or are unnoticed before it is too late.</p>
 <p>The number of “Deaths” are well above the adverse effect of 19,165 in the REAC table - The reason possibly being because there may had been other side effects and those who submitted the data had interpreted Death as the outcome, instead of an adverse effect.</p>
 <p>There is no clear cut as to what is categorised as serious and what is not, but for the purpose of this report, DE and LT will be categorised as “Serious”, HO as “Moderate” and others as “Non-serious”.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>outc_serious <span class="ot">&lt;-</span> outc_cleaned <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(outc_cod <span class="sc">==</span> <span class="st">"DE"</span> <span class="sc">|</span> outc_cod <span class="sc">==</span> <span class="st">"LT"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>outc_moderate <span class="ot">&lt;-</span> outc_cleaned <span class="sc">%&gt;%</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(outc_cod <span class="sc">==</span> <span class="st">"HO"</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>outc_non_serious <span class="ot">&lt;-</span> <span class="fu">filter</span>(outc_cleaned, outc_cod <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"OT"</span>, <span class="st">"DS"</span>, <span class="st">"CA"</span>, <span class="st">"RI"</span>))</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a summary data frame for plotting</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>outc_category_count <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">category =</span> <span class="fu">c</span>(<span class="st">"Serious"</span>, <span class="st">"Moderate"</span>, <span class="st">"Non-Serious"</span>),</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_count =</span> <span class="fu">c</span>(<span class="fu">nrow</span>(outc_serious), <span class="fu">nrow</span>(outc_moderate), <span class="fu">nrow</span>(outc_non_serious))</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(outc_category_count, <span class="fu">aes</span>(<span class="fu">reorder</span>(<span class="at">x=</span>category, <span class="sc">-</span>total_count), <span class="at">y=</span>total_count)) <span class="sc">+</span></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Category"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Figure 5: Categorising Severity of Outcome and the total count of each severity</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="outcome-summary-table" class="level3">
-<h3 class="anchored" data-anchor-id="outcome-summary-table">Outcome Summary Table</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Categorise cases</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>outc_serious<span class="sc">$</span>Severity <span class="ot">&lt;-</span> <span class="st">"Severe"</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>outc_moderate<span class="sc">$</span>Severity <span class="ot">&lt;-</span> <span class="st">"Moderate"</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>outc_non_serious<span class="sc">$</span>Severity <span class="ot">&lt;-</span> <span class="st">"Non-Serious"</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>outc_summary <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(outc_serious, outc_moderate, outc_non_serious)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="combining-reac-and-outc-tables" class="level3">
+<h3 class="anchored" data-anchor-id="combining-reac-and-outc-tables">Combining REAC and OUTC Tables</h3>
+<div class="cell" data-tbl-cap="Summarised REAC table">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Summarised REAC table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">caseid</th>
+<th style="text-align: right;">n_reactions</th>
+<th style="text-align: left;">five_or_more_reactions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3731857</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4119816</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4197637</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5815921</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5821261</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5962033</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6047261</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6171681</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6171682</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6171684</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>reac_outc <span class="ot">&lt;-</span> reac_summary <span class="sc">%&gt;%</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(outc_summary, <span class="at">by =</span> <span class="st">"caseid"</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(reac_outc, <span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     caseid n_reactions five_or_more_reactions outc_cod    Severity
-      &lt;int&gt;       &lt;int&gt;                 &lt;lgcl&gt;   &lt;char&gt;      &lt;char&gt;
- 1: 3731857           3                  FALSE       DE      Severe
- 2: 3731857           3                  FALSE       HO    Moderate
- 3: 3731857           3                  FALSE       OT Non-Serious
- 4: 4119816           1                  FALSE       HO    Moderate
- 5: 4197637           2                  FALSE       DE      Severe
- 6: 4197637           2                  FALSE       OT Non-Serious
- 7: 5815921           9                   TRUE       HO    Moderate
- 8: 5815921           9                   TRUE       DS Non-Serious
- 9: 5821261           6                   TRUE       DE      Severe
-10: 5821261           6                   TRUE       HO    Moderate
-11: 5821261           6                   TRUE       OT Non-Serious
-12: 5962033           5                   TRUE       DE      Severe
-13: 5962033           5                   TRUE       HO    Moderate
-14: 6047261           3                  FALSE       DE      Severe
-15: 6047261           3                  FALSE       LT      Severe
-16: 6047261           3                  FALSE       HO    Moderate
-17: 6171681           2                  FALSE       DE      Severe
-18: 6171681           2                  FALSE       HO    Moderate
-19: 6171682           5                   TRUE       DE      Severe
-20: 6171682           5                   TRUE       HO    Moderate
-21: 6171684           2                  FALSE       DE      Severe
-22: 6171684           2                  FALSE       HO    Moderate
-23: 6171685           2                  FALSE       DE      Severe
-24: 6171685           2                  FALSE       HO    Moderate
-25: 6171694           2                  FALSE       DE      Severe
-26: 6171694           2                  FALSE       HO    Moderate
-27: 6171695           2                  FALSE       DE      Severe
-28: 6171695           2                  FALSE       HO    Moderate
-29: 6171697           2                  FALSE       DE      Severe
-30: 6171697           2                  FALSE       HO    Moderate
-     caseid n_reactions five_or_more_reactions outc_cod    Severity</code></pre>
+</div>
+<div class="cell" data-tbl-cap="Summarised OUTC table">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Summarised OUTC table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">caseid</th>
+<th style="text-align: left;">outc_cod</th>
+<th style="text-align: left;">Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10078926</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10346795</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10410135</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10427284</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10427284</td>
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10449048</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10463057</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10597316</td>
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10621415</td>
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10732078</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>reac_outc <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(caseid, outc_cod, Severity, n_reactions, five_or_more_reactions), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  caseid outc_cod Severity n_reactions five_or_more_reactions
-1      0   184126   184126           0                      0</code></pre>
+<div class="cell" data-tbl-cap="Combining Reaction and Outcome Summary Table">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Combining Reaction and Outcome Summary Table</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">caseid</th>
+<th style="text-align: right;">n_reactions</th>
+<th style="text-align: left;">five_or_more_reactions</th>
+<th style="text-align: left;">outc_cod</th>
+<th style="text-align: left;">Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3731857</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3731857</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3731857</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">OT</td>
+<td style="text-align: left;">Non-Serious</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4119816</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4197637</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4197637</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">OT</td>
+<td style="text-align: left;">Non-Serious</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5815921</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5815921</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">DS</td>
+<td style="text-align: left;">Non-Serious</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5821261</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5821261</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5821261</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">OT</td>
+<td style="text-align: left;">Non-Serious</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5962033</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5962033</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">HO</td>
+<td style="text-align: left;">Moderate</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6047261</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">DE</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6047261</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">Severe</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-tbl-cap="Check for missing data">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Check for missing data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">caseid</th>
+<th style="text-align: right;">outc_cod</th>
+<th style="text-align: right;">Severity</th>
+<th style="text-align: right;">n_reactions</th>
+<th style="text-align: right;">five_or_more_reactions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">184126</td>
+<td style="text-align: right;">184126</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Many of the cases has missing outcomes - This shows the realness of data gathering; as the outcome reporting is optional many cases will report reactions caused by drugs only. Because this is an important part of the analysis, the missing values are (By R default) included as “NA”. i.e.&nbsp;No outcome recorded.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reac_outc, <span class="fu">aes</span>(<span class="at">x =</span> Severity)) <span class="sc">+</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>A bar graph visualising the severity of adverse reactions</figcaption>
+<figcaption>Figure 6: A bar graph visualising the severity of adverse reactions</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>reac_outc <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Severity) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Severity      n percentage
-        &lt;char&gt;  &lt;int&gt;      &lt;num&gt;
-1:    Moderate  91722  17.392112
-2: Non-Serious 201265  38.163401
-3:      Severe  50264   9.530943
-4:        &lt;NA&gt; 184126  34.913544</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(reac_outc <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Severity) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Severity</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: right;">91722</td>
+<td style="text-align: right;">17.392112</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Non-Serious</td>
+<td style="text-align: right;">201265</td>
+<td style="text-align: right;">38.163401</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Severe</td>
+<td style="text-align: right;">50264</td>
+<td style="text-align: right;">9.530943</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">184126</td>
+<td style="text-align: right;">34.913544</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Only 65.1% of FAERS cases report outcome data. Severity analyses therefore reflect a subset of reports and may underestimate true risk.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reac_outc, <span class="fu">aes</span>(<span class="at">x =</span> n_reactions, <span class="at">fill =</span> Severity)) <span class="sc">+</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">position =</span> <span class="st">"identity"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of Adverse Reactions per Case"</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Number of reactions reported per case"</span>,</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of cases"</span>,</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Max severity"</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>A histogram showing how many cases reported what number of reactions, coloured with severity</figcaption>
+<figcaption>Figure 7: A histogram showing how many cases reported what number of reactions, coloured with severity</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> reac_outc <span class="sc">%&gt;%</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(five_or_more_reactions) <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_cases =</span> <span class="fu">n</span>(),</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_severe =</span> <span class="fu">sum</span>(Severity <span class="sc">==</span> <span class="st">"Severe"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_severe =</span> n_severe <span class="sc">/</span> n_cases</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_data, <span class="fu">aes</span>(<span class="at">x =</span> five_or_more_reactions, <span class="at">y =</span> prop_severe)) <span class="sc">+</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#ddf"</span>, <span class="at">width =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Five or more cases reported"</span>,</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Proportion with death or life-threatening case"</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="FAERS2025Q3_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Severe outcomes by number of reported reactions</figcaption>
+<figcaption>Figure 8: Severe outcomes by number of reported reactions</figcaption>
 </figure>
 </div>
 </div>
@@ -687,25 +1107,20 @@ This analysis is exploratory and does not imply causality.</p>
 <p>Although the difference is subtle, cases reporting five or more adverse reactions show a higher proportion of severe outcomes (death or life-threatening reactions) compared with cases reporting fewer reactions.</p>
 </section>
 </section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>Examples:</p>
-<ul>
-<li><p>Yearly report counts</p></li>
-<li><p>Top reported drug classes</p></li>
-<li><p>Serious vs non-serious trends</p></li>
-</ul>
-<p>Each plot should answer <strong>one question</strong>.</p>
-</section>
-<section id="interpretation-clinical-context" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation-clinical-context">Interpretation (Clinical Context)</h2>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>Combining reaction frequency and outcome severity provides a more cautious understanding of FAERS data.</p>
+<p>Frequently reported reactions do not necessarily correspond to severe outcomes, and serious outcomes may occur in less frequently reported terms.</p>
+<p>This demonstrates why spontaneous reporting databases should be used for signal awareness and prioritisation rather than risk estimation.</p>
+<section id="clinical-context" class="level3">
+<h3 class="anchored" data-anchor-id="clinical-context">Clinical Context</h3>
 <p>It is very important to keep in mind that these are all real-life data with many missing values and errors. It is not possible to know where there may be errors, but a few possibilities include:</p>
 <ul>
 <li>Error submitting an update as a new case</li>
 <li>Entry error</li>
 <li>Multiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions</li>
 </ul>
-<p>While there are many possible errors to keep in mind, the data has a huge number of cases reported. The bigger the data the clearer the consistency and the more accurate the analysis becomes. An increase in reports however does not necessarily indicate increased risk. Possible contributors include:</p>
+<p>While there are many possible errors to keep in mind, the data has a huge number of cases reported. Larger reporting volume may reveal consistent patterns, but does not remove reporting bias. An increase in reports does not necessarily indicate increased risk. Possible contributions to the bias include:</p>
 <ul>
 <li>Increased prescribing</li>
 <li>Media attention</li>
@@ -713,23 +1128,53 @@ This analysis is exploratory and does not imply causality.</p>
 </ul>
 <p>The results should be read and analysed with the potential errors and influences in mind, and any healthcare professionals or researchers who intend to use this as reference should always use their clinical judgement.</p>
 </section>
+<section id="key-findings" class="level3">
+<h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
+<ul>
+<li>Reporting frequency is concentrated in a small subset of reaction terms</li>
+<li>Most cases contain a limited number of reported reactions</li>
+<li>Serious outcomes occur across both frequent and infrequent terms</li>
+<li>Reaction frequency alone does not indicate clinical severity</li>
+</ul>
+</section>
+</section>
 <section id="potential-use-cases" class="level2">
 <h2 class="anchored" data-anchor-id="potential-use-cases">Potential Use Cases</h2>
 <p>This type of analysis could support:</p>
-<p>- Pharmacovigilance signal review</p>
-<p>- Internal safety discussions</p>
-<p>- Educational summaries</p>
+<ul>
+<li>Pharmacovigilance signal review</li>
+<li>Internal safety discussions</li>
+<li>Educational summaries</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This case study demonstrates a reproducible approach to structuring and interpreting large pharmacovigilance datasets in R.</p>
+<p>By separating reaction frequency from outcome severity and analysing data at the case level, reporting patterns can be explored while maintaining appropriate clinical caution.</p>
+<p>Such workflows support exploratory safety assessment and communication, but should not be interpreted as evidence of causality or incidence.</p>
 </section>
 <section id="about-the-author" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-author">About the Author</h2>
 <p>I am a former pharmacist specialising in R-based data analysis for healthcare and research.</p>
 <p>I support projects in <strong>English and Japanese</strong>.</p>
-<p>If you would like help analysing data using R, feel free to get in touch.</p>
+<p>If you need structured analysis of datasets using reproducible R workflows, feel free to get in touch.</p>
 
 
 </section>
 
 </main> <!-- /main -->
+&nbsp;
+<hr>
+
+<p style="text-align: center;">A work by <a href="https://reijkg2904.github.io/portfolio/">Reina Kaino</a></p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>@reinas_data.studio</em></span></p>
+
+
+
+&nbsp;
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

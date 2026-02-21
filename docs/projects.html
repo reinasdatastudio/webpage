@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-65d1a8e2f1e477bfd6bdb5bf005801c1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7a5500592fea5c6e6f2f678dcf2f26b8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,6 +111,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ja.html"> 
+<span class="menu-text">日本語</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -152,13 +156,39 @@ ul.task-list li input[type="checkbox"] {
 <p>Projects demonstrating clinical context, statistical analysis and reproducible R workflows.</p>
 <div class="project-container">
 <div class="project-image">
+<p><img src="images/clipboard-3704079679.png" class="img-fluid"></p>
+</div>
+<section id="reproducible-pharmacovigilance-analysis-using-faers-2025-q3" class="level3 projects">
+<h3 class="anchored" data-anchor-id="reproducible-pharmacovigilance-analysis-using-faers-2025-q3"><a href="./projects/FAERS2025Q3.html">Reproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)</a></h3>
+<p>Reproducible exploratory analysis of pharmacovigilance data using FAERS.</p>
+<section id="context" class="level4">
+<h4 class="anchored" data-anchor-id="context"><strong>Context</strong></h4>
+<p>Analysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).</p>
+<ul>
+<li>Case-level aggregation</li>
+<li>Handling duplicate reports</li>
+<li>Cautious interpretation of spontaneous reporting data.</li>
+</ul>
+</section>
+<section id="outcome" class="level4">
+<h4 class="anchored" data-anchor-id="outcome"><strong>Outcome</strong></h4>
+<p>Delivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.</p>
+<ul>
+<li>Frequently reported reactions do not necessarily correspond to severe outcomes</li>
+<li>Importance of separating reporting frequency from clinical significance</li>
+</ul>
+</section>
+</section>
+</div>
+<div class="project-container">
+<div class="project-image">
 <p><img src="images/Screenshot 2025-12-08 164619.png" class="img-fluid"></p>
 </div>
 <section id="hypertension-clinical-treatment-analysis" class="level3 projects">
 <h3 class="anchored" data-anchor-id="hypertension-clinical-treatment-analysis"><a href="./projects/Hypertension-clinical-tx.html">Hypertension Clinical Treatment Analysis</a></h3>
 <p>Reproducible clinical data analysis with clear interpretation for treatment comparison.</p>
-<section id="context" class="level4">
-<h4 class="anchored" data-anchor-id="context"><strong>Context</strong></h4>
+<section id="context-1" class="level4">
+<h4 class="anchored" data-anchor-id="context-1"><strong>Context</strong></h4>
 <p>Simulated clinical trial dataset comparing treatment outcomes for hypertension patients.</p>
 <ul>
 <li>Cleaned and structured clinical variables</li>
@@ -167,8 +197,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Documented assumptions and analytical workflow</li>
 </ul>
 </section>
-<section id="outcome" class="level4">
-<h4 class="anchored" data-anchor-id="outcome"><strong>Outcome</strong></h4>
+<section id="outcome-1" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-1"><strong>Outcome</strong></h4>
 <p>Delivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.</p>
 <ul>
 <li>Structured R analysis script</li>
@@ -190,8 +220,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="forecasting-prices-of-diamonds" class="level3 projects">
 <h3 class="anchored" data-anchor-id="forecasting-prices-of-diamonds"><a href="./projects/diamonds_portfolio.html">Forecasting prices of diamonds</a></h3>
 <p><strong>Statistical exploration and modelling of pricing factors in a high-dimensional dataset.</strong></p>
-<section id="context-1" class="level4">
-<h4 class="anchored" data-anchor-id="context-1"><strong>Context</strong></h4>
+<section id="context-2" class="level4">
+<h4 class="anchored" data-anchor-id="context-2"><strong>Context</strong></h4>
 <p>Dataset analysing how characteristics influence diamond pricing.</p>
 <ul>
 <li>Cleaned and explored multivariate data</li>
@@ -199,8 +229,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Visualised relationships between features and pricing</li>
 </ul>
 </section>
-<section id="outcome-1" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-1"><strong>Outcome</strong></h4>
+<section id="outcome-2" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-2"><strong>Outcome</strong></h4>
 <p>Identified key variables influencing price and demonstrated reproducible modelling workflow.</p>
 <ul>
 <li>Reproducible R script</li>
@@ -217,8 +247,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="e-commerce-sales-analysis-dashboard" class="level3 projects">
 <h3 class="anchored" data-anchor-id="e-commerce-sales-analysis-dashboard"><a href="https://thequeenofdata.shinyapps.io/ecommerceDashboardExample/">e-commerce Sales Analysis Dashboard</a></h3>
 <p><strong>Interactive R Shiny dashboard enabling non-technical users to explore sales performance.</strong></p>
-<section id="context-2" class="level4">
-<h4 class="anchored" data-anchor-id="context-2"><strong>Context</strong></h4>
+<section id="context-3" class="level4">
+<h4 class="anchored" data-anchor-id="context-3"><strong>Context</strong></h4>
 <p>Retail-style dataset requiring dynamic filtering and real-time data exploration.</p>
 <ul>
 <li>Designed and built an interactive Shiny application</li>
@@ -226,8 +256,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Created dynamic visualisations for performance tracking</li>
 </ul>
 </section>
-<section id="outcome-2" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-2"><strong>Outcome</strong></h4>
+<section id="outcome-3" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-3"><strong>Outcome</strong></h4>
 <p>Delivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.</p>
 <ul>
 <li>Fully functional Shiny application</li>
@@ -244,8 +274,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="superstore-r-shiny-dashboard" class="level3 projects">
 <h3 class="anchored" data-anchor-id="superstore-r-shiny-dashboard"><a href="https://thequeenofdata.shinyapps.io/Superstore/">Superstore R Shiny Dashboard</a></h3>
 <p><strong>Exploratory data analysis and visualisation of retail sales data.</strong></p>
-<section id="context-3" class="level4">
-<h4 class="anchored" data-anchor-id="context-3"><strong>Context</strong></h4>
+<section id="context-4" class="level4">
+<h4 class="anchored" data-anchor-id="context-4"><strong>Context</strong></h4>
 <p>Multi-variable retail dataset examining sales performance across regions and categories.</p>
 <ul>
 <li>Cleaned and prepared transactional data</li>
@@ -254,8 +284,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Identified performance drivers and segment differences</li>
 </ul>
 </section>
-<section id="outcome-3" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-3"><strong>Outcome</strong></h4>
+<section id="outcome-4" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-4"><strong>Outcome</strong></h4>
 <p>Produced actionable insights into sales distribution, regional performance, and product trends.</p>
 <ul>
 <li>Structured R analysis script</li>
