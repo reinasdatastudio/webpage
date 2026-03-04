@@ -11,7 +11,7 @@ format:
 ![](intro-logo.png){.hero-logo alt="Reina's Data Studio logo"}
 :::
 
-# R Consulting for Healthcare & Research
+# R Consultant for Data Analysis and Reproducible Workflows
 
 ::: hero-sentence
 *Practical, ethical data solutions - By a former pharmacist with clinical context*
@@ -32,6 +32,7 @@ format:
 -   Clear communication for non-programmers
 -   Reproducible, well-documented R workflows
 -   Respect for data privacy and ethics
+-   Specialising in Healthcare and Research Data
 :::::
 ::::::
 
@@ -57,10 +58,11 @@ format:
 ::: box-2
 ## Who I help
 
--   Healthcare & life-science researchers
--   Students learning R or statistics
+-   Professionals such as research teams, analysts and small companies
+-   Students learning R/statistics
+-   Technical teams needing workflow improvements
+-   Small teams needing reliable R support and assistance with analysis
 -   Healthcare professionals working with data
--   Small teams needing reliable R support
 -   Anyone who wants clear, ethical data analysis
 
 If you’re unsure whether your project fits, feel free to ask.
@@ -118,7 +120,7 @@ Healthcare and research projects that need clean, defensible, and reusable resul
 
 Typical use cases:
 
--   Clinical or research data analysis
+-   Clinical/research or any other data analysis
 -   Statistical modelling and interpretation
 -   Automated reports using Quarto / R Markdown
 -   Forecasting and exploratory analysis
