@@ -9,7 +9,7 @@ format:
 ::: banner
 Hi, I’m **Reina**, the founder of **Reina’s Data Studio**.
 
-I help researchers, healthcare professionals, and teams work with data clearly, ethically, and confidently using R.
+I help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.
 :::
 
 ::: {.banner .about}
@@ -28,7 +28,7 @@ My professional journey began in **pharmacy**, where accuracy, responsibility, a
 
 I studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.
 
-Losing my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.
+Resigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.
 
 ### How my healthcare background shapes my work
 
