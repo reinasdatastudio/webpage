@@ -86,9 +86,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "",
-    "text": "Practical, ethical data solutions - By a former pharmacist with clinical context\n\n\nWork with me\n\n\nSend your problem - Get a reply within 24-48 hours.\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
+    "text": "Practical, ethical data solutions - By a former pharmacist with clinical context\n\n\nWork with me\n\n\nSend your problem - Get a reply within 24-48 hours.\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
   },
   {
     "objectID": "index.html#expert-r-solutions-for-your-data",
@@ -100,21 +100,21 @@
   {
     "objectID": "index.html#who-i-help",
     "href": "index.html#who-i-help",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Who I help",
-    "text": "Who I help\n\nHealthcare & life-science researchers\nStudents learning R or statistics\nHealthcare professionals working with data\nSmall teams needing reliable R support\nAnyone who wants clear, ethical data analysis\n\nIf you’re unsure whether your project fits, feel free to ask."
+    "text": "Who I help\n\nProfessionals such as research teams, analysts and small companies\nStudents learning R/statistics\nTechnical teams needing workflow improvements\nSmall teams needing reliable R support and assistance with analysis\nHealthcare professionals working with data\nAnyone who wants clear, ethical data analysis\n\nIf you’re unsure whether your project fits, feel free to ask."
   },
   {
     "objectID": "index.html#how-it-works",
     "href": "index.html#how-it-works",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "How it works",
     "text": "How it works\n\nInitial enquiry\nYou send a short message describing your data, question or problem.\nQuick discussion\nWe clarify your goals, timeline and the type of support that suits you best.\nTailored support and delivery\nI provide clean R code, clear explanations, and practical next steps you can reuse with confidence.\nOptional: Ongoing support"
   },
   {
     "objectID": "index.html#tools",
     "href": "index.html#tools",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Tools",
     "text": "Tools\n\nR / tidyverse\nggplot2\nShiny dashboards\nQuarto / R Markdown\nStatistical modelling and inference\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy-related data"
   },
@@ -135,14 +135,14 @@
   {
     "objectID": "index.html#language-support",
     "href": "index.html#language-support",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Language Support",
     "text": "Language Support\nConsultations and support available in English or Japanese"
   },
   {
     "objectID": "index.html#contact",
     "href": "index.html#contact",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Contact",
     "text": "Contact\nIf you have a dataset, question or project in mind, feel free to reach out.\nI typically respond within 24-48 hours."
   },
@@ -268,9 +268,9 @@
   {
     "objectID": "index.html#why-work-with-me",
     "href": "index.html#why-work-with-me",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "",
-    "text": "Healthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
+    "text": "Healthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
   },
   {
     "objectID": "index.html#basic-process",
@@ -352,7 +352,7 @@
   {
     "objectID": "index.html#learn-with-me-on-youtube",
     "href": "index.html#learn-with-me-on-youtube",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Learn with me on YouTube",
     "text": "Learn with me on YouTube\nI share practical R tutorials focused on real-world data problems."
   },
@@ -366,42 +366,42 @@
   {
     "objectID": "index.html#quick-fix-1-2-hours",
     "href": "index.html#quick-fix-1-2-hours",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Quick Fix (1-2 hours)",
     "text": "Quick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200 to 300 per hour (1-2 hour sessions)"
   },
   {
     "objectID": "index.html#reproducible-analysis-report",
     "href": "index.html#reproducible-analysis-report",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Reproducible Analysis & Report",
-    "text": "Reproducible Analysis & Report\n\nBest for\nHealthcare and research projects that need clean, defensible, and reusable results.\nTypical use cases:\n\nClinical or research data analysis\nStatistical modelling and interpretation\nAutomated reports using Quarto / R Markdown\nForecasting and exploratory analysis\n\n\n\nWhat you get\n\nClean, well-structured R code\nReproducible analysis pipeline\nPublication- or stakeholder-ready report\nClear written interpretation of results\n\n\n\nPricing\nFrom NZD 1,990-5,700 per project\n(Scope and pricing depend on scope, project size and timeline)"
+    "text": "Reproducible Analysis & Report\n\nBest for\nHealthcare and research projects that need clean, defensible, and reusable results.\nTypical use cases:\n\nClinical/research or any other data analysis\nStatistical modelling and interpretation\nAutomated reports using Quarto / R Markdown\nForecasting and exploratory analysis\n\n\n\nWhat you get\n\nClean, well-structured R code\nReproducible analysis pipeline\nPublication- or stakeholder-ready report\nClear written interpretation of results\n\n\n\nPricing\nFrom NZD 1,990-5,700 per project\n(Scope and pricing depend on scope, project size and timeline)"
   },
   {
     "objectID": "index.html#ongoing-r-support-retainer",
     "href": "index.html#ongoing-r-support-retainer",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Ongoing R Support (Retainer)",
     "text": "Ongoing R Support (Retainer)\n\nBest for\nTeams or individuals who want reliable, long-term R support without hiring full-time.\nTypical use cases:\n\nRegular analysis or reporting work\nCode review and workflow improvement\nMentoring and upskilling\nOngoing troubleshooting and advice\n\n\n\nWhat you get\n\nA fixed number of support hours per month\nPriority response\nConsistent, context-aware support\nA long-term collaborator who understands your data\n\nAvailable on a monthly basis.\n\n\nPricing\nFrom NZD 1,490-4000 per month\n(e.g. 6-20 hours/month; custom arrangements available)"
   },
   {
     "objectID": "index.html#r-teaching-and-mentoring",
     "href": "index.html#r-teaching-and-mentoring",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "R Teaching and Mentoring",
     "text": "R Teaching and Mentoring\nIf you’re learning R or want to improve how you work with data, I also offer 1:1 or small-group teaching tailored to your background and goals.\nThis may include:\n\nLearning R from a healthcare or research perspective\nUnderstanding statistics through practical examples\nBuilding reproducible workflows with confidence\n\n\nPricing\nFrom NZD 160-250 per hour\n(Discounts available for students)"
   },
   {
     "objectID": "index.html#english-version",
     "href": "index.html#english-version",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "English version",
     "text": "English version\nReina’s Data Studio"
   },
   {
     "objectID": "index.html#japanese-version",
     "href": "index.html#japanese-version",
-    "title": "R Consulting for Healthcare & Research",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Japanese version",
     "text": "Japanese version\nReina’s Data Studio JP"
   },
@@ -410,7 +410,7 @@
     "href": "about.html",
     "title": "About Reina’s Data Studio",
     "section": "",
-    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, healthcare professionals, and teams work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nLosing my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
+    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nResigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
   },
   {
     "objectID": "about.html#quarto",
