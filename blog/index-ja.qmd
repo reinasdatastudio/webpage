@@ -1,0 +1,11 @@
+---
+title: "ブログ"
+listing:
+  contents: posts-ja
+  sort: "date desc"
+  type: default
+  categories: false
+  date-format: "MMM DD, YYYY"
+  fields: [date, title, description]
+  page-size: 10
+---

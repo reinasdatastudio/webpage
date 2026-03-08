@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-03-05">
 
-<title>Reina’s Data Studio</title>
+<title>Rでよくあるエラー10選 – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +21,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7a5500592fea5c6e6f2f678dcf2f26b8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7a5500592fea5c6e6f2f678dcf2f26b8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,6 +113,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
+<style>
+.description { display: none; }
+</style>
 
 
 </head>
@@ -88,9 +127,9 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Reina’s Data Studio</span>
     </a>
   </div>
@@ -101,15 +140,15 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -118,21 +157,21 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="./blog/index.html">
+    <a class="dropdown-item" href="../../blog/index.html">
  <span class="dropdown-text">Blog EN</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blog/index-ja.html">
+    <a class="dropdown-item" href="../../blog/index-ja.html">
  <span class="dropdown-text">ブログ JP</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./enquiry.html"> 
+    <a class="nav-link" href="../../enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./ja.html"> 
+    <a class="nav-link" href="../../ja.html"> 
 <span class="menu-text">日本語</span></a>
   </li>  
 </ul>
@@ -143,231 +182,429 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#object-x-not-found" id="toc-object-x-not-found" class="nav-link active" data-scroll-target="#object-x-not-found">1. object ‘x’ not found</a></li>
+  <li><a href="#unexpected-symbol" id="toc-unexpected-symbol" class="nav-link" data-scroll-target="#unexpected-symbol">2. unexpected symbol</a></li>
+  <li><a href="#argument-is-missing-with-no-default" id="toc-argument-is-missing-with-no-default" class="nav-link" data-scroll-target="#argument-is-missing-with-no-default">3. argument is missing, with no default</a></li>
+  <li><a href="#non-numeric-argument-to-binary-operator" id="toc-non-numeric-argument-to-binary-operator" class="nav-link" data-scroll-target="#non-numeric-argument-to-binary-operator">4. non-numeric argument to binary operator</a></li>
+  <li><a href="#cannot-open-the-connection" id="toc-cannot-open-the-connection" class="nav-link" data-scroll-target="#cannot-open-the-connection">5. cannot open the connection</a></li>
+  <li><a href="#object-of-type-closure-is-not-subsettable" id="toc-object-of-type-closure-is-not-subsettable" class="nav-link" data-scroll-target="#object-of-type-closure-is-not-subsettable">6. object of type ‘closure’ is not subsettable</a></li>
+  <li><a href="#replacement-has-length-zero" id="toc-replacement-has-length-zero" class="nav-link" data-scroll-target="#replacement-has-length-zero">7. replacement has length zero</a></li>
+  <li><a href="#subscript-out-of-bounds" id="toc-subscript-out-of-bounds" class="nav-link" data-scroll-target="#subscript-out-of-bounds">8. subscript out of bounds</a></li>
+  <li><a href="#could-not-find-function" id="toc-could-not-find-function" class="nav-link" data-scroll-target="#could-not-find-function">9. could not find function</a></li>
+  <li><a href="#nanan-argument" id="toc-nanan-argument" class="nav-link" data-scroll-target="#nanan-argument">10. NA/NaN argument</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Rでよくあるエラー10選</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="hero-banner banner">
-<div class="hero">
-<div class="hero-image">
-<p><img src="intro-logo.png" class="hero-logo img-fluid" alt="Reina's Data Studio logo"></p>
-</div>
-<section id="r-consultant-for-data-analysis-and-reproducible-workflows" class="level1">
-<h1>R Consultant for Data Analysis and Reproducible Workflows</h1>
-<div class="hero-sentence">
-<p><em>Practical, ethical data solutions - By a former pharmacist with clinical context</em></p>
-</div>
-<button class="button">
-<p><a href="./enquiry.html">Work with me</a></p>
-</button>
-<center>
-Send your problem - Get a reply within 24-48 hours.
-</center>
-<section id="why-work-with-me" class="level2">
-<h2 class="anchored" data-anchor-id="why-work-with-me">Why work with me?</h2>
-<ul>
-<li>Healthcare background</li>
-<li>Experience with real clinical data structures</li>
-<li>Clear communication for non-programmers</li>
-<li>Reproducible, well-documented R workflows</li>
-<li>Respect for data privacy and ethics</li>
-<li>Specialising in Healthcare and Research Data</li>
-</ul>
-</section>
-</section>
-</div>
-</div>
-<div class="banner section-story">
-<section id="how-it-works" class="level2 box-1">
-<h2 class="anchored" data-anchor-id="how-it-works">How it works</h2>
-<ol type="1">
-<li><p><strong><strong>Initial enquiry</strong></strong></p>
-<p>You send a short message describing your data, question or problem.</p></li>
-<li><p><strong><strong>Quick discussion</strong></strong></p>
-<p>We clarify your goals, timeline and the type of support that suits you best.</p></li>
-<li><p><strong><strong>Tailored support and delivery</strong></strong></p>
-<p>I provide clean R code, clear explanations, and practical next steps you can reuse with confidence.</p></li>
-<li><p><strong><strong>Optional: Ongoing support</strong></strong></p></li>
-</ol>
-</section>
-<section id="who-i-help" class="level2 box-2">
-<h2 class="anchored" data-anchor-id="who-i-help">Who I help</h2>
-<ul>
-<li>Professionals such as research teams, analysts and small companies</li>
-<li>Students learning R/statistics</li>
-<li>Technical teams needing workflow improvements</li>
-<li>Small teams needing reliable R support and assistance with analysis</li>
-<li>Healthcare professionals working with data</li>
-<li>Anyone who wants clear, ethical data analysis</li>
-</ul>
-<p>If you’re unsure whether your project fits, feel free to ask.</p>
-</section>
-<section id="tools" class="level2 box-3">
-<h2 class="anchored" data-anchor-id="tools">Tools</h2>
-<ul>
-<li>R / tidyverse</li>
-<li>ggplot2</li>
-<li>Shiny dashboards</li>
-<li>Quarto / R Markdown</li>
-<li>Statistical modelling and inference</li>
-<li>Forecasting (ARIMA, Prophet)</li>
-<li>Healthcare &amp; pharmacy-related data</li>
-</ul>
-</section>
-</div>
-<section id="services" class="level1 section-services banner">
-<h1>Services</h1>
-<p>I offer <strong>clear, practical R support</strong> — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch and I’ll guide you.</p>
-<section id="quick-fix-1-2-hours" class="level2 card">
-<h2 class="anchored" data-anchor-id="quick-fix-1-2-hours">Quick Fix (1-2 hours)</h2>
-<section id="best-for" class="level4">
-<h4 class="anchored" data-anchor-id="best-for"><strong>Best for</strong></h4>
-<p>Small problems, urgent questions or when you are stuck and need clarity fast.</p>
-<p>Typical use cases:</p>
-<ul>
-<li>Debugging R scripts</li>
-<li>Help with plots, statistics or models</li>
-<li>Data wrangling issues</li>
-<li>Understanding error messages or unexpected results</li>
-</ul>
-</section>
-<section id="what-you-get" class="level4">
-<h4 class="anchored" data-anchor-id="what-you-get"><strong>What you get</strong></h4>
-<ul>
-<li>Live 1:1 session (or async support, if preferred)</li>
-<li>Clear explanation in plain English</li>
-<li>Improved or corrected R code you can reuse</li>
-</ul>
-</section>
-<section id="pricing" class="level4">
-<h4 class="anchored" data-anchor-id="pricing"><strong>Pricing</strong></h4>
-<p>From NZD 200 to 300 per hour (1-2 hour sessions)</p>
-</section>
-</section>
-<section id="reproducible-analysis-report" class="level2 card">
-<h2 class="anchored" data-anchor-id="reproducible-analysis-report">Reproducible Analysis &amp; Report</h2>
-<section id="best-for-1" class="level4">
-<h4 class="anchored" data-anchor-id="best-for-1"><strong>Best for</strong></h4>
-<p>Healthcare and research projects that need clean, defensible, and reusable results.</p>
-<p>Typical use cases:</p>
-<ul>
-<li>Clinical/research or any other data analysis</li>
-<li>Statistical modelling and interpretation</li>
-<li>Automated reports using Quarto / R Markdown</li>
-<li>Forecasting and exploratory analysis</li>
-</ul>
-</section>
-<section id="what-you-get-1" class="level4">
-<h4 class="anchored" data-anchor-id="what-you-get-1"><strong>What you get</strong></h4>
-<ul>
-<li>Clean, well-structured R code</li>
-<li>Reproducible analysis pipeline</li>
-<li>Publication- or stakeholder-ready report</li>
-<li>Clear written interpretation of results</li>
-</ul>
-</section>
-<section id="pricing-1" class="level4">
-<h4 class="anchored" data-anchor-id="pricing-1"><strong>Pricing</strong></h4>
-<p>From NZD 1,990-5,700 per project</p>
-<p><em>(Scope and pricing depend on scope, project size and timeline)</em></p>
-</section>
-</section>
-<section id="ongoing-r-support-retainer" class="level2 card">
-<h2 class="anchored" data-anchor-id="ongoing-r-support-retainer">Ongoing R Support (Retainer)</h2>
-<section id="best-for-2" class="level4">
-<h4 class="anchored" data-anchor-id="best-for-2"><strong>Best for</strong></h4>
-<p>Teams or individuals who want reliable, long-term R support without hiring full-time.</p>
-<p>Typical use cases:</p>
-<ul>
-<li>Regular analysis or reporting work</li>
-<li>Code review and workflow improvement</li>
-<li>Mentoring and upskilling</li>
-<li>Ongoing troubleshooting and advice</li>
-</ul>
-</section>
-<section id="what-you-get-2" class="level4">
-<h4 class="anchored" data-anchor-id="what-you-get-2"><strong>What you get</strong></h4>
-<ul>
-<li>A fixed number of support hours per month</li>
-<li>Priority response</li>
-<li>Consistent, context-aware support</li>
-<li>A long-term collaborator who understands your data</li>
-</ul>
-<p><em>Available on a monthly basis.</em></p>
-</section>
-<section id="pricing-2" class="level4">
-<h4 class="anchored" data-anchor-id="pricing-2"><strong>Pricing</strong></h4>
-<p>From NZD 1,490-4000 per month</p>
-<p><em>(e.g.&nbsp;6-20 hours/month; custom arrangements available)</em></p>
-</section>
-</section>
-<section id="r-teaching-and-mentoring" class="level2 card">
-<h2 class="anchored" data-anchor-id="r-teaching-and-mentoring">R Teaching and Mentoring</h2>
-<p>If you’re learning R or want to improve how you work with data, I also offer <strong>1:1 or small-group teaching</strong> tailored to your background and goals.</p>
-<p>This may include:</p>
-<ul>
-<li>Learning R from a healthcare or research perspective</li>
-<li>Understanding statistics through practical examples</li>
-<li>Building reproducible workflows with confidence</li>
-</ul>
-<section id="pricing-3" class="level4">
-<h4 class="anchored" data-anchor-id="pricing-3"><strong>Pricing</strong></h4>
-<p>From NZD 160-250 per hour</p>
-<p><em>(Discounts available for students)</em></p>
-</section>
-</section>
-<section id="not-sure-which-option-fits" class="level3">
-<h3 class="anchored" data-anchor-id="not-sure-which-option-fits">Not sure which option fits?</h3>
-<p>If you have a dataset, question, or project in mind, feel free to reach out. I’ll help you choose the most suitable option at no cost.</p>
-<button class="button">
-<p><a href="./enquiry.html">Enquiry</a></p>
-</button>
-</section>
-</section>
-<div class="youtube-section banner">
-<section id="learn-with-me-on-youtube" class="level2">
-<h2 class="anchored" data-anchor-id="learn-with-me-on-youtube">Learn with me on YouTube</h2>
-<p>I share practical R tutorials focused on real-world data problems.</p>
-</section>
-<div class="channels">
-<section id="english-version" class="level2 youtube-channel">
-<h2 class="anchored" data-anchor-id="english-version">English version</h2>
-<p><a href="https://www.youtube.com/@reinas_data.studio">Reina’s Data Studio</a></p>
-<iframe src="https://www.youtube.com/embed/ViNVCBWXYak?si=ewS521FpIrfK0TtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-</section>
-<section id="japanese-version" class="level2 youtube-channel">
-<h2 class="anchored" data-anchor-id="japanese-version">Japanese version</h2>
-<p><a href="https://www.youtube.com/@reinas_data.studio_jp">Reina’s Data Studio JP</a></p>
-<iframe src="https://www.youtube.com/embed/9rVpTYfIIoE?si=5LiSqHWX3YTB0clA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-</section>
-</div>
-</div>
-<div class="section-contacts banner">
-<section id="language-support" class="level2 language">
-<h2 class="anchored" data-anchor-id="language-support">Language Support</h2>
-<p>Consultations and support available in <strong>English or Japanese</strong></p>
-</section>
-<section id="contact" class="level2 contact">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>If you have a dataset, question or project in mind, feel free to reach out.</p>
-<p>I typically respond within <strong>24-48 hours</strong>.</p>
-</section>
-<button class="button">
-<p><a href="./enquiry.html">Send an enquiry</a></p>
-</button>
-</div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 5, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>今回は、特に初心者にありがちなエラーを10個選んで解説していきます。</p>
+<p>慣れてきた頃にもやりがちです。特に1と９。でもなれるとすぐに原因がわかり、すぐに直せるようになるので、何度も挑戦しましょう。</p>
+<section id="object-x-not-found" class="level2">
+<h2 class="anchored" data-anchor-id="object-x-not-found">1. object ‘x’ not found</h2>
+<p>これは本当によくあります。直すのはものすごく簡単で、</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">8</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>など、xに何かを割り当てれば終わりです。</p>
+<p>もう一つの原因はスペルミスです。自分の場合は、特にオブジェクトの名前を無駄に長くしてしまった時にあります。</p>
+<p>オブジェクトの名前が、例えばxではなくreinasdatastudioの場合で、スペルミスをしてしまった時は、</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>object <span class="st">'reinasdatastudi'</span> not found</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>などと、自分が打ったスペルミスが表示されるので、しっかり確認してみてください。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: object ‘x’ not found</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>指定したオブジェクト（変数やデータ）が存在しません。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>オブジェクト名のスペルミス</li>
+<li>データを読み込んでいない</li>
+<li>オブジェクトを作る前に使っている</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>オブジェクトが存在するか確認します。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>また、スペルミスがないか確認します。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unexpected-symbol" class="level2">
+<h2 class="anchored" data-anchor-id="unexpected-symbol">2. unexpected symbol</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: unexpected symbol</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>コードの構文が正しくありません。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>コンマ , の不足</li>
+<li>カッコ () の閉じ忘れ</li>
+<li>パイプ %&gt;% の位置ミス</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td>コードの構文を確認します。 特にカッコやコンマの位置をチェックします。</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="argument-is-missing-with-no-default" class="level2">
+<h2 class="anchored" data-anchor-id="argument-is-missing-with-no-default">3. argument is missing, with no default</h2>
+<p>例えばfunction（関数）を使うときに、</p>
+<pre><code>my_func &lt;- function(x,y)</code></pre>
+<p>なのに、間違えて</p>
+<pre><code>my_func(1, )
+や
+my_func(1)</code></pre>
+<p>など、その関数にあったargument（引数）が使われていない時のエラーです。</p>
+<p>この例の場合、正しいのは</p>
+<pre><code>my_func(1,2)</code></pre>
+<p>など、xとyが何なのかを指定しないといけません。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: argument is missing, with no default</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>関数に必要な引数が指定されていません。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>必須引数を指定していない</li>
+<li>コンマの書き忘れ</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>関数の引数を確認します。</p>
+<pre><code>?function_name</code></pre></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="non-numeric-argument-to-binary-operator" class="level2">
+<h2 class="anchored" data-anchor-id="non-numeric-argument-to-binary-operator">4. non-numeric argument to binary operator</h2>
+<p>たまに、数字に見えてもRはそれをstringなどと認識している場合があるので、ちゃんとclassがnumericなのを確認しましょう。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: non-numeric argument to binary operator</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>数値ではないデータに対して計算を行おうとしています。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>文字列データを計算している</li>
+<li>数値として読み込まれていない</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>データ型を確認します。</p>
+<pre><code>class(x)</code></pre>
+<p>必要なら数値に変換します。</p>
+<pre><code>as.numeric(x)</code></pre></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cannot-open-the-connection" class="level2">
+<h2 class="anchored" data-anchor-id="cannot-open-the-connection">5. cannot open the connection</h2>
+<p>これは最初はすごく複雑です。わかりやすく説明しますと、</p>
+<p><strong>Rが指定されたファイルを見つけられない、または開けないときに出ます。</strong></p>
+<p>一番よくある原因は、Rに伝えたファイルの場所が、今作業中のフォルダの中にないときです。例えば、</p>
+<pre><code>read.csv("data.csv")</code></pre>
+<p>でファイルを開こうとしても、Rが今作業しているフォルダ、すなわちDirectoryにそのデータファイルがないとRはそれを開けません。</p>
+<p>RStudioを開けた時の右側のMoreと書かれているギアアイコンをクリックすると、今どこのDirectoryで作業しているのかを確認できます。Go To Working Directory（今作業中のDirectoryに行く）をクリックすれば、Rが今見ているフォルダーを開いてくれます。</p>
+<p>違うDirectoryに変えたい場合は、作業したいフォルダーに行ってから、Set As Working Directory（このフォルダーをDirectoryにする）をクリックしてください。</p>
+<p><img src="images/clipboard-1183395966.png" class="img-fluid" width="492"></p>
+<p>これらのステップをコンソールでしたいなら、以下の通りsetwdでDirectoryにしたいフォルダーの場所(Path)を指定します。</p>
+<p><img src="images/clipboard-596795225.png" class="img-fluid" width="518"></p>
+<p>経験上自分が一番最初てこずったエラーです。</p>
+<p>ほかの原因は、データファイルのスペルミス、ダブルクォーテーション（””）の入れ忘れなどもあるので、ちゃんとファイルの名前が正しく書かれているか確認しましょう。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: cannot open the connection</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>ファイルやURLを開くことができません。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>ファイルパスが間違っている</li>
+<li>ファイルが存在しない</li>
+<li>作業ディレクトリが違う</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>現在の作業ディレクトリを確認します。</p>
+<p>getwd()</p>
+<p>必要なら変更します。</p>
+<p>setwd(“path”)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="object-of-type-closure-is-not-subsettable" class="level2">
+<h2 class="anchored" data-anchor-id="object-of-type-closure-is-not-subsettable">6. object of type ‘closure’ is not subsettable</h2>
+<p>あまり聞かないエラーですが、例えば変数（Variable）の名前が関数（Function）の名前と同じだったりした時にでます。Rが変数を関数と勘違いしてしまいます。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: object of type ‘closure’ is not subsettable</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>関数をデータのように扱っています。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><p>関数名とオブジェクト名が同じ。</p>
+<pre><code>例：mean[1]</code></pre></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>関数ではなくデータを指定します。</p>
+<pre><code>例：mean(c(1,2,3))</code></pre></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="replacement-has-length-zero" class="level2">
+<h2 class="anchored" data-anchor-id="replacement-has-length-zero">7. replacement has length zero</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: replacement has length zero</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>空の値を代入しようとしています。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>条件に一致するデータが存在しない</li>
+<li>インデックスが空になっている</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>データの長さを確認します。</p>
+<pre><code>length(x)</code></pre></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subscript-out-of-bounds" class="level2">
+<h2 class="anchored" data-anchor-id="subscript-out-of-bounds">8. subscript out of bounds</h2>
+<p>７同様、まだシンプルなエラーですね。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: subscript out of bounds</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>存在しない位置の要素にアクセスしています。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><p>データのサイズより大きい番号を指定している。</p>
+<p>例：x[10]</p>
+<p>（データが5個しかない場合）</p></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>データのサイズを確認します。</p>
+<p>length(x)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="could-not-find-function" class="level2">
+<h2 class="anchored" data-anchor-id="could-not-find-function">9. could not find function</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: could not find function</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>関数が見つかりません。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td><ul>
+<li>パッケージを読み込んでいない</li>
+<li>関数名のスペルミス</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>パッケージをロードします。</p>
+<p>library(dplyr)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nanan-argument" class="level2">
+<h2 class="anchored" data-anchor-id="nanan-argument">10. NA/NaN argument</h2>
+<p>ちなみに、欠損値があるか確認する方法は複数あります。</p>
+<pre><code>anyNA(data)</code></pre>
+<p>はデータの中に欠損値があればTRUE、なければFALSEが出ます。</p>
+<pre><code>sum(is.na(data))</code></pre>
+<p>は、何個TRUE、つまりNA/欠損値があるか確認します。</p>
+<p>そしてデータのコラムごとに確認したい場合は、</p>
+<pre><code>colSums(is.na(data))</code></pre>
+<p>と入力するとどのコラムに何個NAがあるか確認できます。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>エラー</td>
+<td>Error: NA/NaN argument</td>
+</tr>
+<tr class="even">
+<td>意味</td>
+<td>計算にNAやNaNが含まれています。</td>
+</tr>
+<tr class="odd">
+<td>よくある原因</td>
+<td>データに欠損値がある。</td>
+</tr>
+<tr class="even">
+<td>解決方法</td>
+<td><p>NAを除外して計算します。</p>
+<pre><code>mean(x, na.rm = TRUE)</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>説明が分かりにくかったり、質問があれば、ぜひ教えてください。</p>
+<p>たくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！</p>
+<p>他にもRのことで質問や相談があれば、気軽にご連絡ください。</p>
+<p><a href="../../ja.html">日本語でRコンサルティング</a>をしています。</p>
+<p>Email: reinasdatastudio@gmail.com</p>
+
+
+</section>
 
 </main> <!-- /main -->
+&nbsp;
+<hr>
+
+<p style="text-align: center;">If you're working with clinical or research data and would like help building reproducible R workflows, feel free to reach out.</p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>@reinas_data.studio</em></span></p>
+
+
+
+&nbsp;
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

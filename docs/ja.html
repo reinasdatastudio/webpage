@@ -68,6 +68,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LE1MD5SGQZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
+</script>
 
 
 </head>
@@ -103,10 +112,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./blog/index.html"> 
-<span class="menu-text">Blog</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-blog" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Blog</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
+        <li>
+    <a class="dropdown-item" href="./blog/index.html">
+ <span class="dropdown-text">Blog EN</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./blog/index-ja.html">
+ <span class="dropdown-text">ブログ JP</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
@@ -137,10 +157,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="hero-image">
 <p><img src="intro-logo.png" class="hero-logo img-fluid" alt="Reina's Data Studio logo"></p>
 </div>
-<section id="医療研究データのr解析サポート" class="level2">
-<h2 class="anchored" data-anchor-id="医療研究データのr解析サポート">医療・研究データのR解析サポート</h2>
-<p>Reina’s Data Studio では、医療・研究分野などのデータ解析を<strong>再現性と正確さを重視したRワークフロー</strong>でサポートしています。</p>
-<p>薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。</p>
+<section id="rデータ解析サポート" class="level2">
+<h2 class="anchored" data-anchor-id="rデータ解析サポート">Rデータ解析サポート</h2>
+<p>Reina’s Data Studio では、さまざまな分野のデータ解析を <strong>再現性と正確さを重視したRワークフロー</strong>でサポートしています。</p>
+<p>薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。</p>
 </section>
 <section id="主なサポート内容" class="level2">
 <h2 class="anchored" data-anchor-id="主なサポート内容">主なサポート内容</h2>
@@ -159,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 <p>といった段階でも問題ありません。<br>
 内容が固まっていなくても、誰でもお気軽にご連絡ください。</p>
 <button class="button">
-<a href="enquiry.html">お問い合わせはこちら</a>
+<p><a href="enquiry.html">お問い合わせはこちら</a></p>
 </button>
 <center>
 Email: reinasdatastudio@gmail.com

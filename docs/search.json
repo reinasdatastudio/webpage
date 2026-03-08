@@ -585,7 +585,7 @@
     "href": "ja.html",
     "title": "Reina's Data Studio",
     "section": "",
-    "text": "Reina’s Data Studio では、医療・研究分野などのデータ解析を再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。\n\n\n\n\n統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助\n\n\n\n\n「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
+    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。\n\n\n\n\n統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助\n\n\n\n\n「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
   },
   {
     "objectID": "ja.html#医療研究データのr解析サポート",
@@ -677,5 +677,96 @@
     "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
     "section": "Conclusion",
     "text": "Conclusion\nThis case study demonstrates a reproducible approach to structuring and interpreting large pharmacovigilance datasets in R.\nBy separating reaction frequency from outcome severity and analysing data at the case level, reporting patterns can be explored while maintaining appropriate clinical caution.\nSuch workflows support exploratory safety assessment and communication, but should not be interpreted as evidence of causality or incidence."
+  },
+  {
+    "objectID": "blog/index-ja.html",
+    "href": "blog/index-ja.html",
+    "title": "ブログ",
+    "section": "",
+    "text": "Rでよくあるエラー10選\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "ja.html#rデータ解析サポート",
+    "href": "ja.html#rデータ解析サポート",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
+    "title": "Rでよくあるエラー10選",
+    "section": "",
+    "text": "今回は、特に初心者にありがちなエラーを10個選んで解説していきます。\n慣れてきた頃にもやりがちです。特に1と９。でもなれるとすぐに原因がわかり、すぐに直せるようになるので、何度も挑戦しましょう。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
+    "title": "Rでよくあるエラー10選",
+    "section": "1. object ‘x’ not found",
+    "text": "1. object ‘x’ not found\nこれは本当によくあります。直すのはものすごく簡単で、\nx = 8\nなど、xに何かを割り当てれば終わりです。\nもう一つの原因はスペルミスです。自分の場合は、特にオブジェクトの名前を無駄に長くしてしまった時にあります。\nオブジェクトの名前が、例えばxではなくreinasdatastudioの場合で、スペルミスをしてしまった時は、\nobject 'reinasdatastudi' not found\nなどと、自分が打ったスペルミスが表示されるので、しっかり確認してみてください。\n\n\n\n\n\n\n\nエラー\nError: object ‘x’ not found\n\n\n意味\n指定したオブジェクト（変数やデータ）が存在しません。\n\n\nよくある原因\n\nオブジェクト名のスペルミス\nデータを読み込んでいない\nオブジェクトを作る前に使っている\n\n\n\n解決方法\nオブジェクトが存在するか確認します。\nls()\nまた、スペルミスがないか確認します。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
+    "title": "Rでよくあるエラー10選",
+    "section": "2. unexpected symbol",
+    "text": "2. unexpected symbol\n\n\n\n\n\n\n\nエラー\nError: unexpected symbol\n\n\n意味\nコードの構文が正しくありません。\n\n\nよくある原因\n\nコンマ , の不足\nカッコ () の閉じ忘れ\nパイプ %&gt;% の位置ミス\n\n\n\n解決方法\nコードの構文を確認します。 特にカッコやコンマの位置をチェックします。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
+    "title": "Rでよくあるエラー10選",
+    "section": "3. argument is missing, with no default",
+    "text": "3. argument is missing, with no default\n例えばfunction（関数）を使うときに、\nmy_func &lt;- function(x,y)\nなのに、間違えて\nmy_func(1, )\nや\nmy_func(1)\nなど、その関数にあったargument（引数）が使われていない時のエラーです。\nこの例の場合、正しいのは\nmy_func(1,2)\nなど、xとyが何なのかを指定しないといけません。\n\n\n\n\n\n\n\nエラー\nError: argument is missing, with no default\n\n\n意味\n関数に必要な引数が指定されていません。\n\n\nよくある原因\n\n必須引数を指定していない\nコンマの書き忘れ\n\n\n\n解決方法\n関数の引数を確認します。\n?function_name"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
+    "title": "Rでよくあるエラー10選",
+    "section": "4. non-numeric argument to binary operator",
+    "text": "4. non-numeric argument to binary operator\nたまに、数字に見えてもRはそれをstringなどと認識している場合があるので、ちゃんとclassがnumericなのを確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: non-numeric argument to binary operator\n\n\n意味\n数値ではないデータに対して計算を行おうとしています。\n\n\nよくある原因\n\n文字列データを計算している\n数値として読み込まれていない\n\n\n\n解決方法\nデータ型を確認します。\nclass(x)\n必要なら数値に変換します。\nas.numeric(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
+    "title": "Rでよくあるエラー10選",
+    "section": "5. cannot open the connection",
+    "text": "5. cannot open the connection\nこれは最初はすごく複雑です。わかりやすく説明しますと、\nRが指定されたファイルを見つけられない、または開けないときに出ます。\n一番よくある原因は、Rに伝えたファイルの場所が、今作業中のフォルダの中にないときです。例えば、\nread.csv(\"data.csv\")\nでファイルを開こうとしても、Rが今作業しているフォルダ、すなわちDirectoryにそのデータファイルがないとRはそれを開けません。\nRStudioを開けた時の右側のMoreと書かれているギアアイコンをクリックすると、今どこのDirectoryで作業しているのかを確認できます。Go To Working Directory（今作業中のDirectoryに行く）をクリックすれば、Rが今見ているフォルダーを開いてくれます。\n違うDirectoryに変えたい場合は、作業したいフォルダーに行ってから、Set As Working Directory（このフォルダーをDirectoryにする）をクリックしてください。\n\nこれらのステップをコンソールでしたいなら、以下の通りsetwdでDirectoryにしたいフォルダーの場所(Path)を指定します。\n\n経験上自分が一番最初てこずったエラーです。\nほかの原因は、データファイルのスペルミス、ダブルクォーテーション（””）の入れ忘れなどもあるので、ちゃんとファイルの名前が正しく書かれているか確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: cannot open the connection\n\n\n意味\nファイルやURLを開くことができません。\n\n\nよくある原因\n\nファイルパスが間違っている\nファイルが存在しない\n作業ディレクトリが違う\n\n\n\n解決方法\n現在の作業ディレクトリを確認します。\ngetwd()\n必要なら変更します。\nsetwd(“path”)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
+    "title": "Rでよくあるエラー10選",
+    "section": "6. object of type ‘closure’ is not subsettable",
+    "text": "6. object of type ‘closure’ is not subsettable\nあまり聞かないエラーですが、例えば変数（Variable）の名前が関数（Function）の名前と同じだったりした時にでます。Rが変数を関数と勘違いしてしまいます。\n\n\n\n\n\n\n\nエラー\nError: object of type ‘closure’ is not subsettable\n\n\n意味\n関数をデータのように扱っています。\n\n\nよくある原因\n関数名とオブジェクト名が同じ。\n例：mean[1]\n\n\n解決方法\n関数ではなくデータを指定します。\n例：mean(c(1,2,3))"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
+    "title": "Rでよくあるエラー10選",
+    "section": "7. replacement has length zero",
+    "text": "7. replacement has length zero\n\n\n\n\n\n\n\nエラー\nError: replacement has length zero\n\n\n意味\n空の値を代入しようとしています。\n\n\nよくある原因\n\n条件に一致するデータが存在しない\nインデックスが空になっている\n\n\n\n解決方法\nデータの長さを確認します。\nlength(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
+    "title": "Rでよくあるエラー10選",
+    "section": "8. subscript out of bounds",
+    "text": "8. subscript out of bounds\n７同様、まだシンプルなエラーですね。\n\n\n\n\n\n\n\nエラー\nError: subscript out of bounds\n\n\n意味\n存在しない位置の要素にアクセスしています。\n\n\nよくある原因\nデータのサイズより大きい番号を指定している。\n例：x[10]\n（データが5個しかない場合）\n\n\n解決方法\nデータのサイズを確認します。\nlength(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
+    "title": "Rでよくあるエラー10選",
+    "section": "9. could not find function",
+    "text": "9. could not find function\n\n\n\n\n\n\n\nエラー\nError: could not find function\n\n\n意味\n関数が見つかりません。\n\n\nよくある原因\n\nパッケージを読み込んでいない\n関数名のスペルミス\n\n\n\n解決方法\nパッケージをロードします。\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
+    "title": "Rでよくあるエラー10選",
+    "section": "10. NA/NaN argument",
+    "text": "10. NA/NaN argument\nちなみに、欠損値があるか確認する方法は複数あります。\nanyNA(data)\nはデータの中に欠損値があればTRUE、なければFALSEが出ます。\nsum(is.na(data))\nは、何個TRUE、つまりNA/欠損値があるか確認します。\nそしてデータのコラムごとに確認したい場合は、\ncolSums(is.na(data))\nと入力するとどのコラムに何個NAがあるか確認できます。\n\n\n\n\n\n\n\nエラー\nError: NA/NaN argument\n\n\n意味\n計算にNAやNaNが含まれています。\n\n\nよくある原因\nデータに欠損値がある。\n\n\n解決方法\nNAを除外して計算します。\nmean(x, na.rm = TRUE)\n\n\n\n説明が分かりにくかったり、質問があれば、ぜひ教えてください。\nたくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！\n他にもRのことで質問や相談があれば、気軽にご連絡ください。\n日本語でRコンサルティングをしています。\nEmail: reinasdatastudio@gmail.com"
   }
 ]

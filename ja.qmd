@@ -9,11 +9,11 @@ format:
 ![](intro-logo.png){.hero-logo alt="Reina's Data Studio logo"}
 :::
 
-## 医療・研究データのR解析サポート
+## Rデータ解析サポート
 
-Reina’s Data Studio では、医療・研究分野などのデータ解析を**再現性と正確さを重視したRワークフロー**でサポートしています。
+Reina’s Data Studio では、さまざまな分野のデータ解析を **再現性と正確さを重視したRワークフロー**でサポートしています。
 
-薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。
+薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。
 
 ## 主なサポート内容
 
@@ -31,7 +31,11 @@ Reina’s Data Studio では、医療・研究分野などのデータ解析を*
 といった段階でも問題ありません。\
 内容が固まっていなくても、誰でもお気軽にご連絡ください。
 
-<button class="button">[お問い合わせはこちら](enquiry.html)</button>
+<button class="button">
+
+[お問い合わせはこちら](enquiry.html)
+
+</button>
 
 <center>Email: reinasdatastudio\@gmail.com</center>
 
