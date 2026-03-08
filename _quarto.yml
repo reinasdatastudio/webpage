@@ -3,7 +3,7 @@ project:
   output-dir: docs
 website:
   title: "Reina's Data Studio"
-  google-analytics: G-LE1MD5SGQZ
+  google-analytics: "G-LE1MD5SGQZ"
   navbar:
     right:
       - href: index.qmd
