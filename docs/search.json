@@ -368,7 +368,7 @@
     "href": "index.html#quick-fix-1-2-hours",
     "title": "R Consultant for Data Analysis and Reproducible Workflows",
     "section": "Quick Fix (1-2 hours)",
-    "text": "Quick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200 to 300 per hour (1-2 hour sessions)"
+    "text": "Quick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200-300 per hour (1-2 hour sessions)"
   },
   {
     "objectID": "index.html#reproducible-analysis-report",
@@ -768,5 +768,12 @@
     "title": "Rでよくあるエラー10選",
     "section": "10. NA/NaN argument",
     "text": "10. NA/NaN argument\nちなみに、欠損値があるか確認する方法は複数あります。\nanyNA(data)\nはデータの中に欠損値があればTRUE、なければFALSEが出ます。\nsum(is.na(data))\nは、何個TRUE、つまりNA/欠損値があるか確認します。\nそしてデータのコラムごとに確認したい場合は、\ncolSums(is.na(data))\nと入力するとどのコラムに何個NAがあるか確認できます。\n\n\n\n\n\n\n\nエラー\nError: NA/NaN argument\n\n\n意味\n計算にNAやNaNが含まれています。\n\n\nよくある原因\nデータに欠損値がある。\n\n\n解決方法\nNAを除外して計算します。\nmean(x, na.rm = TRUE)\n\n\n\n説明が分かりにくかったり、質問があれば、ぜひ教えてください。\nたくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！\n他にもRのことで質問や相談があれば、気軽にご連絡ください。\n日本語でRコンサルティングをしています。\nEmail: reinasdatastudio@gmail.com"
+  },
+  {
+    "objectID": "index.html#one-off-r-help",
+    "href": "index.html#one-off-r-help",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "One-off R Help",
+    "text": "One-off R Help\nDebugging, small questions, quick fixes.\n\nPricing\nFrom NZD 40-60 per case"
   }
 ]

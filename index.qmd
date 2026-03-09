@@ -81,10 +81,22 @@ If you’re unsure whether your project fits, feel free to ask.
 :::
 ::::::
 
-::::::: {.section-services .banner}
+:::::::: {.section-services .banner}
 # Services
 
-I offer **clear, practical R support** — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch and I’ll guide you.
+I offer **clear, practical R support** — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch.
+
+*(Pricing is intended as a guide and may vary depending on the project scope)*
+
+::: card
+## One-off R Help
+
+Debugging, small questions, quick fixes.
+
+#### Pricing
+
+From NZD 40-60 per case
+:::
 
 ::: card
 ## Quick Fix (1-2 hours)
@@ -108,7 +120,7 @@ Typical use cases:
 
 #### **Pricing**
 
-From NZD 200 to 300 per hour (1-2 hour sessions)
+From NZD 200-300 per hour (1-2 hour sessions)
 :::
 
 ::: card
@@ -196,7 +208,7 @@ If you have a dataset, question, or project in mind, feel free to reach out. I�
 [Enquiry](enquiry.qmd)
 
 </button>
-:::::::
+::::::::
 
 :::::: {.youtube-section .banner}
 ## Learn with me on YouTube
