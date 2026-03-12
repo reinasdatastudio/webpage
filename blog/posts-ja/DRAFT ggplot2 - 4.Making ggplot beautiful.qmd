@@ -1,0 +1,54 @@
+---
+title: "ggplotで見やすいグラフを作る"
+date: 2026-02-13
+description: "ggplot2をわかりやすくまとめました。"
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+draft: true
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+---
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) +
+  geom_jitter(aes(fill = Species),
+              shape = 21,
+              color = "black",
+              size = 2,
+              stroke = 0.8, #border thickness
+              alpha = 0.9) + #transparency
+    scale_fill_manual(values = c("setosa" = "pink", 
+                                 "versicolor" = "#2A9D8F",
+                                 "virginica" = "purple")) +
+  scale_x_continuous(labels  = function(x) paste0(x, "cm")) +
+  scale_y_continuous(labels = function(x) paste0(x, "cm")) +
+  labs(title = "Sepal Length vs Petal Length") +
+  theme_minimal(base_size = 10) +
+  theme(
+    text = element_text(family = "Georgia")
+  )
+```
+
+Explain:
+
+-   color
+
+-   theme
+
+-   labels
+
+-   transparency
+
+-   stroke
+
+This post becomes **very practical**.

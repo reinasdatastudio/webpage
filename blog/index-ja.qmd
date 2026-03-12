@@ -4,8 +4,7 @@ listing:
   contents: posts-ja
   sort: "date desc"
   type: default
-  categories: false
+  categories: true
   date-format: "MMM DD, YYYY"
-  fields: [date, title, description]
   page-size: 10
 ---

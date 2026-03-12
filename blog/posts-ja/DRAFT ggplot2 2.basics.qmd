@@ -1,0 +1,85 @@
+---
+title: "ggplot2が簡単になる！"
+date: 2026-02-13
+description: "ggplot2をわかりやすくまとめました。"
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+draft: true
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+---
+
+```{r echo=FALSE}
+library(tidyverse)
+#library(ggiraph)
+```
+
+でインストール出来ます。
+
+## 基本のコード
+
+すべてのggplot2は基本のコードがあります。
+
+```         
+ggplot(data = <DATA>, mapping = aes(<GLOBAL_MAPPINGS>)) +
+  <GEOM_FUNCTION>(mapping = aes(<LOCAL_MAPPINGS>)...) +
+  <STAT_FUNCTION>(...) +
+  <SCALE_FUNCTION>(...) + 
+  <COORD_FUNCTION>(...) +
+  <FACET_FUNCTION>(...) +
+  labs(
+    title = <TITLE>,
+    subtitle = <SUBTITLE>,
+    x = <X_LABEL>,
+    y = <Y_LABEL>,
+    caption = <CAPTION>) +
+  <THEME_FUNCTION>(...)
+```
+
+こうみると難しくみえますが、一番ベーシックなグラフを作るにあたって必ず必要なのは、
+
+```         
+ggplot(data = <DATA>, mapping = aes(<GLOBAL_MAPPINGS>)) +
+  <GEOM_FUNCTION>(mapping = aes(<LOCAL_MAPPINGS>)...)
+```
+
+の部分だけです。
+
+さっそく例えとして、irisデータを使います。
+
+scatterplotで、sepal（がく片）とpetal（花びら）の長さを比べます。
+
+```{r}
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point()
+```
+
+英語ですが、もっとわかりやすい説明は、<https://rstudio.github.io/cheatsheets/html/data-visualization.html>を参考にしてください。
+
+## 基本のコード
+
+先ほども書いたように、必要最低限は最初の2行です。
+
+```         
+ggplot(data = <DATA>, mapping = aes(<GLOBAL_MAPPINGS>)) +
+  <GEOM_FUNCTION>(mapping = aes(<LOCAL_MAPPINGS>)...)
+```
+
+\<\> ⟵ この中だけは自分のデータとどんなグラフを作るかに合わせて変えますが、それ以外は変わりません。
+
+```{r}
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point()
+```
+
+なので、データは`iris`。
+
+## aes
+
+`aes`とはaestheticsの略です。ｘやｙにどの変数を割り当てる、そしてグラフの色や点の形など、x, y, alpha, color, fill, shape, size, strokeを変更できます。なので、必要なのはｘとｙです。

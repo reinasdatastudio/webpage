@@ -1,0 +1,75 @@
+---
+title: "ggplotでよく使うグラフ"
+date: 2026-02-13
+description: "ggplot2をわかりやすくまとめました。"
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+draft: true
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+---
+
+Use this example again but focus on **scatterplots as a graph type**.
+
+```         
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +   geom_point()
+```
+
+Explain:
+
+-   scatterplot
+
+-   when to use it
+
+-   continuous vs continuous variables
+
+Later you can add:
+
+```         
+geom_histogram() geom_boxplot() geom_bar()
+```
+
+## どのグラフを使うか
+
+変数のタイプによって、使うグラフが変わります。
+
+### 離散値１つの場合：
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(iris, aes(x=Species)) +
+  geom_bar()
+```
+
+### 連続値１つの場合
+
+`ggplot(iris, aes(x=Sepal.Length)) +   geom_histogram(binwidth = 0.2)`
+
+他にも、
+
+`ggplot(iris, aes(x=Sepal.Length)) +   geom_density(adjust = 1)`
+
+などがあります。
+
+一番使いそうなのを例えで出しましたが、ほかにもグラフの種類はあるので、くわしくは
+
+<https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf>
+
+のチートシートをご覧ください。
+
+### 連続値２つの場合
+
+`ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +   geom_point()`
+
+`geom_point()`はいわゆる散布図（scatterplot）の事です。主にxとyの両方が連続値の場合に使われます。
+
+`ggplot(data=iris, aes(x=Species, y=Sepal.Length)) +   geom_boxplot()`

@@ -7,6 +7,468 @@
     "text": "These selected projects demonstrate how I approach data: with clarity, reproducibility, and practical outcomes.\nFor confidential client work, details may be limited.\nIf you’re working on a healthcare, research, or data-driven project and need clear, reproducible R support, feel free to get in touch."
   },
   {
+    "objectID": "projects.html#healthcare-and-research-projects",
+    "href": "projects.html#healthcare-and-research-projects",
+    "title": "Projects",
+    "section": "Healthcare and Research Projects",
+    "text": "Healthcare and Research Projects\nProjects demonstrating clinical context, statistical analysis and reproducible R workflows.\n\n\n\n\n\nReproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)\nReproducible exploratory analysis of pharmacovigilance data using FAERS.\n\nContext\nAnalysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).\n\nCase-level aggregation\nHandling duplicate reports\nCautious interpretation of spontaneous reporting data.\n\n\n\nOutcome\nDelivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.\n\nFrequently reported reactions do not necessarily correspond to severe outcomes\nImportance of separating reporting frequency from clinical significance\n\n\n\n\n\n\n\n\n\nHypertension Clinical Treatment Analysis\nReproducible clinical data analysis with clear interpretation for treatment comparison.\n\nContext\nSimulated clinical trial dataset comparing treatment outcomes for hypertension patients.\n\nCleaned and structured clinical variables\nPerformed statistical comparison between treatment groups\nCreated publication-style visualisations\nDocumented assumptions and analytical workflow\n\n\n\nOutcome\nDelivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.\n\nStructured R analysis script\nCleaned dataset\nVisualisations suitable for reporting\nWritten interpretation of results"
+  },
+  {
+    "objectID": "projects.html#data-science-and-general-analytics",
+    "href": "projects.html#data-science-and-general-analytics",
+    "title": "Projects",
+    "section": "Data Science and General Analytics",
+    "text": "Data Science and General Analytics\nBroader data science projects showcasing modelling, visualisation and application design.\n\n\n\n\n\nForecasting prices of diamonds\nStatistical exploration and modelling of pricing factors in a high-dimensional dataset.\n\nContext\nDataset analysing how characteristics influence diamond pricing.\n\nCleaned and explored multivariate data\nBuilt regression models to assess price drivers\nVisualised relationships between features and pricing\n\n\n\nOutcome\nIdentified key variables influencing price and demonstrated reproducible modelling workflow.\n\nReproducible R script\nModel output and interpretation\nVisualisations\n\n\n\n\n\n\n\n\n\ne-commerce Sales Analysis Dashboard\nInteractive R Shiny dashboard enabling non-technical users to explore sales performance.\n\nContext\nRetail-style dataset requiring dynamic filtering and real-time data exploration.\n\nDesigned and built an interactive Shiny application\nImplemented reactive filters and summary panels\nCreated dynamic visualisations for performance tracking\n\n\n\nOutcome\nDelivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.\n\nFully functional Shiny application\nStructured and documented R code\nDeployment-ready project structure\n\n\n\n\n\n\n\n\n\nSuperstore R Shiny Dashboard\nExploratory data analysis and visualisation of retail sales data.\n\nContext\nMulti-variable retail dataset examining sales performance across regions and categories.\n\nCleaned and prepared transactional data\nConducted exploratory data analysis\nBuilt visualisations to highlight key trends and patterns\nIdentified performance drivers and segment differences\n\n\n\nOutcome\nProduced actionable insights into sales distribution, regional performance, and product trends.\n\nStructured R analysis script\nClear visualisations\nSummary of findings"
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html",
+    "href": "projects/FAERS2025Q3.html",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "",
+    "text": "This project demonstrates a reproducible workflow for exploratory pharmacovigilance analysis using the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset.\nUsing structured R scripts and case-level aggregation, I examined:\n\nFrequently reported adverse reaction terms\nCase-level reporting patterns\nData structure and duplication considerations\n\nThis analysis is exploratory and intended for structured signal awareness rather than causal inference.\nThis case study reflects how I structure large healthcare datasets with clarity, traceability and cautious interpretation."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#executive-summary",
+    "href": "projects/FAERS2025Q3.html#executive-summary",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "",
+    "text": "This project demonstrates a reproducible workflow for exploratory pharmacovigilance analysis using the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset.\nUsing structured R scripts and case-level aggregation, I examined:\n\nFrequently reported adverse reaction terms\nCase-level reporting patterns\nData structure and duplication considerations\n\nThis analysis is exploratory and intended for structured signal awareness rather than causal inference.\nThis case study reflects how I structure large healthcare datasets with clarity, traceability and cautious interpretation."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#analytical-objective",
+    "href": "projects/FAERS2025Q3.html#analytical-objective",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Analytical Objective",
+    "text": "Analytical Objective\nTo examine reporting patterns in FAERS 2025 Q3 data by combining:\n• Reaction reporting behaviour (REAC table)\n• Outcome severity indicators (OUTC table)\nThe goal is exploratory signal awareness using case-level aggregation, not estimation of clinical risk."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#context",
+    "href": "projects/FAERS2025Q3.html#context",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Context",
+    "text": "Context\nSpontaneous adverse event databases such as FAERS contain large volumes of real-world safety reports.\nHowever, these data are frequently misinterpreted because reporting frequency is influenced by awareness, reporting behaviour, and follow-up submissions rather than true incidence.\nFor healthcare and research teams, the practical value of FAERS lies in structured signal awareness rather than causal inference.\nThis project explores how reporting patterns can be examined cautiously using a reproducible R workflow."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#data-source",
+    "href": "projects/FAERS2025Q3.html#data-source",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Data Source",
+    "text": "Data Source\n\n[FAERS public dataset (FDA)](https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html)\nReporting is voluntary\nData includes duplicates and reporting bias\n\nThe most recent data as of current date was downloaded and used. The faers_ascii_2025q3.zip was downloaded from the official United States government website.\nThe folder includes seven .txt files:\n\nDEMO25Q3.txt (Demographics)\nDRUG25Q3.txt (Drug)\nINDI25Q3.txt (Indication)\nOUTC25Q3.txt (Outcome)\nREAC25Q3.txt (Reaction)\nRPSR25Q3.txt (Report_Sources)\nTHER25Q3.txt (Therapy)\n\n\n\n\nFigure 1: ASCII Entity Relationship Diagram (ERD)\n\n\nThis analysis uses the FDA Adverse Event Reporting System (FAERS) public dataset, specifically the REAC and OUTC table from 2025 Q3.\nThe REAC table contains adverse reaction terms reported for individual case reports. Each row represents a reported reaction linked to a case identifier (primaryid).\nThe OUTC table contains patient outcome information for each adverse event report, indicating the result of the event (Such as death, hospitalisation etc.)"
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#data-and-structural-consideration",
+    "href": "projects/FAERS2025Q3.html#data-and-structural-consideration",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Data and Structural Consideration",
+    "text": "Data and Structural Consideration\nIt is important to note that FAERS data is based on spontaneous reports and does not represent confirmed adverse drug reactions.\nSeveral limitations must be considered when interpreting FAERS adverse reaction data such as:\n\nA single case may include multiple reported reactions\nReporting frequency does not equal incidence or risk\nDuplicate or follow-up reports may exist\nReporting is influenced by media attention and regulatory actions\n\nAs a result, counts and trends should be interpreted cautiously and used for signal exploration rather than causal inference.\nImportant:\nThis analysis is exploratory and does not imply causality.\nAll analyses were conducted at the case level (caseid) to reduce over-counting from follow-up submissions."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#reproducible-workflow",
+    "href": "projects/FAERS2025Q3.html#reproducible-workflow",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Reproducible Workflow",
+    "text": "Reproducible Workflow\nTo ensure traceability and repeatability, the analysis was performed using a scripted workflow in R rather than manual data manipulation.\nThe workflow consisted of:\n\nImporting raw FAERS ASCII files directly into R\nPerforming case-level aggregation to avoid double counting follow-up reports\nApplying cleaning and transformation steps through documented code\nGenerating tables and figures automatically from the analysis script\n\nThis approach ensures the results can be regenerated whenever the dataset is updated and provides a clear audit trail of all processing steps."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#analytical-approach",
+    "href": "projects/FAERS2025Q3.html#analytical-approach",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Analytical Approach",
+    "text": "Analytical Approach\nThe analysis is structured in two complementary parts.\nFirst, the REAC table is used to understand what types of reactions are most frequently reported and how reports are distributed across cases.\nSecond, the OUTC table is used to examine how serious those reported cases are.\nTogether, these perspectives allow cautious interpretation:\nfrequently reported events are not necessarily severe, and severe outcomes are not necessarily frequent."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#reac-table-overview",
+    "href": "projects/FAERS2025Q3.html#reac-table-overview",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "REAC Table Overview",
+    "text": "REAC Table Overview\n\n\n\nREAC table\n\n\nprimaryid\ncaseid\npt\ndrug_rec_act\n\n\n\n\n100289774\n10028977\nFixed eruption\n\n\n\n100289774\n10028977\nStevens-Johnson syndrome\n\n\n\n100289774\n10028977\nToxic epidermal necrolysis\n\n\n\n1005762123\n10057621\nDyspnoea\n\n\n\n1005762123\n10057621\nHypotension\n\n\n\n1005762123\n10057621\nAsthma\n\n\n\n\n\n\nKey variables include:\n\nprimaryid: Unique identifier for each case report\npt: Preferred Term describing the adverse reaction (MedDRA)\ncaseid: Case-level identifier\ndrug_rec_act: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.\n\n\nREAC Data Preparation\nData exploration of REAC table.\n\n# Number of rows in REAC table\nnrow(reac)\n\n[1] 1535133\n\n\n\n# How many primary IDs are in the table\nlength(unique(reac$primaryid))\n\n[1] 438512\n\n\n\n# How many unique case IDs are there\nlength(unique(reac$caseid))\n\n[1] 438512\n\n\n“How many adverse reaction terms are reported per case?”\nIn the 25Q3 version the number of caseid are the same as the number of primaryid, but for the purpose of clarification, as FAERS cases may include multiple report versions due to follow-up submissions, analyses in this report are conducted at the case level (caseid) to avoid over-counting reactions associated with report updates.\n\nRemove duplicate rows\n\n#Remove `primaryid`\nreac_new &lt;- select(reac, -\"primaryid\")\n\n\n#Remove duplicate rows\nreac_new &lt;- reac_new %&gt;%\n  distinct()\n\n\n\nCheck for missing data\n\n\n\nCheck for missing data\n\n\ncaseid\npt\n\n\n\n\n0\n0\n\n\n\n\n\nNo missing data observed in caseid and pt.\n\n\n\nREAC Data Analysis\n\nFrequency of reactions per case\nCount how many cases have n number of adverse reactions.\n\n\n\n\n\nnum_reactions\nnum_cases\n\n\n\n\n1\n165032\n\n\n2\n96560\n\n\n3\n56754\n\n\n4\n35258\n\n\n5\n22402\n\n\n\n\n\n\n#Summary of number of reactions\nsummary(reac_per_case$`Number of reaction`)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.00    2.00    3.46    4.00  226.00 \n\n\n\n#IQR of number of reactions\nIQR(reac_per_case$`Number of reaction`)\n\n[1] 3\n\n\n\n\n\n\n\nFigure 2: Histogram of count of Number of Reactions\n\n\n\n\n\n\nReaction Reporting Behaviour\nMost cases report only a small number of reaction terms, with a long tail of multi-reaction cases.\nThis reflects reporting behaviour rather than clinical complexity alone.\nThe median number of reported reactions per case is low, indicating that single-event reporting is common in spontaneous submissions.\nAs expected, the number of cases decreases as the number of adverse reactions increase. About a quarter of the cases only had one adverse events, with median of 2 pts per case, suggesting that single-event reporting is common.\n\n\nFrequently Reported Reaction Terms\nThe following table summarises the most frequently reported preferred terms in the dataset.\nThese represent reporting concentration rather than confirmed drug risk.\n\n\n\n\n\npt\nCount\n\n\n\n\nOff label use\n30127\n\n\nDrug ineffective\n24151\n\n\nFatigue\n20698\n\n\nDeath\n19165\n\n\nNausea\n18412\n\n\nDiarrhoea\n16955\n\n\nProduct dose omission issue\n15936\n\n\nHeadache\n14143\n\n\nDyspnoea\n13040\n\n\nPain\n12296\n\n\n\n\n\n\n\n\n\n\nFigure 3: A bar graph of top 15 pt terms\n\n\n\n\n\n\n\nOutcome Severity Perspective (OUTC)\nReaction frequency alone cannot indicate clinical importance.\nTo add context, outcome information is examined to understand how serious reported cases are.\nWhile REAC shows what is reported, OUTC shows the consequence of those reports."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#outc-table-overview",
+    "href": "projects/FAERS2025Q3.html#outc-table-overview",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "OUTC Table Overview",
+    "text": "OUTC Table Overview\nNow we will look at the OUTC25Q3.txt file to find the distribution of the severity of adverse effects.\n\n\n\nConvert OUTC25Q3.txt to a table\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n100289774\n10028977\nHO\n\n\n100289774\n10028977\nOT\n\n\n1005762123\n10057621\nHO\n\n\n100789263\n10078926\nDE\n\n\n101573482\n10157348\nHO\n\n\n101573482\n10157348\nOT\n\n\n\n\n\nKey variables include:\n\nprimaryid: Unique identifier for each case report\ncaseid: Case-level identifier.\noutc_cod: Code of the outcome\n\nDE = Death\nLT = Life-threatening\nHO = Hospitalisation\nDS = Disability\nCA = Congenital anomaly\nRI = Required intervention\nOT = Other\n\n\n\nOUTC Data Preparation\n\n\n\nChecking for any missing data\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n0\n0\n0\n\n\n\n\n\n\n\nOUTC Data Analysis\n\n\n\nCount of Outcome Code\n\n\noutc_cod\nn\n\n\n\n\nOT\n191229\n\n\nHO\n91722\n\n\nDE\n34803\n\n\nLT\n15461\n\n\nDS\n7226\n\n\nCA\n1758\n\n\nRI\n1052\n\n\n\n\n\n\n\n\n\n\nFigure 4: Bar graph for easier visualisation\n\n\n\n\nTotal of 34,803 deaths, possibly caused by drugs, is an astonishing number considering this data is only one quarter of a year.\nAs the codes are quite broad, we cannot determine what exactly “Others” is, but according to the FAERS document it is all important medical event. “Requiring intervention” (To Prevent Permanent Impairment/Damage) scored the lowest which indicates most of the adverse effects are unpreventable, or are unnoticed before it is too late.\nThe number of “Deaths” are well above the adverse effect of 19,165 in the REAC table - The reason possibly being because there may had been other side effects and those who submitted the data had interpreted Death as the outcome, instead of an adverse effect.\nThere is no clear cut as to what is categorised as serious and what is not, but for the purpose of this report, DE and LT will be categorised as “Serious”, HO as “Moderate” and others as “Non-serious”.\n\n\n\n\n\nFigure 5: Categorising Severity of Outcome and the total count of each severity\n\n\n\n\n\n\nCombining REAC and OUTC Tables\n\n\n\nSummarised REAC table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\n\n\n\n\n3731857\n3\nFALSE\n\n\n4119816\n1\nFALSE\n\n\n4197637\n2\nFALSE\n\n\n5815921\n9\nTRUE\n\n\n5821261\n6\nTRUE\n\n\n5962033\n5\nTRUE\n\n\n6047261\n3\nFALSE\n\n\n6171681\n2\nFALSE\n\n\n6171682\n5\nTRUE\n\n\n6171684\n2\nFALSE\n\n\n\n\n\n\n\n\nSummarised OUTC table\n\n\ncaseid\noutc_cod\nSeverity\n\n\n\n\n10078926\nDE\nSevere\n\n\n10346795\nDE\nSevere\n\n\n10410135\nDE\nSevere\n\n\n10427284\nDE\nSevere\n\n\n10427284\nLT\nSevere\n\n\n10449048\nDE\nSevere\n\n\n10463057\nDE\nSevere\n\n\n10597316\nLT\nSevere\n\n\n10621415\nLT\nSevere\n\n\n10732078\nDE\nSevere\n\n\n\n\n\n\n\n\nCombining Reaction and Outcome Summary Table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\noutc_cod\nSeverity\n\n\n\n\n3731857\n3\nFALSE\nDE\nSevere\n\n\n3731857\n3\nFALSE\nHO\nModerate\n\n\n3731857\n3\nFALSE\nOT\nNon-Serious\n\n\n4119816\n1\nFALSE\nHO\nModerate\n\n\n4197637\n2\nFALSE\nDE\nSevere\n\n\n4197637\n2\nFALSE\nOT\nNon-Serious\n\n\n5815921\n9\nTRUE\nHO\nModerate\n\n\n5815921\n9\nTRUE\nDS\nNon-Serious\n\n\n5821261\n6\nTRUE\nDE\nSevere\n\n\n5821261\n6\nTRUE\nHO\nModerate\n\n\n5821261\n6\nTRUE\nOT\nNon-Serious\n\n\n5962033\n5\nTRUE\nDE\nSevere\n\n\n5962033\n5\nTRUE\nHO\nModerate\n\n\n6047261\n3\nFALSE\nDE\nSevere\n\n\n6047261\n3\nFALSE\nLT\nSevere\n\n\n\n\n\n\n\n\nCheck for missing data\n\n\ncaseid\noutc_cod\nSeverity\nn_reactions\nfive_or_more_reactions\n\n\n\n\n0\n184126\n184126\n0\n0\n\n\n\n\n\nMany of the cases has missing outcomes - This shows the realness of data gathering; as the outcome reporting is optional many cases will report reactions caused by drugs only. Because this is an important part of the analysis, the missing values are (By R default) included as “NA”. i.e. No outcome recorded.\n\n\n\n\n\nFigure 6: A bar graph visualising the severity of adverse reactions\n\n\n\n\n\nkable(reac_outc %&gt;%\n  count(Severity) %&gt;%\n  mutate(percentage = n / sum(n) * 100))\n\n\n\n\nSeverity\nn\npercentage\n\n\n\n\nModerate\n91722\n17.392112\n\n\nNon-Serious\n201265\n38.163401\n\n\nSevere\n50264\n9.530943\n\n\nNA\n184126\n34.913544\n\n\n\n\n\nOnly 65.1% of FAERS cases report outcome data. Severity analyses therefore reflect a subset of reports and may underestimate true risk.\n\n\n\n\n\nFigure 7: A histogram showing how many cases reported what number of reactions, coloured with severity\n\n\n\n\n\n\n\n\n\nFigure 8: Severe outcomes by number of reported reactions\n\n\n\n\nAlthough the difference is subtle, cases reporting five or more adverse reactions show a higher proportion of severe outcomes (death or life-threatening reactions) compared with cases reporting fewer reactions."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#interpretation",
+    "href": "projects/FAERS2025Q3.html#interpretation",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Interpretation",
+    "text": "Interpretation\nCombining reaction frequency and outcome severity provides a more cautious understanding of FAERS data.\nFrequently reported reactions do not necessarily correspond to severe outcomes, and serious outcomes may occur in less frequently reported terms.\nThis demonstrates why spontaneous reporting databases should be used for signal awareness and prioritisation rather than risk estimation.\n\nClinical Context\nIt is very important to keep in mind that these are all real-life data with many missing values and errors. It is not possible to know where there may be errors, but a few possibilities include:\n\nError submitting an update as a new case\nEntry error\nMultiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions\n\nWhile there are many possible errors to keep in mind, the data has a huge number of cases reported. Larger reporting volume may reveal consistent patterns, but does not remove reporting bias. An increase in reports does not necessarily indicate increased risk. Possible contributions to the bias include:\n\nIncreased prescribing\nMedia attention\nRegulatory changes\n\nThe results should be read and analysed with the potential errors and influences in mind, and any healthcare professionals or researchers who intend to use this as reference should always use their clinical judgement.\n\n\nKey Findings\n\nReporting frequency is concentrated in a small subset of reaction terms\nMost cases contain a limited number of reported reactions\nSerious outcomes occur across both frequent and infrequent terms\nReaction frequency alone does not indicate clinical severity"
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#potential-use-cases",
+    "href": "projects/FAERS2025Q3.html#potential-use-cases",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Potential Use Cases",
+    "text": "Potential Use Cases\nThis type of analysis could support:\n\nPharmacovigilance signal review\nInternal safety discussions\nEducational summaries"
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#conclusion",
+    "href": "projects/FAERS2025Q3.html#conclusion",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis case study demonstrates a reproducible approach to structuring and interpreting large pharmacovigilance datasets in R.\nBy separating reaction frequency from outcome severity and analysing data at the case level, reporting patterns can be explored while maintaining appropriate clinical caution.\nSuch workflows support exploratory safety assessment and communication, but should not be interpreted as evidence of causality or incidence."
+  },
+  {
+    "objectID": "projects/FAERS2025Q3.html#about-the-author",
+    "href": "projects/FAERS2025Q3.html#about-the-author",
+    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "section": "About the Author",
+    "text": "About the Author\nI am a former pharmacist specialising in R-based data analysis for healthcare and research.\nI support projects in English and Japanese.\nIf you need structured analysis of datasets using reproducible R workflows, feel free to get in touch."
+  },
+  {
+    "objectID": "ja.html",
+    "href": "ja.html",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。\n\n\n\n\n統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助\n\n\n\n\n「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
+  },
+  {
+    "objectID": "ja.html#rデータ解析サポート",
+    "href": "ja.html#rデータ解析サポート",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。"
+  },
+  {
+    "objectID": "ja.html#主なサポート内容",
+    "href": "ja.html#主なサポート内容",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助"
+  },
+  {
+    "objectID": "ja.html#日本語でご相談いただけます",
+    "href": "ja.html#日本語でご相談いただけます",
+    "title": "Reina's Data Studio",
+    "section": "",
+    "text": "「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
+  },
+  {
+    "objectID": "enquiry.html",
+    "href": "enquiry.html",
+    "title": "Enquiry",
+    "section": "",
+    "text": "If you have a dataset, question, or project in mind, I’d be happy to hear from you.\nYou don’t need to have everything figured out — a short description is enough to start the conversation.\nI typically respond within 24–48 hours.\nYour data and information will be treated confidentially. You are welcome to anonymise or share sample data initially.\n\nTo help me understand your project, you may include:\n\nYour goal or main question\nType of dataset (clinical, survey, retail, etc.)\nApproximate dataset size\nTimeline or deadline (if any)\nWhether you can share sample data\n\nYou don’t need to provide everything — this just helps me respond more efficiently.\n\n\n\n\n\n First Name  \n Last Name  \n\n\n Email  \n Organisation (Optional) \n\nType of support needed  Quick fix Reproducible Analysis Ongoing Support Teaching / MentoringOther (Please specify below) \n Message\n\n\n\nSend"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
+    "title": "Rでよくあるエラー10選",
+    "section": "",
+    "text": "今回は、特に初心者にありがちなエラーを10個選んで解説していきます。\n慣れてきた頃にもやりがちです。特に1と９。でもなれるとすぐに原因がわかり、すぐに直せるようになるので、何度も挑戦しましょう。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
+    "title": "Rでよくあるエラー10選",
+    "section": "1. object ‘x’ not found",
+    "text": "1. object ‘x’ not found\nこれは本当によくあります。直すのはものすごく簡単で、\nx = 8\nなど、xに何かを割り当てれば終わりです。\nもう一つの原因はスペルミスです。自分の場合は、特にオブジェクトの名前を無駄に長くしてしまった時にあります。\nオブジェクトの名前が、例えばxではなくreinasdatastudioの場合で、スペルミスをしてしまった時は、\nobject 'reinasdatastudi' not found\nなどと、自分が打ったスペルミスが表示されるので、しっかり確認してみてください。\n\n\n\n\n\n\n\nエラー\nError: object ‘x’ not found\n\n\n意味\n指定したオブジェクト（変数やデータ）が存在しません。\n\n\nよくある原因\n\nオブジェクト名のスペルミス\nデータを読み込んでいない\nオブジェクトを作る前に使っている\n\n\n\n解決方法\nオブジェクトが存在するか確認します。\nls()\nまた、スペルミスがないか確認します。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
+    "title": "Rでよくあるエラー10選",
+    "section": "2. unexpected symbol",
+    "text": "2. unexpected symbol\n\n\n\n\n\n\n\nエラー\nError: unexpected symbol\n\n\n意味\nコードの構文が正しくありません。\n\n\nよくある原因\n\nコンマ , の不足\nカッコ () の閉じ忘れ\nパイプ %&gt;% の位置ミス\n\n\n\n解決方法\nコードの構文を確認します。 特にカッコやコンマの位置をチェックします。"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
+    "title": "Rでよくあるエラー10選",
+    "section": "3. argument is missing, with no default",
+    "text": "3. argument is missing, with no default\n例えばfunction（関数）を使うときに、\nmy_func &lt;- function(x,y)\nなのに、間違えて\nmy_func(1, )\nや\nmy_func(1)\nなど、その関数にあったargument（引数）が使われていない時のエラーです。\nこの例の場合、正しいのは\nmy_func(1,2)\nなど、xとyが何なのかを指定しないといけません。\n\n\n\n\n\n\n\nエラー\nError: argument is missing, with no default\n\n\n意味\n関数に必要な引数が指定されていません。\n\n\nよくある原因\n\n必須引数を指定していない\nコンマの書き忘れ\n\n\n\n解決方法\n関数の引数を確認します。\n?function_name"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
+    "title": "Rでよくあるエラー10選",
+    "section": "4. non-numeric argument to binary operator",
+    "text": "4. non-numeric argument to binary operator\nたまに、数字に見えてもRはそれをstringなどと認識している場合があるので、ちゃんとclassがnumericなのを確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: non-numeric argument to binary operator\n\n\n意味\n数値ではないデータに対して計算を行おうとしています。\n\n\nよくある原因\n\n文字列データを計算している\n数値として読み込まれていない\n\n\n\n解決方法\nデータ型を確認します。\nclass(x)\n必要なら数値に変換します。\nas.numeric(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
+    "title": "Rでよくあるエラー10選",
+    "section": "5. cannot open the connection",
+    "text": "5. cannot open the connection\nこれは最初はすごく複雑です。わかりやすく説明しますと、\nRが指定されたファイルを見つけられない、または開けないときに出ます。\n一番よくある原因は、Rに伝えたファイルの場所が、今作業中のフォルダの中にないときです。例えば、\nread.csv(\"data.csv\")\nでファイルを開こうとしても、Rが今作業しているフォルダ、すなわちDirectoryにそのデータファイルがないとRはそれを開けません。\nRStudioを開けた時の右側のMoreと書かれているギアアイコンをクリックすると、今どこのDirectoryで作業しているのかを確認できます。Go To Working Directory（今作業中のDirectoryに行く）をクリックすれば、Rが今見ているフォルダーを開いてくれます。\n違うDirectoryに変えたい場合は、作業したいフォルダーに行ってから、Set As Working Directory（このフォルダーをDirectoryにする）をクリックしてください。\n\nこれらのステップをコンソールでしたいなら、以下の通りsetwdでDirectoryにしたいフォルダーの場所(Path)を指定します。\n\n経験上自分が一番最初てこずったエラーです。\nほかの原因は、データファイルのスペルミス、ダブルクォーテーション（””）の入れ忘れなどもあるので、ちゃんとファイルの名前が正しく書かれているか確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: cannot open the connection\n\n\n意味\nファイルやURLを開くことができません。\n\n\nよくある原因\n\nファイルパスが間違っている\nファイルが存在しない\n作業ディレクトリが違う\n\n\n\n解決方法\n現在の作業ディレクトリを確認します。\ngetwd()\n必要なら変更します。\nsetwd(“path”)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
+    "title": "Rでよくあるエラー10選",
+    "section": "6. object of type ‘closure’ is not subsettable",
+    "text": "6. object of type ‘closure’ is not subsettable\nあまり聞かないエラーですが、例えば変数（Variable）の名前が関数（Function）の名前と同じだったりした時にでます。Rが変数を関数と勘違いしてしまいます。\n\n\n\n\n\n\n\nエラー\nError: object of type ‘closure’ is not subsettable\n\n\n意味\n関数をデータのように扱っています。\n\n\nよくある原因\n関数名とオブジェクト名が同じ。\n例：mean[1]\n\n\n解決方法\n関数ではなくデータを指定します。\n例：mean(c(1,2,3))"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
+    "title": "Rでよくあるエラー10選",
+    "section": "7. replacement has length zero",
+    "text": "7. replacement has length zero\n\n\n\n\n\n\n\nエラー\nError: replacement has length zero\n\n\n意味\n空の値を代入しようとしています。\n\n\nよくある原因\n\n条件に一致するデータが存在しない\nインデックスが空になっている\n\n\n\n解決方法\nデータの長さを確認します。\nlength(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
+    "title": "Rでよくあるエラー10選",
+    "section": "8. subscript out of bounds",
+    "text": "8. subscript out of bounds\n７同様、まだシンプルなエラーですね。\n\n\n\n\n\n\n\nエラー\nError: subscript out of bounds\n\n\n意味\n存在しない位置の要素にアクセスしています。\n\n\nよくある原因\nデータのサイズより大きい番号を指定している。\n例：x[10]\n（データが5個しかない場合）\n\n\n解決方法\nデータのサイズを確認します。\nlength(x)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
+    "title": "Rでよくあるエラー10選",
+    "section": "9. could not find function",
+    "text": "9. could not find function\n\n\n\n\n\n\n\nエラー\nError: could not find function\n\n\n意味\n関数が見つかりません。\n\n\nよくある原因\n\nパッケージを読み込んでいない\n関数名のスペルミス\n\n\n\n解決方法\nパッケージをロードします。\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
+    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
+    "title": "Rでよくあるエラー10選",
+    "section": "10. NA/NaN argument",
+    "text": "10. NA/NaN argument\nちなみに、欠損値があるか確認する方法は複数あります。\nanyNA(data)\nはデータの中に欠損値があればTRUE、なければFALSEが出ます。\nsum(is.na(data))\nは、何個TRUE、つまりNA/欠損値があるか確認します。\nそしてデータのコラムごとに確認したい場合は、\ncolSums(is.na(data))\nと入力するとどのコラムに何個NAがあるか確認できます。\n\n\n\n\n\n\n\nエラー\nError: NA/NaN argument\n\n\n意味\n計算にNAやNaNが含まれています。\n\n\nよくある原因\nデータに欠損値がある。\n\n\n解決方法\nNAを除外して計算します。\nmean(x, na.rm = TRUE)\n\n\n\n説明が分かりにくかったり、質問があれば、ぜひ教えてください。\nたくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！\n他にもRのことで質問や相談があれば、気軽にご連絡ください。\n日本語でRコンサルティングをしています。\nEmail: reinasdatastudio@gmail.com"
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "",
+    "text": "Healthcare data is not just data.\nBehind every dataset are real patients, real decisions, and real consequences. A misplaced assumption or undocumented change is not simply a technical issue — it can affect interpretation, policy, or treatment decisions.\nThat is why reproducibility is not optional in healthcare data analysis. It is foundational."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "What Does “Reproducibility” Actually Mean?",
+    "text": "What Does “Reproducibility” Actually Mean?\nIn simple terms, reproducibility means:\n\nIf someone else runs your analysis using the same data and code, they should get the same results.\n\nThat sounds obvious. But in practice, it is surprisingly easy to break reproducibility.\nCommon issues include:\n\nManual data edits in Excel\nCopy-pasted results without saved code\nUntracked changes to datasets\nHard-coded values with no explanation\nAnalyses run interactively without documentation\n\nIn research and healthcare settings, these small shortcuts accumulate into serious risk."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Why It Matters More in Healthcare",
+    "text": "Why It Matters More in Healthcare\nIn some industries, minor inconsistencies might be inconvenient.\nIn healthcare, they can be dangerous.\nReproducibility matters because:\n\n1. Accuracy and Accountability\nHealthcare decisions often rely on statistical outputs. If results cannot be traced back to documented steps, confidence in those results weakens.\nReproducible workflows create an audit trail:\n\nWhat data was used?\nWhat cleaning steps were applied?\nWhat assumptions were made?\nWhat model was fitted?\n\nThis level of clarity protects both patients and professionals.\n\n\n2. Transparency for Collaboration\nClinical and research projects rarely involve just one person. Analysts, clinicians, reviewers, and stakeholders may all interact with the results.\nWhen analysis is reproducible:\n\nTeam members can verify findings\nAssumptions can be discussed openly\nChanges can be implemented systematically\n\nWithout reproducibility, collaboration becomes fragile and dependent on memory rather than structure.\n\n\n3. Long-Term Sustainability\nHealthcare research often spans months or years.\nIf you revisit a project six months later and cannot easily regenerate the results, you lose time and confidence.\nReproducible workflows mean:\n\nYou can re-run the analysis with updated data\nYou can adjust models without starting from scratch\nYou can respond to reviewer comments efficiently\n\nThis is not just about neatness. It is about sustainability."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "How R Supports Reproducibility",
+    "text": "How R Supports Reproducibility\nOne of the reasons I chose R is its ability to create a beautiful reproducible analysis.\nTools such as:\n\nR Markdown\nQuarto\nStructured project folders\nScript-based data cleaning\n\nallow analysis, interpretation, and reporting to exist in a single, transparent workflow.\nInstead of:\n\nClean data manually\nRun analysis\nCopy results into a Word document\n\nall using separate programs,\nYou can:\n\nClean data using documented scripts\nRun statistical models in code\nGenerate reports automatically\n\nThe entire process becomes traceable and repeatable, because the entire process is saved in one big tool."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "A Practical Example",
+    "text": "A Practical Example\nImagine analysing a clinical dataset comparing treatment groups.\nWithout reproducibility:\n\nData cleaning happens in Excel\nOutliers are removed without documentation\nStatistical tests are run manually\nGraphs are exported separately\n\nSix months later, a colleague asks:\n\n“How did you exclude those patients?”\n\nIf the steps were not scripted, you may not know.\nWith reproducibility:\n\nAll exclusions are coded\nAll assumptions are documented\nAll outputs regenerate from the same script\nThe report updates automatically if data changes\n\nThe difference is clarity and control."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Reproducibility Is Also an Ethical Issue",
+    "text": "Reproducibility Is Also an Ethical Issue\nIn healthcare, data analysis is not purely technical — it is ethical.\nTransparent workflows:\n\nReduce unintentional bias\nPrevent undocumented data manipulation\nMake decisions defensible\n\nReproducibility demonstrates respect for the data and the people represented in it."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Building Reproducible Habits",
+    "text": "Building Reproducible Habits\nYou do not need complex systems to begin.\nStart with:\n\nKeeping raw data untouched\nWriting cleaning steps in scripts (not manually)\nSaving model code\nDocumenting assumptions clearly\nUsing Quarto or R Markdown to combine analysis and reporting\n\nSmall structural habits create large long-term stability."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nHealthcare data demands precision, transparency, and accountability.\nReproducibility is not about perfection. It is about responsibility.\nWhen analysis is reproducible:\n\nResults are trustworthy\nCollaboration is smoother\nFuture updates are manageable\nDecisions are defensible\n\nAnd in healthcare, that matters."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog Posts",
+    "section": "",
+    "text": "Why Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Reina’s Data Studio",
+    "section": "",
+    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nResigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
+  },
+  {
+    "objectID": "blog/index-ja.html",
+    "href": "blog/index-ja.html",
+    "title": "ブログ",
+    "section": "",
+    "text": "ggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "",
+    "text": "When people see that I started my career in pharmacy and now work in data science, the first question is usually:\n“How did that happen?”\nThe short answer is curiosity.\nThe longer answer is that I’ve always been drawn to understanding systems — whether that system is the human body or a dataset."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Starting in Pharmacy",
+    "text": "Starting in Pharmacy\nPharmacy taught me something that still shapes how I work today: precision matters.\nIn healthcare, small details are not small. A misplaced decimal, a misunderstood value, or an incorrect assumption can have serious consequences. You learn to check carefully, to document properly, and to understand what each number actually represents.\nBut over time, I realised that what I enjoyed most was not memorising information — it was analysing it.\nI enjoyed understanding patterns.\nI enjoyed interpreting results.\nI enjoyed asking: Why does this happen?\nThat curiosity eventually led me toward computer science."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Discovering Programming",
+    "text": "Discovering Programming\nWhile studying engineering at the University of Auckland, I discovered computer science — and immediately fell in love with programming.\nProgramming felt different. It was logical, structured, and creative at the same time. It rewarded curiosity and precision. It gave immediate feedback. Most importantly, it felt like something I could continuously grow in.\nI later completed a one-year computer science programme with a focus on data science, where I was introduced more deeply to R.\nAnd that’s where something clicked."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Why R?",
+    "text": "Why R?\nR stood out to me for several reasons.\nFirst, it was built for statistics and analysis. It wasn’t just a general programming language — it was designed for thinking about data.\nSecond, it encouraged reproducibility. Tools like R Markdown and Quarto made it possible to combine analysis, interpretation, and reporting in a single, transparent workflow. That felt aligned with the healthcare mindset I came from.\nThird, it made complex analysis accessible. With the right structure, R allows you to move from raw data to meaningful insight in a clear and systematic way.\nTo me, R felt like a bridge between:\n\nclinical precision\nstatistical reasoning\nand structured programming\n\nIt wasn’t just about writing code. It was about creating clarity."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "From Employment to Independence",
+    "text": "From Employment to Independence\nAfter transitioning into data science, I worked in system engineering to broaden my technical experience while continuing to develop my data skills.\nEventually, I realised that I wanted to focus fully on what I enjoyed most: working directly with data and helping others understand it.\nStarting Reina’s Data Studio was a natural step. It allowed me to:\n\nWork independently\nSupport researchers and healthcare professionals\nShare my enthusiasm for R\nBuild something aligned with my values"
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "How Pharmacy Still Shapes My Work",
+    "text": "How Pharmacy Still Shapes My Work\nMy healthcare background continues to influence how I approach every project.\nI don’t treat data as abstract numbers. I think about:\n\nWhat does this variable really represent?\nWhere did this data come from?\nWhat assumptions are we making?\nCan this analysis be reproduced and audited later?\n\nThat mindset makes me careful — but also practical. Clean data. Clear documentation. Transparent decisions.\nIn healthcare and research, that matters."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Teaching and Sharing",
+    "text": "Teaching and Sharing\nOne of my core values is continuous learning. I genuinely believe that knowledge never betrays you.\nThat belief is why I share tutorials on YouTube and write about R here. Many R resources are in English, and I enjoy helping both English and Japanese speakers feel more confident navigating data and programming.\nR is constantly evolving. I am, too."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Looking Forward",
+    "text": "Looking Forward\nReina’s Data Studio is built on three things:\n\nTransparency\nPrecision\nA genuine passion for learning\n\nWhether I’m debugging a script, building a reproducible report, or explaining a statistical result, my goal is always the same:\nTo help people work with data clearly, ethically, and confidently."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "",
+    "text": "Practical, ethical data solutions - By a former pharmacist with clinical context\n\n\nWork with me\n\n\nSend your problem - Get a reply within 24-48 hours.\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
+  },
+  {
+    "objectID": "index.html#why-work-with-me",
+    "href": "index.html#why-work-with-me",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "",
+    "text": "Healthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
+  },
+  {
+    "objectID": "index.html#how-it-works",
+    "href": "index.html#how-it-works",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "How it works",
+    "text": "How it works\n\nInitial enquiry\nYou send a short message describing your data, question or problem.\nQuick discussion\nWe clarify your goals, timeline and the type of support that suits you best.\nTailored support and delivery\nI provide clean R code, clear explanations, and practical next steps you can reuse with confidence.\nOptional: Ongoing support"
+  },
+  {
+    "objectID": "index.html#who-i-help",
+    "href": "index.html#who-i-help",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Who I help",
+    "text": "Who I help\n\nProfessionals such as research teams, analysts and small companies\nStudents learning R/statistics\nTechnical teams needing workflow improvements\nSmall teams needing reliable R support and assistance with analysis\nHealthcare professionals working with data\nAnyone who wants clear, ethical data analysis\n\nIf you’re unsure whether your project fits, feel free to ask."
+  },
+  {
+    "objectID": "index.html#tools",
+    "href": "index.html#tools",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Tools",
+    "text": "Tools\n\nR / tidyverse\nggplot2\nShiny dashboards\nQuarto / R Markdown\nStatistical modelling and inference\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy-related data"
+  },
+  {
+    "objectID": "index.html#one-off-r-help",
+    "href": "index.html#one-off-r-help",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "One-off R Help",
+    "text": "One-off R Help\nDebugging, small questions, quick fixes.\n\nPricing\nFrom NZD 40-60 per case"
+  },
+  {
+    "objectID": "index.html#quick-fix-1-2-hours",
+    "href": "index.html#quick-fix-1-2-hours",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Quick Fix (1-2 hours)",
+    "text": "Quick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200-300 per hour (1-2 hour sessions)"
+  },
+  {
+    "objectID": "index.html#reproducible-analysis-report",
+    "href": "index.html#reproducible-analysis-report",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Reproducible Analysis & Report",
+    "text": "Reproducible Analysis & Report\n\nBest for\nHealthcare and research projects that need clean, defensible, and reusable results.\nTypical use cases:\n\nClinical/research or any other data analysis\nStatistical modelling and interpretation\nAutomated reports using Quarto / R Markdown\nForecasting and exploratory analysis\n\n\n\nWhat you get\n\nClean, well-structured R code\nReproducible analysis pipeline\nPublication- or stakeholder-ready report\nClear written interpretation of results\n\n\n\nPricing\nFrom NZD 1,990-5,700 per project\n(Scope and pricing depend on scope, project size and timeline)"
+  },
+  {
+    "objectID": "index.html#ongoing-r-support-retainer",
+    "href": "index.html#ongoing-r-support-retainer",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Ongoing R Support (Retainer)",
+    "text": "Ongoing R Support (Retainer)\n\nBest for\nTeams or individuals who want reliable, long-term R support without hiring full-time.\nTypical use cases:\n\nRegular analysis or reporting work\nCode review and workflow improvement\nMentoring and upskilling\nOngoing troubleshooting and advice\n\n\n\nWhat you get\n\nA fixed number of support hours per month\nPriority response\nConsistent, context-aware support\nA long-term collaborator who understands your data\n\nAvailable on a monthly basis.\n\n\nPricing\nFrom NZD 1,490-4000 per month\n(e.g. 6-20 hours/month; custom arrangements available)"
+  },
+  {
+    "objectID": "index.html#r-teaching-and-mentoring",
+    "href": "index.html#r-teaching-and-mentoring",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "R Teaching and Mentoring",
+    "text": "R Teaching and Mentoring\nIf you’re learning R or want to improve how you work with data, I also offer 1:1 or small-group teaching tailored to your background and goals.\nThis may include:\n\nLearning R from a healthcare or research perspective\nUnderstanding statistics through practical examples\nBuilding reproducible workflows with confidence\n\n\nPricing\nFrom NZD 160-250 per hour\n(Discounts available for students)"
+  },
+  {
+    "objectID": "index.html#learn-with-me-on-youtube",
+    "href": "index.html#learn-with-me-on-youtube",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Learn with me on YouTube",
+    "text": "Learn with me on YouTube\nI share practical R tutorials focused on real-world data problems."
+  },
+  {
+    "objectID": "index.html#english-version",
+    "href": "index.html#english-version",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "English version",
+    "text": "English version\nReina’s Data Studio"
+  },
+  {
+    "objectID": "index.html#japanese-version",
+    "href": "index.html#japanese-version",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Japanese version",
+    "text": "Japanese version\nReina’s Data Studio JP"
+  },
+  {
+    "objectID": "index.html#language-support",
+    "href": "index.html#language-support",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Language Support",
+    "text": "Language Support\nConsultations and support available in English or Japanese"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "section": "Contact",
+    "text": "Contact\nIf you have a dataset, question or project in mind, feel free to reach out.\nI typically respond within 24-48 hours."
+  },
+  {
     "objectID": "projects/diamonds_portfolio.html",
     "href": "projects/diamonds_portfolio.html",
     "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
@@ -75,76 +537,6 @@
     "title": "Data Science Project: Predicting Prices of Diamond using dataset from R library",
     "section": "Random Forest Evaluation",
     "text": "Random Forest Evaluation\n\nrf_pred &lt;- predict(rf_model, data = test)$predictions\nrmse_rf &lt;- rmse(obs, rf_pred)\nr2_rf &lt;- 1 - sum((obs - rf_pred)^2) / sum((obs - mean(obs))^2)\nrmse_rf; r2_rf\n\n[1] 600.003\n\n\n[1] 0.9774949\n\nimportance(rf_model)\n\n       carat          cut        color      clarity \n134362873572   1263539745   4621682773   7710461114 \n\n\nRandom Forest showed r-squared value of 0.977 which is higher than that of linear regression (0.961). RMSE (Root means squared error) was also lower for Random Forest, meaning that this model predicts the price better.\n\nConclusions\n\n\nCarat is the strongest predictor of diamond price.\nCut, color, and clarity refine predictions.\nIn this case where the null hypothesis of constant variance was rejected, Random Forest performed better in accurate predictions of prices."
-  },
-  {
-    "objectID": "enquiry.html",
-    "href": "enquiry.html",
-    "title": "Enquiry",
-    "section": "",
-    "text": "If you have a dataset, question, or project in mind, I’d be happy to hear from you.\nYou don’t need to have everything figured out — a short description is enough to start the conversation.\nI typically respond within 24–48 hours.\nYour data and information will be treated confidentially. You are welcome to anonymise or share sample data initially.\n\nTo help me understand your project, you may include:\n\nYour goal or main question\nType of dataset (clinical, survey, retail, etc.)\nApproximate dataset size\nTimeline or deadline (if any)\nWhether you can share sample data\n\nYou don’t need to provide everything — this just helps me respond more efficiently.\n\n\n\n\n\n First Name  \n Last Name  \n\n\n Email  \n Organisation (Optional) \n\nType of support needed  Quick fix Reproducible Analysis Ongoing Support Teaching / MentoringOther (Please specify below) \n Message\n\n\n\nSend"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "",
-    "text": "Practical, ethical data solutions - By a former pharmacist with clinical context\n\n\nWork with me\n\n\nSend your problem - Get a reply within 24-48 hours.\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
-  },
-  {
-    "objectID": "index.html#expert-r-solutions-for-your-data",
-    "href": "index.html#expert-r-solutions-for-your-data",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "I help researchers, students, healthcare professionals and anyone with passion clean, analyse, and understand their data using R.\n\nWork with me"
-  },
-  {
-    "objectID": "index.html#who-i-help",
-    "href": "index.html#who-i-help",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Who I help",
-    "text": "Who I help\n\nProfessionals such as research teams, analysts and small companies\nStudents learning R/statistics\nTechnical teams needing workflow improvements\nSmall teams needing reliable R support and assistance with analysis\nHealthcare professionals working with data\nAnyone who wants clear, ethical data analysis\n\nIf you’re unsure whether your project fits, feel free to ask."
-  },
-  {
-    "objectID": "index.html#how-it-works",
-    "href": "index.html#how-it-works",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "How it works",
-    "text": "How it works\n\nInitial enquiry\nYou send a short message describing your data, question or problem.\nQuick discussion\nWe clarify your goals, timeline and the type of support that suits you best.\nTailored support and delivery\nI provide clean R code, clear explanations, and practical next steps you can reuse with confidence.\nOptional: Ongoing support"
-  },
-  {
-    "objectID": "index.html#tools",
-    "href": "index.html#tools",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Tools",
-    "text": "Tools\n\nR / tidyverse\nggplot2\nShiny dashboards\nQuarto / R Markdown\nStatistical modelling and inference\nForecasting (ARIMA, Prophet)\nHealthcare & pharmacy-related data"
-  },
-  {
-    "objectID": "index.html#services",
-    "href": "index.html#services",
-    "title": "R Consulting for Healthcare & Research",
-    "section": "Services",
-    "text": "Services\nI offer clear, practical R support — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch and I’ll guide you.\n\nQuick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200 to 300 per hour (1-2 hour sessions)\n\n\n\nReproducible Analysis & Report\n\nBest for\nHealthcare and research projects that need clean, defensible, and reusable results.\nTypical use cases:\n\nClinical or research data analysis\nStatistical modelling and interpretation\nAutomated reports using Quarto / R Markdown\nForecasting and exploratory analysis\n\n\n\nWhat you get\n\nClean, well-structured R code\nReproducible analysis pipeline\nPublication- or stakeholder-ready report\nClear written interpretation of results\n\n\n\nPricing\nFrom NZD 1,990-5,700 per project\n(Scope and pricing depend on scope, project size and timeline)\n\n\n\nOngoing R Support (Retainer)\n\nBest for\nTeams or individuals who want reliable, long-term R support without hiring full-time.\nTypical use cases:\n\nRegular analysis or reporting work\nCode review and workflow improvement\nMentoring and upskilling\nOngoing troubleshooting and advice\n\n\n\nWhat you get\n\nA fixed number of support hours per month\nPriority response\nConsistent, context-aware support\nA long-term collaborator who understands your data\n\nAvailable on a monthly basis.\n\n\nPricing\nFrom NZD 1,490-4000 per month\n(e.g. 6-20 hours/month; custom arrangements available)\n\n\n\nR Teaching and Mentoring\nIf you’re learning R or want to improve how you work with data, I also offer 1:1 or small-group teaching tailored to your background and goals.\nThis may include:\n\nLearning R from a healthcare or research perspective\nUnderstanding statistics through practical examples\nBuilding reproducible workflows with confidence\n\n\nPricing\nFrom NZD 160-250 per hour\n(Discounts available for students)\n\n\n\nNot sure which option fits?\nIf you have a dataset, question, or project in mind, feel free to reach out. I’ll help you choose the most suitable option at no cost."
-  },
-  {
-    "objectID": "index.html#check-out-my-youtube-tutorials-on-r",
-    "href": "index.html#check-out-my-youtube-tutorials-on-r",
-    "title": "R Consulting for Healthcare & Research",
-    "section": "Check out my YouTube tutorials on R",
-    "text": "Check out my YouTube tutorials on R\n\n\nEnglish ver.\nReina’s Data Studio\n\n\n\n\nJapanese ver.\nReina’s Data Studio JP"
-  },
-  {
-    "objectID": "index.html#language-support",
-    "href": "index.html#language-support",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Language Support",
-    "text": "Language Support\nConsultations and support available in English or Japanese"
-  },
-  {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Contact",
-    "text": "Contact\nIf you have a dataset, question or project in mind, feel free to reach out.\nI typically respond within 24-48 hours."
   },
   {
     "objectID": "projects/Hypertension-clinical-tx.html",
@@ -259,521 +651,80 @@
     "text": "Multicollinearity check\n\ncar::vif(model)\n\n                      GVIF Df GVIF^(1/(2*Df))\nTreatment_Group   1.011396  2        1.002837\nAge               1.002592  1        1.001295\nCholesterol_Level 1.006929  1        1.003459\nAdverse_Events    1.007916  1        1.003950\nGender            1.006296  1        1.003143\n\n\nNo multicollinearity detected."
   },
   {
-    "objectID": "index.html#r-consulting-for-healthcare-research",
-    "href": "index.html#r-consulting-for-healthcare-research",
-    "title": "Reina's Data Studio",
+    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 basic.html",
+    "title": "ggplot2が簡単になる！",
     "section": "",
-    "text": "By a former pharmacist with clinical context\n\nWork with me\n\n\n\n\nHealthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics"
+    "text": "今回は、グラフの王者であるggplot2の解説をしていきます。\nグラフのコードが長くなるほど難しくなり、ちゃんと理解していないと何がどうなっているのかわからなくなります。\nそこで！分かりやすくまとめてみました。"
   },
   {
-    "objectID": "index.html#why-work-with-me",
-    "href": "index.html#why-work-with-me",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
+    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html#ggplot2とは",
+    "href": "blog/posts-ja/DRAFT ggplot2 basic.html#ggplot2とは",
+    "title": "ggplot2が簡単になる！",
+    "section": "ggplot2とは",
+    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。コードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nRStudioで\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.1     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggiraph)\n\nでインストール出来ます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html#基本のコード",
+    "href": "blog/posts-ja/DRAFT ggplot2 basic.html#基本のコード",
+    "title": "ggplot2が簡単になる！",
+    "section": "基本のコード",
+    "text": "基本のコード\nすべてのggplot2は基本のコードがあります。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) + \n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;) +\n  &lt;THEME_FUNCTION&gt;(...)\nこうみると難しくみえますが、一番ベーシックなグラフを作るにあたって必ず必要なのは、\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...)\nの部分だけです。\nさっそく例えとして、irisデータを使います。\nscatterplotで、sepal（がく片）とpetal（花びら）の長さを比べます。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n同じグラフでも、いろんなものを付け足せます。\n\nggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) +\n  geom_jitter(aes(fill = Species, shape = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8, #border thickness\n              alpha = 0.9) + #transparency\n    scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                 \"versicolor\" = \"#2A9D8F\",\n                                 \"virginica\" = \"purple\")) +\n  scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(labels = function(x) paste0(x, \"cm\")) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 10) +\n  theme(\n    text = element_text(family = \"Georgia\")\n  )\n\n\n\n\n\n\n\n\nもっと：\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
+    "title": "ggplot便利テクニック",
     "section": "",
-    "text": "Healthcare background\nExperience with real clinical data structures\nClear communication for non-programmers\nReproducible, well-documented R workflows\nRespect for data privacy and ethics\nSpecialising in Healthcare and Research Data"
+    "text": "library(ggplot2)\nlibrary(ggiraph)\n\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nカーソルを合わせれば一つ一つの長さが見れるようになってます。"
   },
   {
-    "objectID": "index.html#basic-process",
-    "href": "index.html#basic-process",
-    "title": "R Consulting for Healthcare & Research",
-    "section": "Basic Process",
-    "text": "Basic Process\n\nYou send an enquiry describing your project or data\nWe discuss your goals and timeline\nI analyse or build your solution in R\nYou receive clean data, code and clear explanations"
-  },
-  {
-    "objectID": "index.html#process",
-    "href": "index.html#process",
-    "title": "R Consulting for Healthcare & Research",
-    "section": "Process",
-    "text": "Process\n*Example of a process\n\nInitial enquiry: Send me a short message about your data, project or what you’d like help with\nQuick discussion: To understand your goals and the type of support that would suit you best\nTailored assistance: I work with you to provide clear explanations, well-structured R code and helpful next steps"
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html",
-    "href": "projects/FAERS2025Q3.html",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
     "section": "",
-    "text": "This project demonstrates a reproducible workflow for exploratory pharmacovigilance analysis using the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset.\nUsing structured R scripts and case-level aggregation, I examined:\n\nFrequently reported adverse reaction terms\nCase-level reporting patterns\nData structure and duplication considerations\n\nThis analysis is exploratory and intended for structured signal awareness rather than causal inference.\nThis case study reflects how I structure large healthcare datasets with clarity, traceability and cautious interpretation."
+    "text": "Rでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。\nでも、最初は「コードが長い」「何がどこで変わっているのか分からない」と感じる人も多いと思います。\nそこで！分かりやすくまとめてみました。\nggplotは本当にたくさん要素がつまっていて、ひとつのブログにはまとまらないので、５つのセクションに分かれています。\n今回は第一弾です。\nデータを見て、どのグラフを使うべきかの考え方を説明していきます。\nggplotのコードの話に入る前に、まず データをどう理解するか がとても大切です。"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#purpose",
-    "href": "projects/FAERS2025Q3.html#purpose",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "",
-    "text": "To explore trends and high-frequency adverse reaction terms in FAERS 2025 Q3 data and demonstrate a reproducible pharmacovigilance workflow in R."
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "ggplot2とは",
+    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。\nコードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nただ、グラフは見た目だけではありません。伝えたいストーリーをわかりやすく伝えるツールでもあります。\nいらない情報をグラフにしたり、伝えたい内容に合わないグラフを使ってしまうと、問題の理解や説明が難しくなってしまいます。"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#background-problem",
-    "href": "projects/FAERS2025Q3.html#background-problem",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "Background & Problem",
-    "text": "Background & Problem\nAdverse event databases contain large volumes of spontaneous reports. However, these data are often misinterpreted due to reporting bias, duplication, and missing context.\nHealthcare professionals need:\n\nTrend awareness\nSignal prioritisation\nCautious interpretation\n\nThis report demonstrates one approach using R."
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフ選びの大切さ",
+    "text": "グラフ選びの大切さ\nProgramming Skills for Data Scienceという本には、グラフを選ぶときに大事な４つのポイントがあると書かれています。(Freeman and Ross 2018)\n\nデータ可視化で実現したい目的\n可視化するうえで使えるデータの種類\n人間の視認処理能力\nデータ可視化の出力先の制約（スクリーンのサイズなど）\n\nデータサイエンティストにとって大切なのは、まずどれだけデータを理解できているかだと思っています。\nそもそも理解していないと説明もできませんし、もっとも可視化なんてしても、「何が目的でそんなグラフを出したのか」も分からない、中身のないレポートになってしまいます。\n例えば、私が最近調べたFAERSの薬の副作用データを見るときには、このデータからどんなことを知りたいかを最初に考えます。\n大きな問題を「世界で一番悪影響のある副作用は何か」とすると、そこからまた細かくデータ分析、可視化できるように特定化していきます。\n\n一番報告されている副作用とは何か\n一番副作用が報告されている薬はどれか\nどの副作用が一番死因の原因か。\n\nこのように、少しずつ問題を具体的にしていくことで、どんな可視化が必要なのかが見えてきます。\nそしてそれには、自分のデータをしっかり理解しておく必要があります。"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#data-source",
-    "href": "projects/FAERS2025Q3.html#data-source",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Data Source",
-    "text": "Data Source\n\n[FAERS public dataset (FDA)](https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html)\nReporting is voluntary\nData includes duplicates and reporting bias\n\nThe most recent data as of current date was downloaded and used. The faers_ascii_2025q3.zip was downloaded from the official United States government website.\nThe folder includes seven .txt files:\n\nDEMO25Q3.txt (Demographics)\nDRUG25Q3.txt (Drug)\nINDI25Q3.txt (Indication)\nOUTC25Q3.txt (Outcome)\nREAC25Q3.txt (Reaction)\nRPSR25Q3.txt (Report_Sources)\nTHER25Q3.txt (Therapy)\n\n\n\n\nFigure 1: ASCII Entity Relationship Diagram (ERD)\n\n\nThis analysis uses the FDA Adverse Event Reporting System (FAERS) public dataset, specifically the REAC and OUTC table from 2025 Q3.\nThe REAC table contains adverse reaction terms reported for individual case reports. Each row represents a reported reaction linked to a case identifier (primaryid).\nThe OUTC table contains patient outcome information for each adverse event report, indicating the result of the event (Such as death, hospitalisation etc.)"
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "変数のタイプ",
+    "text": "変数のタイプ\nデータを可視化するうえでまず理解しておくのが、変数のタイプです。\n大きく分けて二つあります。\n「連続値」（continuous）\n小数点以下まで表現できる値です。「測る」データです。\n例：\n\n長さ\n体重など\n\n「離散値」（discrete）\n小数点にならない値です。「数える」データです。\n例：\n\n人口の数\n副作用の報告数\nカテゴリーなど"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#data-preparation",
-    "href": "projects/FAERS2025Q3.html#data-preparation",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "Data Preparation",
-    "text": "Data Preparation\nData exploration of REAC table.\n\n# Number of rows in REAC table\nnrow(reac)\n\n[1] 1535133\n\n\n\n# How many primary IDs are in the table\nlength(unique(reac$primaryid))\n\n[1] 438512\n\n\n\n# How many unique case IDs are there\nlength(unique(reac$caseid))\n\n[1] 438512\n\n\n“How many adverse reaction terms are reported per case?”\nIn the 25Q3 version the number of caseid are the same as the number of primaryid, but for the purpose of clarification, as FAERS cases may include multiple report versions due to follow-up submissions, analyses in this report are conducted at the case level (caseid) to avoid over-counting reactions associated with report updates.\n\nRemove duplicate rows\nIn this analysis we will remove primaryid as it is not needed for answering the objective.\n\nreac_new &lt;- select(reac, -\"primaryid\")\n\n\nreac_new &lt;- reac_new %&gt;%\n  distinct()\n\n\n\nChecking the most common number of cases\nCount how many cases have n number of adverse reactions.\n\n\n\n\n\nnum_reactions\nnum_cases\n\n\n\n\n1\n165032\n\n\n2\n96560\n\n\n3\n56754\n\n\n4\n35258\n\n\n5\n22402\n\n\n\n\n\n\n#Summary of number of reactions\nsummary(reac_per_case$`Number of reaction`)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.00    2.00    3.46    4.00  226.00 \n\n\n\n#IQR of number of reactions\nIQR(reac_per_case$`Number of reaction`)\n\n[1] 3\n\n\n\n\n\n\n\nFigure 2: Histogram of count of Number of Reactions\n\n\n\n\nAs the histogram is skewed to the left, it is more reliable to look at the median and IQR.\n\n\n\nCheck for missing data\n\n\ncaseid\npt\n\n\n\n\n0\n0\n\n\n\n\n\nNo missing data observed in caseid and pt.\nAs expected, the number of cases decreases as the number of adverse reactions increase. About a quarter of the cases only had one adverse events, with median of 2 pts per case, suggesting that single-event reporting is common.\n\n\nMost common adverse reaction\nAt this stage the drugs are not known therefore the purpose here is to only view the most common adverse effects regardless of the medication.\n\n\n\n\n\npt\nCount\n\n\n\n\nOff label use\n30127\n\n\nDrug ineffective\n24151\n\n\nFatigue\n20698\n\n\nDeath\n19165\n\n\nNausea\n18412\n\n\nDiarrhoea\n16955\n\n\nProduct dose omission issue\n15936\n\n\nHeadache\n14143\n\n\nDyspnoea\n13040\n\n\nPain\n12296\n\n\n\n\n\n\n\n\n\n\nFigure 3: A bar graph of top 15 pt terms\n\n\n\n\n\n\nReaction Summary Table\n\n\n\nSummary of REAC table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\n\n\n\n\n3731857\n3\nFALSE\n\n\n4119816\n1\nFALSE\n\n\n4197637\n2\nFALSE\n\n\n5815921\n9\nTRUE\n\n\n5821261\n6\nTRUE\n\n\n5962033\n5\nTRUE\n\n\n6047261\n3\nFALSE\n\n\n6171681\n2\nFALSE\n\n\n6171682\n5\nTRUE\n\n\n6171684\n2\nFALSE\n\n\n6171685\n2\nFALSE\n\n\n6171694\n2\nFALSE\n\n\n6171695\n2\nFALSE\n\n\n6171697\n2\nFALSE\n\n\n6171708\n5\nTRUE\n\n\n\n\n\n\n\nOUTC Table\nNow we will look at the OUTC25Q3.txt file to find the distribution of the severity of adverse effects.\n\n\n\nConvert OUTC25Q3.txt to a table\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n100289774\n10028977\nHO\n\n\n100289774\n10028977\nOT\n\n\n1005762123\n10057621\nHO\n\n\n100789263\n10078926\nDE\n\n\n101573482\n10157348\nHO\n\n\n101573482\n10157348\nOT\n\n\n\n\n\nKey variables include:\n\nprimaryid: Unique identifier for each case report\ncaseid: Case-level identifier.\noutc_cod: Code of the outcome\n\nDE = Death\nLT = Life-threatening\nHO = Hospitalisation\nDS = Disability\nCA = Congenital anomaly\nRI = Required intervention\nOT = Other\n\n\n\n\n\nChecking for any missing data\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n0\n0\n0\n\n\n\n\n\n\n\n\nCount of Outcome Code\n\n\noutc_cod\nn\n\n\n\n\nOT\n191229\n\n\nHO\n91722\n\n\nDE\n34803\n\n\nLT\n15461\n\n\nDS\n7226\n\n\nCA\n1758\n\n\nRI\n1052\n\n\n\n\n\n\n\n\n\n\nFigure 4: Bar graph for easier visualisation\n\n\n\n\nTotal of 34,803 deaths, possibly caused by drugs, is an astonishing number considering this data is only one quarter of a year.\nAs the codes are quite broad, we cannot determine what exactly “Others” is, but according to the FAERS document () it is all important medical event. “Requiring intervention” (To Prevent Permanent Impairment/Damage) scored the lowest which indicates most of the adverse effects are unpreventable, or are unnoticed before it is too late.\nThe number of “Deaths” are well above the adverse effect of 19,165 in the REAC table - The reason possibly being because there may had been other side effects and those who submitted the data had interpreted Death as the outcome, instead of an adverse effect.\nThere is no clear cut as to what is categorised as serious and what is not, but for the purpose of this report, DE and LT will be categorised as “Serious”, HO as “Moderate” and others as “Non-serious”.\n\n\n\n\n\nFigure 5: Categorising Severity of Outcome and the total count of each severity\n\n\n\n\n\n\nOutcome Summary Table\n\n\n\nCombining Reaction and Outcome Summary Table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\noutc_cod\nSeverity\n\n\n\n\n3731857\n3\nFALSE\nDE\nSevere\n\n\n3731857\n3\nFALSE\nHO\nModerate\n\n\n3731857\n3\nFALSE\nOT\nNon-Serious\n\n\n4119816\n1\nFALSE\nHO\nModerate\n\n\n4197637\n2\nFALSE\nDE\nSevere\n\n\n4197637\n2\nFALSE\nOT\nNon-Serious\n\n\n5815921\n9\nTRUE\nHO\nModerate\n\n\n5815921\n9\nTRUE\nDS\nNon-Serious\n\n\n5821261\n6\nTRUE\nDE\nSevere\n\n\n5821261\n6\nTRUE\nHO\nModerate\n\n\n5821261\n6\nTRUE\nOT\nNon-Serious\n\n\n5962033\n5\nTRUE\nDE\nSevere\n\n\n5962033\n5\nTRUE\nHO\nModerate\n\n\n6047261\n3\nFALSE\nDE\nSevere\n\n\n6047261\n3\nFALSE\nLT\nSevere\n\n\n\n\n\n\n\n\nCheck for missing data\n\n\ncaseid\noutc_cod\nSeverity\nn_reactions\nfive_or_more_reactions\n\n\n\n\n0\n184126\n184126\n0\n0\n\n\n\n\n\nMany of the cases has missing outcomes - This shows the realness of data gathering; as the outcome reporting is optional many cases will report reactions caused by drugs only. Because this is an important part of the analysis, the missing values are (By R default) included as “NA”. i.e. No outcome recorded.\n\n\n\n\n\nFigure 6: A bar graph visualising the severity of adverse reactions\n\n\n\n\n\nkable(reac_outc %&gt;%\n  count(Severity) %&gt;%\n  mutate(percentage = n / sum(n) * 100))\n\n\n\n\nSeverity\nn\npercentage\n\n\n\n\nModerate\n91722\n17.392112\n\n\nNon-Serious\n201265\n38.163401\n\n\nSevere\n50264\n9.530943\n\n\nNA\n184126\n34.913544\n\n\n\n\n\nOnly 65.1% of FAERS cases report outcome data. Severity analyses therefore reflect a subset of reports and may underestimate true risk.\n\n\n\n\n\nFigure 7: A histogram showing how many cases reported what number of reactions, coloured with severity\n\n\n\n\n\n\n\n\n\nFigure 8: Severe outcomes by number of reported reactions\n\n\n\n\nAlthough the difference is subtle, cases reporting five or more adverse reactions show a higher proportion of severe outcomes (death or life-threatening reactions) compared with cases reporting fewer reactions."
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "例：irisデータ",
+    "text": "例：irisデータ\nRでよく使われるirisデータは、5つの変数（variables）があります。\n\nknitr::kable(head(iris, 5))\n\n\nIris Dataset\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nどれが連続値でどれが離散値かわかりますか？\n実は\n\nSepal.Length（がく片の長さ）\nSepal.Width（がく片の幅）\nPetal.Length（花びらの長さ）\nPetal.Width（花びらの幅）\n\nは連続値で、\nSpecies（種類）\nだけが離散値です。"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#analysis-visualisation-clean-calm",
-    "href": "projects/FAERS2025Q3.html#analysis-visualisation-clean-calm",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "Analysis & visualisation (clean + calm)",
-    "text": "Analysis & visualisation (clean + calm)\nExamples:\n\nYearly report counts\nTop reported drug classes\nSerious vs non-serious trends\n\nEach plot should answer one question."
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフを選ぶときの考え方",
+    "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
   },
   {
-    "objectID": "projects/FAERS2025Q3.html#interpretation-clinical-context",
-    "href": "projects/FAERS2025Q3.html#interpretation-clinical-context",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "Interpretation (Clinical Context)",
-    "text": "Interpretation (Clinical Context)\nIt is very important to keep in mind that these are all real-life data with many missing values and errors. It is not possible to know where there may be errors, but a few possibilities include:\n\nError submitting an update as a new case\nEntry error\nMultiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions\n\nWhile there are many possible errors to keep in mind, the data has a huge number of cases reported. The bigger the data the clearer the consistency and the more accurate the analysis becomes. An increase in reports however does not necessarily indicate increased risk. Possible contributors include:\n\nIncreased prescribing\nMedia attention\nRegulatory changes\n\nThe results should be read and analysed with the potential errors and influences in mind, and any healthcare professionals or researchers who intend to use this as reference should always use their clinical judgement."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#potential-use-cases",
-    "href": "projects/FAERS2025Q3.html#potential-use-cases",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Potential Use Cases",
-    "text": "Potential Use Cases\nThis type of analysis could support:\n\nPharmacovigilance signal review\nInternal safety discussions\nEducational summaries"
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#about-the-author",
-    "href": "projects/FAERS2025Q3.html#about-the-author",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "About the Author",
-    "text": "About the Author\nI am a former pharmacist specialising in R-based data analysis for healthcare and research.\nI support projects in English and Japanese.\nIf you need structured analysis of datasets using reproducible R workflows, feel free to get in touch."
-  },
-  {
-    "objectID": "index.html#learn-with-me-on-youtube",
-    "href": "index.html#learn-with-me-on-youtube",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Learn with me on YouTube",
-    "text": "Learn with me on YouTube\nI share practical R tutorials focused on real-world data problems."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#analysis",
-    "href": "projects/FAERS2025Q3.html#analysis",
-    "title": "Adverse Event Trend Analysis with FAERS data",
-    "section": "Analysis",
-    "text": "Analysis\nExamples:\n\nYearly report counts\nTop reported drug classes\nSerious vs non-serious trends\n\nEach plot should answer one question."
-  },
-  {
-    "objectID": "index.html#quick-fix-1-2-hours",
-    "href": "index.html#quick-fix-1-2-hours",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Quick Fix (1-2 hours)",
-    "text": "Quick Fix (1-2 hours)\n\nBest for\nSmall problems, urgent questions or when you are stuck and need clarity fast.\nTypical use cases:\n\nDebugging R scripts\nHelp with plots, statistics or models\nData wrangling issues\nUnderstanding error messages or unexpected results\n\n\n\nWhat you get\n\nLive 1:1 session (or async support, if preferred)\nClear explanation in plain English\nImproved or corrected R code you can reuse\n\n\n\nPricing\nFrom NZD 200-300 per hour (1-2 hour sessions)"
-  },
-  {
-    "objectID": "index.html#reproducible-analysis-report",
-    "href": "index.html#reproducible-analysis-report",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Reproducible Analysis & Report",
-    "text": "Reproducible Analysis & Report\n\nBest for\nHealthcare and research projects that need clean, defensible, and reusable results.\nTypical use cases:\n\nClinical/research or any other data analysis\nStatistical modelling and interpretation\nAutomated reports using Quarto / R Markdown\nForecasting and exploratory analysis\n\n\n\nWhat you get\n\nClean, well-structured R code\nReproducible analysis pipeline\nPublication- or stakeholder-ready report\nClear written interpretation of results\n\n\n\nPricing\nFrom NZD 1,990-5,700 per project\n(Scope and pricing depend on scope, project size and timeline)"
-  },
-  {
-    "objectID": "index.html#ongoing-r-support-retainer",
-    "href": "index.html#ongoing-r-support-retainer",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Ongoing R Support (Retainer)",
-    "text": "Ongoing R Support (Retainer)\n\nBest for\nTeams or individuals who want reliable, long-term R support without hiring full-time.\nTypical use cases:\n\nRegular analysis or reporting work\nCode review and workflow improvement\nMentoring and upskilling\nOngoing troubleshooting and advice\n\n\n\nWhat you get\n\nA fixed number of support hours per month\nPriority response\nConsistent, context-aware support\nA long-term collaborator who understands your data\n\nAvailable on a monthly basis.\n\n\nPricing\nFrom NZD 1,490-4000 per month\n(e.g. 6-20 hours/month; custom arrangements available)"
-  },
-  {
-    "objectID": "index.html#r-teaching-and-mentoring",
-    "href": "index.html#r-teaching-and-mentoring",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "R Teaching and Mentoring",
-    "text": "R Teaching and Mentoring\nIf you’re learning R or want to improve how you work with data, I also offer 1:1 or small-group teaching tailored to your background and goals.\nThis may include:\n\nLearning R from a healthcare or research perspective\nUnderstanding statistics through practical examples\nBuilding reproducible workflows with confidence\n\n\nPricing\nFrom NZD 160-250 per hour\n(Discounts available for students)"
-  },
-  {
-    "objectID": "index.html#english-version",
-    "href": "index.html#english-version",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "English version",
-    "text": "English version\nReina’s Data Studio"
-  },
-  {
-    "objectID": "index.html#japanese-version",
-    "href": "index.html#japanese-version",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "Japanese version",
-    "text": "Japanese version\nReina’s Data Studio JP"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Reina’s Data Studio",
-    "section": "",
-    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nResigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
-  },
-  {
-    "objectID": "about.html#quarto",
-    "href": "about.html#quarto",
-    "title": "About",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "about.html#running-code",
-    "href": "about.html#running-code",
-    "title": "About",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "about.html#hi-im-reina-the-founder-of-reinas-data-studio.",
-    "href": "about.html#hi-im-reina-the-founder-of-reinas-data-studio.",
-    "title": "About",
-    "section": "",
-    "text": "I help researchers, healthcare professionals, and teams work with data clearly, ethically, and confidently using R.\n\n\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\n\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nLosing my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\n\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\n\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\n\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\n\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\n\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\n\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\n\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n&lt;button class=“button”&gt;Send an enquiry&lt;/button&gt;"
-  },
-  {
-    "objectID": "about.html#about-reinas-data-studio",
-    "href": "about.html#about-reinas-data-studio",
-    "title": "About",
-    "section": "",
-    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, healthcare professionals, and teams work with data clearly, ethically, and confidently using R.\n\n\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\n\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nLosing my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\n\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\n\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\n\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\n\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\n\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\n\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\n\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\n\nSend an enquiry"
-  },
-  {
-    "objectID": "about.html#section",
-    "href": "about.html#section",
-    "title": "About Reina’s Data Studio",
-    "section": "",
-    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, healthcare professionals, and teams work with data clearly, ethically, and confidently using R.\n\n\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\n\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nLosing my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\n\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\n\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\n\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\n\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\n\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\n\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\n\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
-  },
-  {
-    "objectID": "projects.html#healthcare-and-research-projects",
-    "href": "projects.html#healthcare-and-research-projects",
-    "title": "Projects",
-    "section": "Healthcare and Research Projects",
-    "text": "Healthcare and Research Projects\nProjects demonstrating clinical context, statistical analysis and reproducible R workflows.\n\n\n\n\n\nReproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)\nReproducible exploratory analysis of pharmacovigilance data using FAERS.\n\nContext\nAnalysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).\n\nCase-level aggregation\nHandling duplicate reports\nCautious interpretation of spontaneous reporting data.\n\n\n\nOutcome\nDelivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.\n\nFrequently reported reactions do not necessarily correspond to severe outcomes\nImportance of separating reporting frequency from clinical significance\n\n\n\n\n\n\n\n\n\nHypertension Clinical Treatment Analysis\nReproducible clinical data analysis with clear interpretation for treatment comparison.\n\nContext\nSimulated clinical trial dataset comparing treatment outcomes for hypertension patients.\n\nCleaned and structured clinical variables\nPerformed statistical comparison between treatment groups\nCreated publication-style visualisations\nDocumented assumptions and analytical workflow\n\n\n\nOutcome\nDelivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.\n\nStructured R analysis script\nCleaned dataset\nVisualisations suitable for reporting\nWritten interpretation of results"
-  },
-  {
-    "objectID": "projects.html#data-science-and-general-analytics",
-    "href": "projects.html#data-science-and-general-analytics",
-    "title": "Projects",
-    "section": "Data Science and General Analytics",
-    "text": "Data Science and General Analytics\nBroader data science projects showcasing modelling, visualisation and application design.\n\n\n\n\n\nForecasting prices of diamonds\nStatistical exploration and modelling of pricing factors in a high-dimensional dataset.\n\nContext\nDataset analysing how characteristics influence diamond pricing.\n\nCleaned and explored multivariate data\nBuilt regression models to assess price drivers\nVisualised relationships between features and pricing\n\n\n\nOutcome\nIdentified key variables influencing price and demonstrated reproducible modelling workflow.\n\nReproducible R script\nModel output and interpretation\nVisualisations\n\n\n\n\n\n\n\n\n\ne-commerce Sales Analysis Dashboard\nInteractive R Shiny dashboard enabling non-technical users to explore sales performance.\n\nContext\nRetail-style dataset requiring dynamic filtering and real-time data exploration.\n\nDesigned and built an interactive Shiny application\nImplemented reactive filters and summary panels\nCreated dynamic visualisations for performance tracking\n\n\n\nOutcome\nDelivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.\n\nFully functional Shiny application\nStructured and documented R code\nDeployment-ready project structure\n\n\n\n\n\n\n\n\n\nSuperstore R Shiny Dashboard\nExploratory data analysis and visualisation of retail sales data.\n\nContext\nMulti-variable retail dataset examining sales performance across regions and categories.\n\nCleaned and prepared transactional data\nConducted exploratory data analysis\nBuilt visualisations to highlight key trends and patterns\nIdentified performance drivers and segment differences\n\n\n\nOutcome\nProduced actionable insights into sales distribution, regional performance, and product trends.\n\nStructured R analysis script\nClear visualisations\nSummary of findings"
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "",
-    "text": "When people see that I started my career in pharmacy and now work in data science, the first question is usually:\n“How did that happen?”\nThe short answer is curiosity.\nThe longer answer is that I’ve always been drawn to understanding systems — whether that system is the human body or a dataset."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Starting in Pharmacy",
-    "text": "Starting in Pharmacy\nPharmacy taught me something that still shapes how I work today: precision matters.\nIn healthcare, small details are not small. A misplaced decimal, a misunderstood value, or an incorrect assumption can have serious consequences. You learn to check carefully, to document properly, and to understand what each number actually represents.\nBut over time, I realised that what I enjoyed most was not memorising information — it was analysing it.\nI enjoyed understanding patterns.\nI enjoyed interpreting results.\nI enjoyed asking: Why does this happen?\nThat curiosity eventually led me toward computer science."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Discovering Programming",
-    "text": "Discovering Programming\nWhile studying engineering at the University of Auckland, I discovered computer science — and immediately fell in love with programming.\nProgramming felt different. It was logical, structured, and creative at the same time. It rewarded curiosity and precision. It gave immediate feedback. Most importantly, it felt like something I could continuously grow in.\nI later completed a one-year computer science programme with a focus on data science, where I was introduced more deeply to R.\nAnd that’s where something clicked."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Why R?",
-    "text": "Why R?\nR stood out to me for several reasons.\nFirst, it was built for statistics and analysis. It wasn’t just a general programming language — it was designed for thinking about data.\nSecond, it encouraged reproducibility. Tools like R Markdown and Quarto made it possible to combine analysis, interpretation, and reporting in a single, transparent workflow. That felt aligned with the healthcare mindset I came from.\nThird, it made complex analysis accessible. With the right structure, R allows you to move from raw data to meaningful insight in a clear and systematic way.\nTo me, R felt like a bridge between:\n\nclinical precision\nstatistical reasoning\nand structured programming\n\nIt wasn’t just about writing code. It was about creating clarity."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "From Employment to Independence",
-    "text": "From Employment to Independence\nAfter transitioning into data science, I worked in system engineering to broaden my technical experience while continuing to develop my data skills.\nEventually, I realised that I wanted to focus fully on what I enjoyed most: working directly with data and helping others understand it.\nStarting Reina’s Data Studio was a natural step. It allowed me to:\n\nWork independently\nSupport researchers and healthcare professionals\nShare my enthusiasm for R\nBuild something aligned with my values"
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "How Pharmacy Still Shapes My Work",
-    "text": "How Pharmacy Still Shapes My Work\nMy healthcare background continues to influence how I approach every project.\nI don’t treat data as abstract numbers. I think about:\n\nWhat does this variable really represent?\nWhere did this data come from?\nWhat assumptions are we making?\nCan this analysis be reproduced and audited later?\n\nThat mindset makes me careful — but also practical. Clean data. Clear documentation. Transparent decisions.\nIn healthcare and research, that matters."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Teaching and Sharing",
-    "text": "Teaching and Sharing\nOne of my core values is continuous learning. I genuinely believe that knowledge never betrays you.\nThat belief is why I share tutorials on YouTube and write about R here. Many R resources are in English, and I enjoy helping both English and Japanese speakers feel more confident navigating data and programming.\nR is constantly evolving. I am, too."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Looking Forward",
-    "text": "Looking Forward\nReina’s Data Studio is built on three things:\n\nTransparency\nPrecision\nA genuine passion for learning\n\nWhether I’m debugging a script, building a reproducible report, or explaining a statistical result, my goal is always the same:\nTo help people work with data clearly, ethically, and confidently."
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog Posts",
-    "section": "",
-    "text": "Why Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "",
-    "text": "Healthcare data is not just data.\nBehind every dataset are real patients, real decisions, and real consequences. A misplaced assumption or undocumented change is not simply a technical issue — it can affect interpretation, policy, or treatment decisions.\nThat is why reproducibility is not optional in healthcare data analysis. It is foundational."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "What Does “Reproducibility” Actually Mean?",
-    "text": "What Does “Reproducibility” Actually Mean?\nIn simple terms, reproducibility means:\n\nIf someone else runs your analysis using the same data and code, they should get the same results.\n\nThat sounds obvious. But in practice, it is surprisingly easy to break reproducibility.\nCommon issues include:\n\nManual data edits in Excel\nCopy-pasted results without saved code\nUntracked changes to datasets\nHard-coded values with no explanation\nAnalyses run interactively without documentation\n\nIn research and healthcare settings, these small shortcuts accumulate into serious risk."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Why It Matters More in Healthcare",
-    "text": "Why It Matters More in Healthcare\nIn some industries, minor inconsistencies might be inconvenient.\nIn healthcare, they can be dangerous.\nReproducibility matters because:\n\n1. Accuracy and Accountability\nHealthcare decisions often rely on statistical outputs. If results cannot be traced back to documented steps, confidence in those results weakens.\nReproducible workflows create an audit trail:\n\nWhat data was used?\nWhat cleaning steps were applied?\nWhat assumptions were made?\nWhat model was fitted?\n\nThis level of clarity protects both patients and professionals.\n\n\n2. Transparency for Collaboration\nClinical and research projects rarely involve just one person. Analysts, clinicians, reviewers, and stakeholders may all interact with the results.\nWhen analysis is reproducible:\n\nTeam members can verify findings\nAssumptions can be discussed openly\nChanges can be implemented systematically\n\nWithout reproducibility, collaboration becomes fragile and dependent on memory rather than structure.\n\n\n3. Long-Term Sustainability\nHealthcare research often spans months or years.\nIf you revisit a project six months later and cannot easily regenerate the results, you lose time and confidence.\nReproducible workflows mean:\n\nYou can re-run the analysis with updated data\nYou can adjust models without starting from scratch\nYou can respond to reviewer comments efficiently\n\nThis is not just about neatness. It is about sustainability."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "How R Supports Reproducibility",
-    "text": "How R Supports Reproducibility\nOne of the reasons I chose R is its ability to create a beautiful reproducible analysis.\nTools such as:\n\nR Markdown\nQuarto\nStructured project folders\nScript-based data cleaning\n\nallow analysis, interpretation, and reporting to exist in a single, transparent workflow.\nInstead of:\n\nClean data manually\nRun analysis\nCopy results into a Word document\n\nall using separate programs,\nYou can:\n\nClean data using documented scripts\nRun statistical models in code\nGenerate reports automatically\n\nThe entire process becomes traceable and repeatable, because the entire process is saved in one big tool."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "A Practical Example",
-    "text": "A Practical Example\nImagine analysing a clinical dataset comparing treatment groups.\nWithout reproducibility:\n\nData cleaning happens in Excel\nOutliers are removed without documentation\nStatistical tests are run manually\nGraphs are exported separately\n\nSix months later, a colleague asks:\n\n“How did you exclude those patients?”\n\nIf the steps were not scripted, you may not know.\nWith reproducibility:\n\nAll exclusions are coded\nAll assumptions are documented\nAll outputs regenerate from the same script\nThe report updates automatically if data changes\n\nThe difference is clarity and control."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Reproducibility Is Also an Ethical Issue",
-    "text": "Reproducibility Is Also an Ethical Issue\nIn healthcare, data analysis is not purely technical — it is ethical.\nTransparent workflows:\n\nReduce unintentional bias\nPrevent undocumented data manipulation\nMake decisions defensible\n\nReproducibility demonstrates respect for the data and the people represented in it."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Building Reproducible Habits",
-    "text": "Building Reproducible Habits\nYou do not need complex systems to begin.\nStart with:\n\nKeeping raw data untouched\nWriting cleaning steps in scripts (not manually)\nSaving model code\nDocumenting assumptions clearly\nUsing Quarto or R Markdown to combine analysis and reporting\n\nSmall structural habits create large long-term stability."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Final Thoughts",
-    "text": "Final Thoughts\nHealthcare data demands precision, transparency, and accountability.\nReproducibility is not about perfection. It is about responsibility.\nWhen analysis is reproducible:\n\nResults are trustworthy\nCollaboration is smoother\nFuture updates are manageable\nDecisions are defensible\n\nAnd in healthcare, that matters."
-  },
-  {
-    "objectID": "ja.html",
-    "href": "ja.html",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。\n\n\n\n\n統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助\n\n\n\n\n「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
-  },
-  {
-    "objectID": "ja.html#医療研究データのr解析サポート",
-    "href": "ja.html#医療研究データのr解析サポート",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "Reina’s Data Studio では、医療・研究分野などのデータ解析を再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。"
-  },
-  {
-    "objectID": "ja.html#主なサポート内容",
-    "href": "ja.html#主なサポート内容",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "統計解析および結果の解釈\nデータの整理・前処理\nRコードのデバッグ・改善\nQuarto / R Markdown による再現可能なレポート作成のアシスタント\n研究・解析内容の英日コミュニケーション補助"
-  },
-  {
-    "objectID": "ja.html#日本語でご相談いただけます",
-    "href": "ja.html#日本語でご相談いただけます",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "「英語で説明するのが不安」\n「まずは相談だけしたい」\nといった段階でも問題ありません。\n内容が固まっていなくても、誰でもお気軽にご連絡ください。\n\nお問い合わせはこちら\n\n\nEmail: reinasdatastudio@gmail.com\n\n\n（詳細なサービス内容は英語ページに掲載しています）"
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#executive-summary",
-    "href": "projects/FAERS2025Q3.html#executive-summary",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "",
-    "text": "This project demonstrates a reproducible workflow for exploratory pharmacovigilance analysis using the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset.\nUsing structured R scripts and case-level aggregation, I examined:\n\nFrequently reported adverse reaction terms\nCase-level reporting patterns\nData structure and duplication considerations\n\nThis analysis is exploratory and intended for structured signal awareness rather than causal inference.\nThis case study reflects how I structure large healthcare datasets with clarity, traceability and cautious interpretation."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#analytical-objective",
-    "href": "projects/FAERS2025Q3.html#analytical-objective",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Analytical Objective",
-    "text": "Analytical Objective\nTo examine reporting patterns in FAERS 2025 Q3 data by combining:\n• Reaction reporting behaviour (REAC table)\n• Outcome severity indicators (OUTC table)\nThe goal is exploratory signal awareness using case-level aggregation, not estimation of clinical risk."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#context",
-    "href": "projects/FAERS2025Q3.html#context",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Context",
-    "text": "Context\nSpontaneous adverse event databases such as FAERS contain large volumes of real-world safety reports.\nHowever, these data are frequently misinterpreted because reporting frequency is influenced by awareness, reporting behaviour, and follow-up submissions rather than true incidence.\nFor healthcare and research teams, the practical value of FAERS lies in structured signal awareness rather than causal inference.\nThis project explores how reporting patterns can be examined cautiously using a reproducible R workflow."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#data-and-structural-consideration",
-    "href": "projects/FAERS2025Q3.html#data-and-structural-consideration",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Data and Structural Consideration",
-    "text": "Data and Structural Consideration\nIt is important to note that FAERS data is based on spontaneous reports and does not represent confirmed adverse drug reactions.\nSeveral limitations must be considered when interpreting FAERS adverse reaction data such as:\n\nA single case may include multiple reported reactions\nReporting frequency does not equal incidence or risk\nDuplicate or follow-up reports may exist\nReporting is influenced by media attention and regulatory actions\n\nAs a result, counts and trends should be interpreted cautiously and used for signal exploration rather than causal inference.\nImportant:\nThis analysis is exploratory and does not imply causality.\nAll analyses were conducted at the case level (caseid) to reduce over-counting from follow-up submissions."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#reproducible-workflow",
-    "href": "projects/FAERS2025Q3.html#reproducible-workflow",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Reproducible Workflow",
-    "text": "Reproducible Workflow\nTo ensure traceability and repeatability, the analysis was performed using a scripted workflow in R rather than manual data manipulation.\nThe workflow consisted of:\n\nImporting raw FAERS ASCII files directly into R\nPerforming case-level aggregation to avoid double counting follow-up reports\nApplying cleaning and transformation steps through documented code\nGenerating tables and figures automatically from the analysis script\n\nThis approach ensures the results can be regenerated whenever the dataset is updated and provides a clear audit trail of all processing steps."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#analytical-approach",
-    "href": "projects/FAERS2025Q3.html#analytical-approach",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Analytical Approach",
-    "text": "Analytical Approach\nThe analysis is structured in two complementary parts.\nFirst, the REAC table is used to understand what types of reactions are most frequently reported and how reports are distributed across cases.\nSecond, the OUTC table is used to examine how serious those reported cases are.\nTogether, these perspectives allow cautious interpretation:\nfrequently reported events are not necessarily severe, and severe outcomes are not necessarily frequent."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#reac-table-overview",
-    "href": "projects/FAERS2025Q3.html#reac-table-overview",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "REAC Table Overview",
-    "text": "REAC Table Overview\n\n\n\nREAC table\n\n\nprimaryid\ncaseid\npt\ndrug_rec_act\n\n\n\n\n100289774\n10028977\nFixed eruption\n\n\n\n100289774\n10028977\nStevens-Johnson syndrome\n\n\n\n100289774\n10028977\nToxic epidermal necrolysis\n\n\n\n1005762123\n10057621\nDyspnoea\n\n\n\n1005762123\n10057621\nHypotension\n\n\n\n1005762123\n10057621\nAsthma\n\n\n\n\n\n\nKey variables include:\n\nprimaryid: Unique identifier for each case report\npt: Preferred Term describing the adverse reaction (MedDRA)\ncaseid: Case-level identifier\ndrug_rec_act: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.\n\n\nREAC Data Preparation\nData exploration of REAC table.\n\n# Number of rows in REAC table\nnrow(reac)\n\n[1] 1535133\n\n\n\n# How many primary IDs are in the table\nlength(unique(reac$primaryid))\n\n[1] 438512\n\n\n\n# How many unique case IDs are there\nlength(unique(reac$caseid))\n\n[1] 438512\n\n\n“How many adverse reaction terms are reported per case?”\nIn the 25Q3 version the number of caseid are the same as the number of primaryid, but for the purpose of clarification, as FAERS cases may include multiple report versions due to follow-up submissions, analyses in this report are conducted at the case level (caseid) to avoid over-counting reactions associated with report updates.\n\nRemove duplicate rows\n\n#Remove `primaryid`\nreac_new &lt;- select(reac, -\"primaryid\")\n\n\n#Remove duplicate rows\nreac_new &lt;- reac_new %&gt;%\n  distinct()\n\n\n\nCheck for missing data\n\n\n\nCheck for missing data\n\n\ncaseid\npt\n\n\n\n\n0\n0\n\n\n\n\n\nNo missing data observed in caseid and pt.\n\n\n\nREAC Data Analysis\n\nFrequency of reactions per case\nCount how many cases have n number of adverse reactions.\n\n\n\n\n\nnum_reactions\nnum_cases\n\n\n\n\n1\n165032\n\n\n2\n96560\n\n\n3\n56754\n\n\n4\n35258\n\n\n5\n22402\n\n\n\n\n\n\n#Summary of number of reactions\nsummary(reac_per_case$`Number of reaction`)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00    1.00    2.00    3.46    4.00  226.00 \n\n\n\n#IQR of number of reactions\nIQR(reac_per_case$`Number of reaction`)\n\n[1] 3\n\n\n\n\n\n\n\nFigure 2: Histogram of count of Number of Reactions\n\n\n\n\n\n\nReaction Reporting Behaviour\nMost cases report only a small number of reaction terms, with a long tail of multi-reaction cases.\nThis reflects reporting behaviour rather than clinical complexity alone.\nThe median number of reported reactions per case is low, indicating that single-event reporting is common in spontaneous submissions.\nAs expected, the number of cases decreases as the number of adverse reactions increase. About a quarter of the cases only had one adverse events, with median of 2 pts per case, suggesting that single-event reporting is common.\n\n\nFrequently Reported Reaction Terms\nThe following table summarises the most frequently reported preferred terms in the dataset.\nThese represent reporting concentration rather than confirmed drug risk.\n\n\n\n\n\npt\nCount\n\n\n\n\nOff label use\n30127\n\n\nDrug ineffective\n24151\n\n\nFatigue\n20698\n\n\nDeath\n19165\n\n\nNausea\n18412\n\n\nDiarrhoea\n16955\n\n\nProduct dose omission issue\n15936\n\n\nHeadache\n14143\n\n\nDyspnoea\n13040\n\n\nPain\n12296\n\n\n\n\n\n\n\n\n\n\nFigure 3: A bar graph of top 15 pt terms\n\n\n\n\n\n\n\nOutcome Severity Perspective (OUTC)\nReaction frequency alone cannot indicate clinical importance.\nTo add context, outcome information is examined to understand how serious reported cases are.\nWhile REAC shows what is reported, OUTC shows the consequence of those reports."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#outc-table-overview",
-    "href": "projects/FAERS2025Q3.html#outc-table-overview",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "OUTC Table Overview",
-    "text": "OUTC Table Overview\nNow we will look at the OUTC25Q3.txt file to find the distribution of the severity of adverse effects.\n\n\n\nConvert OUTC25Q3.txt to a table\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n100289774\n10028977\nHO\n\n\n100289774\n10028977\nOT\n\n\n1005762123\n10057621\nHO\n\n\n100789263\n10078926\nDE\n\n\n101573482\n10157348\nHO\n\n\n101573482\n10157348\nOT\n\n\n\n\n\nKey variables include:\n\nprimaryid: Unique identifier for each case report\ncaseid: Case-level identifier.\noutc_cod: Code of the outcome\n\nDE = Death\nLT = Life-threatening\nHO = Hospitalisation\nDS = Disability\nCA = Congenital anomaly\nRI = Required intervention\nOT = Other\n\n\n\nOUTC Data Preparation\n\n\n\nChecking for any missing data\n\n\nprimaryid\ncaseid\noutc_cod\n\n\n\n\n0\n0\n0\n\n\n\n\n\n\n\nOUTC Data Analysis\n\n\n\nCount of Outcome Code\n\n\noutc_cod\nn\n\n\n\n\nOT\n191229\n\n\nHO\n91722\n\n\nDE\n34803\n\n\nLT\n15461\n\n\nDS\n7226\n\n\nCA\n1758\n\n\nRI\n1052\n\n\n\n\n\n\n\n\n\n\nFigure 4: Bar graph for easier visualisation\n\n\n\n\nTotal of 34,803 deaths, possibly caused by drugs, is an astonishing number considering this data is only one quarter of a year.\nAs the codes are quite broad, we cannot determine what exactly “Others” is, but according to the FAERS document it is all important medical event. “Requiring intervention” (To Prevent Permanent Impairment/Damage) scored the lowest which indicates most of the adverse effects are unpreventable, or are unnoticed before it is too late.\nThe number of “Deaths” are well above the adverse effect of 19,165 in the REAC table - The reason possibly being because there may had been other side effects and those who submitted the data had interpreted Death as the outcome, instead of an adverse effect.\nThere is no clear cut as to what is categorised as serious and what is not, but for the purpose of this report, DE and LT will be categorised as “Serious”, HO as “Moderate” and others as “Non-serious”.\n\n\n\n\n\nFigure 5: Categorising Severity of Outcome and the total count of each severity\n\n\n\n\n\n\nCombining REAC and OUTC Tables\n\n\n\nSummarised REAC table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\n\n\n\n\n3731857\n3\nFALSE\n\n\n4119816\n1\nFALSE\n\n\n4197637\n2\nFALSE\n\n\n5815921\n9\nTRUE\n\n\n5821261\n6\nTRUE\n\n\n5962033\n5\nTRUE\n\n\n6047261\n3\nFALSE\n\n\n6171681\n2\nFALSE\n\n\n6171682\n5\nTRUE\n\n\n6171684\n2\nFALSE\n\n\n\n\n\n\n\n\nSummarised OUTC table\n\n\ncaseid\noutc_cod\nSeverity\n\n\n\n\n10078926\nDE\nSevere\n\n\n10346795\nDE\nSevere\n\n\n10410135\nDE\nSevere\n\n\n10427284\nDE\nSevere\n\n\n10427284\nLT\nSevere\n\n\n10449048\nDE\nSevere\n\n\n10463057\nDE\nSevere\n\n\n10597316\nLT\nSevere\n\n\n10621415\nLT\nSevere\n\n\n10732078\nDE\nSevere\n\n\n\n\n\n\n\n\nCombining Reaction and Outcome Summary Table\n\n\ncaseid\nn_reactions\nfive_or_more_reactions\noutc_cod\nSeverity\n\n\n\n\n3731857\n3\nFALSE\nDE\nSevere\n\n\n3731857\n3\nFALSE\nHO\nModerate\n\n\n3731857\n3\nFALSE\nOT\nNon-Serious\n\n\n4119816\n1\nFALSE\nHO\nModerate\n\n\n4197637\n2\nFALSE\nDE\nSevere\n\n\n4197637\n2\nFALSE\nOT\nNon-Serious\n\n\n5815921\n9\nTRUE\nHO\nModerate\n\n\n5815921\n9\nTRUE\nDS\nNon-Serious\n\n\n5821261\n6\nTRUE\nDE\nSevere\n\n\n5821261\n6\nTRUE\nHO\nModerate\n\n\n5821261\n6\nTRUE\nOT\nNon-Serious\n\n\n5962033\n5\nTRUE\nDE\nSevere\n\n\n5962033\n5\nTRUE\nHO\nModerate\n\n\n6047261\n3\nFALSE\nDE\nSevere\n\n\n6047261\n3\nFALSE\nLT\nSevere\n\n\n\n\n\n\n\n\nCheck for missing data\n\n\ncaseid\noutc_cod\nSeverity\nn_reactions\nfive_or_more_reactions\n\n\n\n\n0\n184126\n184126\n0\n0\n\n\n\n\n\nMany of the cases has missing outcomes - This shows the realness of data gathering; as the outcome reporting is optional many cases will report reactions caused by drugs only. Because this is an important part of the analysis, the missing values are (By R default) included as “NA”. i.e. No outcome recorded.\n\n\n\n\n\nFigure 6: A bar graph visualising the severity of adverse reactions\n\n\n\n\n\nkable(reac_outc %&gt;%\n  count(Severity) %&gt;%\n  mutate(percentage = n / sum(n) * 100))\n\n\n\n\nSeverity\nn\npercentage\n\n\n\n\nModerate\n91722\n17.392112\n\n\nNon-Serious\n201265\n38.163401\n\n\nSevere\n50264\n9.530943\n\n\nNA\n184126\n34.913544\n\n\n\n\n\nOnly 65.1% of FAERS cases report outcome data. Severity analyses therefore reflect a subset of reports and may underestimate true risk.\n\n\n\n\n\nFigure 7: A histogram showing how many cases reported what number of reactions, coloured with severity\n\n\n\n\n\n\n\n\n\nFigure 8: Severe outcomes by number of reported reactions\n\n\n\n\nAlthough the difference is subtle, cases reporting five or more adverse reactions show a higher proportion of severe outcomes (death or life-threatening reactions) compared with cases reporting fewer reactions."
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#interpretation",
-    "href": "projects/FAERS2025Q3.html#interpretation",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Interpretation",
-    "text": "Interpretation\nCombining reaction frequency and outcome severity provides a more cautious understanding of FAERS data.\nFrequently reported reactions do not necessarily correspond to severe outcomes, and serious outcomes may occur in less frequently reported terms.\nThis demonstrates why spontaneous reporting databases should be used for signal awareness and prioritisation rather than risk estimation.\n\nClinical Context\nIt is very important to keep in mind that these are all real-life data with many missing values and errors. It is not possible to know where there may be errors, but a few possibilities include:\n\nError submitting an update as a new case\nEntry error\nMultiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions\n\nWhile there are many possible errors to keep in mind, the data has a huge number of cases reported. Larger reporting volume may reveal consistent patterns, but does not remove reporting bias. An increase in reports does not necessarily indicate increased risk. Possible contributions to the bias include:\n\nIncreased prescribing\nMedia attention\nRegulatory changes\n\nThe results should be read and analysed with the potential errors and influences in mind, and any healthcare professionals or researchers who intend to use this as reference should always use their clinical judgement.\n\n\nKey Findings\n\nReporting frequency is concentrated in a small subset of reaction terms\nMost cases contain a limited number of reported reactions\nSerious outcomes occur across both frequent and infrequent terms\nReaction frequency alone does not indicate clinical severity"
-  },
-  {
-    "objectID": "projects/FAERS2025Q3.html#conclusion",
-    "href": "projects/FAERS2025Q3.html#conclusion",
-    "title": "Reproducible Pharmacovigilance Workflow Using FAERS Data (2025 Q3)",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis case study demonstrates a reproducible approach to structuring and interpreting large pharmacovigilance datasets in R.\nBy separating reaction frequency from outcome severity and analysing data at the case level, reporting patterns can be explored while maintaining appropriate clinical caution.\nSuch workflows support exploratory safety assessment and communication, but should not be interpreted as evidence of causality or incidence."
-  },
-  {
-    "objectID": "blog/index-ja.html",
-    "href": "blog/index-ja.html",
-    "title": "ブログ",
-    "section": "",
-    "text": "Rでよくあるエラー10選\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "ja.html#rデータ解析サポート",
-    "href": "ja.html#rデータ解析サポート",
-    "title": "Reina's Data Studio",
-    "section": "",
-    "text": "Reina’s Data Studio では、さまざまな分野のデータ解析を 再現性と正確さを重視したRワークフローでサポートしています。\n薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
-    "title": "Rでよくあるエラー10選",
-    "section": "",
-    "text": "今回は、特に初心者にありがちなエラーを10個選んで解説していきます。\n慣れてきた頃にもやりがちです。特に1と９。でもなれるとすぐに原因がわかり、すぐに直せるようになるので、何度も挑戦しましょう。"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-x-not-found",
-    "title": "Rでよくあるエラー10選",
-    "section": "1. object ‘x’ not found",
-    "text": "1. object ‘x’ not found\nこれは本当によくあります。直すのはものすごく簡単で、\nx = 8\nなど、xに何かを割り当てれば終わりです。\nもう一つの原因はスペルミスです。自分の場合は、特にオブジェクトの名前を無駄に長くしてしまった時にあります。\nオブジェクトの名前が、例えばxではなくreinasdatastudioの場合で、スペルミスをしてしまった時は、\nobject 'reinasdatastudi' not found\nなどと、自分が打ったスペルミスが表示されるので、しっかり確認してみてください。\n\n\n\n\n\n\n\nエラー\nError: object ‘x’ not found\n\n\n意味\n指定したオブジェクト（変数やデータ）が存在しません。\n\n\nよくある原因\n\nオブジェクト名のスペルミス\nデータを読み込んでいない\nオブジェクトを作る前に使っている\n\n\n\n解決方法\nオブジェクトが存在するか確認します。\nls()\nまた、スペルミスがないか確認します。"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#unexpected-symbol",
-    "title": "Rでよくあるエラー10選",
-    "section": "2. unexpected symbol",
-    "text": "2. unexpected symbol\n\n\n\n\n\n\n\nエラー\nError: unexpected symbol\n\n\n意味\nコードの構文が正しくありません。\n\n\nよくある原因\n\nコンマ , の不足\nカッコ () の閉じ忘れ\nパイプ %&gt;% の位置ミス\n\n\n\n解決方法\nコードの構文を確認します。 特にカッコやコンマの位置をチェックします。"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#argument-is-missing-with-no-default",
-    "title": "Rでよくあるエラー10選",
-    "section": "3. argument is missing, with no default",
-    "text": "3. argument is missing, with no default\n例えばfunction（関数）を使うときに、\nmy_func &lt;- function(x,y)\nなのに、間違えて\nmy_func(1, )\nや\nmy_func(1)\nなど、その関数にあったargument（引数）が使われていない時のエラーです。\nこの例の場合、正しいのは\nmy_func(1,2)\nなど、xとyが何なのかを指定しないといけません。\n\n\n\n\n\n\n\nエラー\nError: argument is missing, with no default\n\n\n意味\n関数に必要な引数が指定されていません。\n\n\nよくある原因\n\n必須引数を指定していない\nコンマの書き忘れ\n\n\n\n解決方法\n関数の引数を確認します。\n?function_name"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#non-numeric-argument-to-binary-operator",
-    "title": "Rでよくあるエラー10選",
-    "section": "4. non-numeric argument to binary operator",
-    "text": "4. non-numeric argument to binary operator\nたまに、数字に見えてもRはそれをstringなどと認識している場合があるので、ちゃんとclassがnumericなのを確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: non-numeric argument to binary operator\n\n\n意味\n数値ではないデータに対して計算を行おうとしています。\n\n\nよくある原因\n\n文字列データを計算している\n数値として読み込まれていない\n\n\n\n解決方法\nデータ型を確認します。\nclass(x)\n必要なら数値に変換します。\nas.numeric(x)"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#cannot-open-the-connection",
-    "title": "Rでよくあるエラー10選",
-    "section": "5. cannot open the connection",
-    "text": "5. cannot open the connection\nこれは最初はすごく複雑です。わかりやすく説明しますと、\nRが指定されたファイルを見つけられない、または開けないときに出ます。\n一番よくある原因は、Rに伝えたファイルの場所が、今作業中のフォルダの中にないときです。例えば、\nread.csv(\"data.csv\")\nでファイルを開こうとしても、Rが今作業しているフォルダ、すなわちDirectoryにそのデータファイルがないとRはそれを開けません。\nRStudioを開けた時の右側のMoreと書かれているギアアイコンをクリックすると、今どこのDirectoryで作業しているのかを確認できます。Go To Working Directory（今作業中のDirectoryに行く）をクリックすれば、Rが今見ているフォルダーを開いてくれます。\n違うDirectoryに変えたい場合は、作業したいフォルダーに行ってから、Set As Working Directory（このフォルダーをDirectoryにする）をクリックしてください。\n\nこれらのステップをコンソールでしたいなら、以下の通りsetwdでDirectoryにしたいフォルダーの場所(Path)を指定します。\n\n経験上自分が一番最初てこずったエラーです。\nほかの原因は、データファイルのスペルミス、ダブルクォーテーション（””）の入れ忘れなどもあるので、ちゃんとファイルの名前が正しく書かれているか確認しましょう。\n\n\n\n\n\n\n\nエラー\nError: cannot open the connection\n\n\n意味\nファイルやURLを開くことができません。\n\n\nよくある原因\n\nファイルパスが間違っている\nファイルが存在しない\n作業ディレクトリが違う\n\n\n\n解決方法\n現在の作業ディレクトリを確認します。\ngetwd()\n必要なら変更します。\nsetwd(“path”)"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#object-of-type-closure-is-not-subsettable",
-    "title": "Rでよくあるエラー10選",
-    "section": "6. object of type ‘closure’ is not subsettable",
-    "text": "6. object of type ‘closure’ is not subsettable\nあまり聞かないエラーですが、例えば変数（Variable）の名前が関数（Function）の名前と同じだったりした時にでます。Rが変数を関数と勘違いしてしまいます。\n\n\n\n\n\n\n\nエラー\nError: object of type ‘closure’ is not subsettable\n\n\n意味\n関数をデータのように扱っています。\n\n\nよくある原因\n関数名とオブジェクト名が同じ。\n例：mean[1]\n\n\n解決方法\n関数ではなくデータを指定します。\n例：mean(c(1,2,3))"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#replacement-has-length-zero",
-    "title": "Rでよくあるエラー10選",
-    "section": "7. replacement has length zero",
-    "text": "7. replacement has length zero\n\n\n\n\n\n\n\nエラー\nError: replacement has length zero\n\n\n意味\n空の値を代入しようとしています。\n\n\nよくある原因\n\n条件に一致するデータが存在しない\nインデックスが空になっている\n\n\n\n解決方法\nデータの長さを確認します。\nlength(x)"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#subscript-out-of-bounds",
-    "title": "Rでよくあるエラー10選",
-    "section": "8. subscript out of bounds",
-    "text": "8. subscript out of bounds\n７同様、まだシンプルなエラーですね。\n\n\n\n\n\n\n\nエラー\nError: subscript out of bounds\n\n\n意味\n存在しない位置の要素にアクセスしています。\n\n\nよくある原因\nデータのサイズより大きい番号を指定している。\n例：x[10]\n（データが5個しかない場合）\n\n\n解決方法\nデータのサイズを確認します。\nlength(x)"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#could-not-find-function",
-    "title": "Rでよくあるエラー10選",
-    "section": "9. could not find function",
-    "text": "9. could not find function\n\n\n\n\n\n\n\nエラー\nError: could not find function\n\n\n意味\n関数が見つかりません。\n\n\nよくある原因\n\nパッケージを読み込んでいない\n関数名のスペルミス\n\n\n\n解決方法\nパッケージをロードします。\nlibrary(dplyr)"
-  },
-  {
-    "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
-    "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html#nanan-argument",
-    "title": "Rでよくあるエラー10選",
-    "section": "10. NA/NaN argument",
-    "text": "10. NA/NaN argument\nちなみに、欠損値があるか確認する方法は複数あります。\nanyNA(data)\nはデータの中に欠損値があればTRUE、なければFALSEが出ます。\nsum(is.na(data))\nは、何個TRUE、つまりNA/欠損値があるか確認します。\nそしてデータのコラムごとに確認したい場合は、\ncolSums(is.na(data))\nと入力するとどのコラムに何個NAがあるか確認できます。\n\n\n\n\n\n\n\nエラー\nError: NA/NaN argument\n\n\n意味\n計算にNAやNaNが含まれています。\n\n\nよくある原因\nデータに欠損値がある。\n\n\n解決方法\nNAを除外して計算します。\nmean(x, na.rm = TRUE)\n\n\n\n説明が分かりにくかったり、質問があれば、ぜひ教えてください。\nたくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！\n他にもRのことで質問や相談があれば、気軽にご連絡ください。\n日本語でRコンサルティングをしています。\nEmail: reinasdatastudio@gmail.com"
-  },
-  {
-    "objectID": "index.html#one-off-r-help",
-    "href": "index.html#one-off-r-help",
-    "title": "R Consultant for Data Analysis and Reproducible Workflows",
-    "section": "One-off R Help",
-    "text": "One-off R Help\nDebugging, small questions, quick fixes.\n\nPricing\nFrom NZD 40-60 per case"
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#参考文献",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#参考文献",
+    "title": "データに合ったグラフの選び方",
+    "section": "参考文献",
+    "text": "参考文献"
   }
 ]
