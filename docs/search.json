@@ -726,5 +726,47 @@
     "title": "データに合ったグラフの選び方",
     "section": "参考文献",
     "text": "参考文献"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "",
+    "text": "Rでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。\nでも、最初は「コードが長い」「何がどこで変わっているのか分からない」と感じる人も多いと思います。\nそこで！分かりやすくまとめてみました。\nggplotは本当にたくさん要素がつまっていて、ひとつのブログにはまとまらないので、５つのセクションに分かれています。\n今回は第一弾です。\nデータを見て、どのグラフを使うべきかの考え方を説明していきます。\nggplotのコードの話に入る前に、まず データをどう理解するか がとても大切です。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "ggplot2とは",
+    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。\nコードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nただ、グラフは見た目だけではありません。伝えたいストーリーをわかりやすく伝えるツールでもあります。\nいらない情報をグラフにしたり、伝えたい内容に合わないグラフを使ってしまうと、問題の理解や説明が難しくなってしまいます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフ選びの大切さ",
+    "text": "グラフ選びの大切さ\nProgramming Skills for Data Scienceという本には、グラフを選ぶときに大事な４つのポイントがあると書かれています。(Freeman and Ross 2018)\n\nデータ可視化で実現したい目的\n可視化するうえで使えるデータの種類\n人間の視認処理能力\nデータ可視化の出力先の制約（スクリーンのサイズなど）\n\nデータサイエンティストにとって大切なのは、まずどれだけデータを理解できているかだと思っています。\nそもそも理解していないと説明もできませんし、もっとも可視化なんてしても、「何が目的でそんなグラフを出したのか」も分からない、中身のないレポートになってしまいます。\n例えば、私が最近調べたFAERSの薬の副作用データを見るときには、このデータからどんなことを知りたいかを最初に考えます。\n大きな問題を「世界で一番悪影響のある副作用は何か」とすると、そこからまた細かくデータ分析、可視化できるように特定化していきます。\n\n一番報告されている副作用とは何か\n一番副作用が報告されている薬はどれか\nどの副作用が一番死因の原因か。\n\nこのように、少しずつ問題を具体的にしていくことで、どんな可視化が必要なのかが見えてきます。\nそしてそれには、自分のデータをしっかり理解しておく必要があります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "変数のタイプ",
+    "text": "変数のタイプ\nデータを可視化するうえでまず理解しておくのが、変数のタイプです。\n大きく分けて二つあります。\n「連続値」（continuous）\n小数点以下まで表現できる値です。「測る」データです。\n例：\n\n長さ\n体重など\n\n「離散値」（discrete）\n小数点にならない値です。「数える」データです。\n例：\n\n人口の数\n副作用の報告数\nカテゴリーなど"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "例：irisデータ",
+    "text": "例：irisデータ\nRでよく使われるirisデータは、5つの変数（variables）があります。\n\nknitr::kable(head(iris, 5))\n\n\nIris Dataset\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nどれが連続値でどれが離散値かわかりますか？\n実は\n\nSepal.Length（がく片の長さ）\nSepal.Width（がく片の幅）\nPetal.Length（花びらの長さ）\nPetal.Width（花びらの幅）\n\nは連続値で、\nSpecies（種類）\nだけが離散値です。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフを選ぶときの考え方",
+    "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
   }
 ]
