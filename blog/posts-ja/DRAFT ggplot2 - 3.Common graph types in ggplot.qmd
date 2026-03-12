@@ -7,7 +7,7 @@ categories:
   - Data Visualisation
 format:
   html:
-    include-after-body: blog-footer.html
+    include-after-body: blog-footer-ja.html
 toc: true
 draft: true
 knitr:

@@ -8,6 +8,11 @@ categories:
   - Data Visualisation
 format:
   html:
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
     include-after-body: blog-footer-ja.html
 toc: true
 knitr:
