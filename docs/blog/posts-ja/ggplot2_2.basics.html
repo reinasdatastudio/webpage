@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-13">
-<meta name="description" content="ggplot2をわかりやすくまとめました。">
+<meta name="dcterms.date" content="2026-03-14">
+<meta name="description" content="ggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。">
 
-<title>ggplotでよく使うグラフ – Reina’s Data Studio</title>
+<title>ggplot入門②：ggplotの基本 – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,7 +114,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
-<meta name="quarto:status" content="draft">
+<style>
+.description { display: none; }
+</style>
 
 
 </head>
@@ -122,7 +124,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -189,12 +191,12 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#どのグラフを使うか" id="toc-どのグラフを使うか" class="nav-link active" data-scroll-target="#どのグラフを使うか">どのグラフを使うか</a>
-  <ul class="collapse">
-  <li><a href="#離散値１つの場合" id="toc-離散値１つの場合" class="nav-link" data-scroll-target="#離散値１つの場合">離散値１つの場合：</a></li>
-  <li><a href="#連続値１つの場合" id="toc-連続値１つの場合" class="nav-link" data-scroll-target="#連続値１つの場合">連続値１つの場合</a></li>
-  <li><a href="#連続値２つの場合" id="toc-連続値２つの場合" class="nav-link" data-scroll-target="#連続値２つの場合">連続値２つの場合</a></li>
-  </ul></li>
+  <li><a href="#ggplotの基本構造" id="toc-ggplotの基本構造" class="nav-link active" data-scroll-target="#ggplotの基本構造">ggplotの基本構造</a></li>
+  <li><a href="#例散布図scatterplotを作る" id="toc-例散布図scatterplotを作る" class="nav-link" data-scroll-target="#例散布図scatterplotを作る">例：散布図（Scatterplot）を作る</a></li>
+  <li><a href="#aesとは" id="toc-aesとは" class="nav-link" data-scroll-target="#aesとは">aesとは？</a></li>
+  <li><a href="#aestheticsを使った例" id="toc-aestheticsを使った例" class="nav-link" data-scroll-target="#aestheticsを使った例">aestheticsを使った例</a></li>
+  <li><a href="#参考資料" id="toc-参考資料" class="nav-link" data-scroll-target="#参考資料">参考資料</a></li>
+  <li><a href="#次回" id="toc-次回" class="nav-link" data-scroll-target="#次回">次回</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +205,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ggplotでよく使うグラフ</h1>
+<h1 class="title">ggplot入門②：ggplotの基本</h1>
   <div class="quarto-categories">
     <div class="quarto-category">ggplot2</div>
     <div class="quarto-category">Data Visualisation</div>
@@ -212,7 +214,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 <div>
   <div class="description">
-    ggplot2をわかりやすくまとめました。
+    ggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。
   </div>
 </div>
 
@@ -223,7 +225,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">March 14, 2026</p>
     </div>
   </div>
   
@@ -235,54 +237,269 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </header>
 
 
-<p>Use this example again but focus on <strong>scatterplots as a graph type</strong>.</p>
-<pre><code>ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +   geom_point()</code></pre>
-<p>Explain:</p>
-<ul>
-<li><p>scatterplot</p></li>
-<li><p>when to use it</p></li>
-<li><p>continuous vs continuous variables</p></li>
-</ul>
-<p>Later you can add:</p>
-<pre><code>geom_histogram() geom_boxplot() geom_bar()</code></pre>
-<section id="どのグラフを使うか" class="level2">
-<h2 class="anchored" data-anchor-id="どのグラフを使うか">どのグラフを使うか</h2>
-<p>変数のタイプによって、使うグラフが変わります。</p>
-<section id="離散値１つの場合" class="level3">
-<h3 class="anchored" data-anchor-id="離散値１つの場合">離散値１つの場合：</h3>
+<p>前回の記事では、データに合ったグラフの選び方について説明しました。</p>
+<p>今回は、実際に<strong><strong>ggplotの基本構造</strong></strong>を見ていきます。</p>
+<p>ggplotのコードは最初見るととても長く感じますが、基本の形を一回理解してしまえば案外シンプルです。</p>
+<section id="ggplotの基本構造" class="level2">
+<h2 class="anchored" data-anchor-id="ggplotの基本構造">ggplotの基本構造</h2>
+<p>すべてのggplotは、基本的に次のような構造になっています。</p>
+<pre><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +
+  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +
+  &lt;STAT_FUNCTION&gt;(...) +
+  &lt;SCALE_FUNCTION&gt;(...) +
+  &lt;COORD_FUNCTION&gt;(...) +
+  &lt;FACET_FUNCTION&gt;(...) +
+  labs(
+    title = &lt;TITLE&gt;,
+    subtitle = &lt;SUBTITLE&gt;,
+    x = &lt;X_LABEL&gt;,
+    y = &lt;Y_LABEL&gt;,
+    caption = &lt;CAPTION&gt;
+  ) +
+  &lt;THEME_FUNCTION&gt;(...)</code></pre>
+<p>こう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに<strong><strong>最低限必要なのは次の2つだけ</strong></strong>です。</p>
+<pre><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +
+  &lt;GEOM_FUNCTION&gt;()</code></pre>
+<p><em>*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。</em></p>
+<p><strong><strong>データを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶ</strong></strong>という流れになります。</p>
+<p>分かりやすくまとめると、</p>
+<pre><code>データ + aesthetics + geometry
+（データ + 見た目の指定 + グラフの種類）</code></pre>
+<p>これをコードで書くと、</p>
+<pre><code>ggplot(data, aes()) + geom_*</code></pre>
+<p>という形になります。</p>
+<p>この考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。</p>
+</section>
+<section id="例散布図scatterplotを作る" class="level2">
+<h2 class="anchored" data-anchor-id="例散布図scatterplotを作る">例：散布図（Scatterplot）を作る</h2>
+<p>例として、前回も使った<strong>irisデータ</strong>を使います。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">1.7</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: left;">setosa</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<p>ここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係をグラフにしました。</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Species)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ggplot2_2.basics_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<ul>
+<li><p><strong><strong>data = iris</strong></strong><br>
+→ 使用するデータ</p></li>
+<li><p><strong><strong>aes(x = Sepal.Length, y = Petal.Length)</strong></strong><br>
+→ x軸とy軸にどの変数を使うか</p></li>
+<li><p><strong><strong>geom_point()</strong></strong><br>
+→ 散布図を作る</p></li>
+</ul>
+<p>という意味になります。</p>
+<p>先ほどのプレースホルダーの例↓</p>
+<pre><code>&lt;DATA&gt; → iris
+&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length
+&lt;GEOM_FUNCTION&gt; → geom_point()</code></pre>
 </section>
-<section id="連続値１つの場合" class="level3">
-<h3 class="anchored" data-anchor-id="連続値１つの場合">連続値１つの場合</h3>
-<p><code>ggplot(iris, aes(x=Sepal.Length)) +   geom_histogram(binwidth = 0.2)</code></p>
-<p>他にも、</p>
-<p><code>ggplot(iris, aes(x=Sepal.Length)) +   geom_density(adjust = 1)</code></p>
-<p>などがあります。</p>
-<p>一番使いそうなのを例えで出しましたが、ほかにもグラフの種類はあるので、くわしくは</p>
+<section id="aesとは" class="level2">
+<h2 class="anchored" data-anchor-id="aesとは">aesとは？</h2>
+<p><code>aes</code> は<strong><strong>aesthetics（美的要素）</strong></strong>の略です。</p>
+<p>グラフの中で、</p>
+<ul>
+<li><p>どの変数を<strong>x軸</strong></p></li>
+<li><p>どの変数を<strong>y軸</strong></p></li>
+<li><p>どの変数を<strong>色</strong></p></li>
+<li><p>どの変数を<strong>形</strong></p></li>
+</ul>
+<p>として使うかなどを指定します。</p>
+<p>分かりやすくまとめるとこんな感じ↓</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>aesthetics</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td>x軸に使う変数</td>
+<td><code>x = Sepal.Length</code></td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td>y軸に使う変数</td>
+<td><code>y = Petal.Length</code></td>
+</tr>
+<tr class="odd">
+<td>color</td>
+<td>点や線の色</td>
+<td><code>color = Species</code></td>
+</tr>
+<tr class="even">
+<td>fill</td>
+<td>塗りつぶしの色</td>
+<td><code>fill = Species</code></td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>点や線の大きさ</td>
+<td><code>size = Petal.Width</code></td>
+</tr>
+<tr class="even">
+<td>shape</td>
+<td>点の形</td>
+<td><code>shape = Species</code></td>
+</tr>
+<tr class="odd">
+<td>alpha</td>
+<td>透明度（０に近いほど透明）</td>
+<td><code>alpha = 0.5</code></td>
+</tr>
+</tbody>
+</table>
+<p>基本的な散布図では、</p>
+<pre><code>x
+y</code></pre>
+<p>の2つを指定するだけでグラフを作ることができます。</p>
+</section>
+<section id="aestheticsを使った例" class="level2">
+<h2 class="anchored" data-anchor-id="aestheticsを使った例">aestheticsを使った例</h2>
+<p>先ほどのコードを少しアレンジしてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> Sepal.Length, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> Petal.Length, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> Species, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">size =</span> Petal.Width, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ggplot2_2.basics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>この例では、</p>
+<ul>
+<li><code>x</code>と<code>y</code>で軸を指定し</li>
+<li><code>color</code>でSpeciesごとに色を変え</li>
+<li><code>size</code>でPetal.Widthに応じて点の大きさを変えてみました。</li>
+</ul>
+<p>このように <code>aes()</code> を使うことで、データの情報をグラフの見た目に対応させることができ、かなり見やすくなります。</p>
+</section>
+<section id="参考資料" class="level2">
+<h2 class="anchored" data-anchor-id="参考資料">参考資料</h2>
+<p>Positのチートシートもとても分かりやすいです。</p>
+<p><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html" class="uri">https://rstudio.github.io/cheatsheets/html/data-visualization.html</a></p>
+<p>日本語バージョン：</p>
 <p><a href="https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf" class="uri">https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf</a></p>
-<p>のチートシートをご覧ください。</p>
 </section>
-<section id="連続値２つの場合" class="level3">
-<h3 class="anchored" data-anchor-id="連続値２つの場合">連続値２つの場合</h3>
-<p><code>ggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +   geom_point()</code></p>
-<p><code>geom_point()</code>はいわゆる散布図（scatterplot）の事です。主にxとyの両方が連続値の場合に使われます。</p>
-<p><code>ggplot(data=iris, aes(x=Species, y=Sepal.Length)) +   geom_boxplot()</code></p>
+<section id="次回" class="level2">
+<h2 class="anchored" data-anchor-id="次回">次回</h2>
+<p>次の記事では、</p>
+<ul>
+<li>第一回で説明した、「データの種類」に合わせて作るグラフ</li>
+<li>よく使うグラフの種類
+<ul>
+<li><code>geom_bar</code></li>
+<li><code>geom_histogram</code></li>
+<li><code>geom_boxplot</code></li>
+</ul></li>
+</ul>
+<p>などを実際の例を使って解説します。</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

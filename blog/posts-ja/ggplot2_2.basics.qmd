@@ -1,0 +1,192 @@
+---
+title: "ggplot入門②：ggplotの基本"
+date: 2026-03-14
+description: "ggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。"
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
+    include-after-body: blog-footer-ja.html
+toc: true
+---
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+前回の記事では、データに合ったグラフの選び方について説明しました。
+
+今回は、実際に<strong>**ggplotの基本構造**</strong>を見ていきます。
+
+ggplotのコードは最初見るととても長く感じますが、基本の形を一回理解してしまえば案外シンプルです。
+
+## ggplotの基本構造
+
+すべてのggplotは、基本的に次のような構造になっています。
+
+```         
+ggplot(data = <DATA>, mapping = aes(<GLOBAL_MAPPINGS>)) +
+  <GEOM_FUNCTION>(mapping = aes(<LOCAL_MAPPINGS>)...) +
+  <STAT_FUNCTION>(...) +
+  <SCALE_FUNCTION>(...) +
+  <COORD_FUNCTION>(...) +
+  <FACET_FUNCTION>(...) +
+  labs(
+    title = <TITLE>,
+    subtitle = <SUBTITLE>,
+    x = <X_LABEL>,
+    y = <Y_LABEL>,
+    caption = <CAPTION>
+  ) +
+  <THEME_FUNCTION>(...)
+```
+
+こう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに<strong>**最低限必要なのは次の2つだけ**</strong>です。
+
+```         
+ggplot(data = <DATA>, mapping = aes(<GLOBAL_MAPPINGS>)) +
+  <GEOM_FUNCTION>()
+```
+
+*\*ここで使っている \`\<\>\` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。*
+
+<strong>**データを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶ**</strong>という流れになります。
+
+分かりやすくまとめると、
+
+```         
+データ + aesthetics + geometry
+（データ + 見た目の指定 + グラフの種類）
+```
+
+これをコードで書くと、
+
+```         
+ggplot(data, aes()) + geom_*
+```
+
+という形になります。
+
+この考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。
+
+## 例：散布図（Scatterplot）を作る
+
+例として、前回も使った**irisデータ**を使います。
+
+```{r}
+knitr::kable(head(iris, 10))
+```
+
+ここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係をグラフにしました。
+
+```{r}
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point()
+```
+
+-   <strong>**data = iris**</strong>\
+    → 使用するデータ
+
+-   <strong>**aes(x = Sepal.Length, y = Petal.Length)**</strong>\
+    → x軸とy軸にどの変数を使うか
+
+-   <strong>**geom_point()**</strong>\
+    → 散布図を作る
+
+という意味になります。
+
+先ほどのプレースホルダーの例↓
+
+```         
+<DATA> → iris
+<GLOBAL_MAPPINGS> → x = Sepal.Length, y = Petal.Length
+<GEOM_FUNCTION> → geom_point()
+```
+
+## aesとは？
+
+`aes` は<strong>**aesthetics（美的要素）**</strong>の略です。
+
+グラフの中で、
+
+-   どの変数を**x軸**
+
+-   どの変数を**y軸**
+
+-   どの変数を**色**
+
+-   どの変数を**形**
+
+として使うかなどを指定します。
+
+分かりやすくまとめるとこんな感じ↓
+
+| aesthetics | 説明                       | 例                   |
+|------------|----------------------------|----------------------|
+| x          | x軸に使う変数              | `x = Sepal.Length`   |
+| y          | y軸に使う変数              | `y = Petal.Length`   |
+| color      | 点や線の色                 | `color = Species`    |
+| fill       | 塗りつぶしの色             | `fill = Species`     |
+| size       | 点や線の大きさ             | `size = Petal.Width` |
+| shape      | 点の形                     | `shape = Species`    |
+| alpha      | 透明度（０に近いほど透明） | `alpha = 0.5`        |
+
+基本的な散布図では、
+
+```         
+x
+y
+```
+
+の2つを指定するだけでグラフを作ることができます。
+
+## aestheticsを使った例
+
+先ほどのコードを少しアレンジしてみます。
+
+```{r}
+ggplot(data = iris,
+       aes(
+         x = Sepal.Length, 
+         y = Petal.Length, 
+         color = Species, 
+         size = Petal.Width, 
+         alpha = 0.8)) +
+  geom_point()
+```
+
+この例では、
+
+-   `x`と`y`で軸を指定し
+-   `color`でSpeciesごとに色を変え
+-   `size`でPetal.Widthに応じて点の大きさを変えてみました。
+
+このように `aes()` を使うことで、データの情報をグラフの見た目に対応させることができ、かなり見やすくなります。
+
+## 参考資料
+
+Positのチートシートもとても分かりやすいです。
+
+<https://rstudio.github.io/cheatsheets/html/data-visualization.html>
+
+日本語バージョン：
+
+<https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf>
+
+## 次回
+
+次の記事では、
+
+-   第一回で説明した、「データの種類」に合わせて作るグラフ
+-   よく使うグラフの種類
+    -   `geom_bar`
+    -   `geom_histogram`
+    -   `geom_boxplot`
+
+などを実際の例を使って解説します。

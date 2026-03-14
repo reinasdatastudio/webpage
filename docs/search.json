@@ -305,7 +305,7 @@
     "href": "blog/index-ja.html",
     "title": "ブログ",
     "section": "",
-    "text": "ggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
+    "text": "ggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
@@ -761,5 +761,117 @@
     "title": "ggplot入門①：データに合ったグラフの選び方",
     "section": "グラフを選ぶときの考え方",
     "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "",
+    "text": "前回の記事では、データに合ったグラフの選び方について説明しました。\n今回は、実際にggplotの基本構造を見ていきます。\nggplotのコードは最初見るととても長く感じますが、実は基本の形はとてもシンプルです。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#ggplotの基本構造",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#ggplotの基本構造",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "ggplotの基本構造",
+    "text": "ggplotの基本構造\nすべてのggplotは、基本的に次のような構造になっています。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) +\n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;\n  ) +\n  &lt;THEME_FUNCTION&gt;(...)\nこう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに最低限必要なのは次の2つだけです。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;()\n*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。\nデータを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶという流れになります。\n分かりやすくまとめると、\nデータ + aesthetics + geometry\n（データ + 見た目の指定 + グラフの種類）\nこれをコードで書くと、\nggplot(data, aes()) + geom_*\nという形になります。\nこの考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#例散布図scatterplotを作る",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#例散布図scatterplotを作る",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "例：散布図（Scatterplot）を作る",
+    "text": "例：散布図（Scatterplot）を作る\n例として、前回も使ったirisデータを使います。\n\nknitr::kable(head(iris, 10))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n4.6\n3.4\n1.4\n0.3\nsetosa\n\n\n5.0\n3.4\n1.5\n0.2\nsetosa\n\n\n4.4\n2.9\n1.4\n0.2\nsetosa\n\n\n4.9\n3.1\n1.5\n0.1\nsetosa\n\n\n\n\n\nここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係を見てみます。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこのコードでは、\n\ndata = iris\n→ 使用するデータ\naes(x = Sepal.Length, y = Petal.Length)\n→ x軸とy軸にどの変数を使うか\ngeom_point()\n→ 散布図を作る\n\nという意味になります。\n先ほどのプレースホルダーの例では次のようになります。\n&lt;DATA&gt; → iris\n&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length\n&lt;GEOM_FUNCTION&gt; → geom_point()"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aesとは",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aesとは",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aesとは？",
+    "text": "aesとは？\naes はaesthetics（美的要素）の略です。\nグラフの中で、\n\nどの変数をx軸\nどの変数をy軸\nどの変数を色\nどの変数を形\n\nとして使うかを指定します。\n例えば次のような要素があります。\n\n\n\naesthetics\n説明\n例\n\n\n\n\nx\nx軸に使う変数\nx = Sepal.Length\n\n\ny\ny軸に使う変数\ny = Petal.Length\n\n\ncolor\n点や線の色\ncolor = Species\n\n\nfill\n塗りつぶしの色\nfill = Species\n\n\nsize\n点や線の大きさ\nsize = Petal.Width\n\n\nshape\n点の形\nshape = Species\n\n\nalpha\n透明度（０に近いほど透明）\nalpha = 0.5\n\n\n\n基本的な散布図では、\nx\ny\nの2つを指定するだけでグラフを作ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aestheticsを使った例",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aestheticsを使った例",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aestheticsを使った例",
+    "text": "aestheticsを使った例\n先ほどのコードを少しアレンジしてみます。\n\nggplot(data = iris,\n       aes(\n         x = Sepal.Length, \n         y = Petal.Length, \n         color = Species, \n         size = Petal.Width, \n         alpha = 0.8)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこの例では、\n\nxとyで軸を指定し\ncolorでSpeciesごとに色を変え\nsizeでPetal.Widthに応じて点の大きさを変えています。\n\nこのように aes() を使うことで、データの情報をグラフの見た目に対応させることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#参考資料",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#参考資料",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "参考資料",
+    "text": "参考資料\n英語ですが、Positのチートシートもとても分かりやすいです。\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#次回",
+    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#次回",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "次回",
+    "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。\nggplotの理解がぐっと深まると思います。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html",
+    "href": "blog/posts-ja/ggplot2_2.basics.html",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "",
+    "text": "前回の記事では、データに合ったグラフの選び方について説明しました。\n今回は、実際にggplotの基本構造を見ていきます。\nggplotのコードは最初見るととても長く感じますが、基本の形を一回理解してしまえば案外シンプルです。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "ggplotの基本構造",
+    "text": "ggplotの基本構造\nすべてのggplotは、基本的に次のような構造になっています。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) +\n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;\n  ) +\n  &lt;THEME_FUNCTION&gt;(...)\nこう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに最低限必要なのは次の2つだけです。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;()\n*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。\nデータを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶという流れになります。\n分かりやすくまとめると、\nデータ + aesthetics + geometry\n（データ + 見た目の指定 + グラフの種類）\nこれをコードで書くと、\nggplot(data, aes()) + geom_*\nという形になります。\nこの考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "例：散布図（Scatterplot）を作る",
+    "text": "例：散布図（Scatterplot）を作る\n例として、前回も使ったirisデータを使います。\n\nknitr::kable(head(iris, 10))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n4.6\n3.4\n1.4\n0.3\nsetosa\n\n\n5.0\n3.4\n1.5\n0.2\nsetosa\n\n\n4.4\n2.9\n1.4\n0.2\nsetosa\n\n\n4.9\n3.1\n1.5\n0.1\nsetosa\n\n\n\n\n\nここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係をグラフにしました。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\ndata = iris\n→ 使用するデータ\naes(x = Sepal.Length, y = Petal.Length)\n→ x軸とy軸にどの変数を使うか\ngeom_point()\n→ 散布図を作る\n\nという意味になります。\n先ほどのプレースホルダーの例↓\n&lt;DATA&gt; → iris\n&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length\n&lt;GEOM_FUNCTION&gt; → geom_point()"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aesとは？",
+    "text": "aesとは？\naes はaesthetics（美的要素）の略です。\nグラフの中で、\n\nどの変数をx軸\nどの変数をy軸\nどの変数を色\nどの変数を形\n\nとして使うかなどを指定します。\n分かりやすくまとめるとこんな感じ↓\n\n\n\naesthetics\n説明\n例\n\n\n\n\nx\nx軸に使う変数\nx = Sepal.Length\n\n\ny\ny軸に使う変数\ny = Petal.Length\n\n\ncolor\n点や線の色\ncolor = Species\n\n\nfill\n塗りつぶしの色\nfill = Species\n\n\nsize\n点や線の大きさ\nsize = Petal.Width\n\n\nshape\n点の形\nshape = Species\n\n\nalpha\n透明度（０に近いほど透明）\nalpha = 0.5\n\n\n\n基本的な散布図では、\nx\ny\nの2つを指定するだけでグラフを作ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aestheticsを使った例",
+    "text": "aestheticsを使った例\n先ほどのコードを少しアレンジしてみます。\n\nggplot(data = iris,\n       aes(\n         x = Sepal.Length, \n         y = Petal.Length, \n         color = Species, \n         size = Petal.Width, \n         alpha = 0.8)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこの例では、\n\nxとyで軸を指定し\ncolorでSpeciesごとに色を変え\nsizeでPetal.Widthに応じて点の大きさを変えてみました。\n\nこのように aes() を使うことで、データの情報をグラフの見た目に対応させることができ、かなり見やすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "参考資料",
+    "text": "参考資料\nPositのチートシートもとても分かりやすいです。\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html\n日本語バージョン：\nhttps://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#次回",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#次回",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "次回",
+    "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
+    "title": "ggplotでよく使うグラフ",
+    "section": "",
+    "text": "Use this example again but focus on scatterplots as a graph type.\nExplain:\nLater you can add:"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#どのグラフを使うか",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#どのグラフを使うか",
+    "title": "ggplotでよく使うグラフ",
+    "section": "どのグラフを使うか",
+    "text": "どのグラフを使うか\n変数のタイプによって、使うグラフが変わります。\n\n離散値１つの場合：\n\nlibrary(ggplot2)\n\n\nggplot(iris, aes(x=Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n連続値１つの場合\nggplot(iris, aes(x=Sepal.Length)) +   geom_histogram(binwidth = 0.2)\n他にも、\nggplot(iris, aes(x=Sepal.Length)) +   geom_density(adjust = 1)\nなどがあります。\n一番使いそうなのを例えで出しましたが、ほかにもグラフの種類はあるので、くわしくは\nhttps://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf\nのチートシートをご覧ください。\n\n\n連続値２つの場合\nggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +   geom_point()\ngeom_point()はいわゆる散布図（scatterplot）の事です。主にxとyの両方が連続値の場合に使われます。\nggplot(data=iris, aes(x=Species, y=Sepal.Length)) +   geom_boxplot()"
   }
 ]
