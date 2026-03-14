@@ -9,9 +9,12 @@
   {
     "listing": "/blog/index-ja.html",
     "items": [
+      "/blog/posts-ja/ggplot2_3.Common_graph_types.html",
       "/blog/posts-ja/ggplot2_2.basics.html",
       "/blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
-      "/blog/posts-ja/05-03-26.Rでよくあるエラー10選.html"
+      "/blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
+      "/blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html",
+      "/blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html"
     ]
   }
 ]

@@ -305,7 +305,7 @@
     "href": "blog/index-ja.html",
     "title": "ブログ",
     "section": "",
-    "text": "ggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
+    "text": "ggplot入門③：よく使うグラフの種類\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第3回。連続値・離散値などの変数のタイプに応じて、どのグラフを使うべきかをggplotの例とともにわかりやすく解説します。\n\n\n\n\n\nMar 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplotで見やすいグラフを作る\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot2をわかりやすくまとめました。\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot便利テクニック\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot2をわかりやすくまとめました。\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
@@ -861,17 +861,87 @@
     "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。"
   },
   {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
-    "title": "ggplotでよく使うグラフ",
+    "objectID": "thanks.html",
+    "href": "thanks.html",
+    "title": "Thank you for your enquiry",
     "section": "",
-    "text": "Use this example again but focus on scatterplots as a graph type.\nExplain:\nLater you can add:"
+    "text": "Thank you for your enquiry\nYour message has been successfully sent.\n\nReturn to homepage"
   },
   {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#どのグラフを使うか",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#どのグラフを使うか",
-    "title": "ggplotでよく使うグラフ",
-    "section": "どのグラフを使うか",
-    "text": "どのグラフを使うか\n変数のタイプによって、使うグラフが変わります。\n\n離散値１つの場合：\n\nlibrary(ggplot2)\n\n\nggplot(iris, aes(x=Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n連続値１つの場合\nggplot(iris, aes(x=Sepal.Length)) +   geom_histogram(binwidth = 0.2)\n他にも、\nggplot(iris, aes(x=Sepal.Length)) +   geom_density(adjust = 1)\nなどがあります。\n一番使いそうなのを例えで出しましたが、ほかにもグラフの種類はあるので、くわしくは\nhttps://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf\nのチートシートをご覧ください。\n\n\n連続値２つの場合\nggplot(data=iris, aes(x=Sepal.Length, y=Petal.Length)) +   geom_point()\ngeom_point()はいわゆる散布図（scatterplot）の事です。主にxとyの両方が連続値の場合に使われます。\nggplot(data=iris, aes(x=Species, y=Sepal.Length)) +   geom_boxplot()"
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "",
+    "text": "library(ggplot2)\n前回の記事では、ggplotの基本構造について説明しました。\n今回は、実際に どのグラフを使えばよいのか を見ていきます。\n第一回でも説明したように、データのタイプ（連続値・離散値）によって適切なグラフは変わります。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値が1つの場合",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値が1つの場合",
+    "text": "離散値が1つの場合\n\n棒グラフ\n離散値（カテゴリー）を1つだけ見る場合は、棒グラフ（bar chart）をよく使います。\n例えば、irisデータでは Species が離散値です。\n\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nこのグラフでは、それぞれの種類（Species）が何件あるかを見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が1つの場合",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が1つの場合",
+    "text": "連続値が1つの場合\n\nヒストグラム\n連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。\n例えば、がく片の長さ（Sepal.Length）を見てみます。\n\nggplot(iris, aes(x = Sepal.Length)) + \n  geom_histogram(binwidth = 0.2)\n\n\n\n\n\n\n\n# binwidthとは、区間（bin）の幅を表しています。\n# 小さい値 = 細かいヒストグラム\n# 大きい値 = 大まかなヒストグラム\n\nヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。\n\n\n密度プロット\n同じく分布を見る方法として、密度プロット（density plot）があります。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_density(adjust = 1)\n\n\n\n\n\n\n\n# adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。\n# 小さい値 = ギザギザの曲線\n# 大きい値 = なめらかな曲線\n\nヒストグラムよりもなめらかな分布を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が2つの場合",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が2つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が2つの場合",
+    "text": "連続値が2つの場合\n\n散布図\n2つの連続値の関係を見るときは、散布図（scatterplot）を使います。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n散布図では、2つの変数の関係（相関など）を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値-連続値",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値-連続値",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値 + 連続値",
+    "text": "離散値 + 連続値\n\n箱ひげ図\n離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nこのグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。\nこのように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。\nそのため、まずデータのタイプを理解する → 適切なグラフを選ぶという流れを意識してみてください。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "",
+    "text": "library(ggplot2)\n前回の記事では、ggplotの基本構造について説明しました。\n今回は、実際に どのグラフを使えばよいのか を見ていきます。\n第一回でも説明したように、データのタイプ（連続値・離散値）によって適切なグラフは変わります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値が1つの場合",
+    "text": "離散値が1つの場合\n\n棒グラフ\n離散値（カテゴリー）を1つだけ見る場合は、棒グラフ（bar chart）をよく使います。\n例えば、irisデータでは Species が離散値です。\n\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nこのグラフでは、それぞれの種類（Species）が何件あるかを見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が1つの場合",
+    "text": "連続値が1つの場合\n\nヒストグラム\n連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。\n例えば、がく片の長さ（Sepal.Length）を見てみます。\n\nggplot(iris, aes(x = Sepal.Length)) + \n  geom_histogram(binwidth = 0.2)\n\n\n\n\n\n\n\n# binwidthとは、区間（bin）の幅を表しています。\n# 小さい値 = 細かいヒストグラム\n# 大きい値 = 大まかなヒストグラム\n\nヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。\n\n\n密度プロット\n同じく分布を見る方法として、密度プロット（density plot）があります。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_density(adjust = 1)\n\n\n\n\n\n\n\n# adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。\n# 小さい値 = ギザギザの曲線\n# 大きい値 = なめらかな曲線\n\nヒストグラムよりもなめらかな分布を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が2つの場合",
+    "text": "連続値が2つの場合\n\n散布図\n2つの連続値の関係を見るときは、散布図（scatterplot）を使います。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n散布図では、2つの変数の関係（相関など）を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値 + 連続値",
+    "text": "離散値 + 連続値\n\n箱ひげ図\n離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nこのグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。\nこのように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。\nそのため、まずデータのタイプを理解する → 適切なグラフを選ぶという流れを意識してみてください。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
+    "title": "ggplot便利テクニック",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(ggiraph)\n\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nカーソルを合わせれば一つ一つの長さが見れるようになってます。"
   }
 ]
