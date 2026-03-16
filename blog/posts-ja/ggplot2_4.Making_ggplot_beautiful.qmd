@@ -1,0 +1,194 @@
+---
+title: "ggplot入門④：グラフを見やすくする方法"
+date: 2026-03-16
+description: "ggplot入門シリーズ第4回。色・ラベル・テーマなどを使って、ggplotで作ったグラフを見やすく整える方法を解説します。"
+image: images/Screenshot_ggplot_scatterplot.png 
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
+    include-after-body: blog-footer-ja.html
+toc: true
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+---
+
+```{r include=FALSE}
+library(ggplot2)
+```
+
+前回の記事では、**どのグラフを使えばよいのか**について説明しました。
+
+今回は、作ったグラフを**より見やすくする方法**を紹介します。
+
+データ可視化では、単にグラフを作るだけではなく、**読みやすく、伝わりやすいデザイン**にすることがとても重要です。
+
+# 例：基本の散布図
+
+まずはシンプルな散布図を作ってみます。
+
+今回も、これまでのブログで使ってきた`iris`データを使います。
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point()
+```
+
+このグラフでもデータの関係を見ることはできますが、少しシンプルすぎて情報が少ないかもしれません。
+
+そこで、いくつかの要素を追加して**見やすくカスタマイズ**していきます。
+
+## 点の見た目を調整する
+
+まず、点の見た目を少し変えてみます。
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + 
+  geom_jitter(aes(fill = Species),
+              shape = 21,
+              color = "black",
+              size = 2,
+              stroke = 0.8,
+              alpha = 0.9)
+```
+
+ここでは次のような設定をしています。
+
+| 引数     | 説明               |
+|----------|--------------------|
+| `shape`  | 点の形             |
+| `color`  | 点の枠線の色       |
+| `fill`   | 点の塗りつぶしの色 |
+| `size`   | 点の大きさ         |
+| `stroke` | 枠線の太さ         |
+| `alpha`  | 透明度             |
+
+`geom_jitter()` は`geom_point()`と似ていますが、点が少しずつずれて表示されるので、**重なって見えにくくなるのを防ぐことができます。**
+
+## 色をカスタマイズする
+
+次に、色を自分で指定してみます。
+
+```{r eval=FALSE}
+scale_fill_manual(values = c(
+  "setosa" = "pink",
+  "versicolor" = "#2A9D8F",
+  "virginica" = "purple"
+))
+```
+
+`scale_fill_manual()` を使うと、カテゴリーごとの色を自由に設定できます。
+
+この例では`Species`の3種類のiris（アヤメ）それぞれに色を割り当てています。
+
+## 軸ラベルを変更する
+
+次に、軸の表示を少し分かりやすくします。
+
+```{r eval=FALSE}
+scale_x_continuous(labels = function(x) paste0(x, "cm")) +
+scale_y_continuous(labels = function(x) paste0(x, "cm"))
+```
+
+`function(x)` は、軸の数値を加工するための小さな関数です。\
+ここでは `paste0(x, "cm")` を使って、軸の値に `"cm"` を追加しています。\
+そのため、例えば `4` は `"4cm"` のように表示されます。
+
+## タイトルを追加する
+
+グラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。
+
+```{r eval=FALSE}
+labs(title = "Sepal Length vs Petal Length",
+     x = "Sepal Length",
+     y = "Petal Length")
+```
+
+`labs()` を使うと、
+
+-   タイトル
+-   軸ラベル（例：`x=Sepal Length`など）
+-   キャプション
+
+などを追加できます。
+
+## テーマを変更する
+
+最後に、グラフ全体のデザインを変更します。
+
+```{r eval=FALSE}
+theme_minimal(base_size = 10)
+```
+
+`theme_minimal()` は、背景をシンプルにしたテーマです。
+
+他にもテーマの種類はたくさんあります。
+
+| テーマ          | 説明                       | ggplot            |
+|-----------------|----------------------------|-------------------|
+| minimal         | シンプルで背景が白い       | `theme_minimal()` |
+| classic         | 昔ながらのRのグラフに近い  | `theme_classic()` |
+| bw              | 白黒でグリッド線あり       | `theme_bw()`      |
+| light           | 薄いグリッド線で読みやすい | `theme_light()`   |
+| dark            | 背景が黒い                 | `theme_dark()`    |
+| gray（default） | ggplotのデフォルトテーマ   | `theme_gray()`    |
+| void            | 軸や背景をすべて消す       | `theme_void()`    |
+
+さらにカスタムのテーマでフォントも変更できます。
+
+```{r eval=FALSE}
+theme(text = element_text(family = "Georgia"))
+```
+
+`family = "Georgia"` はフォントを指定しています。\
+*ただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。*
+
+# 最終的なグラフ
+
+ここまでの設定をすべてまとめると、次のようになります。
+
+```{r}
+ggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) +
+  geom_jitter(aes(fill = Species),
+              shape = 21,
+              color = "black",
+              size = 2,
+              stroke = 0.8, #border thickness
+              alpha = 0.9) + #transparency
+    scale_fill_manual(values = c("setosa" = "pink", 
+                                 "versicolor" = "#2A9D8F",
+                                 "virginica" = "purple")) +
+  scale_x_continuous(labels  = function(x) paste0(x, "cm")) +
+  scale_y_continuous(labels = function(x) paste0(x, "cm")) +
+  labs(title = "Sepal Length vs Petal Length",
+       x = "Sepal Length",
+       y = "Petal Length") +
+  theme_minimal(base_size = 11) +
+  theme(
+    text = element_text(family = "Georgia")
+  )
+```
+
+同じデータでも、少し設定を変えるだけで**かなり見やすいグラフ**になります。
+
+# 次回
+
+次の記事では、`ggplot`の便利テクニックを紹介します。\
+`ggiraph`などのパッケージを使って、
+
+-   インタラクティブなグラフの作り方
+
+-   カーソルを合わせたときに情報を表示する方法
+
+-   ggplotをさらに使いやすくする工夫
+
+などを見ていく予定です。\
+\
+これまで学んできた`ggplot`の基本に、少し発展的な機能を加えることで、より伝わりやすいグラフを作れるようになります。

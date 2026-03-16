@@ -1,0 +1,188 @@
+---
+title: "ggplot入門⑤：便利なggplotテクニック"
+date: 2026-03-17
+description: "ggplot入門シリーズ最終回。ggiraphを使ったインタラクティブなグラフや、軸の設定、比率調整など、ggplotをより便利に使うためのテクニックを紹介します。"
+image: images/Screenshot_ggirafe.png
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
+    include-after-body: blog-footer-ja.html
+toc: true
+knitr:
+  opts_chunk: 
+    dev: "ragg_png"
+---
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggiraph)
+```
+
+今回はシリーズの最後として、`ggplot`をより便利に使うためのテクニックを紹介します。
+
+少し応用的な内容ですが、覚えておくとデータ可視化の幅が広がります。
+
+今回は、前回（第４回）作ったコードをもっとアレンジしていきます。
+
+それがこのコードです↓↓
+
+```{r}
+interactive_iris_plot <- iris |>
+  dplyr::rename_with(~ gsub(".", " ", .x, fixed = TRUE)) |>
+  ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +
+  geom_jitter_interactive(
+    aes(
+      fill = Species,
+      tooltip = paste0(
+        "Sepal Length: ", `Sepal Length`, " cm",
+        "\nPetal Length: ", `Petal Length`, " cm"
+      )
+    ),
+    shape = 21,
+    color = "black",
+    size = 2,
+    stroke = 0.8,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(values = c(
+    "setosa" = "pink",
+    "versicolor" = "#2A9D8F",
+    "virginica" = "purple"
+  )) +
+  coord_fixed(ratio = 1) +
+  scale_x_continuous(labels = function(x) paste0(x, "cm")) +
+  scale_y_continuous(
+    breaks = seq(0, 10, by = 1),
+    labels = function(x) paste0(x, "cm")
+  ) +
+  labs(title = "Sepal Length vs Petal Length") +
+  theme_minimal(base_size = 12) +
+  theme(
+    text = element_text(family = "Georgia"),
+    plot.title.position = "panel"
+  )
+
+girafe(ggobj = interactive_iris_plot)
+```
+
+このグラフの点にカーソルを合わせてみてください。合わせると値が表示されます。こうすることで、レポートやウェブページなどで、より分かりやすいデータ可視化を作ることができます。
+
+# インタラクティブなグラフを作る（ggiraph）
+
+これを実現できたのが、`ggiraph`というパッケージです。
+
+通常の`ggplot`は静的なグラフですが、 `ggiraph`パッケージを使うとインタラクティブなグラフを作ることができます。
+
+このコードで`ggiraph`が使われているのは、`geom_jitter_interactive`のところです。前回の`geom_jitter`に`_interactive`がつきました。
+
+このコード全体を1つのオブジェクトに保存します。
+
+ここでは `interactive_iris_plot` という名前のオブジェクトを作っています。
+
+最後に`girafe(ggobj = <object_name>)`と書くことで、そのオブジェクトを表示します。
+
+ただ、そのままだと表示が少し読みづらいかもしれないので、
+
+```{r eval=FALSE}
+ tooltip = paste0(
+        "Sepal Length: ", `Sepal Length`, " cm",
+        "\nPetal Length: ", `Petal Length`, " cm"
+      )
+```
+
+で、きれいに表示されるように書き換えます。
+
+# 軸の比率を固定する（coord_fixed）
+
+散布図では、x軸とy軸の比率を同じにしたい場合があります。
+
+その場合は`coord_fixed()`を使います。
+
+`coord_fixed(ratio = 1)`
+
+これを設定すると、x軸とy軸のスケールが同じ比率になります。
+
+例えば、
+
+-   地理データ
+-   距離データ
+-   実際の比率が重要なデータ
+
+などではとても便利です。
+
+# 軸の目盛りを細かく調整する
+
+`ggplot`では、軸の表示も自由にカスタマイズできます。
+
+例えば次のコードです。
+
+```{r eval=FALSE}
+scale_y_continuous(breaks = seq(0, 10, by = 1),
+                   labels = function(x) paste0(x, "cm") )
+```
+
+ここでは
+
+-   `breaks`→軸の目盛りの位置を指定
+-   `labels`→軸ラベルの表示方法を指定（詳しくは第4回のブログで）
+
+しています。
+
+`seq(0,10,by=1)` は「0,1,2,3,4,5,6,7,8,9,10」のように目盛りを作っています。
+
+# 列名を整える
+
+今回のコードでは次の処理をしています。
+
+```{r eval=FALSE}
+rename_with(~ gsub(".", " ", .x, fixed = TRUE))
+```
+
+これは、`Sepal.Length`のような列名を"Sepal Length"のように変更しています。
+
+前回のブログでは
+
+```{r eval=FALSE}
+labs(x="Sepal Length", y="Petal Length")
+```
+
+のように軸ラベルを変更しましたが、`rename_with()`を使うとデータの列名自体をまとめて変更することができます。
+
+としている事は同じです。
+
+xとyの列名両方を同じように変えたいときに、まとめて変えられるので便利です。
+
+これによって、グラフのラベルが自然な表記になります。
+
+# まとめ
+
+今回紹介したテクニックは次の通りです。
+
+-   `ggiraph`でインタラクティブなグラフを作る
+-   `coord_fixed()`で軸の比率を固定する
+-   `scale_*()`で軸を調整する
+-   `rename_with()`で列名を整理する
+
+どれも小さな工夫ですが、グラフの見やすさや使いやすさが大きく変わります。
+
+# シリーズまとめ
+
+このシリーズでは、`ggplot`の基本から応用までを紹介してきました。
+
+-   データに合ったグラフの選び方
+-   `ggplot`の基本構造
+-   グラフの種類
+-   グラフを見やすくする方法
+-   便利な`ggplot`テクニック
+
+`ggplot`はとても柔軟なツールなので、使い方を覚えるとデータ可視化がとても楽しくなります。
+
+ぜひ、自分のデータでも試してみてください。

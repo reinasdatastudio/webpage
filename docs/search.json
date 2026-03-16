@@ -305,7 +305,7 @@
     "href": "blog/index-ja.html",
     "title": "ブログ",
     "section": "",
-    "text": "ggplot入門③：よく使うグラフの種類\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第3回。連続値・離散値などの変数のタイプに応じて、どのグラフを使うべきかをggplotの例とともにわかりやすく解説します。\n\n\n\n\n\nMar 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplotで見やすいグラフを作る\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot2をわかりやすくまとめました。\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot便利テクニック\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot2をわかりやすくまとめました。\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\nNo matching items"
+    "text": "ggplot入門⑤：便利なggplotテクニック\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ最終回。ggiraphを使ったインタラクティブなグラフや、軸の設定、比率調整など、ggplotをより便利に使うためのテクニックを紹介します。\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門④：グラフを見やすくする方法\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第4回。色・ラベル・テーマなどを使って、ggplotで作ったグラフを見やすく整える方法を解説します。\n\n\n\n\n\nMar 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門③：よく使うグラフの種類\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第3回。連続値・離散値などの変数のタイプに応じて、どのグラフを使うべきかをggplotの例とともにわかりやすく解説します。\n\n\n\n\n\nMar 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
@@ -943,5 +943,96 @@
     "title": "ggplot便利テクニック",
     "section": "",
     "text": "library(ggplot2)\nlibrary(ggiraph)\n\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nカーソルを合わせれば一つ一つの長さが見れるようになってます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "",
+    "text": "前回の記事では、どのグラフを使えばよいのかについて説明しました。\n今回は、作ったグラフをより見やすくする方法を紹介します。\nデータ可視化では、単にグラフを作るだけではなく、読みやすく、伝わりやすいデザインにすることがとても重要です。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#点の見た目を調整する",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#点の見た目を調整する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "点の見た目を調整する",
+    "text": "点の見た目を調整する\nまず、点の見た目を少し変えてみます。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + \n  geom_jitter(aes(fill = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8,\n              alpha = 0.9)\n\n\n\n\n\n\n\n\nここでは次のような設定をしています。\n\n\n\n引数\n説明\n\n\n\n\nshape\n点の形\n\n\ncolor\n点の枠線の色\n\n\nfill\n点の塗りつぶしの色\n\n\nsize\n点の大きさ\n\n\nstroke\n枠線の太さ\n\n\nalpha\n透明度\n\n\n\ngeom_jitter() はgeom_point()と似ていますが、点が少しずつずれて表示されるので、重なって見えにくくなるのを防ぐことができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#色をカスタマイズする",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#色をカスタマイズする",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "色をカスタマイズする",
+    "text": "色をカスタマイズする\n次に、色を自分で指定してみます。\n\nscale_fill_manual(values = c(\n  \"setosa\" = \"pink\",\n  \"versicolor\" = \"#2A9D8F\",\n  \"virginica\" = \"purple\"\n))\n\nscale_fill_manual() を使うと、カテゴリーごとの色を自由に設定できます。\nこの例ではSpeciesの3種類のiris（アヤメ）それぞれに色を割り当てています。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#軸ラベルを変更する",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#軸ラベルを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "軸ラベルを変更する",
+    "text": "軸ラベルを変更する\n次に、軸の表示を少し分かりやすくします。\n\nscale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\nscale_y_continuous(labels = function(x) paste0(x, \"cm\"))\n\nfunction(x) は、軸の数値を加工するための小さな関数です。\nここでは paste0(x, \"cm\") を使って、軸の値に \"cm\" を追加しています。\nそのため、例えば 4 は \"4cm\" のように表示されます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#タイトルを追加する",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#タイトルを追加する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "タイトルを追加する",
+    "text": "タイトルを追加する\nグラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。\n\nlabs(title = \"Sepal Length vs Petal Length\",\n     x = \"Sepal Length\",\n     y = \"Petal Length\")\n\nlabs() を使うと、\n\nタイトル\n軸ラベル（例：x=Sepal Lengthなど）\nキャプション\n\nなどを追加できます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#テーマを変更する",
+    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#テーマを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "テーマを変更する",
+    "text": "テーマを変更する\n最後に、グラフ全体のデザインを変更します。\n\ntheme_minimal(base_size = 10)\n\ntheme_minimal() は、背景をシンプルにしたテーマです。\n他にもテーマの種類はたくさんあります。\n\n\n\nテーマ\n説明\nggplot\n\n\n\n\nminimal\nシンプルで背景が白い\ntheme_minimal()\n\n\nclassic\n昔ながらのRのグラフに近い\ntheme_classic()\n\n\nbw\n白黒でグリッド線あり\ntheme_bw()\n\n\nlight\n薄いグリッド線で読みやすい\ntheme_light()\n\n\ndark\n背景が黒い\ntheme_dark()\n\n\ngray（default）\nggplotのデフォルトテーマ\ntheme_gray()\n\n\nvoid\n軸や背景をすべて消す\ntheme_void()\n\n\n\nさらにカスタムのテーマでフォントも変更できます。\n\ntheme(text = element_text(family = \"Georgia\"))\n\nfamily = \"Georgia\" はフォントを指定しています。\nただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
+    "href": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
+    "title": "ggplot入門⑤：便利なggplotテクニック",
+    "section": "",
+    "text": "今回はシリーズの最後として、ggplotをより便利に使うためのテクニックを紹介します。\n少し応用的な内容ですが、覚えておくとデータ可視化の幅が広がります。\n今回は、前回（第４回）作ったコードをもっとアレンジしていきます。\nそれがこのコードです↓↓\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nこのグラフの点にカーソルを合わせてみてください。合わせると値が表示されます。こうすることで、レポートやウェブページなどで、より分かりやすいデータ可視化を作ることができます。\n\nインタラクティブなグラフを作る（ggiraph）\nこれを実現できたのが、ggiraphというパッケージです。\n通常のggplotは静的なグラフですが、 ggiraphパッケージを使うとインタラクティブなグラフを作ることができます。\nこのコードでggiraphが使われているのは、geom_jitter_interactiveのところです。前回のgeom_jitterに_interactiveがつきました。\nこのコード全体を1つのオブジェクトに保存します。\nここでは interactive_iris_plot という名前のオブジェクトを作っています。\n最後にgirafe(ggobj = &lt;object_name&gt;)と書くことで、そのオブジェクトを表示します。\nただ、そのままだと表示が少し読みづらいかもしれないので、\n\n tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n\nで、きれいに表示されるように書き換えます。\n\n\n軸の比率を固定する（coord_fixed）\n散布図では、x軸とy軸の比率を同じにしたい場合があります。\nその場合はcoord_fixed()を使います。\ncoord_fixed(ratio = 1)\nこれを設定すると、x軸とy軸のスケールが同じ比率になります。\n例えば、\n\n地理データ\n距離データ\n実際の比率が重要なデータ\n\nなどではとても便利です。\n\n\n軸の目盛りを細かく調整する\nggplotでは、軸の表示も自由にカスタマイズできます。\n例えば次のコードです。\n\nscale_y_continuous(breaks = seq(0, 10, by = 1),\n                   labels = function(x) paste0(x, \"cm\") )\n\nここでは\n\nbreaks→軸の目盛りの位置を指定\nlabels→軸ラベルの表示方法を指定（詳しくは第4回のブログで）\n\nしています。\nseq(0,10,by=1) は「0,1,2,3,4,5,6,7,8,9,10」のように目盛りを作っています。\n\n\n列名を整える\n今回のコードでは次の処理をしています。\n\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\n\nこれは、Sepal.Lengthのような列名を”Sepal Length”のように変更しています。\n前回のブログでは\n\nlabs(x=\"Sepal Length\", y=\"Petal Length\")\n\nのように軸ラベルを変更しましたが、rename_with()を使うとデータの列名自体をまとめて変更することができます。\nとしている事は同じです。\nxとyの列名両方を同じように変えたいときに、まとめて変えられるので便利です。\nこれによって、グラフのラベルが自然な表記になります。\n\n\nまとめ\n今回紹介したテクニックは次の通りです。\n\nggiraphでインタラクティブなグラフを作る\ncoord_fixed()で軸の比率を固定する\nscale_*()で軸を調整する\nrename_with()で列名を整理する\n\nどれも小さな工夫ですが、グラフの見やすさや使いやすさが大きく変わります。\n\n\nシリーズまとめ\nこのシリーズでは、ggplotの基本から応用までを紹介してきました。\n\nデータに合ったグラフの選び方\nggplotの基本構造\nグラフの種類\nグラフを見やすくする方法\n便利なggplotテクニック\n\nggplotはとても柔軟なツールなので、使い方を覚えるとデータ可視化がとても楽しくなります。\nぜひ、自分のデータでも試してみてください。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "",
+    "text": "前回の記事では、どのグラフを使えばよいのかについて説明しました。\n今回は、作ったグラフをより見やすくする方法を紹介します。\nデータ可視化では、単にグラフを作るだけではなく、読みやすく、伝わりやすいデザインにすることがとても重要です。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "点の見た目を調整する",
+    "text": "点の見た目を調整する\nまず、点の見た目を少し変えてみます。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + \n  geom_jitter(aes(fill = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8,\n              alpha = 0.9)\n\n\n\n\n\n\n\n\nここでは次のような設定をしています。\n\n\n\n引数\n説明\n\n\n\n\nshape\n点の形\n\n\ncolor\n点の枠線の色\n\n\nfill\n点の塗りつぶしの色\n\n\nsize\n点の大きさ\n\n\nstroke\n枠線の太さ\n\n\nalpha\n透明度\n\n\n\ngeom_jitter() はgeom_point()と似ていますが、点が少しずつずれて表示されるので、重なって見えにくくなるのを防ぐことができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "色をカスタマイズする",
+    "text": "色をカスタマイズする\n次に、色を自分で指定してみます。\n\nscale_fill_manual(values = c(\n  \"setosa\" = \"pink\",\n  \"versicolor\" = \"#2A9D8F\",\n  \"virginica\" = \"purple\"\n))\n\nscale_fill_manual() を使うと、カテゴリーごとの色を自由に設定できます。\nこの例ではSpeciesの3種類のiris（アヤメ）それぞれに色を割り当てています。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "軸ラベルを変更する",
+    "text": "軸ラベルを変更する\n次に、軸の表示を少し分かりやすくします。\n\nscale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\nscale_y_continuous(labels = function(x) paste0(x, \"cm\"))\n\nfunction(x) は、軸の数値を加工するための小さな関数です。\nここでは paste0(x, \"cm\") を使って、軸の値に \"cm\" を追加しています。\nそのため、例えば 4 は \"4cm\" のように表示されます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "タイトルを追加する",
+    "text": "タイトルを追加する\nグラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。\n\nlabs(title = \"Sepal Length vs Petal Length\",\n     x = \"Sepal Length\",\n     y = \"Petal Length\")\n\nlabs() を使うと、\n\nタイトル\n軸ラベル（例：x=Sepal Lengthなど）\nキャプション\n\nなどを追加できます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "テーマを変更する",
+    "text": "テーマを変更する\n最後に、グラフ全体のデザインを変更します。\n\ntheme_minimal(base_size = 10)\n\ntheme_minimal() は、背景をシンプルにしたテーマです。\n他にもテーマの種類はたくさんあります。\n\n\n\nテーマ\n説明\nggplot\n\n\n\n\nminimal\nシンプルで背景が白い\ntheme_minimal()\n\n\nclassic\n昔ながらのRのグラフに近い\ntheme_classic()\n\n\nbw\n白黒でグリッド線あり\ntheme_bw()\n\n\nlight\n薄いグリッド線で読みやすい\ntheme_light()\n\n\ndark\n背景が黒い\ntheme_dark()\n\n\ngray（default）\nggplotのデフォルトテーマ\ntheme_gray()\n\n\nvoid\n軸や背景をすべて消す\ntheme_void()\n\n\n\nさらにカスタムのテーマでフォントも変更できます。\n\ntheme(text = element_text(family = \"Georgia\"))\n\nfamily = \"Georgia\" はフォントを指定しています。\nただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。"
   }
 ]
