@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-13">
+<meta name="dcterms.date" content="2026-03-17">
+<meta name="description" content="A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.">
 
-<title>quarto-input7c950c1e85e7af3f – Reina's Data Studio</title>
+<title>ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data – Reina's Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -156,21 +212,17 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#understanding-ggplot2" id="toc-understanding-ggplot2" class="nav-link active" data-scroll-target="#understanding-ggplot2">Understanding ggplot2</a></li>
-  <li><a href="#full-ggplot-template-grammar-of-graphics" id="toc-full-ggplot-template-grammar-of-graphics" class="nav-link" data-scroll-target="#full-ggplot-template-grammar-of-graphics">1. Full ggplot Template (Grammar of Graphics)</a></li>
-  <li><a href="#the-main-components-of-ggplot" id="toc-the-main-components-of-ggplot" class="nav-link" data-scroll-target="#the-main-components-of-ggplot">2. The Main Components of ggplot</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">3. Data</a></li>
-  <li><a href="#aesthetics-aes" id="toc-aesthetics-aes" class="nav-link" data-scroll-target="#aesthetics-aes">4. Aesthetics (aes)</a></li>
-  <li><a href="#geoms-the-actual-plot-type" id="toc-geoms-the-actual-plot-type" class="nav-link" data-scroll-target="#geoms-the-actual-plot-type">5. Geoms (the actual plot type)</a></li>
-  <li><a href="#statistics-stat" id="toc-statistics-stat" class="nav-link" data-scroll-target="#statistics-stat">6. Statistics (stat)</a></li>
-  <li><a href="#position-adjustments" id="toc-position-adjustments" class="nav-link" data-scroll-target="#position-adjustments">7. Position Adjustments</a></li>
-  <li><a href="#scales-controls-axes-colors-legends" id="toc-scales-controls-axes-colors-legends" class="nav-link" data-scroll-target="#scales-controls-axes-colors-legends">8. Scales (controls axes, colors, legends)</a></li>
-  <li><a href="#coordinates" id="toc-coordinates" class="nav-link" data-scroll-target="#coordinates">9. Coordinates</a></li>
-  <li><a href="#facets-small-multiples" id="toc-facets-small-multiples" class="nav-link" data-scroll-target="#facets-small-multiples">10. Facets (small multiples)</a></li>
-  <li><a href="#labels" id="toc-labels" class="nav-link" data-scroll-target="#labels">11. Labels</a></li>
-  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">12. Themes</a></li>
-  <li><a href="#realistic-full-example" id="toc-realistic-full-example" class="nav-link" data-scroll-target="#realistic-full-example">13. Realistic Full Example</a></li>
-  <li><a href="#the-one-line-mental-model" id="toc-the-one-line-mental-model" class="nav-link" data-scroll-target="#the-one-line-mental-model">14. The One-Line Mental Model</a></li>
+  <li><a href="#what-is-ggplot2" id="toc-what-is-ggplot2" class="nav-link active" data-scroll-target="#what-is-ggplot2">What is ggplot2?</a></li>
+  <li><a href="#why-choosing-the-right-graph-matters" id="toc-why-choosing-the-right-graph-matters" class="nav-link" data-scroll-target="#why-choosing-the-right-graph-matters">Why choosing the right graph matters</a></li>
+  <li><a href="#understanding-variable-types" id="toc-understanding-variable-types" class="nav-link" data-scroll-target="#understanding-variable-types">Understanding variable types</a>
+  <ul class="collapse">
+  <li><a href="#continuous-variables" id="toc-continuous-variables" class="nav-link" data-scroll-target="#continuous-variables">Continuous variables</a></li>
+  <li><a href="#discrete-variables" id="toc-discrete-variables" class="nav-link" data-scroll-target="#discrete-variables">Discrete variables</a></li>
+  </ul></li>
+  <li><a href="#example-the-iris-dataset" id="toc-example-the-iris-dataset" class="nav-link" data-scroll-target="#example-the-iris-dataset">Example: the iris dataset</a></li>
+  <li><a href="#how-to-think-about-choosing-a-graph" id="toc-how-to-think-about-choosing-a-graph" class="nav-link" data-scroll-target="#how-to-think-about-choosing-a-graph">How to think about choosing a graph</a></li>
+  <li><a href="#next-article" id="toc-next-article" class="nav-link" data-scroll-target="#next-article">Next article</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -179,8 +231,18 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-</div>
+<h1 class="title">ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">Data Visualisation</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -189,7 +251,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">March 17, 2026</p>
     </div>
   </div>
   
@@ -201,184 +263,179 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </header>
 
 
-<section id="understanding-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-ggplot2">Understanding ggplot2</h2>
+<p>When creating graphs in <strong>R</strong>, one of the most widely used tools is <strong>ggplot2</strong>.</p>
+<p>However, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s not always clear what each part is doing.</p>
+<p>To make things easier to understand, I decided to write a short series explaining the fundamentals of ggplot.</p>
+<p>ggplot is a very powerful tool with many components, so covering everything in a single article would be difficult. In this series, we will break things down step by step.</p>
+<p>In this first article, we will focus on an important question:</p>
+<p><strong><strong>How do you choose the right type of graph for your data?</strong></strong></p>
+<p>Before even thinking about writing ggplot code, one thing is essential - <strong>understanding your data.</strong></p>
+<section id="what-is-ggplot2" class="level1">
+<h1>What is ggplot2?</h1>
+<p>In simple terms, <strong>ggplot2 is the most commonly used data visualisation library in R.</strong></p>
+<p>It allows you to create many types of graphs and customise them extensively, including colours, labels, and layout.</p>
+<p>Once you become comfortable with ggplot, it becomes possible to create clear and professional visualisations for reports and presentations.</p>
+<p>However, graphs are not only about aesthetics. They are tools for <strong>communicating information and telling a story with data</strong>.</p>
+<p>If you choose the wrong type of graph, or include unnecessary information, it can become difficult for readers to understand the message you are trying to convey.</p>
+</section>
+<section id="why-choosing-the-right-graph-matters" class="level1">
+<h1>Why choosing the right graph matters</h1>
+<p>In <em>Programming Skills for Data Science</em> (<span class="citation" data-cites="freeman2018r">Freeman and Ross (<a href="#ref-freeman2018r" role="doc-biblioref">2018</a>)</span>), the authors highlight several important considerations when selecting a visualisation:</p>
 <ul>
-<li>aes within ggplot() vs geom_*() - local vs global aesthetics</li>
-<li>Basic 7 layers - first 2 must be memorised</li>
-<li>color = “your class variable”, or do size or shape instead
-<ul>
-<li>outside aes() if you are specifying color such as “pink”</li>
-</ul></li>
-<li>what is facets? useful especially for categorical values</li>
+<li>The goal of the visualisation</li>
+<li>The type of data available</li>
+<li>Human perceptual abilities</li>
+<li>Constraints of the output medium (for example, screen size)</li>
 </ul>
-<p>Great question. In <strong><code>ggplot2</code></strong>, plots are built by <strong>layering components</strong>. There isn’t one strict “equation”, but there <em>is</em> a common <strong>grammar template</strong> that most plots follow.</p>
-<p>Below is a <strong>complete conceptual skeleton</strong> of a ggplot.</p>
+<p>For data analysts, one of the most important skills is simply <strong>understanding the data itself</strong>.</p>
+<p>If you do not fully understand the data, it becomes difficult to explain the results. Even if you create attractive graphs, the final report may still lack meaning.</p>
+<p>For example, when I recently explored <strong>FAERS adverse event data</strong>, the first step was to ask:</p>
+<blockquote class="blockquote">
+<p>What do I actually want to learn from this dataset?</p>
+</blockquote>
+<p>Suppose the broad question is:</p>
+<p><strong>“Which adverse events have the most severe impact globally?”</strong></p>
+<p>From there, we can break the problem down into more specific questions, such as:</p>
+<ul>
+<li>Which adverse events are reported most frequently?</li>
+<li>Which drugs are associated with the highest number of adverse event reports?</li>
+<li>Which adverse events are most often linked to death?</li>
+</ul>
+<p>By gradually refining the question, it becomes clearer <strong>what kind of visualisations we need</strong>.</p>
+<p>And to do that effectively, we must first understand the structure of the data.</p>
 </section>
-<section id="full-ggplot-template-grammar-of-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="full-ggplot-template-grammar-of-graphics">1. Full ggplot Template (Grammar of Graphics)</h2>
-<pre><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +    &lt;GEOM_FUNCTION&gt;(     mapping = aes(&lt;LOCAL_MAPPINGS&gt;),     stat = &lt;STAT&gt;,     position = &lt;POSITION&gt;,     ...   ) +    &lt;STAT_FUNCTION&gt;(...) +    &lt;SCALE_FUNCTION&gt;(...) +    &lt;COORD_FUNCTION&gt;(...) +    &lt;FACET_FUNCTION&gt;(...) +    &lt;THEME_FUNCTION&gt;(...) +    labs(     title = &lt;TITLE&gt;,     subtitle = &lt;SUBTITLE&gt;,     x = &lt;X_LABEL&gt;,     y = &lt;Y_LABEL&gt;,     caption = &lt;CAPTION&gt;   ) </code></pre>
+<section id="understanding-variable-types" class="level1">
+<h1>Understanding variable types</h1>
+<p>One of the most important things to understand when visualising data is the <strong>type of variables</strong> you are working with.</p>
+<p>In general, variables can be divided into two categories:</p>
+<section id="continuous-variables" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-variables">Continuous variables</h3>
+<p>Continuous variables can take any value within a range, including decimal values. These are values we typically <strong>measure</strong>.</p>
+<p>Examples include:</p>
+<ul>
+<li>Length</li>
+<li>Weight</li>
+<li>Temperature</li>
+</ul>
 </section>
-<section id="the-main-components-of-ggplot" class="level1">
-<h1>2. The Main Components of ggplot</h1>
-<p>Think of ggplot as <strong>7 major layers</strong>.</p>
-<pre><code>DATA ↓ AESTHETICS ↓ GEOMS ↓ STATS ↓ SCALES ↓ COORDINATES ↓ FACETS ↓ THEME / LABELS </code></pre>
+<section id="discrete-variables" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-variables">Discrete variables</h3>
+<p>Discrete variables represent values that are <strong>counted rather than measured</strong>, and typically cannot take decimal values.</p>
+<p>Examples include:</p>
+<ul>
+<li>Population counts</li>
+<li>Number of reported adverse events</li>
+<li>Categories or groups</li>
+</ul>
 </section>
-<section id="data" class="level1">
-<h1>3. Data</h1>
-<pre><code>ggplot(data = &lt;DATA&gt;) </code></pre>
-<p>Example</p>
-<pre><code>ggplot(data = mpg) </code></pre>
-<p>You can also pipe data:</p>
-<pre><code>mpg %&gt;% ggplot(aes(x = displ, y = hwy)) </code></pre>
 </section>
-<section id="aesthetics-aes" class="level1">
-<h1>4. Aesthetics (aes)</h1>
-<p>Maps variables → visual properties.</p>
-<pre><code>aes(   x,   y,   color,   fill,   size,   shape,   alpha,   group,   linetype ) </code></pre>
-<p>Example</p>
-<pre><code>aes(x = displ, y = hwy, color = class) </code></pre>
-</section>
-<section id="geoms-the-actual-plot-type" class="level1">
-<h1>5. Geoms (the actual plot type)</h1>
-<pre><code>geom_&lt;type&gt;() </code></pre>
-<p>Common ones:</p>
-<table class="caption-top table">
+<section id="example-the-iris-dataset" class="level1">
+<h1>Example: the iris dataset</h1>
+<p>A commonly used dataset in R is the <strong>iris dataset</strong>, which contains measurements for different iris flower species.</p>
+<p>It includes five variables:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th>geom</th>
-<th>purpose</th>
+<th style="text-align: right;">Sepal.Length</th>
+<th style="text-align: right;">Sepal.Width</th>
+<th style="text-align: right;">Petal.Length</th>
+<th style="text-align: right;">Petal.Width</th>
+<th style="text-align: left;">Species</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>geom_point()</td>
-<td>scatterplot</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
 </tr>
 <tr class="even">
-<td>geom_line()</td>
-<td>line plot</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
 </tr>
 <tr class="odd">
-<td>geom_bar()</td>
-<td>bar plot</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
 </tr>
 <tr class="even">
-<td>geom_col()</td>
-<td>bar with values</td>
+<td style="text-align: right;">4.6</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
 </tr>
 <tr class="odd">
-<td>geom_histogram()</td>
-<td>histogram</td>
-</tr>
-<tr class="even">
-<td>geom_boxplot()</td>
-<td>boxplot</td>
-</tr>
-<tr class="odd">
-<td>geom_violin()</td>
-<td>violin plot</td>
-</tr>
-<tr class="even">
-<td>geom_density()</td>
-<td>density</td>
-</tr>
-<tr class="odd">
-<td>geom_smooth()</td>
-<td>regression</td>
-</tr>
-<tr class="even">
-<td>geom_area()</td>
-<td>area chart</td>
-</tr>
-<tr class="odd">
-<td>geom_text()</td>
-<td>labels</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: left;">setosa</td>
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code>geom_point() </code></pre>
+</div>
+</div>
+<p>In this dataset:</p>
+<p><strong>Continuous variables</strong></p>
+<ul>
+<li>Sepal.Length</li>
+<li>Sepal.Width</li>
+<li>Petal.Length</li>
+<li>Petal.Width</li>
+</ul>
+<p><strong>Discrete variable</strong></p>
+<ul>
+<li>Species</li>
+</ul>
+<p>Understanding this distinction is important because <strong>the type of variables determines which graph is appropriate.</strong></p>
 </section>
-<section id="statistics-stat" class="level1">
-<h1>6. Statistics (stat)</h1>
-<p>Transforms the data before plotting.</p>
-<p>Example:</p>
-<pre><code>stat_summary() stat_bin() stat_smooth() </code></pre>
-<p>Example inside geom:</p>
-<pre><code>geom_bar(stat = "count") </code></pre>
-<p>or</p>
-<pre><code>geom_bar(stat = "identity") </code></pre>
+<section id="how-to-think-about-choosing-a-graph" class="level1">
+<h1>How to think about choosing a graph</h1>
+<p>When deciding which graph to use, the first question to ask is:</p>
+<p><strong>What type of variables am I working with?</strong></p>
+<p>For example:</p>
+<ul>
+<li>Are you looking at <strong>one continuous variable</strong>?</li>
+<li>Do you want to compare <strong>categories</strong>?</li>
+<li>Are you exploring the relationship between <strong>two numeric variables</strong>?</li>
+</ul>
+<p>Each of these situations calls for a different type of visualisation.</p>
+<p>Choosing the right graph is one of the most important steps in communicating your results clearly.</p>
 </section>
-<section id="position-adjustments" class="level1">
-<h1>7. Position Adjustments</h1>
-<p>How elements overlap.</p>
-<pre><code>position = "identity" position = "stack" position = "dodge" position = "fill" position = "jitter" </code></pre>
-<p>Example:</p>
-<pre><code>geom_bar(position = "dodge") </code></pre>
+<section id="next-article" class="level1">
+<h1>Next article</h1>
+<p>In the next article, we will start looking at <strong>ggplot itself</strong>.</p>
+<p>We will cover:</p>
+<ul>
+<li>The basic structure of ggplot</li>
+<li>What <code>aes()</code> means</li>
+<li>How to create your first graph in R</li>
+</ul>
+<p>with practical code examples.</p>
 </section>
-<section id="scales-controls-axes-colors-legends" class="level1">
-<h1>8. Scales (controls axes, colors, legends)</h1>
-<pre><code>scale_&lt;aesthetic&gt;_&lt;type&gt;() </code></pre>
-<p>Examples:</p>
-<pre><code>scale_x_continuous() scale_y_log10() scale_color_manual() scale_fill_brewer() scale_size_continuous() scale_alpha() </code></pre>
-<p>Example</p>
-<pre><code>scale_color_manual(values = c("red", "blue")) </code></pre>
-</section>
-<section id="coordinates" class="level1">
-<h1>9. Coordinates</h1>
-<p>How the plot space is drawn.</p>
-<pre><code>coord_cartesian() coord_flip() coord_fixed() coord_polar() coord_sf() </code></pre>
-<p>Example</p>
-<pre><code>coord_flip() </code></pre>
-</section>
-<section id="facets-small-multiples" class="level1">
-<h1>10. Facets (small multiples)</h1>
-<p>Split plots by variable.</p>
-<pre><code>facet_wrap(~ variable)  facet_grid(rows ~ columns) </code></pre>
-<p>Example</p>
-<pre><code>facet_wrap(~ class) </code></pre>
-</section>
-<section id="labels" class="level1">
-<h1>11. Labels</h1>
-<pre><code>labs(   title = "",   subtitle = "",   x = "",   y = "",   caption = "",   color = "",   fill = "" ) </code></pre>
-<p>Example</p>
-<pre><code>labs(   title = "Fuel efficiency",   x = "Engine size",   y = "Highway MPG" ) </code></pre>
-</section>
-<section id="themes" class="level1">
-<h1>12. Themes</h1>
-<p>Controls appearance.</p>
-<pre><code>theme()  theme_bw() theme_minimal() theme_classic() theme_void() </code></pre>
-<p>Example</p>
-<pre><code>theme_minimal() </code></pre>
-</section>
-<section id="realistic-full-example" class="level1">
-<h1>13. Realistic Full Example</h1>
-<pre><code>ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
- geom_point(size = 3, alpha = 0.7) +
- geom_smooth(method = "lm", se = FALSE) +
- scale_color_brewer(palette = "Set2") +
- coord_cartesian() +
- facet_wrap(~ drv) +
- labs(
-  title = "Engine Size vs Fuel Efficiency",
-  x = "Engine Displacement",
-  y = "Highway MPG",
-  color = "Vehicle Class") +
-theme_minimal() </code></pre>
-</section>
-<section id="the-one-line-mental-model" class="level1">
-<h1>14. The One-Line Mental Model</h1>
-<p>Most ggplots follow this structure:</p>
-<pre><code>ggplot(data, aes()) + geom_*() + scale_*() + facet_*() + coord_*() + labs() + theme() </code></pre>
-<p>💡 Since you write about <strong>R errors and ggplot on your blog</strong>, a really nice post idea could be:</p>
-<p><strong>“The ggplot mental model: 7 layers you must know”</strong></p>
-<p>I can also show you a <strong>visual diagram of how ggplot builds a plot internally</strong>, which makes ggplot suddenly make <em>way</em> more sense.</p>
+<section id="references" class="level1">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-freeman2018r" class="csl-entry" role="listitem">
+Freeman, Michael, and Joel Ross. 2018. <em>Programming Skills for Data Science: Start Writing Code to Wrangle, Analyze, and Visualize Data with r</em>. Addison-Wesley Professional.
+</div>
+</div></section></div></main> <!-- /main -->
 &nbsp;
 <hr>
 

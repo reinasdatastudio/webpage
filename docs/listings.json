@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/18-03-26-choosing-the-right-graph.html",
       "/blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
       "/blog/posts/12-02-2026-from-pharmacy-to-data-science.html"
     ]

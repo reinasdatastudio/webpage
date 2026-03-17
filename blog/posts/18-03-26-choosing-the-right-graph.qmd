@@ -1,0 +1,156 @@
+---
+title: "ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data"
+date: 2026-03-17
+description: "A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables."
+bibliography: references.bib
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-in-header: 
+      text: |
+        <style>
+        .description { display: none; }
+        </style>
+    include-after-body: blog-footer.html
+toc: true
+---
+
+When creating graphs in **R**, one of the most widely used tools is **ggplot2**.
+
+However, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s not always clear what each part is doing.
+
+To make things easier to understand, I decided to write a short series explaining the fundamentals of ggplot.
+
+ggplot is a very powerful tool with many components, so covering everything in a single article would be difficult. In this series, we will break things down step by step.
+
+In this first article, we will focus on an important question:
+
+<strong>**How do you choose the right type of graph for your data?**</strong>
+
+Before even thinking about writing ggplot code, one thing is essential - **understanding your data.**
+
+# What is ggplot2?
+
+In simple terms, **ggplot2 is the most commonly used data visualisation library in R.**
+
+It allows you to create many types of graphs and customise them extensively, including colours, labels, and layout.
+
+Once you become comfortable with ggplot, it becomes possible to create clear and professional visualisations for reports and presentations.
+
+However, graphs are not only about aesthetics. They are tools for **communicating information and telling a story with data**.
+
+If you choose the wrong type of graph, or include unnecessary information, it can become difficult for readers to understand the message you are trying to convey.
+
+# Why choosing the right graph matters
+
+In *Programming Skills for Data Science* (@freeman2018r), the authors highlight several important considerations when selecting a visualisation:
+
+-   The goal of the visualisation
+-   The type of data available
+-   Human perceptual abilities
+-   Constraints of the output medium (for example, screen size)
+
+For data analysts, one of the most important skills is simply **understanding the data itself**.
+
+If you do not fully understand the data, it becomes difficult to explain the results. Even if you create attractive graphs, the final report may still lack meaning.
+
+For example, when I recently explored **FAERS adverse event data**, the first step was to ask:
+
+> What do I actually want to learn from this dataset?
+
+Suppose the broad question is:
+
+**“Which adverse events have the most severe impact globally?”**
+
+From there, we can break the problem down into more specific questions, such as:
+
+-   Which adverse events are reported most frequently?
+-   Which drugs are associated with the highest number of adverse event reports?
+-   Which adverse events are most often linked to death?
+
+By gradually refining the question, it becomes clearer **what kind of visualisations we need**.
+
+And to do that effectively, we must first understand the structure of the data.
+
+# Understanding variable types
+
+One of the most important things to understand when visualising data is the **type of variables** you are working with.
+
+In general, variables can be divided into two categories:
+
+### Continuous variables
+
+Continuous variables can take any value within a range, including decimal values. These are values we typically **measure**.
+
+Examples include:
+
+-   Length
+-   Weight
+-   Temperature
+
+### Discrete variables
+
+Discrete variables represent values that are **counted rather than measured**, and typically cannot take decimal values.
+
+Examples include:
+
+-   Population counts
+-   Number of reported adverse events
+-   Categories or groups
+
+# Example: the iris dataset
+
+A commonly used dataset in R is the **iris dataset**, which contains measurements for different iris flower species.
+
+It includes five variables:
+
+```{r}
+knitr::kable(head(iris, 5))
+```
+
+In this dataset:
+
+**Continuous variables**
+
+-   Sepal.Length
+-   Sepal.Width
+-   Petal.Length
+-   Petal.Width
+
+**Discrete variable**
+
+-   Species
+
+Understanding this distinction is important because **the type of variables determines which graph is appropriate.**
+
+# How to think about choosing a graph
+
+When deciding which graph to use, the first question to ask is:
+
+**What type of variables am I working with?**
+
+For example:
+
+-   Are you looking at **one continuous variable**?
+-   Do you want to compare **categories**?
+-   Are you exploring the relationship between **two numeric variables**?
+
+Each of these situations calls for a different type of visualisation.
+
+Choosing the right graph is one of the most important steps in communicating your results clearly.
+
+# Next article
+
+In the next article, we will start looking at **ggplot itself**.
+
+We will cover:
+
+-   The basic structure of ggplot
+-   What `aes()` means
+-   How to create your first graph in R
+
+with practical code examples.
+
+# References
