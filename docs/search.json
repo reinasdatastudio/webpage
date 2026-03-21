@@ -291,7 +291,7 @@
     "href": "blog/index.html",
     "title": "Blog Posts",
     "section": "",
-    "text": "ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
+    "text": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\n\n\nA beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.\n\n\n\n\n\nMar 21, 2026\n\n\n\n\n\n\n\nggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -1062,5 +1062,54 @@
     "title": "ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data",
     "section": "",
     "text": "When creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s not always clear what each part is doing.\nTo make things easier to understand, I decided to write a short series explaining the fundamentals of ggplot.\nggplot is a very powerful tool with many components, so covering everything in a single article would be difficult. In this series, we will break things down step by step.\nIn this first article, we will focus on an important question:\nHow do you choose the right type of graph for your data?\nBefore even thinking about writing ggplot code, one thing is essential - understanding your data.\n\nWhat is ggplot2?\nIn simple terms, ggplot2 is the most commonly used data visualisation library in R.\nIt allows you to create many types of graphs and customise them extensively, including colours, labels, and layout.\nOnce you become comfortable with ggplot, it becomes possible to create clear and professional visualisations for reports and presentations.\nHowever, graphs are not only about aesthetics. They are tools for communicating information and telling a story with data.\nIf you choose the wrong type of graph, or include unnecessary information, it can become difficult for readers to understand the message you are trying to convey.\n\n\nWhy choosing the right graph matters\nIn Programming Skills for Data Science (Freeman and Ross (2018)), the authors highlight several important considerations when selecting a visualisation:\n\nThe goal of the visualisation\nThe type of data available\nHuman perceptual abilities\nConstraints of the output medium (for example, screen size)\n\nFor data analysts, one of the most important skills is simply understanding the data itself.\nIf you do not fully understand the data, it becomes difficult to explain the results. Even if you create attractive graphs, the final report may still lack meaning.\nFor example, when I recently explored FAERS adverse event data, the first step was to ask:\n\nWhat do I actually want to learn from this dataset?\n\nSuppose the broad question is:\n“Which adverse events have the most severe impact globally?”\nFrom there, we can break the problem down into more specific questions, such as:\n\nWhich adverse events are reported most frequently?\nWhich drugs are associated with the highest number of adverse event reports?\nWhich adverse events are most often linked to death?\n\nBy gradually refining the question, it becomes clearer what kind of visualisations we need.\nAnd to do that effectively, we must first understand the structure of the data.\n\n\nUnderstanding variable types\nOne of the most important things to understand when visualising data is the type of variables you are working with.\nIn general, variables can be divided into two categories:\n\nContinuous variables\nContinuous variables can take any value within a range, including decimal values. These are values we typically measure.\nExamples include:\n\nLength\nWeight\nTemperature\n\n\n\nDiscrete variables\nDiscrete variables represent values that are counted rather than measured, and typically cannot take decimal values.\nExamples include:\n\nPopulation counts\nNumber of reported adverse events\nCategories or groups\n\n\n\n\nExample: the iris dataset\nA commonly used dataset in R is the iris dataset, which contains measurements for different iris flower species.\nIt includes five variables:\n\nknitr::kable(head(iris, 5))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nIn this dataset:\nContinuous variables\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\n\nDiscrete variable\n\nSpecies\n\nUnderstanding this distinction is important because the type of variables determines which graph is appropriate.\n\n\nHow to think about choosing a graph\nWhen deciding which graph to use, the first question to ask is:\nWhat type of variables am I working with?\nFor example:\n\nAre you looking at one continuous variable?\nDo you want to compare categories?\nAre you exploring the relationship between two numeric variables?\n\nEach of these situations calls for a different type of visualisation.\nChoosing the right graph is one of the most important steps in communicating your results clearly.\n\n\nNext article\nIn the next article, we will start looking at ggplot itself.\nWe will cover:\n\nThe basic structure of ggplot\nWhat aes() means\nHow to create your first graph in R\n\nwith practical code examples.\n\n\n\n\n\n\n\n\nReferences\n\nFreeman, Michael, and Joel Ross. 2018. Programming Skills for Data Science: Start Writing Code to Wrangle, Analyze, and Visualize Data with r. Addison-Wesley Professional."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html",
+    "href": "blog/posts/21-03-26-ggplot_part2.html",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "",
+    "text": "When creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s often unclear what each part is doing.\nThe good news is that the core idea behind ggplot is actually very simple.\nIn this article, we will cover:\nThis article combines key ideas from Parts 2–4 of my ggplot series in Japanese (R seems to be a lot less common in Japan, hence my ggplot blog posts are more detailed in Japanese)."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Example: Scatterplot",
+    "text": "Example: Scatterplot\nUsing the built-in iris dataset:\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis creates a scatterplot where:\n\nSepal.Length is mapped to the x-axis\nPetal.Length is mapped to the y-axis"
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Common Graph Choices",
+    "text": "Common Graph Choices\n\n\n\nData Type\nGraph\nggplot\n\n\n\n\nDiscrete (1 variable)\nBar chart\ngeom_bar()\n\n\nContinuous (1 variable)\nHistogram\ngeom_histogram()\n\n\nContinuous (1 variable)\nDensity Plot\ngeom_density()\n\n\nContinuous (2 variables)\nScatterplot\ngeom_point()\n\n\nDiscrete + Continuous\nBoxplot\ngeom_boxplot()\n\n\n\nChoosing the right graph depends on what you want to explore:\n\nDistribution → histogram\nRelationship → scatterplot\nComparison across groups → boxplot"
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Adding Color",
+    "text": "Adding Color\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis helps distinguish different groups."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Improving Labels",
+    "text": "Improving Labels\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  labs(title = \"Sepal Length vs Petal Length\",\n       x = \"Sepal Length (cm)\",\n       y = \"Petal Length (cm)\")\n\n\n\n\n\n\n\n\nAdding labels makes the graph easier to interpret."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Using Themes",
+    "text": "Using Themes\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\n\nThemes help simplify the visual appearance."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Reference Materials",
+    "text": "Reference Materials\nThis page explains all about ggplot2 code in depth:\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
   }
 ]

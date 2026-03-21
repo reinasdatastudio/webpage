@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-03-21">
+<meta name="description" content="A beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.">
 
-<title>Blog Posts – Reina’s Data Studio</title>
+<title>ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations – Reina's Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c11ea2628e47f9663d76f09bd55f8109.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c11ea2628e47f9663d76f09bd55f8109.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +105,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LE1MD5SGQZ"></script>
 
 <script type="text/javascript">
@@ -109,35 +115,6 @@ gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -148,9 +125,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Reina’s Data Studio</span>
     </a>
   </div>
@@ -161,15 +138,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -178,21 +155,21 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="../blog/index.html">
+    <a class="dropdown-item" href="../../blog/index.html">
  <span class="dropdown-text">Blog EN</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../blog/index-ja.html">
+    <a class="dropdown-item" href="../../blog/index-ja.html">
  <span class="dropdown-text">ブログ JP</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../enquiry.html"> 
+    <a class="nav-link" href="../../enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ja.html"> 
+    <a class="nav-link" href="../../ja.html"> 
 <span class="menu-text">日本語</span></a>
   </li>  
 </ul>
@@ -207,21 +184,60 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGlzYXRpb24=">Data Visualisation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-structure-of-ggplot" id="toc-basic-structure-of-ggplot" class="nav-link active" data-scroll-target="#basic-structure-of-ggplot">Basic Structure of ggplot</a>
+  <ul class="collapse">
+  <li><a href="#example-scatterplot" id="toc-example-scatterplot" class="nav-link" data-scroll-target="#example-scatterplot">Example: Scatterplot</a></li>
+  </ul></li>
+  <li><a href="#choosing-the-right-type-of-graph" id="toc-choosing-the-right-type-of-graph" class="nav-link" data-scroll-target="#choosing-the-right-type-of-graph">Choosing the Right Type of Graph</a>
+  <ul class="collapse">
+  <li><a href="#common-graph-choices" id="toc-common-graph-choices" class="nav-link" data-scroll-target="#common-graph-choices">Common Graph Choices</a></li>
+  </ul></li>
+  <li><a href="#making-your-graphs-more-readable" id="toc-making-your-graphs-more-readable" class="nav-link" data-scroll-target="#making-your-graphs-more-readable">Making Your Graphs More Readable</a>
+  <ul class="collapse">
+  <li><a href="#adding-color" id="toc-adding-color" class="nav-link" data-scroll-target="#adding-color">Adding Color</a></li>
+  <li><a href="#improving-labels" id="toc-improving-labels" class="nav-link" data-scroll-target="#improving-labels">Improving Labels</a></li>
+  <li><a href="#using-themes" id="toc-using-themes" class="nav-link" data-scroll-target="#using-themes">Using Themes</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts</a>
+  <ul class="collapse">
+  <li><a href="#reference-materials" id="toc-reference-materials" class="nav-link" data-scroll-target="#reference-materials">Reference Materials</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog Posts</h1>
-</div>
+<h1 class="title">ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">Data Visualisation</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    A beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 21, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -231,83 +247,222 @@ window.Quarto = {
 </header>
 
 
+<p>When creating graphs in <strong>R</strong>, one of the most widely used tools is <strong>ggplot2</strong>.</p>
+<p>However, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s often unclear what each part is doing.</p>
+<p>The good news is that the core idea behind ggplot is actually very simple.</p>
+<p>In this article, we will cover:</p>
+<ul>
+<li>The basic structure of ggplot</li>
+<li>How to choose the right type of graph</li>
+<li>How to make your graphs easier to read</li>
+</ul>
+<p>This article combines key ideas from Parts 2–4 of my ggplot series in Japanese (R seems to be a lot less common in Japan, hence my ggplot blog posts are more detailed in Japanese).</p>
+<section id="basic-structure-of-ggplot" class="level1">
+<h1>Basic Structure of ggplot</h1>
+<p>Most ggplot code follows this structure:</p>
+<pre><code>data + aesthetics + geometry</code></pre>
+<p>In other words:</p>
+<pre><code>data + how it looks + type of graph</code></pre>
+<p>In code, this looks like:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here, you are specifying two main things:</p>
+<ul>
+<li>Which data to use</li>
+<li>What type of graph to create</li>
+</ul>
+<p>Even with just these three components, you can create a basic plot.</p>
+<section id="example-scatterplot" class="level2">
+<h2 class="anchored" data-anchor-id="example-scatterplot">Example: Scatterplot</h2>
+<p>Using the built-in <code>iris</code> dataset:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="21-03-26-ggplot_part2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This creates a scatterplot where:</p>
+<ul>
+<li><code>Sepal.Length</code> is mapped to the x-axis</li>
+<li><code>Petal.Length</code> is mapped to the y-axis</li>
+</ul>
+</section>
+</section>
+<section id="choosing-the-right-type-of-graph" class="level1">
+<h1>Choosing the Right Type of Graph</h1>
+<p>One of the most important steps in data visualisation is choosing the correct graph.</p>
+<p>This depends on the <strong><strong>type of variables</strong></strong> you are working with.</p>
+<p>There are two main types:</p>
+<ul>
+<li><strong><strong>Continuous variables</strong></strong> (measured values, e.g.&nbsp;length, weight)</li>
+<li><strong><strong>Discrete variables</strong></strong> (categories or counts)</li>
+</ul>
+<p>For example, in the <code>iris</code> dataset:</p>
+<ul>
+<li><code>Sepal.Length</code> and <code>Petal.Length</code> are continuous</li>
+<li><code>Species</code> is discrete</li>
+</ul>
+<section id="common-graph-choices" class="level2">
+<h2 class="anchored" data-anchor-id="common-graph-choices">Common Graph Choices</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Data Type</th>
+<th>Graph</th>
+<th>ggplot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Discrete (1 variable)</td>
+<td>Bar chart</td>
+<td><code>geom_bar()</code></td>
+</tr>
+<tr class="even">
+<td>Continuous (1 variable)</td>
+<td>Histogram</td>
+<td><code>geom_histogram()</code></td>
+</tr>
+<tr class="odd">
+<td>Continuous (1 variable)</td>
+<td>Density Plot</td>
+<td><code>geom_density()</code></td>
+</tr>
+<tr class="even">
+<td>Continuous (2 variables)</td>
+<td>Scatterplot</td>
+<td><code>geom_point()</code></td>
+</tr>
+<tr class="odd">
+<td>Discrete + Continuous</td>
+<td>Boxplot</td>
+<td><code>geom_boxplot()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Choosing the right graph depends on what you want to explore:</p>
+<ul>
+<li>Distribution → histogram</li>
+<li>Relationship → scatterplot</li>
+<li>Comparison across groups → boxplot</li>
+</ul>
+</section>
+</section>
+<section id="making-your-graphs-more-readable" class="level1">
+<h1>Making Your Graphs More Readable</h1>
+<p>Even with the same data, small changes can significantly improve readability.</p>
+<p>Let’s start with a simple scatterplot:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="21-03-26-ggplot_part2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This shows the data, but it can be improved.</p>
+<section id="adding-color" class="level2">
+<h2 class="anchored" data-anchor-id="adding-color">Adding Color</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="21-03-26-ggplot_part2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This helps distinguish different groups.</p>
+</section>
+<section id="improving-labels" class="level2">
+<h2 class="anchored" data-anchor-id="improving-labels">Improving Labels</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sepal Length vs Petal Length"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sepal Length (cm)"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Petal Length (cm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="21-03-26-ggplot_part2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Adding labels makes the graph easier to interpret.</p>
+</section>
+<section id="using-themes" class="level2">
+<h2 class="anchored" data-anchor-id="using-themes">Using Themes</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="21-03-26-ggplot_part2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Themes help simplify the visual appearance.</p>
+</section>
+</section>
+<section id="key-takeaways" class="level1">
+<h1>Key Takeaways</h1>
+<ul>
+<li>ggplot is built on a simple structure: <strong>data + aesthetics + geometry</strong></li>
+<li>Choosing the right graph depends on: <strong>your variable types (continuous vs discrete)</strong></li>
+<li>Small improvements like color, labels, and themes can make your graphs much clearer</li>
+</ul>
+</section>
+<section id="final-thoughts" class="level1">
+<h1>Final Thoughts</h1>
+<p>The most important step is not writing code - it’s understanding your data.<br>
+<br>
+Once you have that, ggplot becomes much easier to use.</p>
+<p>If you’re just getting started, focus on:</p>
+<ul>
+<li>Understanding your data</li>
+<li>Choosing the right graph</li>
+<li>Improving clarity step by step</li>
+</ul>
+<p>These skills will make a big difference in how effectively you communicate your analysis.</p>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference Materials</h2>
+<p>This page explains all about ggplot2 code in depth:</p>
+<p><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html" class="uri">https://rstudio.github.io/cheatsheets/html/data-visualization.html</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+&nbsp;
+<hr>
+
+<p style="text-align: center;">If you're working with clinical or research data and would like help building reproducible R workflows, feel free to reach out.</p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>@reinas_data.studio</em></span></p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774004400000" data-listing-file-modified-sort="1774067562588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="681">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
-<p>A beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
-<div class="listing-date">
-Mar 21, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1773658800000" data-listing-file-modified-sort="1773786525619" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
-<p>A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
-<div class="listing-date">
-Mar 17, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1770894000000" data-listing-file-modified-sort="1770963134821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">Why Reproducibility Matters in Healthcare Data</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
-<p>Why reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
-<div class="listing-date">
-Feb 13, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1770807600000" data-listing-file-modified-sort="1770963145742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="603">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">From Pharmacy to Data Science: Why I Chose R</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
-<p>My journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
-<div class="listing-date">
-Feb 12, 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+&nbsp;
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
