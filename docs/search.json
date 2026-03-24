@@ -291,7 +291,7 @@
     "href": "blog/index.html",
     "title": "Blog Posts",
     "section": "",
-    "text": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\n\n\nA beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.\n\n\n\n\n\nMar 21, 2026\n\n\n\n\n\n\n\nggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
+    "text": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nFinal part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability.\n\n\n\n\n\nMar 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.\n\n\n\n\n\nMar 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -1111,5 +1111,61 @@
     "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
     "section": "Reference Materials",
     "text": "Reference Materials\nThis page explains all about ggplot2 code in depth:\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html",
+    "href": "blog/posts/25-03-26-ggplot_part3.html",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "",
+    "text": "In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.\nThese are slightly more advanced than the basics, but they can significantly improve how you present your data.\nWe will build on the graph we created in the previous article and extend it further.\nHere is the code we will use:\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#introduction",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#introduction",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "",
+    "text": "In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.\nThese are slightly more advanced than the basics, but they can significantly improve how you present your data.\nWe will build on the graph we created in the previous article and extend it further.\nHere is the code we will use:\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Creating Interactive Plots with ggiraph",
+    "text": "Creating Interactive Plots with ggiraph\nTry hovering over the points in this plot.\nWhen you move your cursor over a point, additional information appears. This makes your visualisation much more interactive and informative, especially for reports or web pages.\nThis functionality comes from the ggiraph package.\nNormally, ggplot creates static plots. However, ggiraph allows you to add interactivity by using functions such as geom_jitter_interactive().\nPersonally I recommend ggiraph over Plotly (Another package for interactive graphs) as ggiraph is much simpler and does not mess anything up when you try to add one small tweak.\n\nStoring the Plot as an Object\nWhen using ggiraph, you first need to store your plot in an object.\nThis object is then passed to `girafe()` to render the interactive plot:\ngirafe(ggobj = &lt;OBJECT&gt;)\nIn this example, the entire plot is stored in an object called:\ninteractive_iris_plot\nThis also allows you to reuse or modify the plot later.\nFinally, the plot is rendered using:\ngirafe(ggobj = interactive_iris_plot)\nThis step is necessary because ggiraph works with complete ggplot objects rather than individual layers."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Fixing the Aspect Ratio (coord_fixed)",
+    "text": "Fixing the Aspect Ratio (coord_fixed)\nIn some cases, you may want the x-axis and y-axis to use the same scale.\nYou can do this using:\ncoord_fixed(ratio = 1)\nThis ensures that one unit on the x-axis is equal to one unit on the y-axis.\nThis is especially useful for:\n\nSpatial data\nDistance comparisons\nAny data where proportions matter"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Customising Axis Breaks and Labels",
+    "text": "Customising Axis Breaks and Labels\nggplot allows you to control how axes are displayed.\nFor example:\nscale_y_continuous(\n  breaks = seq(0, 10, by = 1),\n  labels = function(x) paste0(x, \"cm\")\n)\nHere:\n\nbreaks defines where ticks appear\nlabels controls how those values are displayed\n\nThe seq(0, 10, by = 1) function generates values like 0, 1, 2, …, 10."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Cleaning Column Names",
+    "text": "Cleaning Column Names\nIn this code:\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\ncolumn names like Sepal.Length are converted into Sepal Length.\nThis improves readability in the final plot.\nAn alternative approach would be manually setting labels using labs(), but this method allows you to update multiple variables at once."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#summary",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#summary",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Summary",
+    "text": "Summary\nIn this article, we covered:\n\nCreating interactive plots with ggiraph\nFixing axis ratios with coord_fixed()\nAdjusting axes with scale_*()\nCleaning column names with rename_with()\n\nEach of these techniques may seem small, but together they can greatly improve the clarity and usability of your visualisations."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nThroughout this series, we explored ggplot from the basics to more practical usage:\n\nChoosing the right graph\nUnderstanding ggplot structure\nImproving readability\nand applying useful techniques\n\nggplot is a flexible and powerful tool. Once you understand the core ideas, you can create clear and effective visualisations for a wide range of data."
   }
 ]

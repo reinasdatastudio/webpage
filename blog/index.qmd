@@ -6,6 +6,5 @@ listing:
   type: default
   categories: true
   date-format: "MMM DD, YYYY"
-  fields: [date, title, description]
   page-size: 10
 ---

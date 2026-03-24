@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
@@ -208,7 +208,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGlzYXRpb24=">Data Visualisation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGlzYXRpb24=">Data Visualisation <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -237,11 +237,52 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774004400000" data-listing-file-modified-sort="1774067562588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="681">
+<div class="quarto-post image-right" data-index="0" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774350000000" data-listing-file-modified-sort="1774390308578" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="719">
+<div class="thumbnail"><a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
+
+<img loading="lazy" src="../blog/posts/images/Screenshot_ggirafe.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">ggplot2 Fundamentals (Part 3): Useful ggplot Techniques</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
+
+</div>
+<div class="delink listing-description"><a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
+<p>Final part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
+<div class="listing-date">
+Mar 25, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774004400000" data-listing-file-modified-sort="1774067562588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="681">
+<div class="thumbnail"><a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
+
+<p class="card-img-top"><img src="posts\21-03-26-ggplot_part2_files\figure-html\unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
 <p>A beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.</p>
 </a></div>
@@ -254,11 +295,23 @@ Mar 21, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1773658800000" data-listing-file-modified-sort="1773786525619" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="quarto-post image-right" data-index="2" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1773658800000" data-listing-file-modified-sort="1773786525619" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
 <p>A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.</p>
 </a></div>
@@ -271,7 +324,12 @@ Mar 17, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1770894000000" data-listing-file-modified-sort="1770963134821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1770894000000" data-listing-file-modified-sort="1770963134821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675">
+<div class="thumbnail"><a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">Why Reproducibility Matters in Healthcare Data</a>
@@ -288,7 +346,33 @@ Feb 13, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1770807600000" data-listing-file-modified-sort="1770963145742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="603">
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1770894000000" data-listing-file-modified-sort="1773191520165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1025">
+<div class="thumbnail"><a href="../blog/posts/DRAFT ggplot .html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/posts/DRAFT ggplot .html" class="no-external"></a>
+</h3>
+<div class="delink listing-description"><a href="../blog/posts/DRAFT ggplot .html" class="no-external">
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/posts/DRAFT ggplot .html" class="no-external">
+<div class="listing-date">
+Feb 13, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1770807600000" data-listing-file-modified-sort="1770963145742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="603">
+<div class="thumbnail"><a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">From Pharmacy to Data Science: Why I Chose R</a>

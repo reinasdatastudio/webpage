@@ -1,0 +1,178 @@
+---
+title: "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques"
+date: 2026-03-25
+description: "Final part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability."
+image: images/Screenshot_ggirafe.png
+categories: 
+ - ggplot2
+ - Data Visualisation
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+---
+
+## Introduction
+
+In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.
+
+These are slightly more advanced than the basics, but they can significantly improve how you present your data.
+
+We will build on the graph we created in the previous article and extend it further.
+
+```{r include=FALSE}
+library(ggplot2)
+library(ggiraph)
+```
+
+Here is the code we will use:
+
+```{r}
+interactive_iris_plot <- iris |>
+  dplyr::rename_with(~ gsub(".", " ", .x, fixed = TRUE)) |>
+  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +
+  geom_jitter_interactive(
+    aes(
+      fill = Species,
+      tooltip = paste0(
+        "Sepal Length: ", `Sepal Length`, " cm",
+        "\nPetal Length: ", `Petal Length`, " cm"
+      )
+    ),
+    shape = 21,
+    color = "black",
+    size = 2,
+    stroke = 0.8,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(values = c(
+    "setosa" = "pink",
+    "versicolor" = "#2A9D8F",
+    "virginica" = "purple"
+  )) +
+  coord_fixed(ratio = 1) +
+  scale_x_continuous(labels = function(x) paste0(x, "cm")) +
+  scale_y_continuous(
+    breaks = seq(0, 10, by = 1),
+    labels = function(x) paste0(x, "cm")
+  ) +
+  labs(title = "Sepal Length vs Petal Length") +
+  theme_minimal(base_size = 12) +
+  theme(
+    text = element_text(family = "Georgia"),
+    plot.title.position = "panel"
+  )
+
+girafe(ggobj = interactive_iris_plot)
+```
+
+## Creating Interactive Plots with ggiraph
+
+Try hovering over the points in this plot.
+
+When you move your cursor over a point, additional information appears. This makes your visualisation much more interactive and informative, especially for reports or web pages.
+
+This functionality comes from the ggiraph package.
+
+Normally, ggplot creates static plots. However, ggiraph allows you to add interactivity by using functions such as `geom_jitter_interactive()`.
+
+Personally I recommend ggiraph over Plotly (Another package for interactive graphs) as ggiraph is much simpler and does not mess anything up when you try to add one small tweak.
+
+### Storing the Plot as an Object
+
+When using ggiraph, you first need to store your plot in an object.\
+This object is then passed to \`girafe()\` to render the interactive plot:
+
+```         
+girafe(ggobj = <OBJECT>)
+```
+
+In this example, the entire plot is stored in an object called:
+
+``` r
+interactive_iris_plot
+```
+
+This also allows you to reuse or modify the plot later.
+
+Finally, the plot is rendered using:
+
+``` r
+girafe(ggobj = interactive_iris_plot)
+```
+
+This step is necessary because ggiraph works with complete ggplot objects rather than individual layers.
+
+## Fixing the Aspect Ratio (coord_fixed)
+
+In some cases, you may want the x-axis and y-axis to use the same scale.
+
+You can do this using:
+
+``` r
+coord_fixed(ratio = 1)
+```
+
+This ensures that one unit on the x-axis is equal to one unit on the y-axis.
+
+This is especially useful for:
+
+-   Spatial data
+-   Distance comparisons
+-   Any data where proportions matter
+
+## Customising Axis Breaks and Labels
+
+ggplot allows you to control how axes are displayed.
+
+For example:
+
+``` r
+scale_y_continuous(
+  breaks = seq(0, 10, by = 1),
+  labels = function(x) paste0(x, "cm")
+)
+```
+
+Here:
+
+-   `breaks` defines where ticks appear
+-   `labels` controls how those values are displayed
+
+The `seq(0, 10, by = 1)` function generates values like 0, 1, 2, …, 10.
+
+## Cleaning Column Names
+
+In this code:
+
+``` r
+rename_with(~ gsub(".", " ", .x, fixed = TRUE))
+```
+
+column names like `Sepal.Length` are converted into `Sepal Length`.
+
+This improves readability in the final plot.
+
+An alternative approach would be manually setting labels using `labs()`, but this method allows you to update multiple variables at once.
+
+## Summary
+
+In this article, we covered:
+
+-   Creating interactive plots with <strong>ggiraph</strong>
+-   Fixing axis ratios with `coord_fixed()`
+-   Adjusting axes with `scale_*()`
+-   Cleaning column names with `rename_with()`
+
+Each of these techniques may seem small, but together they can greatly improve the clarity and usability of your visualisations.
+
+## Final Thoughts
+
+Throughout this series, we explored ggplot from the basics to more practical usage:
+
+-   Choosing the right graph
+-   Understanding ggplot structure
+-   Improving readability
+-   and applying useful techniques
+
+ggplot is a flexible and powerful tool. Once you understand the core ideas, you can create clear and effective visualisations for a wide range of data.
