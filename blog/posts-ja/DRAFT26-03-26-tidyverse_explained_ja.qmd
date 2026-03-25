@@ -1,0 +1,198 @@
+---
+title: "tidyverseとは？Rでのデータ分析をシンプルにするツール"
+date: 2026-03-26
+description: "tidyverseとは何か分かりやすく解説。データの整理・加工・可視化を効率よく行う方法を紹介します。"
+image: images/Screenshot_ggirafe.png
+categories: 
+  - ggplot2
+  - Data Visualisation
+format:
+  html:
+    include-after-body: blog-footer-ja.html
+toc: true
+draft: true
+---
+
+あなたが今この記事を読んでいるということは、きっとRの事を多少なりとも知っているはずです。そして、Rの終わりのないパッケージの数々も。（実際、2026年3月の時点で23,437あるらしい）。
+
+いつ、どのパッケージを使えばいいのか分からなくなりますよね。
+
+そんな時は、とりあえず`tidyverse`です。
+
+この記事では、tidyverseの基本から、何ができるのかを分かりやすく解説します。
+
+## tidyverseとは？
+
+tidyverseは、Rでデータを扱うためのパッケージの集まりです。
+
+主にできることは：
+
+-   データの整理（クリーニング）
+-   データの加工（変換・集計）
+-   データの可視化（グラフ作成）
+
+そして特徴は、統一されたルールで、読みやすいコードが書けること。
+
+## なぜ人気なのか？
+
+tidyverseを使うと、コードが「文章のように」読めます。
+
+``` r
+library(tidyverse)
+
+df %>%
+  filter(!is.na(age)) %>%
+  mutate(income = income * 1.1) %>%
+  arrange(desc(income))
+```
+
+これを文章に変えたら：
+
+| 「データから欠損値を除いて、収入を調整して、並び替える」
+
+コードを見ただけで処理の流れが分かるのが大きなメリットです。
+
+## tidyverseに含まれる主なパッケージ
+
+`library(tidyverse)`を実行すると、いくつかのパッケージがまとめて読み込まれます。
+
+よく使うものを紹介していきます👇
+
+### 1. `dplyr` — データ操作（最重要）
+
+データの抽出・加工・集計を行うパッケージです。
+
+主な関数：
+
+-   `filter()` → 行を絞る
+-   `select()` → 列を選ぶ
+-   `mutate()` → 新しい列を作る
+-   `summarise()` → 集計する
+
+例：
+
+``` r
+df %>%
+  group_by(country) %>%
+  summarise(avg_income = mean(income))
+```
+
+日常的に一番使うツールです。
+
+### 2. `tidyr` — データ整形
+
+本物のデータはそのままだと分析しづらい形のことが多いです。
+
+-   `pivot_longer()`: 横長 → 縦長
+-   `pivot_wider()`: 縦長 → 横長
+
+「分析しやすい形に整える」役割。
+
+例：
+
+きれいにまとめられていない表があるとします。この表は科目（subject）が変数になっています。
+
+| name | math | english |
+|------|------|---------|
+| A    | 80   | 90      |
+| B    | 70   | 85      |
+
+`pivot_longer()`を使うと：
+
+``` r
+df_long <- df %>%
+  pivot_longer(
+    cols = c(math, english), 
+    names_to = "subject", 
+    values_to = "score")
+```
+
+| name | subject | score |
+|------|---------|-------|
+| A    | math    | 80    |
+| A    | english | 90    |
+| B    | math    | 70    |
+| B    | english | 85    |
+
+このように`score`（点数）と`subject`（科目）という変数を作って、値を並べ替える事ができます。
+
+### 3. ggplot2 — データ可視化
+
+グラフを作るためのパッケージです。
+
+``` r
+ggplot(df, aes(x = age, y = income)) +
+  geom_point()
+```
+
+もっと詳しく知りたいかたは、[ここ](https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2%20-%201.Choosing%20the%20right%20graph.html)に5回に分けた`ggplot`についての記事を書いているので、ぜひご覧ください。
+
+### 4. readr — データ読み込み
+
+``` r
+read_csv("data.csv")
+```
+
+base Rより速くて使いやすい、主にファイルの読み込みに使います。
+
+### 5. stringr — 文字列処理
+
+``` r
+str_detect(name, "John")
+```
+
+テキストデータの処理に便利。
+
+### 6. forcats — カテゴリデータの操作
+
+因子（カテゴリ変数）を整理するために使います。
+
+### 7. purrr — 繰り返し処理（少し上級）
+
+ループ処理をシンプルに書けます。
+
+## パイプ（%\>%）という考え方
+
+tidyverseの大きな特徴がこの「パイプ」です。
+
+``` r
+df %>% step1() %>% step2() %>% step3()
+```
+
+「データに対して順番に処理をしていく」イメージです。
+
+これによって、コードがとても読みやすくなります。
+
+## tidy data（整ったデータ）とは？
+
+tidyverseは「tidy data」という考え方をベースにしています。
+
+-   1列 = 1つの変数
+-   1行 = 1つの観測
+-   1セル = 1つの値
+
+この形にすることで、分析がしやすくなります。
+
+## 全部覚える必要はある？
+
+ありません。
+
+まずはこの3つで十分です👇
+
+-   `dplyr`
+-   `ggplot2`
+-   `tidyr`
+
+この3つでほとんどの作業ができます。
+
+### まとめ
+
+tidyverseは単なるツールではなく、データの扱い方の考え方そのものです。
+
+-   処理をステップごとに分ける
+-   読みやすいコードを書く
+-   再現性のある分析をする
+
+これらを自然に実現できます。
+
+Rをこれからしっかり使っていきたい人にとって、tidyverseはとても強力な味方になります。

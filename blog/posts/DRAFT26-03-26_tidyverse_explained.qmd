@@ -1,0 +1,199 @@
+---
+title: "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R"
+date: 2026-03-26
+description: "Learn what the tidyverse is in R and how it helps you clean, transform, and visualise data in a clear and efficient way."
+categories: 
+ - tidyverse
+ - Data Cleaning
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+draft: true
+---
+
+If you are reading this you are likely to be someone who is familiar with R and its endless list of packages.
+
+One of the most popular packages used is `tidyverse`.
+
+In this post, I’ll explain what the tidyverse is, what’s inside it, and how it helps you clean and analyse data more efficiently.
+
+I wrote this article mainly because a lot of tutorials use it but I don't see many of them actually explaining what it is.
+
+## What is the tidyverse?
+
+It may be slightly confusing at first because the tidyverse is actually a collection of R packages. It is designed for:
+
+-   Cleaning data
+-   Transforming data
+-   Visualising data
+
+All in a consistent and readable way.
+
+Instead of using many unrelated functions, the tidyverse gives you a unified system where everything works together.
+
+## Why is it so popular?
+
+Before tidyverse, data cleaning in R often looked messy and hard to follow.
+
+With tidyverse, you can write code that reads almost like a sentence:
+
+``` r
+library(tidyverse)
+
+df %>%
+  filter(!is.na(age)) %>%
+  mutate(income = income * 1.1) %>%
+  arrange(desc(income))
+```
+
+You can read this as:
+
+| “Take the data, remove missing ages, adjust income, then sort it in descending order.”
+
+That readability is one of the biggest reasons it’s widely used.
+
+It is also one of the reasons why I love R - These codes actually make sense!
+
+## What’s inside the tidyverse?
+
+When you load `library(tidyverse)`, you’re actually loading several packages.
+
+Here are the most important ones:
+
+### 1. `dplyr` — Data manipulation
+
+This is the core tool for working with data.
+
+Common functions:
+
+-   `filter()` → keep rows
+-   `select()` → choose columns
+-   `mutate()` → create new columns
+-   `summarise()` → aggregate data
+
+Example:
+
+``` r
+df %>%
+  group_by(country) %>%
+  summarise(avg_income = mean(income))
+```
+
+### 2. `tidyr` — Data cleaning / reshaping
+
+Real-world data is often messy. `tidyr` helps fix that.
+
+-   `pivot_longer()`: Wide → Long format
+-   `pivot_wider()`: Long → Wide format
+
+Example:
+
+Say you have a messy data like this one, where `Subjects` are stored as column names.
+
+| name | math | english |
+|------|------|---------|
+| A    | 80   | 90      |
+| B    | 70   | 85      |
+
+Let's use `pivot_longer()` to make it tidier.
+
+``` r
+df_long <- df %>%
+  pivot_longer(
+    cols = c(math, english),
+    names_to = "subject",
+    values_to = "score")
+```
+
+| name | subject | score |
+|------|---------|-------|
+| A    | math    | 80    |
+| A    | english | 90    |
+| B    | math    | 70    |
+| B    | english | 85    |
+
+Now it becomes clear what exactly those numbers meant.
+
+### 3. `ggplot2` — Data visualisation
+
+Used to create graphs and charts.
+
+``` r
+ggplot(df, aes(x = age, y = income)) +
+  geom_point()
+```
+
+It’s one of the most widely used visualisation tools in R.
+
+I have also made a three-part blog about ggplot in details [here](https://reinasdatastudio.github.io/webpage/blog/posts/18-03-26-choosing-the-right-graph.html) if you would like to know more about it.
+
+### 4. `readr` — Importing data
+
+``` r
+read_csv("data.csv")
+```
+
+Faster and cleaner than base R functions.
+
+### 5. `stringr` — Working with text
+
+Useful for cleaning and analysing text data.
+
+``` r
+str_detect(name, "John")
+```
+
+### 6. `forcats` — Working with categories
+
+Helps manage categorical variables (factors), especially for plotting.
+
+### 7. `purrr` — Working with lists (advanced)
+
+Used for iteration (like loops) in a cleaner way.
+
+## The key idea: the pipe (%\>%)
+
+One of the most important features of the tidyverse is the pipe:
+
+``` r
+df %>% step1() %>% step2() %>% step3()
+```
+
+It lets you write your workflow step-by-step.
+
+Instead of nesting functions, you build a clear pipeline.
+
+## What is “tidy data”?
+
+The tidyverse is built around the concept of tidy data:
+
+-   Each column = one variable
+-   Each row = one observation
+-   Each cell = one value
+
+This structure makes analysis much easier and more consistent.
+
+## Do you need to learn all of it?
+
+Not at all.
+
+In practice, most people mainly use:
+
+-   `dplyr`
+-   `ggplot2`
+-   `tidyr`
+
+These three alone will cover most of your data work.
+
+## Final thoughts
+
+The tidyverse isn’t just a set of packages—it’s a way of thinking about data.
+
+Instead of writing complicated code, you:
+
+-   Break your work into steps
+-   Write readable transformations
+-   Build reproducible workflows
+
+If you're just starting with R, learning the tidyverse is one of the best investments you can make.
