@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-13">
+<meta name="dcterms.date" content="2026-03-26">
+<meta name="description" content="tidyverseとは何か分かりやすく解説。データの整理・加工・可視化を効率よく行う方法を紹介します。">
 
-<title>quarto-input8234bff0d114102c – Reina's Data Studio</title>
+<title>tidyverseとは？Rでのデータ分析をシンプルにするツール – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,10 +114,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
-<style>
-.description { display: none; }
-</style>
-<meta name="quarto:status" content="draft">
 
 
 </head>
@@ -89,7 +121,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -156,21 +188,24 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#understanding-ggplot2" id="toc-understanding-ggplot2" class="nav-link active" data-scroll-target="#understanding-ggplot2">Understanding ggplot2</a></li>
-  <li><a href="#full-ggplot-template-grammar-of-graphics" id="toc-full-ggplot-template-grammar-of-graphics" class="nav-link" data-scroll-target="#full-ggplot-template-grammar-of-graphics">1. Full ggplot Template (Grammar of Graphics)</a></li>
-  <li><a href="#the-main-components-of-ggplot" id="toc-the-main-components-of-ggplot" class="nav-link" data-scroll-target="#the-main-components-of-ggplot">2. The Main Components of ggplot</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">3. Data</a></li>
-  <li><a href="#aesthetics-aes" id="toc-aesthetics-aes" class="nav-link" data-scroll-target="#aesthetics-aes">4. Aesthetics (aes)</a></li>
-  <li><a href="#geoms-the-actual-plot-type" id="toc-geoms-the-actual-plot-type" class="nav-link" data-scroll-target="#geoms-the-actual-plot-type">5. Geoms (the actual plot type)</a></li>
-  <li><a href="#statistics-stat" id="toc-statistics-stat" class="nav-link" data-scroll-target="#statistics-stat">6. Statistics (stat)</a></li>
-  <li><a href="#position-adjustments" id="toc-position-adjustments" class="nav-link" data-scroll-target="#position-adjustments">7. Position Adjustments</a></li>
-  <li><a href="#scales-controls-axes-colors-legends" id="toc-scales-controls-axes-colors-legends" class="nav-link" data-scroll-target="#scales-controls-axes-colors-legends">8. Scales (controls axes, colors, legends)</a></li>
-  <li><a href="#coordinates" id="toc-coordinates" class="nav-link" data-scroll-target="#coordinates">9. Coordinates</a></li>
-  <li><a href="#facets-small-multiples" id="toc-facets-small-multiples" class="nav-link" data-scroll-target="#facets-small-multiples">10. Facets (small multiples)</a></li>
-  <li><a href="#labels" id="toc-labels" class="nav-link" data-scroll-target="#labels">11. Labels</a></li>
-  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">12. Themes</a></li>
-  <li><a href="#realistic-full-example" id="toc-realistic-full-example" class="nav-link" data-scroll-target="#realistic-full-example">13. Realistic Full Example</a></li>
-  <li><a href="#the-one-line-mental-model" id="toc-the-one-line-mental-model" class="nav-link" data-scroll-target="#the-one-line-mental-model">14. The One-Line Mental Model</a></li>
+  <li><a href="#tidyverseとは" id="toc-tidyverseとは" class="nav-link active" data-scroll-target="#tidyverseとは">tidyverseとは？</a></li>
+  <li><a href="#なぜ人気なのか" id="toc-なぜ人気なのか" class="nav-link" data-scroll-target="#なぜ人気なのか">なぜ人気なのか？</a></li>
+  <li><a href="#tidyverseに含まれる主なパッケージ" id="toc-tidyverseに含まれる主なパッケージ" class="nav-link" data-scroll-target="#tidyverseに含まれる主なパッケージ">tidyverseに含まれる主なパッケージ</a>
+  <ul class="collapse">
+  <li><a href="#dplyr-データ操作最重要" id="toc-dplyr-データ操作最重要" class="nav-link" data-scroll-target="#dplyr-データ操作最重要">1. <code>dplyr</code> — データ操作（最重要）</a></li>
+  <li><a href="#tidyr-データ整形" id="toc-tidyr-データ整形" class="nav-link" data-scroll-target="#tidyr-データ整形">2. <code>tidyr</code> — データ整形</a></li>
+  <li><a href="#ggplot2-データ可視化" id="toc-ggplot2-データ可視化" class="nav-link" data-scroll-target="#ggplot2-データ可視化">3. ggplot2 — データ可視化</a></li>
+  <li><a href="#readr-データ読み込み" id="toc-readr-データ読み込み" class="nav-link" data-scroll-target="#readr-データ読み込み">4. readr — データ読み込み</a></li>
+  <li><a href="#stringr-文字列処理" id="toc-stringr-文字列処理" class="nav-link" data-scroll-target="#stringr-文字列処理">5. stringr — 文字列処理</a></li>
+  <li><a href="#forcats-カテゴリデータの操作" id="toc-forcats-カテゴリデータの操作" class="nav-link" data-scroll-target="#forcats-カテゴリデータの操作">6. forcats — カテゴリデータの操作</a></li>
+  <li><a href="#purrr-繰り返し処理少し上級" id="toc-purrr-繰り返し処理少し上級" class="nav-link" data-scroll-target="#purrr-繰り返し処理少し上級">7. purrr — 繰り返し処理（少し上級）</a></li>
+  </ul></li>
+  <li><a href="#パイプという考え方" id="toc-パイプという考え方" class="nav-link" data-scroll-target="#パイプという考え方">パイプ（%&gt;%）という考え方</a></li>
+  <li><a href="#tidy-data整ったデータとは" id="toc-tidy-data整ったデータとは" class="nav-link" data-scroll-target="#tidy-data整ったデータとは">tidy data（整ったデータ）とは？</a></li>
+  <li><a href="#全部覚える必要はある" id="toc-全部覚える必要はある" class="nav-link" data-scroll-target="#全部覚える必要はある">全部覚える必要はある？</a>
+  <ul class="collapse">
+  <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -179,8 +214,18 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-</div>
+<h1 class="title">tidyverseとは？Rでのデータ分析をシンプルにするツール</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">Data Visualisation</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    tidyverseとは何か分かりやすく解説。データの整理・加工・可視化を効率よく行う方法を紹介します。
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -189,7 +234,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">March 26, 2026</p>
     </div>
   </div>
   
@@ -201,188 +246,197 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </header>
 
 
-<section id="understanding-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="understanding-ggplot2">Understanding ggplot2</h2>
+<p>あなたが今この記事を読んでいるということは、きっとRの事を多少なりとも知っているはずです。 そして、Rの終わりのないパッケージの数々も。（実際、2026年3月の時点で23,437あるらしい）。</p>
+<p>いつ、どのパッケージを使えばいいのか分からなくなりますよね。</p>
+<p>そんな時は、とりあえず<code>tidyverse</code>です。</p>
+<p>この記事では、tidyverseの基本から、何ができるのかを分かりやすく解説します。</p>
+<section id="tidyverseとは" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverseとは">tidyverseとは？</h2>
+<p>tidyverseは、Rでデータを扱うためのパッケージの集まりです。</p>
+<p>主にできることは：</p>
 <ul>
-<li>aes within ggplot() vs geom_*() - local vs global aesthetics</li>
-<li>Basic 7 layers - first 2 must be memorised</li>
-<li>color = “your class variable”, or do size or shape instead
-<ul>
-<li>outside aes() if you are specifying color such as “pink”</li>
-</ul></li>
-<li>what is facets? useful especially for categorical values</li>
+<li>データの整理（クリーニング）</li>
+<li>データの加工（変換・集計）</li>
+<li>データの可視化（グラフ作成）</li>
 </ul>
-<p>Great question. In <strong><code>ggplot2</code></strong>, plots are built by <strong>layering components</strong>. There isn’t one strict “equation”, but there <em>is</em> a common <strong>grammar template</strong> that most plots follow.</p>
-<p>Below is a <strong>complete conceptual skeleton</strong> of a ggplot.</p>
+<p>そして特徴は、統一されたルールで、読みやすいコードが書けること。</p>
 </section>
-<section id="full-ggplot-template-grammar-of-graphics" class="level2">
-<h2 class="anchored" data-anchor-id="full-ggplot-template-grammar-of-graphics">1. Full ggplot Template (Grammar of Graphics)</h2>
-<pre><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +    &lt;GEOM_FUNCTION&gt;(     mapping = aes(&lt;LOCAL_MAPPINGS&gt;),     stat = &lt;STAT&gt;,     position = &lt;POSITION&gt;,     ...   ) +    &lt;STAT_FUNCTION&gt;(...) +    &lt;SCALE_FUNCTION&gt;(...) +    &lt;COORD_FUNCTION&gt;(...) +    &lt;FACET_FUNCTION&gt;(...) +    &lt;THEME_FUNCTION&gt;(...) +    labs(     title = &lt;TITLE&gt;,     subtitle = &lt;SUBTITLE&gt;,     x = &lt;X_LABEL&gt;,     y = &lt;Y_LABEL&gt;,     caption = &lt;CAPTION&gt;   ) </code></pre>
+<section id="なぜ人気なのか" class="level2">
+<h2 class="anchored" data-anchor-id="なぜ人気なのか">なぜ人気なのか？</h2>
+<p>tidyverseを使うと、コードが「文章のように」読めます。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> income <span class="sc">*</span> <span class="fl">1.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(income))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>これを文章に変えたら：</p>
+<div class="line-block">「データから欠損値を除いて、収入を調整して、並び替える」</div>
+<p>コードを見ただけで処理の流れが分かるのが大きなメリットです。</p>
 </section>
-<section id="the-main-components-of-ggplot" class="level1">
-<h1>2. The Main Components of ggplot</h1>
-<p>Think of ggplot as <strong>7 major layers</strong>.</p>
-<pre><code>DATA ↓ AESTHETICS ↓ GEOMS ↓ STATS ↓ SCALES ↓ COORDINATES ↓ FACETS ↓ THEME / LABELS </code></pre>
+<section id="tidyverseに含まれる主なパッケージ" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverseに含まれる主なパッケージ">tidyverseに含まれる主なパッケージ</h2>
+<p><code>library(tidyverse)</code>を実行すると、いくつかのパッケージがまとめて読み込まれます。</p>
+<p>よく使うものを紹介していきます👇</p>
+<section id="dplyr-データ操作最重要" class="level3">
+<h3 class="anchored" data-anchor-id="dplyr-データ操作最重要">1. <code>dplyr</code> — データ操作（最重要）</h3>
+<p>データの抽出・加工・集計を行うパッケージです。</p>
+<p>主な関数：</p>
+<ul>
+<li><code>filter()</code> → 行を絞る</li>
+<li><code>select()</code> → 列を選ぶ</li>
+<li><code>mutate()</code> → 新しい列を作る</li>
+<li><code>summarise()</code> → 集計する</li>
+</ul>
+<p>例：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_income =</span> <span class="fu">mean</span>(income))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>日常的に一番使うツールです。</p>
 </section>
-<section id="data" class="level1">
-<h1>3. Data</h1>
-<pre><code>ggplot(data = &lt;DATA&gt;) </code></pre>
-<p>Example</p>
-<pre><code>ggplot(data = mpg) </code></pre>
-<p>You can also pipe data:</p>
-<pre><code>mpg %&gt;% ggplot(aes(x = displ, y = hwy)) </code></pre>
-</section>
-<section id="aesthetics-aes" class="level1">
-<h1>4. Aesthetics (aes)</h1>
-<p>Maps variables → visual properties.</p>
-<pre><code>aes(   x,   y,   color,   fill,   size,   shape,   alpha,   group,   linetype ) </code></pre>
-<p>Example</p>
-<pre><code>aes(x = displ, y = hwy, color = class) </code></pre>
-</section>
-<section id="geoms-the-actual-plot-type" class="level1">
-<h1>5. Geoms (the actual plot type)</h1>
-<pre><code>geom_&lt;type&gt;() </code></pre>
-<p>Common ones:</p>
+<section id="tidyr-データ整形" class="level3">
+<h3 class="anchored" data-anchor-id="tidyr-データ整形">2. <code>tidyr</code> — データ整形</h3>
+<p>本物のデータはそのままだと分析しづらい形のことが多いです。</p>
+<ul>
+<li><code>pivot_longer()</code>: 横長 → 縦長</li>
+<li><code>pivot_wider()</code>: 縦長 → 横長</li>
+</ul>
+<p>「分析しやすい形に整える」役割。</p>
+<p>例：</p>
+<p>きれいにまとめられていない表があるとします。この表は科目（subject）が変数になっています。</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>geom</th>
-<th>purpose</th>
+<th>name</th>
+<th>math</th>
+<th>english</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>geom_point()</td>
-<td>scatterplot</td>
+<td>A</td>
+<td>80</td>
+<td>90</td>
 </tr>
 <tr class="even">
-<td>geom_line()</td>
-<td>line plot</td>
-</tr>
-<tr class="odd">
-<td>geom_bar()</td>
-<td>bar plot</td>
-</tr>
-<tr class="even">
-<td>geom_col()</td>
-<td>bar with values</td>
-</tr>
-<tr class="odd">
-<td>geom_histogram()</td>
-<td>histogram</td>
-</tr>
-<tr class="even">
-<td>geom_boxplot()</td>
-<td>boxplot</td>
-</tr>
-<tr class="odd">
-<td>geom_violin()</td>
-<td>violin plot</td>
-</tr>
-<tr class="even">
-<td>geom_density()</td>
-<td>density</td>
-</tr>
-<tr class="odd">
-<td>geom_smooth()</td>
-<td>regression</td>
-</tr>
-<tr class="even">
-<td>geom_area()</td>
-<td>area chart</td>
-</tr>
-<tr class="odd">
-<td>geom_text()</td>
-<td>labels</td>
+<td>B</td>
+<td>70</td>
+<td>85</td>
 </tr>
 </tbody>
 </table>
-<p>Example:</p>
-<pre><code>geom_point() </code></pre>
+<p><code>pivot_longer()</code>を使うと：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(math, english), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"subject"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>name</th>
+<th>subject</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>math</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>english</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>math</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>english</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>このように<code>score</code>（点数）と<code>subject</code>（科目）という変数を作って、値を並べ替える事ができます。</p>
 </section>
-<section id="statistics-stat" class="level1">
-<h1>6. Statistics (stat)</h1>
-<p>Transforms the data before plotting.</p>
-<p>Example:</p>
-<pre><code>stat_summary() stat_bin() stat_smooth() </code></pre>
-<p>Example inside geom:</p>
-<pre><code>geom_bar(stat = "count") </code></pre>
-<p>or</p>
-<pre><code>geom_bar(stat = "identity") </code></pre>
+<section id="ggplot2-データ可視化" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot2-データ可視化">3. ggplot2 — データ可視化</h3>
+<p>グラフを作るためのパッケージです。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> income)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>もっと詳しく知りたいかたは、<a href="https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2%20-%201.Choosing%20the%20right%20graph.html">ここ</a>に5回に分けた<code>ggplot</code>についての記事を書いているので、ぜひご覧ください。</p>
 </section>
-<section id="position-adjustments" class="level1">
-<h1>7. Position Adjustments</h1>
-<p>How elements overlap.</p>
-<pre><code>position = "identity" position = "stack" position = "dodge" position = "fill" position = "jitter" </code></pre>
-<p>Example:</p>
-<pre><code>geom_bar(position = "dodge") </code></pre>
+<section id="readr-データ読み込み" class="level3">
+<h3 class="anchored" data-anchor-id="readr-データ読み込み">4. readr — データ読み込み</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>base Rより速くて使いやすい、主にファイルの読み込みに使います。</p>
 </section>
-<section id="scales-controls-axes-colors-legends" class="level1">
-<h1>8. Scales (controls axes, colors, legends)</h1>
-<pre><code>scale_&lt;aesthetic&gt;_&lt;type&gt;() </code></pre>
-<p>Examples:</p>
-<pre><code>scale_x_continuous() scale_y_log10() scale_color_manual() scale_fill_brewer() scale_size_continuous() scale_alpha() </code></pre>
-<p>Example</p>
-<pre><code>scale_color_manual(values = c("red", "blue")) </code></pre>
+<section id="stringr-文字列処理" class="level3">
+<h3 class="anchored" data-anchor-id="stringr-文字列処理">5. stringr — 文字列処理</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(name, <span class="st">"John"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>テキストデータの処理に便利。</p>
 </section>
-<section id="coordinates" class="level1">
-<h1>9. Coordinates</h1>
-<p>How the plot space is drawn.</p>
-<pre><code>coord_cartesian() coord_flip() coord_fixed() coord_polar() coord_sf() </code></pre>
-<p>Example</p>
-<pre><code>coord_flip() </code></pre>
+<section id="forcats-カテゴリデータの操作" class="level3">
+<h3 class="anchored" data-anchor-id="forcats-カテゴリデータの操作">6. forcats — カテゴリデータの操作</h3>
+<p>因子（カテゴリ変数）を整理するために使います。</p>
 </section>
-<section id="facets-small-multiples" class="level1">
-<h1>10. Facets (small multiples)</h1>
-<p>Split plots by variable.</p>
-<pre><code>facet_wrap(~ variable)  facet_grid(rows ~ columns) </code></pre>
-<p>Example</p>
-<pre><code>facet_wrap(~ class) </code></pre>
+<section id="purrr-繰り返し処理少し上級" class="level3">
+<h3 class="anchored" data-anchor-id="purrr-繰り返し処理少し上級">7. purrr — 繰り返し処理（少し上級）</h3>
+<p>ループ処理をシンプルに書けます。</p>
 </section>
-<section id="labels" class="level1">
-<h1>11. Labels</h1>
-<pre><code>labs(   title = "",   subtitle = "",   x = "",   y = "",   caption = "",   color = "",   fill = "" ) </code></pre>
-<p>Example</p>
-<pre><code>labs(   title = "Fuel efficiency",   x = "Engine size",   y = "Highway MPG" ) </code></pre>
 </section>
-<section id="themes" class="level1">
-<h1>12. Themes</h1>
-<p>Controls appearance.</p>
-<pre><code>theme()  theme_bw() theme_minimal() theme_classic() theme_void() </code></pre>
-<p>Example</p>
-<pre><code>theme_minimal() </code></pre>
+<section id="パイプという考え方" class="level2">
+<h2 class="anchored" data-anchor-id="パイプという考え方">パイプ（%&gt;%）という考え方</h2>
+<p>tidyverseの大きな特徴がこの「パイプ」です。</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">step1</span>() <span class="sc">%&gt;%</span> <span class="fu">step2</span>() <span class="sc">%&gt;%</span> <span class="fu">step3</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>「データに対して順番に処理をしていく」イメージです。</p>
+<p>これによって、コードがとても読みやすくなります。</p>
 </section>
-<section id="realistic-full-example" class="level1">
-<h1>13. Realistic Full Example</h1>
-<pre><code>ggplot(data = mpg, aes(x = displ, y = hwy, color = class)) +
- geom_point(size = 3, alpha = 0.7) +
- geom_smooth(method = "lm", se = FALSE) +
- scale_color_brewer(palette = "Set2") +
- coord_cartesian() +
- facet_wrap(~ drv) +
- labs(
-  title = "Engine Size vs Fuel Efficiency",
-  x = "Engine Displacement",
-  y = "Highway MPG",
-  color = "Vehicle Class") +
-theme_minimal() </code></pre>
+<section id="tidy-data整ったデータとは" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-data整ったデータとは">tidy data（整ったデータ）とは？</h2>
+<p>tidyverseは「tidy data」という考え方をベースにしています。</p>
+<ul>
+<li>1列 = 1つの変数</li>
+<li>1行 = 1つの観測</li>
+<li>1セル = 1つの値</li>
+</ul>
+<p>この形にすることで、分析がしやすくなります。</p>
 </section>
-<section id="the-one-line-mental-model" class="level1">
-<h1>14. The One-Line Mental Model</h1>
-<p>Most ggplots follow this structure:</p>
-<pre><code>ggplot(data, aes()) + geom_*() + scale_*() + facet_*() + coord_*() + labs() + theme() </code></pre>
-<p>💡 Since you write about <strong>R errors and ggplot on your blog</strong>, a really nice post idea could be:</p>
-<p><strong>“The ggplot mental model: 7 layers you must know”</strong></p>
-<p>I can also show you a <strong>visual diagram of how ggplot builds a plot internally</strong>, which makes ggplot suddenly make <em>way</em> more sense.</p>
+<section id="全部覚える必要はある" class="level2">
+<h2 class="anchored" data-anchor-id="全部覚える必要はある">全部覚える必要はある？</h2>
+<p>ありません。</p>
+<p>まずはこの3つで十分です👇</p>
+<ul>
+<li><code>dplyr</code></li>
+<li><code>ggplot2</code></li>
+<li><code>tidyr</code></li>
+</ul>
+<p>この3つでほとんどの作業ができます。</p>
+<section id="まとめ" class="level3">
+<h3 class="anchored" data-anchor-id="まとめ">まとめ</h3>
+<p>tidyverseは単なるツールではなく、データの扱い方の考え方そのものです。</p>
+<ul>
+<li>処理をステップごとに分ける</li>
+<li>読みやすいコードを書く</li>
+<li>再現性のある分析をする</li>
+</ul>
+<p>これらを自然に実現できます。</p>
+<p>Rをこれからしっかり使っていきたい人にとって、tidyverseはとても強力な味方になります。</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
 &nbsp;
 <hr>
 
-<p style="text-align: center;">If you're working with clinical or research data and would like help building reproducible R workflows, feel free to reach out.</p>
+<p style="text-align: center;">Rを使ったデータ分析や、再現可能なワークフローの構築についてサポートが必要な方は、お気軽にご連絡ください。</p>
 
 <p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
 

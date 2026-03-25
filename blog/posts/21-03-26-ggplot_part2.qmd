@@ -11,6 +11,14 @@ format:
 toc: true
 ---
 
+This is a three-part series. Other series can be viewed here:
+
+-   [ggplot2 Fundamentals (Part 1): Choosing the Right Graph for Your Data](https://reinasdatastudio.github.io/webpage/blog/posts/18-03-26-choosing-the-right-graph.html)
+
+-   [ggplot2 Fundamentals (Part 3): Useful ggplot Techniques](https://reinasdatastudio.github.io/webpage/blog/posts/25-03-26-ggplot_part3.html)
+
+------------------------------------------------------------------------
+
 ```{r include=FALSE}
 library(ggplot2)
 ```

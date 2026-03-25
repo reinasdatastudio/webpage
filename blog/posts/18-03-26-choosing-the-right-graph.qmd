@@ -8,14 +8,17 @@ categories:
   - Data Visualisation
 format:
   html:
-    include-in-header: 
-      text: |
-        <style>
-        .description { display: none; }
-        </style>
     include-after-body: blog-footer.html
 toc: true
 ---
+
+This is a three-part series. Other series can be viewed here:
+
+-   [ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations](https://reinasdatastudio.github.io/webpage/blog/posts/21-03-26-ggplot_part2.html)
+
+-   [ggplot2 Fundamentals (Part 3): Useful ggplot Techniques](https://reinasdatastudio.github.io/webpage/blog/posts/25-03-26-ggplot_part3.html)
+
+------------------------------------------------------------------------
 
 When creating graphs in **R**, one of the most widely used tools is **ggplot2**.
 

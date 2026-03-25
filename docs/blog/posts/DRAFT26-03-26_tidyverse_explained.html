@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-03-15">
-<meta name="description" content="ggplot2をわかりやすくまとめました。">
+<meta name="dcterms.date" content="2026-03-25">
+<meta name="description" content="Learn what the tidyverse is in R and how it helps you clean, transform, and visualize data in a clear and efficient way.">
 
-<title>ggplot入門③：よく使うグラフの種類 – Reina's Data Studio</title>
+<title>What is the Tidyverse? Simplifying Data Cleaning and Analysis in R – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,10 +114,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
-<style>
-.description { display: none; }
-</style>
-<meta name="quarto:status" content="draft">
 
 
 </head>
@@ -125,7 +121,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -192,28 +188,22 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#グラフの選び方まとめ" id="toc-グラフの選び方まとめ" class="nav-link active" data-scroll-target="#グラフの選び方まとめ">グラフの選び方（まとめ）</a>
+  <li><a href="#what-is-the-tidyverse" id="toc-what-is-the-tidyverse" class="nav-link active" data-scroll-target="#what-is-the-tidyverse">What is the tidyverse?</a></li>
+  <li><a href="#why-is-it-so-popular" id="toc-why-is-it-so-popular" class="nav-link" data-scroll-target="#why-is-it-so-popular">Why is it so popular?</a></li>
+  <li><a href="#whats-inside-the-tidyverse" id="toc-whats-inside-the-tidyverse" class="nav-link" data-scroll-target="#whats-inside-the-tidyverse">What’s inside the tidyverse?</a>
   <ul class="collapse">
-  <li><a href="#離散値が1つの場合" id="toc-離散値が1つの場合" class="nav-link" data-scroll-target="#離散値が1つの場合">離散値が1つの場合</a>
-  <ul class="collapse">
-  <li><a href="#棒グラフ" id="toc-棒グラフ" class="nav-link" data-scroll-target="#棒グラフ">棒グラフ</a></li>
+  <li><a href="#dplyr-data-manipulation" id="toc-dplyr-data-manipulation" class="nav-link" data-scroll-target="#dplyr-data-manipulation">1. <code>dplyr</code> — Data manipulation</a></li>
+  <li><a href="#tidyr-data-cleaning-reshaping" id="toc-tidyr-data-cleaning-reshaping" class="nav-link" data-scroll-target="#tidyr-data-cleaning-reshaping">2. <code>tidyr</code> — Data cleaning / reshaping</a></li>
+  <li><a href="#ggplot2-data-visualisation" id="toc-ggplot2-data-visualisation" class="nav-link" data-scroll-target="#ggplot2-data-visualisation">3. <code>ggplot2</code> — Data visualisation</a></li>
+  <li><a href="#readr-importing-data" id="toc-readr-importing-data" class="nav-link" data-scroll-target="#readr-importing-data">4. <code>readr</code> — Importing data</a></li>
+  <li><a href="#stringr-working-with-text" id="toc-stringr-working-with-text" class="nav-link" data-scroll-target="#stringr-working-with-text">5. <code>stringr</code> — Working with text</a></li>
+  <li><a href="#forcats-working-with-categories" id="toc-forcats-working-with-categories" class="nav-link" data-scroll-target="#forcats-working-with-categories">6. <code>forcats</code> — Working with categories</a></li>
+  <li><a href="#purrr-working-with-lists-advanced" id="toc-purrr-working-with-lists-advanced" class="nav-link" data-scroll-target="#purrr-working-with-lists-advanced">7. <code>purrr</code> — Working with lists (advanced)</a></li>
   </ul></li>
-  <li><a href="#連続値が1つの場合" id="toc-連続値が1つの場合" class="nav-link" data-scroll-target="#連続値が1つの場合">連続値が1つの場合</a>
-  <ul class="collapse">
-  <li><a href="#ヒストグラム" id="toc-ヒストグラム" class="nav-link" data-scroll-target="#ヒストグラム">ヒストグラム</a></li>
-  <li><a href="#密度プロット" id="toc-密度プロット" class="nav-link" data-scroll-target="#密度プロット">密度プロット</a></li>
-  </ul></li>
-  <li><a href="#連続値が2つの場合" id="toc-連続値が2つの場合" class="nav-link" data-scroll-target="#連続値が2つの場合">連続値が2つの場合</a>
-  <ul class="collapse">
-  <li><a href="#散布図" id="toc-散布図" class="nav-link" data-scroll-target="#散布図">散布図</a></li>
-  </ul></li>
-  <li><a href="#離散値-連続値" id="toc-離散値-連続値" class="nav-link" data-scroll-target="#離散値-連続値">離散値 + 連続値</a>
-  <ul class="collapse">
-  <li><a href="#箱ひげ図" id="toc-箱ひげ図" class="nav-link" data-scroll-target="#箱ひげ図">箱ひげ図</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#参考資料" id="toc-参考資料" class="nav-link" data-scroll-target="#参考資料">参考資料</a></li>
-  <li><a href="#次回" id="toc-次回" class="nav-link" data-scroll-target="#次回">次回</a></li>
+  <li><a href="#the-key-idea-the-pipe" id="toc-the-key-idea-the-pipe" class="nav-link" data-scroll-target="#the-key-idea-the-pipe">The key idea: the pipe (%&gt;%)</a></li>
+  <li><a href="#what-is-tidy-data" id="toc-what-is-tidy-data" class="nav-link" data-scroll-target="#what-is-tidy-data">What is “tidy data”?</a></li>
+  <li><a href="#do-you-need-to-learn-all-of-it" id="toc-do-you-need-to-learn-all-of-it" class="nav-link" data-scroll-target="#do-you-need-to-learn-all-of-it">Do you need to learn all of it?</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
   </ul>
 </nav>
     </div>
@@ -222,16 +212,16 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ggplot入門③：よく使うグラフの種類</h1>
+<h1 class="title">What is the Tidyverse? Simplifying Data Cleaning and Analysis in R</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">ggplot2</div>
-    <div class="quarto-category">Data Visualisation</div>
+    <div class="quarto-category">tidyverse</div>
+    <div class="quarto-category">Data Cleaning</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    ggplot2をわかりやすくまとめました。
+    Learn what the tidyverse is in R and how it helps you clean, transform, and visualize data in a clear and efficient way.
   </div>
 </div>
 
@@ -242,7 +232,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 15, 2026</p>
+      <p class="date">March 25, 2026</p>
     </div>
   </div>
   
@@ -254,259 +244,189 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </header>
 
 
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>前回の記事では、<strong>ggplotの基本構造</strong>について説明しました。</p>
-<p>今回は、実際に <strong>どのグラフを使えばよいのか</strong> を見ていきます。</p>
-<p>第一回でも説明したように、<strong>データのタイプ（連続値・離散値）</strong>によって適切なグラフは変わります。</p>
-<section id="グラフの選び方まとめ" class="level1">
-<h1>グラフの選び方（まとめ）</h1>
-<p>まず簡単にまとめると、タイプによって使うグラフは次のようになります。</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 28%">
-<col style="width: 46%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>データのタイプ</th>
-<th>グラフ</th>
-<th>ggplot</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>離散値1つ</td>
-<td>棒グラフ</td>
-<td><code>geom_bar()</code></td>
-</tr>
-<tr class="even">
-<td>連続値1つ</td>
-<td>ヒストグラム</td>
-<td><code>geom_histogram()</code></td>
-</tr>
-<tr class="odd">
-<td>連続値1つ</td>
-<td>密度プロット</td>
-<td><code>geom_density()</code></td>
-</tr>
-<tr class="even">
-<td>連続値1つ</td>
-<td>頻度ポリゴン</td>
-<td><code>geom_freqpoly()</code></td>
-</tr>
-<tr class="odd">
-<td>連続値1つ</td>
-<td>面グラフ</td>
-<td><code>geom_area()</code></td>
-</tr>
-<tr class="even">
-<td>連続値1つ</td>
-<td>ドットプロット</td>
-<td><code>geom_dotplot()</code></td>
-</tr>
-<tr class="odd">
-<td>連続値2つ</td>
-<td>散布図</td>
-<td><code>geom_point()</code></td>
-</tr>
-<tr class="even">
-<td>連続値2つ</td>
-<td>ジッタープロット</td>
-<td><code>geom_jitter()</code></td>
-</tr>
-<tr class="odd">
-<td>連続値2つ</td>
-<td>回帰線・平滑線</td>
-<td><code>geom_smooth()</code></td>
-</tr>
-<tr class="even">
-<td>連続値2つ</td>
-<td>ラベル付き散布図</td>
-<td><code>geom_text()</code> / <code>geom_label()</code></td>
-</tr>
-<tr class="odd">
-<td>離散値 + 連続値</td>
-<td>箱ひげ図</td>
-<td><code>geom_boxplot()</code></td>
-</tr>
-<tr class="even">
-<td>離散値 + 連続値</td>
-<td>バイオリンプロット</td>
-<td><code>geom_violin()</code></td>
-</tr>
-<tr class="odd">
-<td>離散値 + 連続値</td>
-<td>ポイントレンジ</td>
-<td><code>geom_pointrange()</code></td>
-</tr>
-<tr class="even">
-<td>離散値 + 連続値</td>
-<td>エラーバー</td>
-<td><code>geom_errorbar()</code></td>
-</tr>
-</tbody>
-</table>
-<p>もちろん、すべてを覚える必要はありません。<br>
-<br>
-実際のデータ分析でよく使うグラフは主に次の5つです。</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>データのタイプ</th>
-<th>グラフ</th>
-<th>ggplot</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>離散値1つ</td>
-<td>棒グラフ</td>
-<td><code>geom_bar()</code></td>
-</tr>
-<tr class="even">
-<td>連続値1つ</td>
-<td>ヒストグラム</td>
-<td><code>geom_histogram()</code></td>
-</tr>
-<tr class="odd">
-<td>連続値1つ</td>
-<td>密度プロット</td>
-<td><code>geom_density()</code></td>
-</tr>
-<tr class="even">
-<td>連続値2つ</td>
-<td>散布図</td>
-<td><code>geom_point()</code></td>
-</tr>
-<tr class="odd">
-<td>離散値 + 連続値</td>
-<td>箱ひげ図</td>
-<td><code>geom_boxplot()</code></td>
-</tr>
-</tbody>
-</table>
-<p>まずはこの5つを覚えるだけでも、ほとんどのデータを可視化できます。</p>
-<p>ここから、それぞれの例を見ていきましょう。</p>
-<section id="離散値が1つの場合" class="level2">
-<h2 class="anchored" data-anchor-id="離散値が1つの場合">離散値が1つの場合</h2>
-<section id="棒グラフ" class="level3">
-<h3 class="anchored" data-anchor-id="棒グラフ">棒グラフ</h3>
-<p>離散値（カテゴリー）を1つだけ見る場合は、<strong>棒グラフ（bar chart）</strong>をよく使います。</p>
-<p>例えば、irisデータでは <code>Species</code> が離散値です。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>このグラフでは、それぞれの種類（Species）が<strong>何件あるか</strong>を見ることができます。</p>
-</section>
-</section>
-<section id="連続値が1つの場合" class="level2">
-<h2 class="anchored" data-anchor-id="連続値が1つの場合">連続値が1つの場合</h2>
-<section id="ヒストグラム" class="level3">
-<h3 class="anchored" data-anchor-id="ヒストグラム">ヒストグラム</h3>
-<p>連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。</p>
-<p>例えば、がく片の長さ（Sepal.Length）を見てみます。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># binwidthとは、区間（bin）の幅を表しています。</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 小さい値 = 細かいヒストグラム</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 大きい値 = 大まかなヒストグラム</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>ヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。</p>
-</section>
-<section id="密度プロット" class="level3">
-<h3 class="anchored" data-anchor-id="密度プロット">密度プロット</h3>
-<p>同じく分布を見る方法として、密度プロット（density plot）があります。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">adjust =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 小さい値 = ギザギザの曲線</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 大きい値 = なめらかな曲線</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>ヒストグラムよりも<strong>なめらかな分布</strong>を見ることができます。</p>
-</section>
-</section>
-<section id="連続値が2つの場合" class="level2">
-<h2 class="anchored" data-anchor-id="連続値が2つの場合">連続値が2つの場合</h2>
-<section id="散布図" class="level3">
-<h3 class="anchored" data-anchor-id="散布図">散布図</h3>
-<p>2つの連続値の関係を見るときは、散布図（scatterplot）を使います。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Petal.Length)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>散布図では、2つの変数の関係（相関など）を見ることができます。</p>
-</section>
-</section>
-<section id="離散値-連続値" class="level2">
-<h2 class="anchored" data-anchor-id="離散値-連続値">離散値 + 連続値</h2>
-<section id="箱ひげ図" class="level3">
-<h3 class="anchored" data-anchor-id="箱ひげ図">箱ひげ図</h3>
-<p>離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DRAFT-ggplot2---3.Common-graph-types-in-ggplot_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>このグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。</p>
-<p>このように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。</p>
-<p>そのため、まず<strong>データのタイプを理解する → 適切なグラフを選ぶ</strong>という流れを意識してみてください。</p>
-</section>
-</section>
-</section>
-<section id="参考資料" class="level1">
-<h1>参考資料</h1>
-<p>Positのチートシートもとても参考になります。</p>
-<p><a href="https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf" class="uri">https://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf</a></p>
-</section>
-<section id="次回" class="level1">
-<h1>次回</h1>
-<p>次の記事では、</p>
+<p>If you are reading this you are likely to be someone who is familiar with R and its endless list of packages.</p>
+<p>One of the most popular packages used is <code>tidyverse</code>.</p>
+<p>In this post, I’ll explain what the tidyverse is, what’s inside it, and how it helps you clean and analyse data more efficiently.</p>
+<p>I wrote this article mainly because a lot of tutorials use it but I don’t see many of them actually explaining what it is.</p>
+<section id="what-is-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-tidyverse">What is the tidyverse?</h2>
+<p>It may be slightly confusing at first because the tidyverse is actually a collection of R packages. It is designed for:</p>
 <ul>
-<li><code>color</code></li>
-<li><code>theme</code></li>
-<li><code>labels</code></li>
+<li>Cleaning data</li>
+<li>Transforming data</li>
+<li>Visualising data</li>
 </ul>
-<p>など、<strong>グラフをきれいにする方法</strong>を紹介します。</p>
+<p>All in a consistent and readable way.</p>
+<p>Instead of using many unrelated functions, the tidyverse gives you a unified system where everything works together.</p>
+</section>
+<section id="why-is-it-so-popular" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-it-so-popular">Why is it so popular?</h2>
+<p>Before tidyverse, data cleaning in R often looked messy and hard to follow.</p>
+<p>With tidyverse, you can write code that reads almost like a sentence:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> income <span class="sc">*</span> <span class="fl">1.1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(income))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can read this as:</p>
+<div class="line-block">“Take the data, remove missing ages, adjust income, then sort it in descending order.”</div>
+<p>That readability is one of the biggest reasons it’s widely used.</p>
+<p>It is also one of the reasons why I love R - These codes actually make sense!</p>
+</section>
+<section id="whats-inside-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="whats-inside-the-tidyverse">What’s inside the tidyverse?</h2>
+<p>When you load <code>library(tidyverse)</code>, you’re actually loading several packages.</p>
+<p>Here are the most important ones:</p>
+<section id="dplyr-data-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="dplyr-data-manipulation">1. <code>dplyr</code> — Data manipulation</h3>
+<p>This is the core tool for working with data.</p>
+<p>Common functions:</p>
+<ul>
+<li><code>filter()</code> → keep rows</li>
+<li><code>select()</code> → choose columns</li>
+<li><code>mutate()</code> → create new columns</li>
+<li><code>summarise()</code> → aggregate data</li>
+</ul>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_income =</span> <span class="fu">mean</span>(income))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="tidyr-data-cleaning-reshaping" class="level3">
+<h3 class="anchored" data-anchor-id="tidyr-data-cleaning-reshaping">2. <code>tidyr</code> — Data cleaning / reshaping</h3>
+<p>Real-world data is often messy. <code>tidyr</code> helps fix that.</p>
+<ul>
+<li><code>pivot_longer()</code>: Wide → Long format</li>
+<li><code>pivot_wider()</code>: Long → Wide format</li>
+</ul>
+<p>Example:</p>
+<p>Say you have a messy data like this one, where <code>Subjects</code> are stored as column names.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>name</th>
+<th>math</th>
+<th>english</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>80</td>
+<td>90</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>70</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s use <code>pivot_longer()</code> to make it tidier.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(math, english),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"subject"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>name</th>
+<th>subject</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>math</td>
+<td>80</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>english</td>
+<td>90</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>math</td>
+<td>70</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>english</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+<p>Now it becomes clear what exactly those numbers meant.</p>
+</section>
+<section id="ggplot2-data-visualisation" class="level3">
+<h3 class="anchored" data-anchor-id="ggplot2-data-visualisation">3. <code>ggplot2</code> — Data visualisation</h3>
+<p>Used to create graphs and charts.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> income)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It’s one of the most widely used visualisation tools in R.</p>
+<p>I have also made a three-part blog about ggplot in details <a href="https://reinasdatastudio.github.io/webpage/blog/posts/18-03-26-choosing-the-right-graph.html">here</a> if you would like to know more about it.</p>
+</section>
+<section id="readr-importing-data" class="level3">
+<h3 class="anchored" data-anchor-id="readr-importing-data">4. <code>readr</code> — Importing data</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Faster and cleaner than base R functions.</p>
+</section>
+<section id="stringr-working-with-text" class="level3">
+<h3 class="anchored" data-anchor-id="stringr-working-with-text">5. <code>stringr</code> — Working with text</h3>
+<p>Useful for cleaning and analysing text data.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(name, <span class="st">"John"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="forcats-working-with-categories" class="level3">
+<h3 class="anchored" data-anchor-id="forcats-working-with-categories">6. <code>forcats</code> — Working with categories</h3>
+<p>Helps manage categorical variables (factors), especially for plotting.</p>
+</section>
+<section id="purrr-working-with-lists-advanced" class="level3">
+<h3 class="anchored" data-anchor-id="purrr-working-with-lists-advanced">7. <code>purrr</code> — Working with lists (advanced)</h3>
+<p>Used for iteration (like loops) in a cleaner way.</p>
+</section>
+</section>
+<section id="the-key-idea-the-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="the-key-idea-the-pipe">The key idea: the pipe (%&gt;%)</h2>
+<p>One of the most important features of the tidyverse is the pipe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">step1</span>() <span class="sc">%&gt;%</span> <span class="fu">step2</span>() <span class="sc">%&gt;%</span> <span class="fu">step3</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It lets you write your workflow step-by-step.</p>
+<p>Instead of nesting functions, you build a clear pipeline.</p>
+</section>
+<section id="what-is-tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-tidy-data">What is “tidy data”?</h2>
+<p>The tidyverse is built around the concept of tidy data:</p>
+<ul>
+<li>Each column = one variable</li>
+<li>Each row = one observation</li>
+<li>Each cell = one value</li>
+</ul>
+<p>This structure makes analysis much easier and more consistent.</p>
+</section>
+<section id="do-you-need-to-learn-all-of-it" class="level2">
+<h2 class="anchored" data-anchor-id="do-you-need-to-learn-all-of-it">Do you need to learn all of it?</h2>
+<p>Not at all.</p>
+<p>In practice, most people mainly use:</p>
+<ul>
+<li><code>dplyr</code></li>
+<li><code>ggplot2</code></li>
+<li><code>tidyr</code></li>
+</ul>
+<p>These three alone will cover most of your data work.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
+<p>The tidyverse isn’t just a set of packages—it’s a way of thinking about data.</p>
+<p>Instead of writing complicated code, you:</p>
+<ul>
+<li>Break your work into steps</li>
+<li>Write readable transformations</li>
+<li>Build reproducible workflows</li>
+</ul>
+<p>If you’re just starting with R, learning the tidyverse is one of the best investments you can make.</p>
 
 
 </section>
@@ -515,7 +435,7 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 &nbsp;
 <hr>
 
-<p style="text-align: center;">Rを使ったデータ分析や、再現可能なワークフローの構築についてサポートが必要な方は、お気軽にご連絡ください。</p>
+<p style="text-align: center;">If you're working with clinical or research data and would like help building reproducible R workflows, feel free to reach out.</p>
 
 <p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
 

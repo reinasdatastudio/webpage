@@ -154,6 +154,440 @@
     "text": "If you have a dataset, question, or project in mind, I’d be happy to hear from you.\nYou don’t need to have everything figured out — a short description is enough to start the conversation.\nI typically respond within 24–48 hours.\nYour data and information will be treated confidentially. You are welcome to anonymise or share sample data initially.\n\nTo help me understand your project, you may include:\n\nYour goal or main question\nType of dataset (clinical, survey, retail, etc.)\nApproximate dataset size\nTimeline or deadline (if any)\nWhether you can share sample data\n\nYou don’t need to provide everything — this just helps me respond more efficiently.\n\n\n\n\n\n First Name  \n Last Name  \n\n\n Email  \n Organisation (Optional) \n\nType of support needed  Quick fix Reproducible Analysis Ongoing Support Teaching / MentoringOther (Please specify below) \n Message\n\n\n\nSend"
   },
   {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "",
+    "text": "本記事は、ggplot入門シリーズ（全5回）の一部です。\n他の回はこちらからご覧いただけます：\n前回の記事では、どのグラフを使えばよいのかについて説明しました。\n今回は、作ったグラフをより見やすくする方法を紹介します。\nデータ可視化では、単にグラフを作るだけではなく、読みやすく、伝わりやすいデザインにすることがとても重要です。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "点の見た目を調整する",
+    "text": "点の見た目を調整する\nまず、点の見た目を少し変えてみます。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + \n  geom_jitter(aes(fill = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8,\n              alpha = 0.9)\n\n\n\n\n\n\n\n\nここでは次のような設定をしています。\n\n\n\n引数\n説明\n\n\n\n\nshape\n点の形\n\n\ncolor\n点の枠線の色\n\n\nfill\n点の塗りつぶしの色\n\n\nsize\n点の大きさ\n\n\nstroke\n枠線の太さ\n\n\nalpha\n透明度\n\n\n\ngeom_jitter() はgeom_point()と似ていますが、点が少しずつずれて表示されるので、重なって見えにくくなるのを防ぐことができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "色をカスタマイズする",
+    "text": "色をカスタマイズする\n次に、色を自分で指定してみます。\n\nscale_fill_manual(values = c(\n  \"setosa\" = \"pink\",\n  \"versicolor\" = \"#2A9D8F\",\n  \"virginica\" = \"purple\"\n))\n\nscale_fill_manual() を使うと、カテゴリーごとの色を自由に設定できます。\nこの例ではSpeciesの3種類のiris（アヤメ）それぞれに色を割り当てています。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "軸ラベルを変更する",
+    "text": "軸ラベルを変更する\n次に、軸の表示を少し分かりやすくします。\n\nscale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\nscale_y_continuous(labels = function(x) paste0(x, \"cm\"))\n\nfunction(x) は、軸の数値を加工するための小さな関数です。\nここでは paste0(x, \"cm\") を使って、軸の値に \"cm\" を追加しています。\nそのため、例えば 4 は \"4cm\" のように表示されます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "タイトルを追加する",
+    "text": "タイトルを追加する\nグラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。\n\nlabs(title = \"Sepal Length vs Petal Length\",\n     x = \"Sepal Length\",\n     y = \"Petal Length\")\n\nlabs() を使うと、\n\nタイトル\n軸ラベル（例：x=Sepal Lengthなど）\nキャプション\n\nなどを追加できます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
+    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
+    "title": "ggplot入門④：グラフを見やすくする方法",
+    "section": "テーマを変更する",
+    "text": "テーマを変更する\n最後に、グラフ全体のデザインを変更します。\n\ntheme_minimal(base_size = 10)\n\ntheme_minimal() は、背景をシンプルにしたテーマです。\n他にもテーマの種類はたくさんあります。\n\n\n\nテーマ\n説明\nggplot\n\n\n\n\nminimal\nシンプルで背景が白い\ntheme_minimal()\n\n\nclassic\n昔ながらのRのグラフに近い\ntheme_classic()\n\n\nbw\n白黒でグリッド線あり\ntheme_bw()\n\n\nlight\n薄いグリッド線で読みやすい\ntheme_light()\n\n\ndark\n背景が黒い\ntheme_dark()\n\n\ngray（default）\nggplotのデフォルトテーマ\ntheme_gray()\n\n\nvoid\n軸や背景をすべて消す\ntheme_void()\n\n\n\nさらにカスタムのテーマでフォントも変更できます。\n\ntheme(text = element_text(family = \"Georgia\"))\n\nfamily = \"Georgia\" はフォントを指定しています。\nただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html",
+    "href": "blog/posts-ja/ggplot2_2.basics.html",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "",
+    "text": "本記事は、ggplot入門シリーズ（全5回）の一部です。\n他の回はこちらからご覧いただけます：\n前回の記事では、データに合ったグラフの選び方について説明しました。\n今回は、実際にggplotの基本構造を見ていきます。\nggplotのコードは最初見るととても長く感じますが、基本の形を一回理解してしまえば案外シンプルです。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "ggplotの基本構造",
+    "text": "ggplotの基本構造\nすべてのggplotは、基本的に次のような構造になっています。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) +\n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;\n  ) +\n  &lt;THEME_FUNCTION&gt;(...)\nこう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに最低限必要なのは次の2つだけです。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;()\n*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。\nデータを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶという流れになります。\n分かりやすくまとめると、\nデータ + aesthetics + geometry\n（データ + 見た目の指定 + グラフの種類）\nこれをコードで書くと、\nggplot(data, aes()) + geom_*\nという形になります。\nこの考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "例：散布図（Scatterplot）を作る",
+    "text": "例：散布図（Scatterplot）を作る\n例として、前回も使ったirisデータを使います。\n\nknitr::kable(head(iris, 10))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n4.6\n3.4\n1.4\n0.3\nsetosa\n\n\n5.0\n3.4\n1.5\n0.2\nsetosa\n\n\n4.4\n2.9\n1.4\n0.2\nsetosa\n\n\n4.9\n3.1\n1.5\n0.1\nsetosa\n\n\n\n\n\nここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係をグラフにしました。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\ndata = iris\n→ 使用するデータ\naes(x = Sepal.Length, y = Petal.Length)\n→ x軸とy軸にどの変数を使うか\ngeom_point()\n→ 散布図を作る\n\nという意味になります。\n先ほどのプレースホルダーの例↓\n&lt;DATA&gt; → iris\n&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length\n&lt;GEOM_FUNCTION&gt; → geom_point()"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aesとは？",
+    "text": "aesとは？\naes はaesthetics（美的要素）の略です。\nグラフの中で、\n\nどの変数をx軸\nどの変数をy軸\nどの変数を色\nどの変数を形\n\nとして使うかなどを指定します。\n分かりやすくまとめるとこんな感じ↓\n\n\n\naesthetics\n説明\n例\n\n\n\n\nx\nx軸に使う変数\nx = Sepal.Length\n\n\ny\ny軸に使う変数\ny = Petal.Length\n\n\ncolor\n点や線の色\ncolor = Species\n\n\nfill\n塗りつぶしの色\nfill = Species\n\n\nsize\n点や線の大きさ\nsize = Petal.Width\n\n\nshape\n点の形\nshape = Species\n\n\nalpha\n透明度（０に近いほど透明）\nalpha = 0.5\n\n\n\n基本的な散布図では、\nx\ny\nの2つを指定するだけでグラフを作ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "aestheticsを使った例",
+    "text": "aestheticsを使った例\n先ほどのコードを少しアレンジしてみます。\n\nggplot(data = iris,\n       aes(\n         x = Sepal.Length, \n         y = Petal.Length, \n         color = Species, \n         size = Petal.Width, \n         alpha = 0.8)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこの例では、\n\nxとyで軸を指定し\ncolorでSpeciesごとに色を変え\nsizeでPetal.Widthに応じて点の大きさを変えてみました。\n\nこのように aes() を使うことで、データの情報をグラフの見た目に対応させることができ、かなり見やすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "参考資料",
+    "text": "参考資料\nPositのチートシートもとても分かりやすいです。\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html\n日本語バージョン：\nhttps://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_2.basics.html#次回",
+    "href": "blog/posts-ja/ggplot2_2.basics.html#次回",
+    "title": "ggplot入門②：ggplotの基本",
+    "section": "次回",
+    "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "",
+    "text": "あなたが今この記事を読んでいるということは、きっとRの事を多少なりとも知っているはずです。 そして、Rの終わりのないパッケージの数々も。（実際、2026年3月の時点で23,437あるらしい）。\nいつ、どのパッケージを使えばいいのか分からなくなりますよね。\nそんな時は、とりあえずtidyverseです。\nこの記事では、tidyverseの基本から、何ができるのかを分かりやすく解説します。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidyverseとは",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidyverseとは",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidyverseとは？",
+    "text": "tidyverseとは？\ntidyverseは、Rでデータを扱うためのパッケージの集まりです。\n主にできることは：\n\nデータの整理（クリーニング）\nデータの加工（変換・集計）\nデータの可視化（グラフ作成）\n\nそして特徴は、統一されたルールで、読みやすいコードが書けること。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#なぜ人気なのか",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#なぜ人気なのか",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "なぜ人気なのか？",
+    "text": "なぜ人気なのか？\ntidyverseを使うと、コードが「文章のように」読めます。\nlibrary(tidyverse)\n\ndf %&gt;%\n  filter(!is.na(age)) %&gt;%\n  mutate(income = income * 1.1) %&gt;%\n  arrange(desc(income))\nこれを文章に変えたら：\n「データから欠損値を除いて、収入を調整して、並び替える」\nコードを見ただけで処理の流れが分かるのが大きなメリットです。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidyverseに含まれる主なパッケージ",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidyverseに含まれる主なパッケージ",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidyverseに含まれる主なパッケージ",
+    "text": "tidyverseに含まれる主なパッケージ\nlibrary(tidyverse)を実行すると、いくつかのパッケージがまとめて読み込まれます。\nよく使うものを紹介していきます👇\n\n1. dplyr — データ操作（最重要）\nデータの抽出・加工・集計を行うパッケージです。\n主な関数：\n\nfilter() → 行を絞る\nselect() → 列を選ぶ\nmutate() → 新しい列を作る\nsummarise() → 集計する\n\n例：\ndf %&gt;%\n  group_by(country) %&gt;%\n  summarise(avg_income = mean(income))\n日常的に一番使うツールです。\n\n\n2. tidyr — データ整形\n本物のデータはそのままだと分析しづらい形のことが多いです。\n\npivot_longer(): 横長 → 縦長\npivot_wider(): 縦長 → 横長\n\n「分析しやすい形に整える」役割。\n例：\nきれいにまとめられていない表があるとします。この表は科目（subject）が変数になっています。\n\n\n\nname\nmath\nenglish\n\n\n\n\nA\n80\n90\n\n\nB\n70\n85\n\n\n\npivot_longer()を使うと：\ndf_long &lt;- df %&gt;%\n  pivot_longer(\n    cols = c(math, english), \n    names_to = \"subject\", \n    values_to = \"score\")\n\n\n\nname\nsubject\nscore\n\n\n\n\nA\nmath\n80\n\n\nA\nenglish\n90\n\n\nB\nmath\n70\n\n\nB\nenglish\n85\n\n\n\nこのようにscore（点数）とsubject（科目）という変数を作って、値を並べ替える事ができます。\n\n\n3. ggplot2 — データ可視化\nグラフを作るためのパッケージです。\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nもっと詳しく知りたいかたは、ここに5回に分けたggplotについての記事を書いているので、ぜひご覧ください。\n\n\n4. readr — データ読み込み\nread_csv(\"data.csv\")\nbase Rより速くて使いやすい、主にファイルの読み込みに使います。\n\n\n5. stringr — 文字列処理\nstr_detect(name, \"John\")\nテキストデータの処理に便利。\n\n\n6. forcats — カテゴリデータの操作\n因子（カテゴリ変数）を整理するために使います。\n\n\n7. purrr — 繰り返し処理（少し上級）\nループ処理をシンプルに書けます。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#パイプという考え方",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#パイプという考え方",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "パイプ（%>%）という考え方",
+    "text": "パイプ（%&gt;%）という考え方\ntidyverseの大きな特徴がこの「パイプ」です。\ndf %&gt;% step1() %&gt;% step2() %&gt;% step3()\n「データに対して順番に処理をしていく」イメージです。\nこれによって、コードがとても読みやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidy-data整ったデータとは",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#tidy-data整ったデータとは",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidy data（整ったデータ）とは？",
+    "text": "tidy data（整ったデータ）とは？\ntidyverseは「tidy data」という考え方をベースにしています。\n\n1列 = 1つの変数\n1行 = 1つの観測\n1セル = 1つの値\n\nこの形にすることで、分析がしやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#全部覚える必要はある",
+    "href": "blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html#全部覚える必要はある",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "全部覚える必要はある？",
+    "text": "全部覚える必要はある？\nありません。\nまずはこの3つで十分です👇\n\ndplyr\nggplot2\ntidyr\n\nこの3つでほとんどの作業ができます。\n\nまとめ\ntidyverseは単なるツールではなく、データの扱い方の考え方そのものです。\n\n処理をステップごとに分ける\n読みやすいコードを書く\n再現性のある分析をする\n\nこれらを自然に実現できます。\nRをこれからしっかり使っていきたい人にとって、tidyverseはとても強力な味方になります。"
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "",
+    "text": "If you are reading this you are likely to be someone who is familiar with R and its endless list of packages.\nOne of the most popular packages used is tidyverse.\nIn this post, I’ll explain what the tidyverse is, what’s inside it, and how it helps you clean and analyse data more efficiently.\nI wrote this article mainly because a lot of tutorials use it but I don’t see many of them actually explaining what it is."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#what-is-the-tidyverse",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#what-is-the-tidyverse",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What is the tidyverse?",
+    "text": "What is the tidyverse?\nIt may be slightly confusing at first because the tidyverse is actually a collection of R packages. It is designed for:\n\nCleaning data\nTransforming data\nVisualising data\n\nAll in a consistent and readable way.\nInstead of using many unrelated functions, the tidyverse gives you a unified system where everything works together."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#why-is-it-so-popular",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#why-is-it-so-popular",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Why is it so popular?",
+    "text": "Why is it so popular?\nBefore tidyverse, data cleaning in R often looked messy and hard to follow.\nWith tidyverse, you can write code that reads almost like a sentence:\nlibrary(tidyverse)\n\ndf %&gt;%\n  filter(!is.na(age)) %&gt;%\n  mutate(income = income * 1.1) %&gt;%\n  arrange(desc(income))\nYou can read this as:\n“Take the data, remove missing ages, adjust income, then sort it in descending order.”\nThat readability is one of the biggest reasons it’s widely used.\nIt is also one of the reasons why I love R - These codes actually make sense!"
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#whats-inside-the-tidyverse",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#whats-inside-the-tidyverse",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What’s inside the tidyverse?",
+    "text": "What’s inside the tidyverse?\nWhen you load library(tidyverse), you’re actually loading several packages.\nHere are the most important ones:\n\n1. dplyr — Data manipulation\nThis is the core tool for working with data.\nCommon functions:\n\nfilter() → keep rows\nselect() → choose columns\nmutate() → create new columns\nsummarise() → aggregate data\n\nExample:\ndf %&gt;%\n  group_by(country) %&gt;%\n  summarise(avg_income = mean(income))\n\n\n2. tidyr — Data cleaning / reshaping\nReal-world data is often messy. tidyr helps fix that.\n\npivot_longer(): Wide → Long format\npivot_wider(): Long → Wide format\n\nExample:\nSay you have a messy data like this one, where Subjects are stored as column names.\n\n\n\nname\nmath\nenglish\n\n\n\n\nA\n80\n90\n\n\nB\n70\n85\n\n\n\nLet’s use pivot_longer() to make it tidier.\ndf_long &lt;- df %&gt;%\n  pivot_longer(\n    cols = c(math, english),\n    names_to = \"subject\",\n    values_to = \"score\")\n\n\n\nname\nsubject\nscore\n\n\n\n\nA\nmath\n80\n\n\nA\nenglish\n90\n\n\nB\nmath\n70\n\n\nB\nenglish\n85\n\n\n\nNow it becomes clear what exactly those numbers meant.\n\n\n3. ggplot2 — Data visualisation\nUsed to create graphs and charts.\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nIt’s one of the most widely used visualisation tools in R.\nI have also made a three-part blog about ggplot in details here if you would like to know more about it.\n\n\n4. readr — Importing data\nread_csv(\"data.csv\")\nFaster and cleaner than base R functions.\n\n\n5. stringr — Working with text\nUseful for cleaning and analysing text data.\nstr_detect(name, \"John\")\n\n\n6. forcats — Working with categories\nHelps manage categorical variables (factors), especially for plotting.\n\n\n7. purrr — Working with lists (advanced)\nUsed for iteration (like loops) in a cleaner way."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#the-key-idea-the-pipe",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#the-key-idea-the-pipe",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "The key idea: the pipe (%>%)",
+    "text": "The key idea: the pipe (%&gt;%)\nOne of the most important features of the tidyverse is the pipe:\ndf %&gt;% step1() %&gt;% step2() %&gt;% step3()\nIt lets you write your workflow step-by-step.\nInstead of nesting functions, you build a clear pipeline."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#what-is-tidy-data",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#what-is-tidy-data",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What is “tidy data”?",
+    "text": "What is “tidy data”?\nThe tidyverse is built around the concept of tidy data:\n\nEach column = one variable\nEach row = one observation\nEach cell = one value\n\nThis structure makes analysis much easier and more consistent."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#do-you-need-to-learn-all-of-it",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#do-you-need-to-learn-all-of-it",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Do you need to learn all of it?",
+    "text": "Do you need to learn all of it?\nNot at all.\nIn practice, most people mainly use:\n\ndplyr\nggplot2\ntidyr\n\nThese three alone will cover most of your data work."
+  },
+  {
+    "objectID": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#final-thoughts",
+    "href": "blog/posts/DRAFT26-03-26_tidyverse_explained.html#final-thoughts",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Final thoughts",
+    "text": "Final thoughts\nThe tidyverse isn’t just a set of packages—it’s a way of thinking about data.\nInstead of writing complicated code, you:\n\nBreak your work into steps\nWrite readable transformations\nBuild reproducible workflows\n\nIf you’re just starting with R, learning the tidyverse is one of the best investments you can make."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html",
+    "href": "blog/posts/21-03-26-ggplot_part2.html",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "",
+    "text": "This is a three-part series. Other series can be viewed here:\nWhen creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s often unclear what each part is doing.\nThe good news is that the core idea behind ggplot is actually very simple.\nIn this article, we will cover:\nThis article combines key ideas from Parts 2–4 of my ggplot series in Japanese (R seems to be a lot less common in Japan, hence my ggplot blog posts are more detailed in Japanese)."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Example: Scatterplot",
+    "text": "Example: Scatterplot\nUsing the built-in iris dataset:\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis creates a scatterplot where:\n\nSepal.Length is mapped to the x-axis\nPetal.Length is mapped to the y-axis"
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Common Graph Choices",
+    "text": "Common Graph Choices\n\n\n\nData Type\nGraph\nggplot\n\n\n\n\nDiscrete (1 variable)\nBar chart\ngeom_bar()\n\n\nContinuous (1 variable)\nHistogram\ngeom_histogram()\n\n\nContinuous (1 variable)\nDensity Plot\ngeom_density()\n\n\nContinuous (2 variables)\nScatterplot\ngeom_point()\n\n\nDiscrete + Continuous\nBoxplot\ngeom_boxplot()\n\n\n\nChoosing the right graph depends on what you want to explore:\n\nDistribution → histogram\nRelationship → scatterplot\nComparison across groups → boxplot"
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Adding Color",
+    "text": "Adding Color\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis helps distinguish different groups."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Improving Labels",
+    "text": "Improving Labels\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  labs(title = \"Sepal Length vs Petal Length\",\n       x = \"Sepal Length (cm)\",\n       y = \"Petal Length (cm)\")\n\n\n\n\n\n\n\n\nAdding labels makes the graph easier to interpret."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Using Themes",
+    "text": "Using Themes\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\n\nThemes help simplify the visual appearance."
+  },
+  {
+    "objectID": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
+    "href": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
+    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
+    "section": "Reference Materials",
+    "text": "Reference Materials\nThis page explains all about ggplot2 code in depth:\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "",
+    "text": "Healthcare data is not just data.\nBehind every dataset are real patients, real decisions, and real consequences. A misplaced assumption or undocumented change is not simply a technical issue — it can affect interpretation, policy, or treatment decisions.\nThat is why reproducibility is not optional in healthcare data analysis. It is foundational."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "What Does “Reproducibility” Actually Mean?",
+    "text": "What Does “Reproducibility” Actually Mean?\nIn simple terms, reproducibility means:\n\nIf someone else runs your analysis using the same data and code, they should get the same results.\n\nThat sounds obvious. But in practice, it is surprisingly easy to break reproducibility.\nCommon issues include:\n\nManual data edits in Excel\nCopy-pasted results without saved code\nUntracked changes to datasets\nHard-coded values with no explanation\nAnalyses run interactively without documentation\n\nIn research and healthcare settings, these small shortcuts accumulate into serious risk."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Why It Matters More in Healthcare",
+    "text": "Why It Matters More in Healthcare\nIn some industries, minor inconsistencies might be inconvenient.\nIn healthcare, they can be dangerous.\nReproducibility matters because:\n\n1. Accuracy and Accountability\nHealthcare decisions often rely on statistical outputs. If results cannot be traced back to documented steps, confidence in those results weakens.\nReproducible workflows create an audit trail:\n\nWhat data was used?\nWhat cleaning steps were applied?\nWhat assumptions were made?\nWhat model was fitted?\n\nThis level of clarity protects both patients and professionals.\n\n\n2. Transparency for Collaboration\nClinical and research projects rarely involve just one person. Analysts, clinicians, reviewers, and stakeholders may all interact with the results.\nWhen analysis is reproducible:\n\nTeam members can verify findings\nAssumptions can be discussed openly\nChanges can be implemented systematically\n\nWithout reproducibility, collaboration becomes fragile and dependent on memory rather than structure.\n\n\n3. Long-Term Sustainability\nHealthcare research often spans months or years.\nIf you revisit a project six months later and cannot easily regenerate the results, you lose time and confidence.\nReproducible workflows mean:\n\nYou can re-run the analysis with updated data\nYou can adjust models without starting from scratch\nYou can respond to reviewer comments efficiently\n\nThis is not just about neatness. It is about sustainability."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "How R Supports Reproducibility",
+    "text": "How R Supports Reproducibility\nOne of the reasons I chose R is its ability to create a beautiful reproducible analysis.\nTools such as:\n\nR Markdown\nQuarto\nStructured project folders\nScript-based data cleaning\n\nallow analysis, interpretation, and reporting to exist in a single, transparent workflow.\nInstead of:\n\nClean data manually\nRun analysis\nCopy results into a Word document\n\nall using separate programs,\nYou can:\n\nClean data using documented scripts\nRun statistical models in code\nGenerate reports automatically\n\nThe entire process becomes traceable and repeatable, because the entire process is saved in one big tool."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "A Practical Example",
+    "text": "A Practical Example\nImagine analysing a clinical dataset comparing treatment groups.\nWithout reproducibility:\n\nData cleaning happens in Excel\nOutliers are removed without documentation\nStatistical tests are run manually\nGraphs are exported separately\n\nSix months later, a colleague asks:\n\n“How did you exclude those patients?”\n\nIf the steps were not scripted, you may not know.\nWith reproducibility:\n\nAll exclusions are coded\nAll assumptions are documented\nAll outputs regenerate from the same script\nThe report updates automatically if data changes\n\nThe difference is clarity and control."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Reproducibility Is Also an Ethical Issue",
+    "text": "Reproducibility Is Also an Ethical Issue\nIn healthcare, data analysis is not purely technical — it is ethical.\nTransparent workflows:\n\nReduce unintentional bias\nPrevent undocumented data manipulation\nMake decisions defensible\n\nReproducibility demonstrates respect for the data and the people represented in it."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Building Reproducible Habits",
+    "text": "Building Reproducible Habits\nYou do not need complex systems to begin.\nStart with:\n\nKeeping raw data untouched\nWriting cleaning steps in scripts (not manually)\nSaving model code\nDocumenting assumptions clearly\nUsing Quarto or R Markdown to combine analysis and reporting\n\nSmall structural habits create large long-term stability."
+  },
+  {
+    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
+    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
+    "title": "Why Reproducibility Matters in Healthcare Data",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nHealthcare data demands precision, transparency, and accountability.\nReproducibility is not about perfection. It is about responsibility.\nWhen analysis is reproducible:\n\nResults are trustworthy\nCollaboration is smoother\nFuture updates are manageable\nDecisions are defensible\n\nAnd in healthcare, that matters."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog Posts",
+    "section": "",
+    "text": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nFinal part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability.\n\n\n\n\n\nMar 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is the Tidyverse? Simplifying Data Cleaning and Analysis in R\n\n\n\ntidyverse\n\nData Cleaning\n\n\n\nLearn what the tidyverse is in R and how it helps you clean, transform, and visualize data in a clear and efficient way.\n\n\n\n\n\nMar 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.\n\n\n\n\n\nMar 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Reina’s Data Studio",
+    "section": "",
+    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nResigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
+  },
+  {
+    "objectID": "blog/index-ja.html",
+    "href": "blog/index-ja.html",
+    "title": "ブログ",
+    "section": "",
+    "text": "tidyverseとは？Rでのデータ分析をシンプルにするツール\n\n\n\nggplot2\n\nData Visualisation\n\n\n\ntidyverseとは何か分かりやすく解説。データの整理・加工・可視化を効率よく行う方法を紹介します。\n\n\n\n\n\nMar 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門⑤：便利なggplotテクニック\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ最終回。ggiraphを使ったインタラクティブなグラフや、軸の設定、比率調整など、ggplotをより便利に使うためのテクニックを紹介します。\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門④：グラフを見やすくする方法\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第4回。色・ラベル・テーマなどを使って、ggplotで作ったグラフを見やすく整える方法を解説します。\n\n\n\n\n\nMar 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門③：よく使うグラフの種類\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第3回。連続値・離散値などの変数のタイプに応じて、どのグラフを使うべきかをggplotの例とともにわかりやすく解説します。\n\n\n\n\n\nMar 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "",
+    "text": "When people see that I started my career in pharmacy and now work in data science, the first question is usually:\n“How did that happen?”\nThe short answer is curiosity.\nThe longer answer is that I’ve always been drawn to understanding systems — whether that system is the human body or a dataset."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Starting in Pharmacy",
+    "text": "Starting in Pharmacy\nPharmacy taught me something that still shapes how I work today: precision matters.\nIn healthcare, small details are not small. A misplaced decimal, a misunderstood value, or an incorrect assumption can have serious consequences. You learn to check carefully, to document properly, and to understand what each number actually represents.\nBut over time, I realised that what I enjoyed most was not memorising information — it was analysing it.\nI enjoyed understanding patterns.\nI enjoyed interpreting results.\nI enjoyed asking: Why does this happen?\nThat curiosity eventually led me toward computer science."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Discovering Programming",
+    "text": "Discovering Programming\nWhile studying engineering at the University of Auckland, I discovered computer science — and immediately fell in love with programming.\nProgramming felt different. It was logical, structured, and creative at the same time. It rewarded curiosity and precision. It gave immediate feedback. Most importantly, it felt like something I could continuously grow in.\nI later completed a one-year computer science programme with a focus on data science, where I was introduced more deeply to R.\nAnd that’s where something clicked."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Why R?",
+    "text": "Why R?\nR stood out to me for several reasons.\nFirst, it was built for statistics and analysis. It wasn’t just a general programming language — it was designed for thinking about data.\nSecond, it encouraged reproducibility. Tools like R Markdown and Quarto made it possible to combine analysis, interpretation, and reporting in a single, transparent workflow. That felt aligned with the healthcare mindset I came from.\nThird, it made complex analysis accessible. With the right structure, R allows you to move from raw data to meaningful insight in a clear and systematic way.\nTo me, R felt like a bridge between:\n\nclinical precision\nstatistical reasoning\nand structured programming\n\nIt wasn’t just about writing code. It was about creating clarity."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "From Employment to Independence",
+    "text": "From Employment to Independence\nAfter transitioning into data science, I worked in system engineering to broaden my technical experience while continuing to develop my data skills.\nEventually, I realised that I wanted to focus fully on what I enjoyed most: working directly with data and helping others understand it.\nStarting Reina’s Data Studio was a natural step. It allowed me to:\n\nWork independently\nSupport researchers and healthcare professionals\nShare my enthusiasm for R\nBuild something aligned with my values"
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "How Pharmacy Still Shapes My Work",
+    "text": "How Pharmacy Still Shapes My Work\nMy healthcare background continues to influence how I approach every project.\nI don’t treat data as abstract numbers. I think about:\n\nWhat does this variable really represent?\nWhere did this data come from?\nWhat assumptions are we making?\nCan this analysis be reproduced and audited later?\n\nThat mindset makes me careful — but also practical. Clean data. Clear documentation. Transparent decisions.\nIn healthcare and research, that matters."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Teaching and Sharing",
+    "text": "Teaching and Sharing\nOne of my core values is continuous learning. I genuinely believe that knowledge never betrays you.\nThat belief is why I share tutorials on YouTube and write about R here. Many R resources are in English, and I enjoy helping both English and Japanese speakers feel more confident navigating data and programming.\nR is constantly evolving. I am, too."
+  },
+  {
+    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
+    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
+    "title": "From Pharmacy to Data Science: Why I Chose R",
+    "section": "Looking Forward",
+    "text": "Looking Forward\nReina’s Data Studio is built on three things:\n\nTransparency\nPrecision\nA genuine passion for learning\n\nWhether I’m debugging a script, building a reproducible report, or explaining a statistical result, my goal is always the same:\nTo help people work with data clearly, ethically, and confidently."
+  },
+  {
+    "objectID": "blog/posts/18-03-26-choosing-the-right-graph.html",
+    "href": "blog/posts/18-03-26-choosing-the-right-graph.html",
+    "title": "ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data",
+    "section": "",
+    "text": "This is a three-part series. Other series can be viewed here:\n\nggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\nggplot2 Fundamentals (Part 3): Useful ggplot Techniques\n\n\nWhen creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s not always clear what each part is doing.\nTo make things easier to understand, I decided to write a short series explaining the fundamentals of ggplot.\nggplot is a very powerful tool with many components, so covering everything in a single article would be difficult. In this series, we will break things down step by step.\nIn this first article, we will focus on an important question:\nHow do you choose the right type of graph for your data?\nBefore even thinking about writing ggplot code, one thing is essential - understanding your data.\n\nWhat is ggplot2?\nIn simple terms, ggplot2 is the most commonly used data visualisation library in R.\nIt allows you to create many types of graphs and customise them extensively, including colours, labels, and layout.\nOnce you become comfortable with ggplot, it becomes possible to create clear and professional visualisations for reports and presentations.\nHowever, graphs are not only about aesthetics. They are tools for communicating information and telling a story with data.\nIf you choose the wrong type of graph, or include unnecessary information, it can become difficult for readers to understand the message you are trying to convey.\n\n\nWhy choosing the right graph matters\nIn Programming Skills for Data Science (Freeman and Ross (2018)), the authors highlight several important considerations when selecting a visualisation:\n\nThe goal of the visualisation\nThe type of data available\nHuman perceptual abilities\nConstraints of the output medium (for example, screen size)\n\nFor data analysts, one of the most important skills is simply understanding the data itself.\nIf you do not fully understand the data, it becomes difficult to explain the results. Even if you create attractive graphs, the final report may still lack meaning.\nFor example, when I recently explored FAERS adverse event data, the first step was to ask:\n\nWhat do I actually want to learn from this dataset?\n\nSuppose the broad question is:\n“Which adverse events have the most severe impact globally?”\nFrom there, we can break the problem down into more specific questions, such as:\n\nWhich adverse events are reported most frequently?\nWhich drugs are associated with the highest number of adverse event reports?\nWhich adverse events are most often linked to death?\n\nBy gradually refining the question, it becomes clearer what kind of visualisations we need.\nAnd to do that effectively, we must first understand the structure of the data.\n\n\nUnderstanding variable types\nOne of the most important things to understand when visualising data is the type of variables you are working with.\nIn general, variables can be divided into two categories:\n\nContinuous variables\nContinuous variables can take any value within a range, including decimal values. These are values we typically measure.\nExamples include:\n\nLength\nWeight\nTemperature\n\n\n\nDiscrete variables\nDiscrete variables represent values that are counted rather than measured, and typically cannot take decimal values.\nExamples include:\n\nPopulation counts\nNumber of reported adverse events\nCategories or groups\n\n\n\n\nExample: the iris dataset\nA commonly used dataset in R is the iris dataset, which contains measurements for different iris flower species.\nIt includes five variables:\n\nknitr::kable(head(iris, 5))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nIn this dataset:\nContinuous variables\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\n\nDiscrete variable\n\nSpecies\n\nUnderstanding this distinction is important because the type of variables determines which graph is appropriate.\n\n\nHow to think about choosing a graph\nWhen deciding which graph to use, the first question to ask is:\nWhat type of variables am I working with?\nFor example:\n\nAre you looking at one continuous variable?\nDo you want to compare categories?\nAre you exploring the relationship between two numeric variables?\n\nEach of these situations calls for a different type of visualisation.\nChoosing the right graph is one of the most important steps in communicating your results clearly.\n\n\nNext article\nIn the next article, we will start looking at ggplot itself.\nWe will cover:\n\nThe basic structure of ggplot\nWhat aes() means\nHow to create your first graph in R\n\nwith practical code examples.\n\n\n\n\n\n\n\n\nReferences\n\nFreeman, Michael, and Joel Ross. 2018. Programming Skills for Data Science: Start Writing Code to Wrangle, Analyze, and Visualize Data with r. Addison-Wesley Professional."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html",
+    "href": "blog/posts/25-03-26-ggplot_part3.html",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "",
+    "text": "This is a three-part series. Other series can be viewed here:\nIn this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.\nThese are slightly more advanced than the basics, but they can significantly improve how you present your data.\nWe will build on the graph we created in the previous article and extend it further.\nHere is the code we will use:\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Creating Interactive Plots with ggiraph",
+    "text": "Creating Interactive Plots with ggiraph\nTry hovering over the points in this plot.\nWhen you move your cursor over a point, additional information appears. This makes your visualisation much more interactive and informative, especially for reports or web pages.\nThis functionality comes from the ggiraph package.\nNormally, ggplot creates static plots. However, ggiraph allows you to add interactivity by using functions such as geom_jitter_interactive().\nPersonally I recommend ggiraph over Plotly (Another package for interactive graphs) as ggiraph is much simpler and does not mess anything up when you try to add one small tweak.\n\nStoring the Plot as an Object\nWhen using ggiraph, you first need to store your plot in an object.\nThis object is then passed to `girafe()` to render the interactive plot:\ngirafe(ggobj = &lt;OBJECT&gt;)\nIn this example, the entire plot is stored in an object called:\ninteractive_iris_plot\nThis also allows you to reuse or modify the plot later.\nFinally, the plot is rendered using:\ngirafe(ggobj = interactive_iris_plot)\nThis step is necessary because ggiraph works with complete ggplot objects rather than individual layers."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Fixing the Aspect Ratio (coord_fixed)",
+    "text": "Fixing the Aspect Ratio (coord_fixed)\nIn some cases, you may want the x-axis and y-axis to use the same scale.\nYou can do this using:\ncoord_fixed(ratio = 1)\nThis ensures that one unit on the x-axis is equal to one unit on the y-axis.\nThis is especially useful for:\n\nSpatial data\nDistance comparisons\nAny data where proportions matter"
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Customising Axis Breaks and Labels",
+    "text": "Customising Axis Breaks and Labels\nggplot allows you to control how axes are displayed.\nFor example:\nscale_y_continuous(\n  breaks = seq(0, 10, by = 1),\n  labels = function(x) paste0(x, \"cm\")\n)\nHere:\n\nbreaks defines where ticks appear\nlabels controls how those values are displayed\n\nThe seq(0, 10, by = 1) function generates values like 0, 1, 2, …, 10."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Cleaning Column Names",
+    "text": "Cleaning Column Names\nIn this code:\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\ncolumn names like Sepal.Length are converted into Sepal Length.\nThis improves readability in the final plot.\nAn alternative approach would be manually setting labels using labs(), but this method allows you to update multiple variables at once."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#summary",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#summary",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Summary",
+    "text": "Summary\nIn this article, we covered:\n\nCreating interactive plots with ggiraph\nFixing axis ratios with coord_fixed()\nAdjusting axes with scale_*()\nCleaning column names with rename_with()\n\nEach of these techniques may seem small, but together they can greatly improve the clarity and usability of your visualisations."
+  },
+  {
+    "objectID": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
+    "href": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
+    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nThroughout this series, we explored ggplot from the basics to more practical usage:\n\nChoosing the right graph\nUnderstanding ggplot structure\nImproving readability\nand applying useful techniques\n\nggplot is a flexible and powerful tool. Once you understand the core ideas, you can create clear and effective visualisations for a wide range of data."
+  },
+  {
     "objectID": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
     "href": "blog/posts-ja/05-03-26.Rでよくあるエラー10選.html",
     "title": "Rでよくあるエラー10選",
@@ -231,137 +665,88 @@
     "text": "10. NA/NaN argument\nちなみに、欠損値があるか確認する方法は複数あります。\nanyNA(data)\nはデータの中に欠損値があればTRUE、なければFALSEが出ます。\nsum(is.na(data))\nは、何個TRUE、つまりNA/欠損値があるか確認します。\nそしてデータのコラムごとに確認したい場合は、\ncolSums(is.na(data))\nと入力するとどのコラムに何個NAがあるか確認できます。\n\n\n\n\n\n\n\nエラー\nError: NA/NaN argument\n\n\n意味\n計算にNAやNaNが含まれています。\n\n\nよくある原因\nデータに欠損値がある。\n\n\n解決方法\nNAを除外して計算します。\nmean(x, na.rm = TRUE)\n\n\n\n説明が分かりにくかったり、質問があれば、ぜひ教えてください。\nたくさんの人とRを通じて、Rのすばらしさや面白さをシェア出来るのを楽しみにしています！\n他にもRのことで質問や相談があれば、気軽にご連絡ください。\n日本語でRコンサルティングをしています。\nEmail: reinasdatastudio@gmail.com"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html",
-    "title": "Why Reproducibility Matters in Healthcare Data",
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
     "section": "",
-    "text": "Healthcare data is not just data.\nBehind every dataset are real patients, real decisions, and real consequences. A misplaced assumption or undocumented change is not simply a technical issue — it can affect interpretation, policy, or treatment decisions.\nThat is why reproducibility is not optional in healthcare data analysis. It is foundational."
+    "text": "本記事は、ggplot入門シリーズ（全5回）の一部です。\n他の回はこちらからご覧いただけます：\nRでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。\nでも、最初は「コードが長い」「何がどこで変わっているのか分からない」と感じる人も多いと思います。\nそこで！分かりやすくまとめてみました。\nggplotは本当にたくさん要素がつまっていて、ひとつのブログにはまとまらないので、５つのセクションに分かれています。\n今回は第一弾です。\nデータを見て、どのグラフを使うべきかの考え方を説明していきます。\nggplotのコードの話に入る前に、まず データをどう理解するか がとても大切です。"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#what-does-reproducibility-actually-mean",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "What Does “Reproducibility” Actually Mean?",
-    "text": "What Does “Reproducibility” Actually Mean?\nIn simple terms, reproducibility means:\n\nIf someone else runs your analysis using the same data and code, they should get the same results.\n\nThat sounds obvious. But in practice, it is surprisingly easy to break reproducibility.\nCommon issues include:\n\nManual data edits in Excel\nCopy-pasted results without saved code\nUntracked changes to datasets\nHard-coded values with no explanation\nAnalyses run interactively without documentation\n\nIn research and healthcare settings, these small shortcuts accumulate into serious risk."
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "ggplot2とは",
+    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。\nコードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nただ、グラフは見た目だけではありません。伝えたいストーリーをわかりやすく伝えるツールでもあります。\nいらない情報をグラフにしたり、伝えたい内容に合わないグラフを使ってしまうと、問題の理解や説明が難しくなってしまいます。"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#why-it-matters-more-in-healthcare",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Why It Matters More in Healthcare",
-    "text": "Why It Matters More in Healthcare\nIn some industries, minor inconsistencies might be inconvenient.\nIn healthcare, they can be dangerous.\nReproducibility matters because:\n\n1. Accuracy and Accountability\nHealthcare decisions often rely on statistical outputs. If results cannot be traced back to documented steps, confidence in those results weakens.\nReproducible workflows create an audit trail:\n\nWhat data was used?\nWhat cleaning steps were applied?\nWhat assumptions were made?\nWhat model was fitted?\n\nThis level of clarity protects both patients and professionals.\n\n\n2. Transparency for Collaboration\nClinical and research projects rarely involve just one person. Analysts, clinicians, reviewers, and stakeholders may all interact with the results.\nWhen analysis is reproducible:\n\nTeam members can verify findings\nAssumptions can be discussed openly\nChanges can be implemented systematically\n\nWithout reproducibility, collaboration becomes fragile and dependent on memory rather than structure.\n\n\n3. Long-Term Sustainability\nHealthcare research often spans months or years.\nIf you revisit a project six months later and cannot easily regenerate the results, you lose time and confidence.\nReproducible workflows mean:\n\nYou can re-run the analysis with updated data\nYou can adjust models without starting from scratch\nYou can respond to reviewer comments efficiently\n\nThis is not just about neatness. It is about sustainability."
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフ選びの大切さ",
+    "text": "グラフ選びの大切さ\nProgramming Skills for Data Scienceという本には、グラフを選ぶときに大事な４つのポイントがあると書かれています。(Freeman and Ross 2018)\n\nデータ可視化で実現したい目的\n可視化するうえで使えるデータの種類\n人間の視認処理能力\nデータ可視化の出力先の制約（スクリーンのサイズなど）\n\nデータサイエンティストにとって大切なのは、まずどれだけデータを理解できているかだと思っています。\nそもそも理解していないと説明もできませんし、もっとも可視化なんてしても、「何が目的でそんなグラフを出したのか」も分からない、中身のないレポートになってしまいます。\n例えば、私が最近調べたFAERSの薬の副作用データを見るときには、このデータからどんなことを知りたいかを最初に考えます。\n大きな問題を「世界で一番悪影響のある副作用は何か」とすると、そこからまた細かくデータ分析、可視化できるように特定化していきます。\n\n一番報告されている副作用とは何か\n一番副作用が報告されている薬はどれか\nどの副作用が一番死因の原因か。\n\nこのように、少しずつ問題を具体的にしていくことで、どんな可視化が必要なのかが見えてきます。\nそしてそれには、自分のデータをしっかり理解しておく必要があります。"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#how-r-supports-reproducibility",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "How R Supports Reproducibility",
-    "text": "How R Supports Reproducibility\nOne of the reasons I chose R is its ability to create a beautiful reproducible analysis.\nTools such as:\n\nR Markdown\nQuarto\nStructured project folders\nScript-based data cleaning\n\nallow analysis, interpretation, and reporting to exist in a single, transparent workflow.\nInstead of:\n\nClean data manually\nRun analysis\nCopy results into a Word document\n\nall using separate programs,\nYou can:\n\nClean data using documented scripts\nRun statistical models in code\nGenerate reports automatically\n\nThe entire process becomes traceable and repeatable, because the entire process is saved in one big tool."
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "変数のタイプ",
+    "text": "変数のタイプ\nデータを可視化するうえでまず理解しておくのが、変数のタイプです。\n大きく分けて二つあります。\n「連続値」（continuous）\n小数点以下まで表現できる値です。「測る」データです。\n例：\n\n長さ\n体重など\n\n「離散値」（discrete）\n小数点にならない値です。「数える」データです。\n例：\n\n人口の数\n副作用の報告数\nカテゴリーなど"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#a-practical-example",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "A Practical Example",
-    "text": "A Practical Example\nImagine analysing a clinical dataset comparing treatment groups.\nWithout reproducibility:\n\nData cleaning happens in Excel\nOutliers are removed without documentation\nStatistical tests are run manually\nGraphs are exported separately\n\nSix months later, a colleague asks:\n\n“How did you exclude those patients?”\n\nIf the steps were not scripted, you may not know.\nWith reproducibility:\n\nAll exclusions are coded\nAll assumptions are documented\nAll outputs regenerate from the same script\nThe report updates automatically if data changes\n\nThe difference is clarity and control."
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "例：irisデータ",
+    "text": "例：irisデータ\nRでよく使われるirisデータは、5つの変数（variables）があります。\n\nknitr::kable(head(iris, 5))\n\n\nIris Dataset\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nどれが連続値でどれが離散値かわかりますか？\n実は\n\nSepal.Length（がく片の長さ）\nSepal.Width（がく片の幅）\nPetal.Length（花びらの長さ）\nPetal.Width（花びらの幅）\n\nは連続値で、\nSpecies（種類）\nだけが離散値です。"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#reproducibility-is-also-an-ethical-issue",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Reproducibility Is Also an Ethical Issue",
-    "text": "Reproducibility Is Also an Ethical Issue\nIn healthcare, data analysis is not purely technical — it is ethical.\nTransparent workflows:\n\nReduce unintentional bias\nPrevent undocumented data manipulation\nMake decisions defensible\n\nReproducibility demonstrates respect for the data and the people represented in it."
+    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
+    "title": "ggplot入門①：データに合ったグラフの選び方",
+    "section": "グラフを選ぶときの考え方",
+    "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
   },
   {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#building-reproducible-habits",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Building Reproducible Habits",
-    "text": "Building Reproducible Habits\nYou do not need complex systems to begin.\nStart with:\n\nKeeping raw data untouched\nWriting cleaning steps in scripts (not manually)\nSaving model code\nDocumenting assumptions clearly\nUsing Quarto or R Markdown to combine analysis and reporting\n\nSmall structural habits create large long-term stability."
-  },
-  {
-    "objectID": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
-    "href": "blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html#final-thoughts",
-    "title": "Why Reproducibility Matters in Healthcare Data",
-    "section": "Final Thoughts",
-    "text": "Final Thoughts\nHealthcare data demands precision, transparency, and accountability.\nReproducibility is not about perfection. It is about responsibility.\nWhen analysis is reproducible:\n\nResults are trustworthy\nCollaboration is smoother\nFuture updates are manageable\nDecisions are defensible\n\nAnd in healthcare, that matters."
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog Posts",
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
+    "title": "ggplot入門③：よく使うグラフの種類",
     "section": "",
-    "text": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nFinal part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability.\n\n\n\n\n\nMar 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.\n\n\n\n\n\nMar 21, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nA beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhy Reproducibility Matters in Healthcare Data\n\n\nWhy reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nFrom Pharmacy to Data Science: Why I Chose R\n\n\nMy journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.\n\n\n\n\n\nFeb 12, 2026\n\n\n\n\n\nNo matching items"
+    "text": "本記事は、ggplot入門シリーズ（全5回）の一部です。\n他の回はこちらからご覧いただけます：\nlibrary(ggplot2)\n前回の記事では、ggplotの基本構造について説明しました。\n今回は、実際に どのグラフを使えばよいのか を見ていきます。\n第一回でも説明したように、データのタイプ（連続値・離散値）によって適切なグラフは変わります。"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Reina’s Data Studio",
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値が1つの場合",
+    "text": "離散値が1つの場合\n\n棒グラフ\n離散値（カテゴリー）を1つだけ見る場合は、棒グラフ（bar chart）をよく使います。\n例えば、irisデータでは Species が離散値です。\n\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nこのグラフでは、それぞれの種類（Species）が何件あるかを見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が1つの場合",
+    "text": "連続値が1つの場合\n\nヒストグラム\n連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。\n例えば、がく片の長さ（Sepal.Length）を見てみます。\n\nggplot(iris, aes(x = Sepal.Length)) + \n  geom_histogram(binwidth = 0.2)\n\n\n\n\n\n\n\n# binwidthとは、区間（bin）の幅を表しています。\n# 小さい値 = 細かいヒストグラム\n# 大きい値 = 大まかなヒストグラム\n\nヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。\n\n\n密度プロット\n同じく分布を見る方法として、密度プロット（density plot）があります。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_density(adjust = 1)\n\n\n\n\n\n\n\n# adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。\n# 小さい値 = ギザギザの曲線\n# 大きい値 = なめらかな曲線\n\nヒストグラムよりもなめらかな分布を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "連続値が2つの場合",
+    "text": "連続値が2つの場合\n\n散布図\n2つの連続値の関係を見るときは、散布図（scatterplot）を使います。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n散布図では、2つの変数の関係（相関など）を見ることができます。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
+    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
+    "title": "ggplot入門③：よく使うグラフの種類",
+    "section": "離散値 + 連続値",
+    "text": "離散値 + 連続値\n\n箱ひげ図\n離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nこのグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。\nこのように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。\nそのため、まずデータのタイプを理解する → 適切なグラフを選ぶという流れを意識してみてください。"
+  },
+  {
+    "objectID": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
+    "href": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
+    "title": "ggplot入門⑤：便利なggplotテクニック",
     "section": "",
-    "text": "Hi, I’m Reina, the founder of Reina’s Data Studio.\nI help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.\n\n\n\nWhy I started Reina’s Data Studio\nI have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.\nI also realised that I work best when I can focus on helping others, working independently, and sharing what I know — rather than working under rigid structures that don’t align with how I do my best work.\nStarting Reina’s Data Studio gave me the freedom to do exactly that:\nto support people working with real data, and to show how effective and enjoyable R can be when used thoughtfully.\n\n\nMy background\nMy professional journey began in pharmacy, where accuracy, responsibility, and understanding the meaning behind data are essential. Over time, I realised that what I enjoyed most was analysing information and solving problems — which led me to computer science and data science.\nI studied computer science with a data science focus, where R became my primary tool. I later worked in system engineering to gain broader technical experience, but my long-term goal was always to work directly with data.\nResigning from my system engineering role became a turning point — one that pushed me to fully commit to building a data-focused career on my own terms. Reina’s Data Studio is the result of that decision.\n\n\nHow my healthcare background shapes my work\nComing from pharmacy means I don’t treat data as abstract numbers.\nI understand:\n\nWhere healthcare and research data comes from\nWhat each variable represents\nWhy accuracy, consistency, and assumptions matter\n\nThis allows me to approach analysis with precision and context, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.\n\n\nHow I work with clients\nClients often describe my working style as:\n\nCalm and detail-oriented\nCollaborative and supportive\nClear and honest\n\nI’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for 100% clarity and satisfaction, whether that means detailed explanations or straightforward results.\nTrust is central to everything I do. I want clients to feel safe sharing their data and confident in the work we produce together.\n\n\nValues that guide my work\n\nTransparency — clear communication, no unnecessary complexity\nPassion for data — curiosity and care in every project\nEducation & continuous learning — knowledge grows, and so should we\n\nThese values shape both my consulting work and my teaching.\n\n\nTeaching and knowledge sharing\nLearning has always been a core part of my life. I truly believe that knowledge never betrays, and that learning should feel empowering — even fun.\nThrough YouTube tutorials, mentoring, and teaching, I share practical R knowledge so others can work more confidently with data. R is constantly evolving, and I enjoy growing alongside it while helping others do the same.\n\n\nLanguage support\nI provide support in English and Japanese.\nBecause many R resources are only available in English, I especially enjoy helping Japanese speakers who may be struggling with language barriers before they even get to the programming itself.\n\n\nWho I work best with\nI work best with people who value:\n\nMutual respect\nCollaboration\nThoughtful, ethical data work\n\nProjects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.\n\n\nLet’s work together\nIf you have a dataset, question, or project in mind, I’d love to hear from you.\nYou don’t need to have everything figured out — we can work through it together.\n\nSend an enquiry"
-  },
-  {
-    "objectID": "blog/index-ja.html",
-    "href": "blog/index-ja.html",
-    "title": "ブログ",
-    "section": "",
-    "text": "ggplot入門⑤：便利なggplotテクニック\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ最終回。ggiraphを使ったインタラクティブなグラフや、軸の設定、比率調整など、ggplotをより便利に使うためのテクニックを紹介します。\n\n\n\n\n\nMar 17, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門④：グラフを見やすくする方法\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第4回。色・ラベル・テーマなどを使って、ggplotで作ったグラフを見やすく整える方法を解説します。\n\n\n\n\n\nMar 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門③：よく使うグラフの種類\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第3回。連続値・離散値などの変数のタイプに応じて、どのグラフを使うべきかをggplotの例とともにわかりやすく解説します。\n\n\n\n\n\nMar 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門②：ggplotの基本\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門シリーズ第2回。ggplotの基本構造とaesの役割を、irisデータを使った例とともにわかりやすく解説します。。\n\n\n\n\n\nMar 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nggplot入門①：データに合ったグラフの選び方\n\n\n\nggplot2\n\nData Visualisation\n\n\n\nggplot入門ガイド第一回。データ可視化を行ううえで大切なデータ理解と、連続値と離散値の違いをもとに適切なグラフを選ぶ考え方をわかりやすく解説します。\n\n\n\n\n\nMar 12, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRでよくあるエラー10選\n\n\n\nR\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 05, 2026\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "",
-    "text": "When people see that I started my career in pharmacy and now work in data science, the first question is usually:\n“How did that happen?”\nThe short answer is curiosity.\nThe longer answer is that I’ve always been drawn to understanding systems — whether that system is the human body or a dataset."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#starting-in-pharmacy",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Starting in Pharmacy",
-    "text": "Starting in Pharmacy\nPharmacy taught me something that still shapes how I work today: precision matters.\nIn healthcare, small details are not small. A misplaced decimal, a misunderstood value, or an incorrect assumption can have serious consequences. You learn to check carefully, to document properly, and to understand what each number actually represents.\nBut over time, I realised that what I enjoyed most was not memorising information — it was analysing it.\nI enjoyed understanding patterns.\nI enjoyed interpreting results.\nI enjoyed asking: Why does this happen?\nThat curiosity eventually led me toward computer science."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#discovering-programming",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Discovering Programming",
-    "text": "Discovering Programming\nWhile studying engineering at the University of Auckland, I discovered computer science — and immediately fell in love with programming.\nProgramming felt different. It was logical, structured, and creative at the same time. It rewarded curiosity and precision. It gave immediate feedback. Most importantly, it felt like something I could continuously grow in.\nI later completed a one-year computer science programme with a focus on data science, where I was introduced more deeply to R.\nAnd that’s where something clicked."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#why-r",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Why R?",
-    "text": "Why R?\nR stood out to me for several reasons.\nFirst, it was built for statistics and analysis. It wasn’t just a general programming language — it was designed for thinking about data.\nSecond, it encouraged reproducibility. Tools like R Markdown and Quarto made it possible to combine analysis, interpretation, and reporting in a single, transparent workflow. That felt aligned with the healthcare mindset I came from.\nThird, it made complex analysis accessible. With the right structure, R allows you to move from raw data to meaningful insight in a clear and systematic way.\nTo me, R felt like a bridge between:\n\nclinical precision\nstatistical reasoning\nand structured programming\n\nIt wasn’t just about writing code. It was about creating clarity."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#from-employment-to-independence",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "From Employment to Independence",
-    "text": "From Employment to Independence\nAfter transitioning into data science, I worked in system engineering to broaden my technical experience while continuing to develop my data skills.\nEventually, I realised that I wanted to focus fully on what I enjoyed most: working directly with data and helping others understand it.\nStarting Reina’s Data Studio was a natural step. It allowed me to:\n\nWork independently\nSupport researchers and healthcare professionals\nShare my enthusiasm for R\nBuild something aligned with my values"
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#how-pharmacy-still-shapes-my-work",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "How Pharmacy Still Shapes My Work",
-    "text": "How Pharmacy Still Shapes My Work\nMy healthcare background continues to influence how I approach every project.\nI don’t treat data as abstract numbers. I think about:\n\nWhat does this variable really represent?\nWhere did this data come from?\nWhat assumptions are we making?\nCan this analysis be reproduced and audited later?\n\nThat mindset makes me careful — but also practical. Clean data. Clear documentation. Transparent decisions.\nIn healthcare and research, that matters."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#teaching-and-sharing",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Teaching and Sharing",
-    "text": "Teaching and Sharing\nOne of my core values is continuous learning. I genuinely believe that knowledge never betrays you.\nThat belief is why I share tutorials on YouTube and write about R here. Many R resources are in English, and I enjoy helping both English and Japanese speakers feel more confident navigating data and programming.\nR is constantly evolving. I am, too."
-  },
-  {
-    "objectID": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
-    "href": "blog/posts/12-02-2026-from-pharmacy-to-data-science.html#looking-forward",
-    "title": "From Pharmacy to Data Science: Why I Chose R",
-    "section": "Looking Forward",
-    "text": "Looking Forward\nReina’s Data Studio is built on three things:\n\nTransparency\nPrecision\nA genuine passion for learning\n\nWhether I’m debugging a script, building a reproducible report, or explaining a statistical result, my goal is always the same:\nTo help people work with data clearly, ethically, and confidently."
+    "text": "本記事は、ggplot入門シリーズ（全5回）の一部です。\n他の回はこちらからご覧いただけます：\n\nggplot入門①：データに合ったグラフの選び方\nggplot入門②：ggplotの基本\nggplot入門③：よく使うグラフの種類\nggplot入門④：グラフを見やすくする方法\n\n\n今回はシリーズの最後として、ggplotをより便利に使うためのテクニックを紹介します。\n少し応用的な内容ですが、覚えておくとデータ可視化の幅が広がります。\n今回は、前回（第４回）作ったコードをもっとアレンジしていきます。\nそれがこのコードです↓↓\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nこのグラフの点にカーソルを合わせてみてください。合わせると値が表示されます。こうすることで、レポートやウェブページなどで、より分かりやすいデータ可視化を作ることができます。\n\nインタラクティブなグラフを作る（ggiraph）\nこれを実現できたのが、ggiraphというパッケージです。\n通常のggplotは静的なグラフですが、 ggiraphパッケージを使うとインタラクティブなグラフを作ることができます。\nこのコードでggiraphが使われているのは、geom_jitter_interactiveのところです。前回のgeom_jitterに_interactiveがつきました。\nこのコード全体を1つのオブジェクトに保存します。\nここでは interactive_iris_plot という名前のオブジェクトを作っています。\n最後にgirafe(ggobj = &lt;object_name&gt;)と書くことで、そのオブジェクトを表示します。\nただ、そのままだと表示が少し読みづらいかもしれないので、\n\n tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n\nで、きれいに表示されるように書き換えます。\n\n\n軸の比率を固定する（coord_fixed）\n散布図では、x軸とy軸の比率を同じにしたい場合があります。\nその場合はcoord_fixed()を使います。\ncoord_fixed(ratio = 1)\nこれを設定すると、x軸とy軸のスケールが同じ比率になります。\n例えば、\n\n地理データ\n距離データ\n実際の比率が重要なデータ\n\nなどではとても便利です。\n\n\n軸の目盛りを細かく調整する\nggplotでは、軸の表示も自由にカスタマイズできます。\n例えば次のコードです。\n\nscale_y_continuous(breaks = seq(0, 10, by = 1),\n                   labels = function(x) paste0(x, \"cm\") )\n\nここでは\n\nbreaks→軸の目盛りの位置を指定\nlabels→軸ラベルの表示方法を指定（詳しくは第4回のブログで）\n\nしています。\nseq(0,10,by=1) は「0,1,2,3,4,5,6,7,8,9,10」のように目盛りを作っています。\n\n\n列名を整える\n今回のコードでは次の処理をしています。\n\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\n\nこれは、Sepal.Lengthのような列名を”Sepal Length”のように変更しています。\n前回のブログでは\n\nlabs(x=\"Sepal Length\", y=\"Petal Length\")\n\nのように軸ラベルを変更しましたが、rename_with()を使うとデータの列名自体をまとめて変更することができます。\nとしている事は同じです。\nxとyの列名両方を同じように変えたいときに、まとめて変えられるので便利です。\nこれによって、グラフのラベルが自然な表記になります。\n\n\nまとめ\n今回紹介したテクニックは次の通りです。\n\nggiraphでインタラクティブなグラフを作る\ncoord_fixed()で軸の比率を固定する\nscale_*()で軸を調整する\nrename_with()で列名を整理する\n\nどれも小さな工夫ですが、グラフの見やすさや使いやすさが大きく変わります。\n\n\nシリーズまとめ\nこのシリーズでは、ggplotの基本から応用までを紹介してきました。\n\nデータに合ったグラフの選び方\nggplotの基本構造\nグラフの種類\nグラフを見やすくする方法\n便利なggplotテクニック\n\nggplotはとても柔軟なツールなので、使い方を覚えるとデータ可視化がとても楽しくなります。\nぜひ、自分のデータでも試してみてください。"
   },
   {
     "objectID": "index.html",
@@ -649,523 +1034,5 @@
     "title": "Hypertension Clinical Treatment Analysis",
     "section": "Multicollinearity check",
     "text": "Multicollinearity check\n\ncar::vif(model)\n\n                      GVIF Df GVIF^(1/(2*Df))\nTreatment_Group   1.011396  2        1.002837\nAge               1.002592  1        1.001295\nCholesterol_Level 1.006929  1        1.003459\nAdverse_Events    1.007916  1        1.003950\nGender            1.006296  1        1.003143\n\n\nNo multicollinearity detected."
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 basic.html",
-    "title": "ggplot2が簡単になる！",
-    "section": "",
-    "text": "今回は、グラフの王者であるggplot2の解説をしていきます。\nグラフのコードが長くなるほど難しくなり、ちゃんと理解していないと何がどうなっているのかわからなくなります。\nそこで！分かりやすくまとめてみました。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html#ggplot2とは",
-    "href": "blog/posts-ja/DRAFT ggplot2 basic.html#ggplot2とは",
-    "title": "ggplot2が簡単になる！",
-    "section": "ggplot2とは",
-    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。コードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nRStudioで\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.1     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggiraph)\n\nでインストール出来ます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 basic.html#基本のコード",
-    "href": "blog/posts-ja/DRAFT ggplot2 basic.html#基本のコード",
-    "title": "ggplot2が簡単になる！",
-    "section": "基本のコード",
-    "text": "基本のコード\nすべてのggplot2は基本のコードがあります。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) + \n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;) +\n  &lt;THEME_FUNCTION&gt;(...)\nこうみると難しくみえますが、一番ベーシックなグラフを作るにあたって必ず必要なのは、\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...)\nの部分だけです。\nさっそく例えとして、irisデータを使います。\nscatterplotで、sepal（がく片）とpetal（花びら）の長さを比べます。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n同じグラフでも、いろんなものを付け足せます。\n\nggplot(iris, aes(x=Sepal.Length, y=Petal.Length)) +\n  geom_jitter(aes(fill = Species, shape = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8, #border thickness\n              alpha = 0.9) + #transparency\n    scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                 \"versicolor\" = \"#2A9D8F\",\n                                 \"virginica\" = \"purple\")) +\n  scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(labels = function(x) paste0(x, \"cm\")) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 10) +\n  theme(\n    text = element_text(family = \"Georgia\")\n  )\n\n\n\n\n\n\n\n\nもっと：\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "",
-    "text": "Rでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。\nでも、最初は「コードが長い」「何がどこで変わっているのか分からない」と感じる人も多いと思います。\nそこで！分かりやすくまとめてみました。\nggplotは本当にたくさん要素がつまっていて、ひとつのブログにはまとまらないので、５つのセクションに分かれています。\n今回は第一弾です。\nデータを見て、どのグラフを使うべきかの考え方を説明していきます。\nggplotのコードの話に入る前に、まず データをどう理解するか がとても大切です。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "ggplot2とは",
-    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。\nコードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nただ、グラフは見た目だけではありません。伝えたいストーリーをわかりやすく伝えるツールでもあります。\nいらない情報をグラフにしたり、伝えたい内容に合わないグラフを使ってしまうと、問題の理解や説明が難しくなってしまいます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "グラフ選びの大切さ",
-    "text": "グラフ選びの大切さ\nProgramming Skills for Data Scienceという本には、グラフを選ぶときに大事な４つのポイントがあると書かれています。(Freeman and Ross 2018)\n\nデータ可視化で実現したい目的\n可視化するうえで使えるデータの種類\n人間の視認処理能力\nデータ可視化の出力先の制約（スクリーンのサイズなど）\n\nデータサイエンティストにとって大切なのは、まずどれだけデータを理解できているかだと思っています。\nそもそも理解していないと説明もできませんし、もっとも可視化なんてしても、「何が目的でそんなグラフを出したのか」も分からない、中身のないレポートになってしまいます。\n例えば、私が最近調べたFAERSの薬の副作用データを見るときには、このデータからどんなことを知りたいかを最初に考えます。\n大きな問題を「世界で一番悪影響のある副作用は何か」とすると、そこからまた細かくデータ分析、可視化できるように特定化していきます。\n\n一番報告されている副作用とは何か\n一番副作用が報告されている薬はどれか\nどの副作用が一番死因の原因か。\n\nこのように、少しずつ問題を具体的にしていくことで、どんな可視化が必要なのかが見えてきます。\nそしてそれには、自分のデータをしっかり理解しておく必要があります。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "変数のタイプ",
-    "text": "変数のタイプ\nデータを可視化するうえでまず理解しておくのが、変数のタイプです。\n大きく分けて二つあります。\n「連続値」（continuous）\n小数点以下まで表現できる値です。「測る」データです。\n例：\n\n長さ\n体重など\n\n「離散値」（discrete）\n小数点にならない値です。「数える」データです。\n例：\n\n人口の数\n副作用の報告数\nカテゴリーなど"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#例irisデータ",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#例irisデータ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "例：irisデータ",
-    "text": "例：irisデータ\nRでよく使われるirisデータは、5つの変数（variables）があります。\n\nknitr::kable(head(iris, 5))\n\n\nIris Dataset\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nどれが連続値でどれが離散値かわかりますか？\n実は\n\nSepal.Length（がく片の長さ）\nSepal.Width（がく片の幅）\nPetal.Length（花びらの長さ）\nPetal.Width（花びらの幅）\n\nは連続値で、\nSpecies（種類）\nだけが離散値です。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "グラフを選ぶときの考え方",
-    "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#参考文献",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 1.Choosing the right graph.html#参考文献",
-    "title": "データに合ったグラフの選び方",
-    "section": "参考文献",
-    "text": "参考文献"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "",
-    "text": "Rでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。\nでも、最初は「コードが長い」「何がどこで変わっているのか分からない」と感じる人も多いと思います。\nそこで！分かりやすくまとめてみました。\nggplotは本当にたくさん要素がつまっていて、ひとつのブログにはまとまらないので、５つのセクションに分かれています。\n今回は第一弾です。\nデータを見て、どのグラフを使うべきかの考え方を説明していきます。\nggplotのコードの話に入る前に、まず データをどう理解するか がとても大切です。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#ggplot2とは",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "ggplot2とは",
-    "text": "ggplot2とは\n簡単にいえば、一番Rで使われている、データを可視化するツールです。\nコードでいろんなグラフを作ったり、もっと細かく色やデザインなども変えることができます。使いこなせたらきれいなレポートを作れます。\nただ、グラフは見た目だけではありません。伝えたいストーリーをわかりやすく伝えるツールでもあります。\nいらない情報をグラフにしたり、伝えたい内容に合わないグラフを使ってしまうと、問題の理解や説明が難しくなってしまいます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフ選びの大切さ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "グラフ選びの大切さ",
-    "text": "グラフ選びの大切さ\nProgramming Skills for Data Scienceという本には、グラフを選ぶときに大事な４つのポイントがあると書かれています。(Freeman and Ross 2018)\n\nデータ可視化で実現したい目的\n可視化するうえで使えるデータの種類\n人間の視認処理能力\nデータ可視化の出力先の制約（スクリーンのサイズなど）\n\nデータサイエンティストにとって大切なのは、まずどれだけデータを理解できているかだと思っています。\nそもそも理解していないと説明もできませんし、もっとも可視化なんてしても、「何が目的でそんなグラフを出したのか」も分からない、中身のないレポートになってしまいます。\n例えば、私が最近調べたFAERSの薬の副作用データを見るときには、このデータからどんなことを知りたいかを最初に考えます。\n大きな問題を「世界で一番悪影響のある副作用は何か」とすると、そこからまた細かくデータ分析、可視化できるように特定化していきます。\n\n一番報告されている副作用とは何か\n一番副作用が報告されている薬はどれか\nどの副作用が一番死因の原因か。\n\nこのように、少しずつ問題を具体的にしていくことで、どんな可視化が必要なのかが見えてきます。\nそしてそれには、自分のデータをしっかり理解しておく必要があります。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#変数のタイプ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "変数のタイプ",
-    "text": "変数のタイプ\nデータを可視化するうえでまず理解しておくのが、変数のタイプです。\n大きく分けて二つあります。\n「連続値」（continuous）\n小数点以下まで表現できる値です。「測る」データです。\n例：\n\n長さ\n体重など\n\n「離散値」（discrete）\n小数点にならない値です。「数える」データです。\n例：\n\n人口の数\n副作用の報告数\nカテゴリーなど"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#例irisデータ",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "例：irisデータ",
-    "text": "例：irisデータ\nRでよく使われるirisデータは、5つの変数（variables）があります。\n\nknitr::kable(head(iris, 5))\n\n\nIris Dataset\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nどれが連続値でどれが離散値かわかりますか？\n実は\n\nSepal.Length（がく片の長さ）\nSepal.Width（がく片の幅）\nPetal.Length（花びらの長さ）\nPetal.Width（花びらの幅）\n\nは連続値で、\nSpecies（種類）\nだけが離散値です。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
-    "href": "blog/posts-ja/ggplot2 - 1.Choosing the right graph.html#グラフを選ぶときの考え方",
-    "title": "ggplot入門①：データに合ったグラフの選び方",
-    "section": "グラフを選ぶときの考え方",
-    "text": "グラフを選ぶときの考え方\nグラフを選ぶときには、まず\nどんな変数を扱っているのか\nを考えます。\n例えば、\n\n1つの連続値を見たいのか\nカテゴリーごとの違いを見たいのか\n2つの数値の関係を見たいのか\n\nによって、適切なグラフは変わってきます。\n次の記事では、\n\n・ggplotの基本構造\n・aesとは何か\n・最初のグラフの作り方\n\nを実際のコードを使って解説します。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "",
-    "text": "前回の記事では、データに合ったグラフの選び方について説明しました。\n今回は、実際にggplotの基本構造を見ていきます。\nggplotのコードは最初見るととても長く感じますが、実は基本の形はとてもシンプルです。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#ggplotの基本構造",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#ggplotの基本構造",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "ggplotの基本構造",
-    "text": "ggplotの基本構造\nすべてのggplotは、基本的に次のような構造になっています。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) +\n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;\n  ) +\n  &lt;THEME_FUNCTION&gt;(...)\nこう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに最低限必要なのは次の2つだけです。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;()\n*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。\nデータを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶという流れになります。\n分かりやすくまとめると、\nデータ + aesthetics + geometry\n（データ + 見た目の指定 + グラフの種類）\nこれをコードで書くと、\nggplot(data, aes()) + geom_*\nという形になります。\nこの考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#例散布図scatterplotを作る",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#例散布図scatterplotを作る",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "例：散布図（Scatterplot）を作る",
-    "text": "例：散布図（Scatterplot）を作る\n例として、前回も使ったirisデータを使います。\n\nknitr::kable(head(iris, 10))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n4.6\n3.4\n1.4\n0.3\nsetosa\n\n\n5.0\n3.4\n1.5\n0.2\nsetosa\n\n\n4.4\n2.9\n1.4\n0.2\nsetosa\n\n\n4.9\n3.1\n1.5\n0.1\nsetosa\n\n\n\n\n\nここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係を見てみます。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこのコードでは、\n\ndata = iris\n→ 使用するデータ\naes(x = Sepal.Length, y = Petal.Length)\n→ x軸とy軸にどの変数を使うか\ngeom_point()\n→ 散布図を作る\n\nという意味になります。\n先ほどのプレースホルダーの例では次のようになります。\n&lt;DATA&gt; → iris\n&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length\n&lt;GEOM_FUNCTION&gt; → geom_point()"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aesとは",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aesとは",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "aesとは？",
-    "text": "aesとは？\naes はaesthetics（美的要素）の略です。\nグラフの中で、\n\nどの変数をx軸\nどの変数をy軸\nどの変数を色\nどの変数を形\n\nとして使うかを指定します。\n例えば次のような要素があります。\n\n\n\naesthetics\n説明\n例\n\n\n\n\nx\nx軸に使う変数\nx = Sepal.Length\n\n\ny\ny軸に使う変数\ny = Petal.Length\n\n\ncolor\n点や線の色\ncolor = Species\n\n\nfill\n塗りつぶしの色\nfill = Species\n\n\nsize\n点や線の大きさ\nsize = Petal.Width\n\n\nshape\n点の形\nshape = Species\n\n\nalpha\n透明度（０に近いほど透明）\nalpha = 0.5\n\n\n\n基本的な散布図では、\nx\ny\nの2つを指定するだけでグラフを作ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aestheticsを使った例",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#aestheticsを使った例",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "aestheticsを使った例",
-    "text": "aestheticsを使った例\n先ほどのコードを少しアレンジしてみます。\n\nggplot(data = iris,\n       aes(\n         x = Sepal.Length, \n         y = Petal.Length, \n         color = Species, \n         size = Petal.Width, \n         alpha = 0.8)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこの例では、\n\nxとyで軸を指定し\ncolorでSpeciesごとに色を変え\nsizeでPetal.Widthに応じて点の大きさを変えています。\n\nこのように aes() を使うことで、データの情報をグラフの見た目に対応させることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#参考資料",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#参考資料",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "参考資料",
-    "text": "参考資料\n英語ですが、Positのチートシートもとても分かりやすいです。\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 2.basics.html#次回",
-    "href": "blog/posts-ja/DRAFT ggplot2 2.basics.html#次回",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "次回",
-    "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。\nggplotの理解がぐっと深まると思います。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html",
-    "href": "blog/posts-ja/ggplot2_2.basics.html",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "",
-    "text": "前回の記事では、データに合ったグラフの選び方について説明しました。\n今回は、実際にggplotの基本構造を見ていきます。\nggplotのコードは最初見るととても長く感じますが、基本の形を一回理解してしまえば案外シンプルです。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#ggplotの基本構造",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "ggplotの基本構造",
-    "text": "ggplotの基本構造\nすべてのggplotは、基本的に次のような構造になっています。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;LOCAL_MAPPINGS&gt;)...) +\n  &lt;STAT_FUNCTION&gt;(...) +\n  &lt;SCALE_FUNCTION&gt;(...) +\n  &lt;COORD_FUNCTION&gt;(...) +\n  &lt;FACET_FUNCTION&gt;(...) +\n  labs(\n    title = &lt;TITLE&gt;,\n    subtitle = &lt;SUBTITLE&gt;,\n    x = &lt;X_LABEL&gt;,\n    y = &lt;Y_LABEL&gt;,\n    caption = &lt;CAPTION&gt;\n  ) +\n  &lt;THEME_FUNCTION&gt;(...)\nこう見ると少し難しく感じるかもしれませんが、実際にグラフを作るときに最低限必要なのは次の2つだけです。\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +\n  &lt;GEOM_FUNCTION&gt;()\n*ここで使っている `&lt;&gt;` はプレースホルダー（placeholder）なので自分のデータや設定に合わせて書き換えます。\nデータを指定して → 見た目（aes）を決めて → グラフの種類（geom）を選ぶという流れになります。\n分かりやすくまとめると、\nデータ + aesthetics + geometry\n（データ + 見た目の指定 + グラフの種類）\nこれをコードで書くと、\nggplot(data, aes()) + geom_*\nという形になります。\nこの考え方を理解しておくと、コードが長くなっても「何をしているのか」が分かりやすくなります。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#例散布図scatterplotを作る",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "例：散布図（Scatterplot）を作る",
-    "text": "例：散布図（Scatterplot）を作る\n例として、前回も使ったirisデータを使います。\n\nknitr::kable(head(iris, 10))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n4.6\n3.4\n1.4\n0.3\nsetosa\n\n\n5.0\n3.4\n1.5\n0.2\nsetosa\n\n\n4.4\n2.9\n1.4\n0.2\nsetosa\n\n\n4.9\n3.1\n1.5\n0.1\nsetosa\n\n\n\n\n\nここでは、がく片（Sepal）の長さと花びら（Petal）の長さの関係をグラフにしました。\n\nggplot(data = iris, mapping = aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\ndata = iris\n→ 使用するデータ\naes(x = Sepal.Length, y = Petal.Length)\n→ x軸とy軸にどの変数を使うか\ngeom_point()\n→ 散布図を作る\n\nという意味になります。\n先ほどのプレースホルダーの例↓\n&lt;DATA&gt; → iris\n&lt;GLOBAL_MAPPINGS&gt; → x = Sepal.Length, y = Petal.Length\n&lt;GEOM_FUNCTION&gt; → geom_point()"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#aesとは",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "aesとは？",
-    "text": "aesとは？\naes はaesthetics（美的要素）の略です。\nグラフの中で、\n\nどの変数をx軸\nどの変数をy軸\nどの変数を色\nどの変数を形\n\nとして使うかなどを指定します。\n分かりやすくまとめるとこんな感じ↓\n\n\n\naesthetics\n説明\n例\n\n\n\n\nx\nx軸に使う変数\nx = Sepal.Length\n\n\ny\ny軸に使う変数\ny = Petal.Length\n\n\ncolor\n点や線の色\ncolor = Species\n\n\nfill\n塗りつぶしの色\nfill = Species\n\n\nsize\n点や線の大きさ\nsize = Petal.Width\n\n\nshape\n点の形\nshape = Species\n\n\nalpha\n透明度（０に近いほど透明）\nalpha = 0.5\n\n\n\n基本的な散布図では、\nx\ny\nの2つを指定するだけでグラフを作ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#aestheticsを使った例",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "aestheticsを使った例",
-    "text": "aestheticsを使った例\n先ほどのコードを少しアレンジしてみます。\n\nggplot(data = iris,\n       aes(\n         x = Sepal.Length, \n         y = Petal.Length, \n         color = Species, \n         size = Petal.Width, \n         alpha = 0.8)) +\n  geom_point()\n\n\n\n\n\n\n\n\nこの例では、\n\nxとyで軸を指定し\ncolorでSpeciesごとに色を変え\nsizeでPetal.Widthに応じて点の大きさを変えてみました。\n\nこのように aes() を使うことで、データの情報をグラフの見た目に対応させることができ、かなり見やすくなります。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#参考資料",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "参考資料",
-    "text": "参考資料\nPositのチートシートもとても分かりやすいです。\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html\n日本語バージョン：\nhttps://rstudio.github.io/cheatsheets/translations/japanese/data-visualization_ja.pdf"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_2.basics.html#次回",
-    "href": "blog/posts-ja/ggplot2_2.basics.html#次回",
-    "title": "ggplot入門②：ggplotの基本",
-    "section": "次回",
-    "text": "次回\n次の記事では、\n\n第一回で説明した、「データの種類」に合わせて作るグラフ\nよく使うグラフの種類\n\ngeom_bar\ngeom_histogram\ngeom_boxplot\n\n\nなどを実際の例を使って解説します。"
-  },
-  {
-    "objectID": "thanks.html",
-    "href": "thanks.html",
-    "title": "Thank you for your enquiry",
-    "section": "",
-    "text": "Thank you for your enquiry\nYour message has been successfully sent.\n\nReturn to homepage"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "",
-    "text": "library(ggplot2)\n前回の記事では、ggplotの基本構造について説明しました。\n今回は、実際に どのグラフを使えばよいのか を見ていきます。\n第一回でも説明したように、データのタイプ（連続値・離散値）によって適切なグラフは変わります。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値が1つの場合",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値が1つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "離散値が1つの場合",
-    "text": "離散値が1つの場合\n\n棒グラフ\n離散値（カテゴリー）を1つだけ見る場合は、棒グラフ（bar chart）をよく使います。\n例えば、irisデータでは Species が離散値です。\n\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nこのグラフでは、それぞれの種類（Species）が何件あるかを見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が1つの場合",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が1つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "連続値が1つの場合",
-    "text": "連続値が1つの場合\n\nヒストグラム\n連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。\n例えば、がく片の長さ（Sepal.Length）を見てみます。\n\nggplot(iris, aes(x = Sepal.Length)) + \n  geom_histogram(binwidth = 0.2)\n\n\n\n\n\n\n\n# binwidthとは、区間（bin）の幅を表しています。\n# 小さい値 = 細かいヒストグラム\n# 大きい値 = 大まかなヒストグラム\n\nヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。\n\n\n密度プロット\n同じく分布を見る方法として、密度プロット（density plot）があります。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_density(adjust = 1)\n\n\n\n\n\n\n\n# adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。\n# 小さい値 = ギザギザの曲線\n# 大きい値 = なめらかな曲線\n\nヒストグラムよりもなめらかな分布を見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が2つの場合",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#連続値が2つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "連続値が2つの場合",
-    "text": "連続値が2つの場合\n\n散布図\n2つの連続値の関係を見るときは、散布図（scatterplot）を使います。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n散布図では、2つの変数の関係（相関など）を見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値-連続値",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 3.Common graph types in ggplot.html#離散値-連続値",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "離散値 + 連続値",
-    "text": "離散値 + 連続値\n\n箱ひげ図\n離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nこのグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。\nこのように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。\nそのため、まずデータのタイプを理解する → 適切なグラフを選ぶという流れを意識してみてください。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
-    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "",
-    "text": "library(ggplot2)\n前回の記事では、ggplotの基本構造について説明しました。\n今回は、実際に どのグラフを使えばよいのか を見ていきます。\n第一回でも説明したように、データのタイプ（連続値・離散値）によって適切なグラフは変わります。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
-    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値が1つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "離散値が1つの場合",
-    "text": "離散値が1つの場合\n\n棒グラフ\n離散値（カテゴリー）を1つだけ見る場合は、棒グラフ（bar chart）をよく使います。\n例えば、irisデータでは Species が離散値です。\n\nggplot(iris, aes(x = Species)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nこのグラフでは、それぞれの種類（Species）が何件あるかを見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
-    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が1つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "連続値が1つの場合",
-    "text": "連続値が1つの場合\n\nヒストグラム\n連続値の分布を見るときは、ヒストグラム（histogram）がよく使われます。\n例えば、がく片の長さ（Sepal.Length）を見てみます。\n\nggplot(iris, aes(x = Sepal.Length)) + \n  geom_histogram(binwidth = 0.2)\n\n\n\n\n\n\n\n# binwidthとは、区間（bin）の幅を表しています。\n# 小さい値 = 細かいヒストグラム\n# 大きい値 = 大まかなヒストグラム\n\nヒストグラムでは、データがどの範囲に多く分布しているかを見ることができます。\n\n\n密度プロット\n同じく分布を見る方法として、密度プロット（density plot）があります。\n\nggplot(iris, aes(x = Sepal.Length)) +\n  geom_density(adjust = 1)\n\n\n\n\n\n\n\n# adjustとは、密度曲線のスムージングの強さを調整するパラメーターです。\n# 小さい値 = ギザギザの曲線\n# 大きい値 = なめらかな曲線\n\nヒストグラムよりもなめらかな分布を見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
-    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#連続値が2つの場合",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "連続値が2つの場合",
-    "text": "連続値が2つの場合\n\n散布図\n2つの連続値の関係を見るときは、散布図（scatterplot）を使います。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\n散布図では、2つの変数の関係（相関など）を見ることができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
-    "href": "blog/posts-ja/ggplot2_3.Common_graph_types.html#離散値-連続値",
-    "title": "ggplot入門③：よく使うグラフの種類",
-    "section": "離散値 + 連続値",
-    "text": "離散値 + 連続値\n\n箱ひげ図\n離散値と連続値を比較するときは、箱ひげ図（boxplot）がよく使われます。\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\nこのグラフでは、種類ごとのSepal.Lengthの分布を比較することができます。\nこのように、データ分析では「どのグラフを使うべきか」を考えることがとても大切です。\nそのため、まずデータのタイプを理解する → 適切なグラフを選ぶという流れを意識してみてください。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 5.Useful ggplot tricks.html",
-    "title": "ggplot便利テクニック",
-    "section": "",
-    "text": "library(ggplot2)\nlibrary(ggiraph)\n\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n    ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n      geom_jitter_interactive(aes(fill = Species,\n                                  tooltip = paste0(\"Sepal Length: \",\n                                                  `Sepal Length`,\n                                                  \"cm\",\n                                                  \"\\nPetal Length: \",\n                                                  `Petal Length`,\n                                                  \"cm\")),\n                              shape = 21,\n                              color = \"black\",\n                              size = 2,\n                              stroke = 0.8, #border thickness\n                              alpha = 0.9,  #transparency\n                              ) +\n      scale_fill_manual(values = c(\"setosa\" = \"pink\", \n                                     \"versicolor\" = \"#2A9D8F\",\n                                     \"virginica\" = \"purple\")) +\n      coord_fixed(ratio = 1) + #Keeping x and y equal aspect ratio\n      scale_x_continuous(labels  = function(x) paste0(x, \"cm\")) +\n      scale_y_continuous(breaks = seq(0, 10, by = 1),labels = function(x) paste0(x, \"cm\")) +\n      labs(title = \"Sepal Length vs Petal Length\") +\n      theme_minimal(base_size = 12) +\n      theme(\n        text = element_text(family = \"Georgia\"),\n        plot.title.position = \"panel\",\n      )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nカーソルを合わせれば一つ一つの長さが見れるようになってます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "",
-    "text": "前回の記事では、どのグラフを使えばよいのかについて説明しました。\n今回は、作ったグラフをより見やすくする方法を紹介します。\nデータ可視化では、単にグラフを作るだけではなく、読みやすく、伝わりやすいデザインにすることがとても重要です。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#点の見た目を調整する",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#点の見た目を調整する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "点の見た目を調整する",
-    "text": "点の見た目を調整する\nまず、点の見た目を少し変えてみます。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + \n  geom_jitter(aes(fill = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8,\n              alpha = 0.9)\n\n\n\n\n\n\n\n\nここでは次のような設定をしています。\n\n\n\n引数\n説明\n\n\n\n\nshape\n点の形\n\n\ncolor\n点の枠線の色\n\n\nfill\n点の塗りつぶしの色\n\n\nsize\n点の大きさ\n\n\nstroke\n枠線の太さ\n\n\nalpha\n透明度\n\n\n\ngeom_jitter() はgeom_point()と似ていますが、点が少しずつずれて表示されるので、重なって見えにくくなるのを防ぐことができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#色をカスタマイズする",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#色をカスタマイズする",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "色をカスタマイズする",
-    "text": "色をカスタマイズする\n次に、色を自分で指定してみます。\n\nscale_fill_manual(values = c(\n  \"setosa\" = \"pink\",\n  \"versicolor\" = \"#2A9D8F\",\n  \"virginica\" = \"purple\"\n))\n\nscale_fill_manual() を使うと、カテゴリーごとの色を自由に設定できます。\nこの例ではSpeciesの3種類のiris（アヤメ）それぞれに色を割り当てています。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#軸ラベルを変更する",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#軸ラベルを変更する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "軸ラベルを変更する",
-    "text": "軸ラベルを変更する\n次に、軸の表示を少し分かりやすくします。\n\nscale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\nscale_y_continuous(labels = function(x) paste0(x, \"cm\"))\n\nfunction(x) は、軸の数値を加工するための小さな関数です。\nここでは paste0(x, \"cm\") を使って、軸の値に \"cm\" を追加しています。\nそのため、例えば 4 は \"4cm\" のように表示されます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#タイトルを追加する",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#タイトルを追加する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "タイトルを追加する",
-    "text": "タイトルを追加する\nグラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。\n\nlabs(title = \"Sepal Length vs Petal Length\",\n     x = \"Sepal Length\",\n     y = \"Petal Length\")\n\nlabs() を使うと、\n\nタイトル\n軸ラベル（例：x=Sepal Lengthなど）\nキャプション\n\nなどを追加できます。"
-  },
-  {
-    "objectID": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#テーマを変更する",
-    "href": "blog/posts-ja/DRAFT ggplot2 - 4.Making ggplot beautiful.html#テーマを変更する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "テーマを変更する",
-    "text": "テーマを変更する\n最後に、グラフ全体のデザインを変更します。\n\ntheme_minimal(base_size = 10)\n\ntheme_minimal() は、背景をシンプルにしたテーマです。\n他にもテーマの種類はたくさんあります。\n\n\n\nテーマ\n説明\nggplot\n\n\n\n\nminimal\nシンプルで背景が白い\ntheme_minimal()\n\n\nclassic\n昔ながらのRのグラフに近い\ntheme_classic()\n\n\nbw\n白黒でグリッド線あり\ntheme_bw()\n\n\nlight\n薄いグリッド線で読みやすい\ntheme_light()\n\n\ndark\n背景が黒い\ntheme_dark()\n\n\ngray（default）\nggplotのデフォルトテーマ\ntheme_gray()\n\n\nvoid\n軸や背景をすべて消す\ntheme_void()\n\n\n\nさらにカスタムのテーマでフォントも変更できます。\n\ntheme(text = element_text(family = \"Georgia\"))\n\nfamily = \"Georgia\" はフォントを指定しています。\nただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
-    "href": "blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
-    "title": "ggplot入門⑤：便利なggplotテクニック",
-    "section": "",
-    "text": "今回はシリーズの最後として、ggplotをより便利に使うためのテクニックを紹介します。\n少し応用的な内容ですが、覚えておくとデータ可視化の幅が広がります。\n今回は、前回（第４回）作ったコードをもっとアレンジしていきます。\nそれがこのコードです↓↓\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x=`Sepal Length`, y=`Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)\n\n\n\n\n\nこのグラフの点にカーソルを合わせてみてください。合わせると値が表示されます。こうすることで、レポートやウェブページなどで、より分かりやすいデータ可視化を作ることができます。\n\nインタラクティブなグラフを作る（ggiraph）\nこれを実現できたのが、ggiraphというパッケージです。\n通常のggplotは静的なグラフですが、 ggiraphパッケージを使うとインタラクティブなグラフを作ることができます。\nこのコードでggiraphが使われているのは、geom_jitter_interactiveのところです。前回のgeom_jitterに_interactiveがつきました。\nこのコード全体を1つのオブジェクトに保存します。\nここでは interactive_iris_plot という名前のオブジェクトを作っています。\n最後にgirafe(ggobj = &lt;object_name&gt;)と書くことで、そのオブジェクトを表示します。\nただ、そのままだと表示が少し読みづらいかもしれないので、\n\n tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n\nで、きれいに表示されるように書き換えます。\n\n\n軸の比率を固定する（coord_fixed）\n散布図では、x軸とy軸の比率を同じにしたい場合があります。\nその場合はcoord_fixed()を使います。\ncoord_fixed(ratio = 1)\nこれを設定すると、x軸とy軸のスケールが同じ比率になります。\n例えば、\n\n地理データ\n距離データ\n実際の比率が重要なデータ\n\nなどではとても便利です。\n\n\n軸の目盛りを細かく調整する\nggplotでは、軸の表示も自由にカスタマイズできます。\n例えば次のコードです。\n\nscale_y_continuous(breaks = seq(0, 10, by = 1),\n                   labels = function(x) paste0(x, \"cm\") )\n\nここでは\n\nbreaks→軸の目盛りの位置を指定\nlabels→軸ラベルの表示方法を指定（詳しくは第4回のブログで）\n\nしています。\nseq(0,10,by=1) は「0,1,2,3,4,5,6,7,8,9,10」のように目盛りを作っています。\n\n\n列名を整える\n今回のコードでは次の処理をしています。\n\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\n\nこれは、Sepal.Lengthのような列名を”Sepal Length”のように変更しています。\n前回のブログでは\n\nlabs(x=\"Sepal Length\", y=\"Petal Length\")\n\nのように軸ラベルを変更しましたが、rename_with()を使うとデータの列名自体をまとめて変更することができます。\nとしている事は同じです。\nxとyの列名両方を同じように変えたいときに、まとめて変えられるので便利です。\nこれによって、グラフのラベルが自然な表記になります。\n\n\nまとめ\n今回紹介したテクニックは次の通りです。\n\nggiraphでインタラクティブなグラフを作る\ncoord_fixed()で軸の比率を固定する\nscale_*()で軸を調整する\nrename_with()で列名を整理する\n\nどれも小さな工夫ですが、グラフの見やすさや使いやすさが大きく変わります。\n\n\nシリーズまとめ\nこのシリーズでは、ggplotの基本から応用までを紹介してきました。\n\nデータに合ったグラフの選び方\nggplotの基本構造\nグラフの種類\nグラフを見やすくする方法\n便利なggplotテクニック\n\nggplotはとても柔軟なツールなので、使い方を覚えるとデータ可視化がとても楽しくなります。\nぜひ、自分のデータでも試してみてください。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "",
-    "text": "前回の記事では、どのグラフを使えばよいのかについて説明しました。\n今回は、作ったグラフをより見やすくする方法を紹介します。\nデータ可視化では、単にグラフを作るだけではなく、読みやすく、伝わりやすいデザインにすることがとても重要です。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#点の見た目を調整する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "点の見た目を調整する",
-    "text": "点の見た目を調整する\nまず、点の見た目を少し変えてみます。\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) + \n  geom_jitter(aes(fill = Species),\n              shape = 21,\n              color = \"black\",\n              size = 2,\n              stroke = 0.8,\n              alpha = 0.9)\n\n\n\n\n\n\n\n\nここでは次のような設定をしています。\n\n\n\n引数\n説明\n\n\n\n\nshape\n点の形\n\n\ncolor\n点の枠線の色\n\n\nfill\n点の塗りつぶしの色\n\n\nsize\n点の大きさ\n\n\nstroke\n枠線の太さ\n\n\nalpha\n透明度\n\n\n\ngeom_jitter() はgeom_point()と似ていますが、点が少しずつずれて表示されるので、重なって見えにくくなるのを防ぐことができます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#色をカスタマイズする",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "色をカスタマイズする",
-    "text": "色をカスタマイズする\n次に、色を自分で指定してみます。\n\nscale_fill_manual(values = c(\n  \"setosa\" = \"pink\",\n  \"versicolor\" = \"#2A9D8F\",\n  \"virginica\" = \"purple\"\n))\n\nscale_fill_manual() を使うと、カテゴリーごとの色を自由に設定できます。\nこの例ではSpeciesの3種類のiris（アヤメ）それぞれに色を割り当てています。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#軸ラベルを変更する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "軸ラベルを変更する",
-    "text": "軸ラベルを変更する\n次に、軸の表示を少し分かりやすくします。\n\nscale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\nscale_y_continuous(labels = function(x) paste0(x, \"cm\"))\n\nfunction(x) は、軸の数値を加工するための小さな関数です。\nここでは paste0(x, \"cm\") を使って、軸の値に \"cm\" を追加しています。\nそのため、例えば 4 は \"4cm\" のように表示されます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#タイトルを追加する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "タイトルを追加する",
-    "text": "タイトルを追加する\nグラフにはタイトルを付けておくと、何を表しているのかが分かりやすくなります。\n\nlabs(title = \"Sepal Length vs Petal Length\",\n     x = \"Sepal Length\",\n     y = \"Petal Length\")\n\nlabs() を使うと、\n\nタイトル\n軸ラベル（例：x=Sepal Lengthなど）\nキャプション\n\nなどを追加できます。"
-  },
-  {
-    "objectID": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
-    "href": "blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html#テーマを変更する",
-    "title": "ggplot入門④：グラフを見やすくする方法",
-    "section": "テーマを変更する",
-    "text": "テーマを変更する\n最後に、グラフ全体のデザインを変更します。\n\ntheme_minimal(base_size = 10)\n\ntheme_minimal() は、背景をシンプルにしたテーマです。\n他にもテーマの種類はたくさんあります。\n\n\n\nテーマ\n説明\nggplot\n\n\n\n\nminimal\nシンプルで背景が白い\ntheme_minimal()\n\n\nclassic\n昔ながらのRのグラフに近い\ntheme_classic()\n\n\nbw\n白黒でグリッド線あり\ntheme_bw()\n\n\nlight\n薄いグリッド線で読みやすい\ntheme_light()\n\n\ndark\n背景が黒い\ntheme_dark()\n\n\ngray（default）\nggplotのデフォルトテーマ\ntheme_gray()\n\n\nvoid\n軸や背景をすべて消す\ntheme_void()\n\n\n\nさらにカスタムのテーマでフォントも変更できます。\n\ntheme(text = element_text(family = \"Georgia\"))\n\nfamily = \"Georgia\" はフォントを指定しています。\nただし、環境によってはこのフォントが入っていない場合もあるので、その場合は別のフォントが表示されることがあります。"
-  },
-  {
-    "objectID": "blog/posts/DRAFT ggplot .html",
-    "href": "blog/posts/DRAFT ggplot .html",
-    "title": "2. The Main Components of ggplot",
-    "section": "",
-    "text": "aes within ggplot() vs geom_*() - local vs global aesthetics\nBasic 7 layers - first 2 must be memorised\ncolor = “your class variable”, or do size or shape instead\n\noutside aes() if you are specifying color such as “pink”\n\nwhat is facets? useful especially for categorical values\n\nGreat question. In ggplot2, plots are built by layering components. There isn’t one strict “equation”, but there is a common grammar template that most plots follow.\nBelow is a complete conceptual skeleton of a ggplot."
-  },
-  {
-    "objectID": "blog/posts/DRAFT ggplot .html#understanding-ggplot2",
-    "href": "blog/posts/DRAFT ggplot .html#understanding-ggplot2",
-    "title": "2. The Main Components of ggplot",
-    "section": "",
-    "text": "aes within ggplot() vs geom_*() - local vs global aesthetics\nBasic 7 layers - first 2 must be memorised\ncolor = “your class variable”, or do size or shape instead\n\noutside aes() if you are specifying color such as “pink”\n\nwhat is facets? useful especially for categorical values\n\nGreat question. In ggplot2, plots are built by layering components. There isn’t one strict “equation”, but there is a common grammar template that most plots follow.\nBelow is a complete conceptual skeleton of a ggplot."
-  },
-  {
-    "objectID": "blog/posts/DRAFT ggplot .html#full-ggplot-template-grammar-of-graphics",
-    "href": "blog/posts/DRAFT ggplot .html#full-ggplot-template-grammar-of-graphics",
-    "title": "2. The Main Components of ggplot",
-    "section": "1. Full ggplot Template (Grammar of Graphics)",
-    "text": "1. Full ggplot Template (Grammar of Graphics)\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;GLOBAL_MAPPINGS&gt;)) +    &lt;GEOM_FUNCTION&gt;(     mapping = aes(&lt;LOCAL_MAPPINGS&gt;),     stat = &lt;STAT&gt;,     position = &lt;POSITION&gt;,     ...   ) +    &lt;STAT_FUNCTION&gt;(...) +    &lt;SCALE_FUNCTION&gt;(...) +    &lt;COORD_FUNCTION&gt;(...) +    &lt;FACET_FUNCTION&gt;(...) +    &lt;THEME_FUNCTION&gt;(...) +    labs(     title = &lt;TITLE&gt;,     subtitle = &lt;SUBTITLE&gt;,     x = &lt;X_LABEL&gt;,     y = &lt;Y_LABEL&gt;,     caption = &lt;CAPTION&gt;   )"
-  },
-  {
-    "objectID": "blog/posts/18-03-26-choosing-the-right-graph.html",
-    "href": "blog/posts/18-03-26-choosing-the-right-graph.html",
-    "title": "ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data",
-    "section": "",
-    "text": "When creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s not always clear what each part is doing.\nTo make things easier to understand, I decided to write a short series explaining the fundamentals of ggplot.\nggplot is a very powerful tool with many components, so covering everything in a single article would be difficult. In this series, we will break things down step by step.\nIn this first article, we will focus on an important question:\nHow do you choose the right type of graph for your data?\nBefore even thinking about writing ggplot code, one thing is essential - understanding your data.\n\nWhat is ggplot2?\nIn simple terms, ggplot2 is the most commonly used data visualisation library in R.\nIt allows you to create many types of graphs and customise them extensively, including colours, labels, and layout.\nOnce you become comfortable with ggplot, it becomes possible to create clear and professional visualisations for reports and presentations.\nHowever, graphs are not only about aesthetics. They are tools for communicating information and telling a story with data.\nIf you choose the wrong type of graph, or include unnecessary information, it can become difficult for readers to understand the message you are trying to convey.\n\n\nWhy choosing the right graph matters\nIn Programming Skills for Data Science (Freeman and Ross (2018)), the authors highlight several important considerations when selecting a visualisation:\n\nThe goal of the visualisation\nThe type of data available\nHuman perceptual abilities\nConstraints of the output medium (for example, screen size)\n\nFor data analysts, one of the most important skills is simply understanding the data itself.\nIf you do not fully understand the data, it becomes difficult to explain the results. Even if you create attractive graphs, the final report may still lack meaning.\nFor example, when I recently explored FAERS adverse event data, the first step was to ask:\n\nWhat do I actually want to learn from this dataset?\n\nSuppose the broad question is:\n“Which adverse events have the most severe impact globally?”\nFrom there, we can break the problem down into more specific questions, such as:\n\nWhich adverse events are reported most frequently?\nWhich drugs are associated with the highest number of adverse event reports?\nWhich adverse events are most often linked to death?\n\nBy gradually refining the question, it becomes clearer what kind of visualisations we need.\nAnd to do that effectively, we must first understand the structure of the data.\n\n\nUnderstanding variable types\nOne of the most important things to understand when visualising data is the type of variables you are working with.\nIn general, variables can be divided into two categories:\n\nContinuous variables\nContinuous variables can take any value within a range, including decimal values. These are values we typically measure.\nExamples include:\n\nLength\nWeight\nTemperature\n\n\n\nDiscrete variables\nDiscrete variables represent values that are counted rather than measured, and typically cannot take decimal values.\nExamples include:\n\nPopulation counts\nNumber of reported adverse events\nCategories or groups\n\n\n\n\nExample: the iris dataset\nA commonly used dataset in R is the iris dataset, which contains measurements for different iris flower species.\nIt includes five variables:\n\nknitr::kable(head(iris, 5))\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n\n\n\nIn this dataset:\nContinuous variables\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\n\nDiscrete variable\n\nSpecies\n\nUnderstanding this distinction is important because the type of variables determines which graph is appropriate.\n\n\nHow to think about choosing a graph\nWhen deciding which graph to use, the first question to ask is:\nWhat type of variables am I working with?\nFor example:\n\nAre you looking at one continuous variable?\nDo you want to compare categories?\nAre you exploring the relationship between two numeric variables?\n\nEach of these situations calls for a different type of visualisation.\nChoosing the right graph is one of the most important steps in communicating your results clearly.\n\n\nNext article\nIn the next article, we will start looking at ggplot itself.\nWe will cover:\n\nThe basic structure of ggplot\nWhat aes() means\nHow to create your first graph in R\n\nwith practical code examples.\n\n\n\n\n\n\n\n\nReferences\n\nFreeman, Michael, and Joel Ross. 2018. Programming Skills for Data Science: Start Writing Code to Wrangle, Analyze, and Visualize Data with r. Addison-Wesley Professional."
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html",
-    "href": "blog/posts/21-03-26-ggplot_part2.html",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "",
-    "text": "When creating graphs in R, one of the most widely used tools is ggplot2.\nHowever, many beginners feel overwhelmed when they first encounter ggplot. The code can look long, and it’s often unclear what each part is doing.\nThe good news is that the core idea behind ggplot is actually very simple.\nIn this article, we will cover:\nThis article combines key ideas from Parts 2–4 of my ggplot series in Japanese (R seems to be a lot less common in Japan, hence my ggplot blog posts are more detailed in Japanese)."
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#example-scatterplot",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Example: Scatterplot",
-    "text": "Example: Scatterplot\nUsing the built-in iris dataset:\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis creates a scatterplot where:\n\nSepal.Length is mapped to the x-axis\nPetal.Length is mapped to the y-axis"
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#common-graph-choices",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Common Graph Choices",
-    "text": "Common Graph Choices\n\n\n\nData Type\nGraph\nggplot\n\n\n\n\nDiscrete (1 variable)\nBar chart\ngeom_bar()\n\n\nContinuous (1 variable)\nHistogram\ngeom_histogram()\n\n\nContinuous (1 variable)\nDensity Plot\ngeom_density()\n\n\nContinuous (2 variables)\nScatterplot\ngeom_point()\n\n\nDiscrete + Continuous\nBoxplot\ngeom_boxplot()\n\n\n\nChoosing the right graph depends on what you want to explore:\n\nDistribution → histogram\nRelationship → scatterplot\nComparison across groups → boxplot"
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#adding-color",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Adding Color",
-    "text": "Adding Color\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +\n  geom_point()\n\n\n\n\n\n\n\n\nThis helps distinguish different groups."
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#improving-labels",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Improving Labels",
-    "text": "Improving Labels\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  labs(title = \"Sepal Length vs Petal Length\",\n       x = \"Sepal Length (cm)\",\n       y = \"Petal Length (cm)\")\n\n\n\n\n\n\n\n\nAdding labels makes the graph easier to interpret."
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#using-themes",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Using Themes",
-    "text": "Using Themes\n\nggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\n\nThemes help simplify the visual appearance."
-  },
-  {
-    "objectID": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
-    "href": "blog/posts/21-03-26-ggplot_part2.html#reference-materials",
-    "title": "ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations",
-    "section": "Reference Materials",
-    "text": "Reference Materials\nThis page explains all about ggplot2 code in depth:\nhttps://rstudio.github.io/cheatsheets/html/data-visualization.html"
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html",
-    "href": "blog/posts/25-03-26-ggplot_part3.html",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "",
-    "text": "In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.\nThese are slightly more advanced than the basics, but they can significantly improve how you present your data.\nWe will build on the graph we created in the previous article and extend it further.\nHere is the code we will use:\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)"
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#introduction",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#introduction",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "",
-    "text": "In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.\nThese are slightly more advanced than the basics, but they can significantly improve how you present your data.\nWe will build on the graph we created in the previous article and extend it further.\nHere is the code we will use:\n\ninteractive_iris_plot &lt;- iris |&gt;\n  dplyr::rename_with(~ gsub(\".\", \" \", .x, fixed = TRUE)) |&gt;\n  ggplot(aes(x = `Sepal Length`, y = `Petal Length`)) +\n  geom_jitter_interactive(\n    aes(\n      fill = Species,\n      tooltip = paste0(\n        \"Sepal Length: \", `Sepal Length`, \" cm\",\n        \"\\nPetal Length: \", `Petal Length`, \" cm\"\n      )\n    ),\n    shape = 21,\n    color = \"black\",\n    size = 2,\n    stroke = 0.8,\n    alpha = 0.9\n  ) +\n  scale_fill_manual(values = c(\n    \"setosa\" = \"pink\",\n    \"versicolor\" = \"#2A9D8F\",\n    \"virginica\" = \"purple\"\n  )) +\n  coord_fixed(ratio = 1) +\n  scale_x_continuous(labels = function(x) paste0(x, \"cm\")) +\n  scale_y_continuous(\n    breaks = seq(0, 10, by = 1),\n    labels = function(x) paste0(x, \"cm\")\n  ) +\n  labs(title = \"Sepal Length vs Petal Length\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    text = element_text(family = \"Georgia\"),\n    plot.title.position = \"panel\"\n  )\n\ngirafe(ggobj = interactive_iris_plot)"
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#creating-interactive-plots-with-ggiraph",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Creating Interactive Plots with ggiraph",
-    "text": "Creating Interactive Plots with ggiraph\nTry hovering over the points in this plot.\nWhen you move your cursor over a point, additional information appears. This makes your visualisation much more interactive and informative, especially for reports or web pages.\nThis functionality comes from the ggiraph package.\nNormally, ggplot creates static plots. However, ggiraph allows you to add interactivity by using functions such as geom_jitter_interactive().\nPersonally I recommend ggiraph over Plotly (Another package for interactive graphs) as ggiraph is much simpler and does not mess anything up when you try to add one small tweak.\n\nStoring the Plot as an Object\nWhen using ggiraph, you first need to store your plot in an object.\nThis object is then passed to `girafe()` to render the interactive plot:\ngirafe(ggobj = &lt;OBJECT&gt;)\nIn this example, the entire plot is stored in an object called:\ninteractive_iris_plot\nThis also allows you to reuse or modify the plot later.\nFinally, the plot is rendered using:\ngirafe(ggobj = interactive_iris_plot)\nThis step is necessary because ggiraph works with complete ggplot objects rather than individual layers."
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#fixing-the-aspect-ratio-coord_fixed",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Fixing the Aspect Ratio (coord_fixed)",
-    "text": "Fixing the Aspect Ratio (coord_fixed)\nIn some cases, you may want the x-axis and y-axis to use the same scale.\nYou can do this using:\ncoord_fixed(ratio = 1)\nThis ensures that one unit on the x-axis is equal to one unit on the y-axis.\nThis is especially useful for:\n\nSpatial data\nDistance comparisons\nAny data where proportions matter"
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#customising-axis-breaks-and-labels",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Customising Axis Breaks and Labels",
-    "text": "Customising Axis Breaks and Labels\nggplot allows you to control how axes are displayed.\nFor example:\nscale_y_continuous(\n  breaks = seq(0, 10, by = 1),\n  labels = function(x) paste0(x, \"cm\")\n)\nHere:\n\nbreaks defines where ticks appear\nlabels controls how those values are displayed\n\nThe seq(0, 10, by = 1) function generates values like 0, 1, 2, …, 10."
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#cleaning-column-names",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Cleaning Column Names",
-    "text": "Cleaning Column Names\nIn this code:\nrename_with(~ gsub(\".\", \" \", .x, fixed = TRUE))\ncolumn names like Sepal.Length are converted into Sepal Length.\nThis improves readability in the final plot.\nAn alternative approach would be manually setting labels using labs(), but this method allows you to update multiple variables at once."
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#summary",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#summary",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Summary",
-    "text": "Summary\nIn this article, we covered:\n\nCreating interactive plots with ggiraph\nFixing axis ratios with coord_fixed()\nAdjusting axes with scale_*()\nCleaning column names with rename_with()\n\nEach of these techniques may seem small, but together they can greatly improve the clarity and usability of your visualisations."
-  },
-  {
-    "objectID": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
-    "href": "blog/posts/25-03-26-ggplot_part3.html#final-thoughts",
-    "title": "ggplot2 Fundamentals (Part 3): Useful ggplot Techniques",
-    "section": "Final Thoughts",
-    "text": "Final Thoughts\nThroughout this series, we explored ggplot from the basics to more practical usage:\n\nChoosing the right graph\nUnderstanding ggplot structure\nImproving readability\nand applying useful techniques\n\nggplot is a flexible and powerful tool. Once you understand the core ideas, you can create clear and effective visualisations for a wide range of data."
   }
 ]

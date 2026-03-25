@@ -8,17 +8,25 @@ categories:
   - Data Visualisation
 format:
   html:
-    include-in-header: 
-      text: |
-        <style>
-        .description { display: none; }
-        </style>
     include-after-body: blog-footer-ja.html
 toc: true
 knitr:
   opts_chunk: 
     dev: "ragg_png"
 ---
+
+本記事は、ggplot入門シリーズ（全5回）の一部です。\
+他の回はこちらからご覧いただけます：
+
+-   [ggplot入門②：ggplotの基本](https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2_2.basics.html)
+
+-   [ggplot入門③：よく使うグラフの種類](https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2_3.Common_graph_types.html)
+
+-   [ggplot入門④：グラフを見やすくする方法](https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html)
+
+-   [ggplot入門⑤：便利なggplotテクニック](https://reinasdatastudio.github.io/webpage/blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html)
+
+------------------------------------------------------------------------
 
 Rでグラフを作ろうと思ったとき、ほとんどの人が使うのがggplot2です。
 

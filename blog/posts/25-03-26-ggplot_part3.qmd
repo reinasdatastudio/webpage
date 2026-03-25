@@ -12,7 +12,13 @@ format:
 toc: true
 ---
 
-## Introduction
+This is a three-part series. Other series can be viewed here:
+
+-   [ggplot2 Fundamentals (Part 1): Choosing the Right Graph for Your Data](https://reinasdatastudio.github.io/webpage/blog/posts/18-03-26-choosing-the-right-graph.html)
+
+-   [ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations](https://reinasdatastudio.github.io/webpage/blog/posts/21-03-26-ggplot_part2.html)
+
+------------------------------------------------------------------------
 
 In this final part of the series, we’ll look at some useful techniques that make ggplot more powerful and practical.
 
