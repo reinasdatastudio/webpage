@@ -1034,5 +1034,110 @@
     "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
     "section": "Final thoughts",
     "text": "Final thoughts\nThe tidyverse isn’t just a set of packages—it’s a way of thinking about data.\nInstead of writing complicated code, you:\n\nBreak your work into steps\nWrite readable transformations\nBuild reproducible workflows\n\nIf you’re just starting with R, learning the tidyverse is one of the best investments you can make."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "",
+    "text": "If you are reading this you are likely to be someone who is familiar with R and its endless list of packages.\nOne of the most popular packages used is tidyverse.\nIn this post, I’ll explain what the tidyverse is, what’s inside it, and how it helps you clean and analyse data more efficiently.\nI wrote this article mainly because a lot of tutorials use it but I don’t see many of them actually explaining what it is."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#what-is-the-tidyverse",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#what-is-the-tidyverse",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What is the tidyverse?",
+    "text": "What is the tidyverse?\nIt may be slightly confusing at first because the tidyverse is actually a collection of R packages. It is designed for:\n\nCleaning data\nTransforming data\nVisualising data\n\nAll in a consistent and readable way.\nInstead of using many unrelated functions, the tidyverse gives you a unified system where everything works together."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#why-is-it-so-popular",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#why-is-it-so-popular",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Why is it so popular?",
+    "text": "Why is it so popular?\nBefore tidyverse, data cleaning in R often looked messy and hard to follow.\nWith tidyverse, you can write code that reads almost like a sentence:\nlibrary(tidyverse)\n\ndf %&gt;%\n  filter(!is.na(age)) %&gt;%\n  mutate(income = income * 1.1) %&gt;%\n  arrange(desc(income))\nYou can read this as:\n“Take the data, remove missing ages, adjust income, then sort it in descending order.”\nThat readability is one of the biggest reasons it’s widely used.\nIt is also one of the reasons why I love R - These codes actually make sense!"
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#whats-inside-the-tidyverse",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#whats-inside-the-tidyverse",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What’s inside the tidyverse?",
+    "text": "What’s inside the tidyverse?\nWhen you load library(tidyverse), you’re actually loading several packages.\nHere are the most important ones:\n\n1. dplyr — Data manipulation\nThis is the core tool for working with data.\nCommon functions:\n\nfilter() → keep rows\nselect() → choose columns\nmutate() → create new columns\nsummarise() → aggregate data\n\nExample:\ndf %&gt;%\n  group_by(country) %&gt;%\n  summarise(avg_income = mean(income))\n\n\n2. tidyr — Data cleaning / reshaping\nReal-world data is often messy. tidyr helps fix that.\n\npivot_longer(): Wide → Long format\npivot_wider(): Long → Wide format\n\nExample:\nSay you have a messy data like this one, where Subjects are stored as column names.\n\n\n\nname\nmath\nenglish\n\n\n\n\nA\n80\n90\n\n\nB\n70\n85\n\n\n\nLet’s use pivot_longer() to make it tidier.\ndf_long &lt;- df %&gt;%\n  pivot_longer(\n    cols = c(math, english),\n    names_to = \"subject\",\n    values_to = \"score\")\n\n\n\nname\nsubject\nscore\n\n\n\n\nA\nmath\n80\n\n\nA\nenglish\n90\n\n\nB\nmath\n70\n\n\nB\nenglish\n85\n\n\n\nNow it becomes clear what exactly those numbers meant.\n\n\n3. ggplot2 — Data visualisation\nUsed to create graphs and charts.\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nIt’s one of the most widely used visualisation tools in R.\nI have also made a three-part blog about ggplot in details here if you would like to know more about it.\n\n\n4. readr — Importing data\nread_csv(\"data.csv\")\nFaster and cleaner than base R functions.\n\n\n5. stringr — Working with text\nUseful for cleaning and analysing text data.\nstr_detect(name, \"John\")\n\n\n6. forcats — Working with categories\nHelps manage categorical variables (factors), especially for plotting.\n\n\n7. purrr — Working with lists (advanced)\nUsed for iteration (like loops) in a cleaner way."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#the-key-idea-the-pipe",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#the-key-idea-the-pipe",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "The key idea: the pipe (%>%)",
+    "text": "The key idea: the pipe (%&gt;%)\nOne of the most important features of the tidyverse is the pipe:\ndf %&gt;% step1() %&gt;% step2() %&gt;% step3()\nIt lets you write your workflow step-by-step.\nInstead of nesting functions, you build a clear pipeline."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#what-is-tidy-data",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#what-is-tidy-data",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "What is “tidy data”?",
+    "text": "What is “tidy data”?\nThe tidyverse is built around the concept of tidy data:\n\nEach column = one variable\nEach row = one observation\nEach cell = one value\n\nThis structure makes analysis much easier and more consistent."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#do-you-need-to-learn-all-of-it",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#do-you-need-to-learn-all-of-it",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Do you need to learn all of it?",
+    "text": "Do you need to learn all of it?\nNot at all.\nIn practice, most people mainly use:\n\ndplyr\nggplot2\ntidyr\n\nThese three alone will cover most of your data work."
+  },
+  {
+    "objectID": "blog/posts/26-03-26_tidyverse_explained.html#final-thoughts",
+    "href": "blog/posts/26-03-26_tidyverse_explained.html#final-thoughts",
+    "title": "What is the Tidyverse? Simplifying Data Cleaning and Analysis in R",
+    "section": "Final thoughts",
+    "text": "Final thoughts\nThe tidyverse isn’t just a set of packages—it’s a way of thinking about data.\nInstead of writing complicated code, you:\n\nBreak your work into steps\nWrite readable transformations\nBuild reproducible workflows\n\nIf you’re just starting with R, learning the tidyverse is one of the best investments you can make."
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "",
+    "text": "あなたが今この記事を読んでいるということは、きっとRの事を多少なりとも知っているはずです。そして、Rの終わりのないパッケージの数々も。（実際、2026年3月の時点で23,437あるらしい）。\nいつ、どのパッケージを使えばいいのか分からなくなりますよね。\nそんな時は、とりあえずtidyverseです。\nこの記事では、tidyverseの基本から、何ができるのかを分かりやすく解説します。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidyverseとは",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidyverseとは",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidyverseとは？",
+    "text": "tidyverseとは？\ntidyverseは、Rでデータを扱うためのパッケージの集まりです。\n主にできることは：\n\nデータの整理（クリーニング）\nデータの加工（変換・集計）\nデータの可視化（グラフ作成）\n\nそして特徴は、統一されたルールで、読みやすいコードが書けること。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#なぜ人気なのか",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#なぜ人気なのか",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "なぜ人気なのか？",
+    "text": "なぜ人気なのか？\ntidyverseを使うと、コードが「文章のように」読めます。\nlibrary(tidyverse)\n\ndf %&gt;%\n  filter(!is.na(age)) %&gt;%\n  mutate(income = income * 1.1) %&gt;%\n  arrange(desc(income))\nこれを文章に変えたら：\n「データから欠損値を除いて、収入を調整して、並び替える」\nコードを見ただけで処理の流れが分かるのが大きなメリットです。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidyverseに含まれる主なパッケージ",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidyverseに含まれる主なパッケージ",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidyverseに含まれる主なパッケージ",
+    "text": "tidyverseに含まれる主なパッケージ\nlibrary(tidyverse)を実行すると、いくつかのパッケージがまとめて読み込まれます。\nよく使うものを紹介していきます👇\n\n1. dplyr — データ操作（最重要）\nデータの抽出・加工・集計を行うパッケージです。\n主な関数：\n\nfilter() → 行を絞る\nselect() → 列を選ぶ\nmutate() → 新しい列を作る\nsummarise() → 集計する\n\n例：\ndf %&gt;%\n  group_by(country) %&gt;%\n  summarise(avg_income = mean(income))\n日常的に一番使うツールです。\n\n\n2. tidyr — データ整形\n本物のデータはそのままだと分析しづらい形のことが多いです。\n\npivot_longer(): 横長 → 縦長\npivot_wider(): 縦長 → 横長\n\n「分析しやすい形に整える」役割。\n例：\nきれいにまとめられていない表があるとします。この表は科目（subject）が変数になっています。\n\n\n\nname\nmath\nenglish\n\n\n\n\nA\n80\n90\n\n\nB\n70\n85\n\n\n\npivot_longer()を使うと：\ndf_long &lt;- df %&gt;%\n  pivot_longer(\n    cols = c(math, english), \n    names_to = \"subject\", \n    values_to = \"score\")\n\n\n\nname\nsubject\nscore\n\n\n\n\nA\nmath\n80\n\n\nA\nenglish\n90\n\n\nB\nmath\n70\n\n\nB\nenglish\n85\n\n\n\nこのようにscore（点数）とsubject（科目）という変数を作って、値を並べ替える事ができます。\n\n\n3. ggplot2 — データ可視化\nグラフを作るためのパッケージです。\nggplot(df, aes(x = age, y = income)) +\n  geom_point()\nもっと詳しく知りたいかたは、ここに5回に分けたggplotについての記事を書いているので、ぜひご覧ください。\n\n\n4. readr — データ読み込み\nread_csv(\"data.csv\")\nbase Rより速くて使いやすい、主にファイルの読み込みに使います。\n\n\n5. stringr — 文字列処理\nstr_detect(name, \"John\")\nテキストデータの処理に便利。\n\n\n6. forcats — カテゴリデータの操作\n因子（カテゴリ変数）を整理するために使います。\n\n\n7. purrr — 繰り返し処理（少し上級）\nループ処理をシンプルに書けます。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#パイプという考え方",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#パイプという考え方",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "パイプ（%>%）という考え方",
+    "text": "パイプ（%&gt;%）という考え方\ntidyverseの大きな特徴がこの「パイプ」です。\ndf %&gt;% step1() %&gt;% step2() %&gt;% step3()\n「データに対して順番に処理をしていく」イメージです。\nこれによって、コードがとても読みやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidy-data整ったデータとは",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#tidy-data整ったデータとは",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "tidy data（整ったデータ）とは？",
+    "text": "tidy data（整ったデータ）とは？\ntidyverseは「tidy data」という考え方をベースにしています。\n\n1列 = 1つの変数\n1行 = 1つの観測\n1セル = 1つの値\n\nこの形にすることで、分析がしやすくなります。"
+  },
+  {
+    "objectID": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#全部覚える必要はある",
+    "href": "blog/posts-ja/26-03-26-tidyverse_explained_ja.html#全部覚える必要はある",
+    "title": "tidyverseとは？Rでのデータ分析をシンプルにするツール",
+    "section": "全部覚える必要はある？",
+    "text": "全部覚える必要はある？\nありません。\nまずはこの3つで十分です👇\n\ndplyr\nggplot2\ntidyr\n\nこの3つでほとんどの作業ができます。\n\nまとめ\ntidyverseは単なるツールではなく、データの扱い方の考え方そのものです。\n\n処理をステップごとに分ける\n読みやすいコードを書く\n再現性のある分析をする\n\nこれらを自然に実現できます。\nRをこれからしっかり使っていきたい人にとって、tidyverseはとても強力な味方になります。"
   }
 ]

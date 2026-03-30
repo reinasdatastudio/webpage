@@ -9,7 +9,6 @@ format:
   html:
     include-after-body: blog-footer.html
 toc: true
-draft: true
 ---
 
 If you are reading this you are likely to be someone who is familiar with R and its endless list of packages.

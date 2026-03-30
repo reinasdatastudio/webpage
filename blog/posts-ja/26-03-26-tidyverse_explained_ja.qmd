@@ -10,7 +10,6 @@ format:
   html:
     include-after-body: blog-footer-ja.html
 toc: true
-draft: true
 ---
 
 あなたが今この記事を読んでいるということは、きっとRの事を多少なりとも知っているはずです。そして、Rの終わりのないパッケージの数々も。（実際、2026年3月の時点で23,437あるらしい）。

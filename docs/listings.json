@@ -2,7 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/posts/DRAFT26-03-26_tidyverse_explained.html",
+      "/blog/posts/26-03-26_tidyverse_explained.html",
       "/blog/posts/25-03-26-ggplot_part3.html",
       "/blog/posts/21-03-26-ggplot_part2.html",
       "/blog/posts/18-03-26-choosing-the-right-graph.html",
@@ -13,7 +13,7 @@
   {
     "listing": "/blog/index-ja.html",
     "items": [
-      "/blog/posts-ja/DRAFT26-03-26-tidyverse_explained_ja.html",
+      "/blog/posts-ja/26-03-26-tidyverse_explained_ja.html",
       "/blog/posts-ja/ggplot2_5.Useful_ggplot_tricks.html",
       "/blog/posts-ja/ggplot2_4.Making_ggplot_beautiful.html",
       "/blog/posts-ja/ggplot2_3.Common_graph_types.html",
