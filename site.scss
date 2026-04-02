@@ -183,6 +183,10 @@ a {
 }
 
 /*-- About --*/
+.about-intro {
+  padding: 0px 10% 30px;
+}
+
 .about {
   background-color: #f4f2f1;
 }
@@ -275,7 +279,6 @@ hr {
 
 .enquiry-left {
   padding: 20px;
-  margin-top: 30px;
   max-width: 45%;
 }
 
@@ -286,7 +289,6 @@ hr {
   border: 1px solid;
   padding: 20px 5%;
   background-color: #f4f2f1;
-  margin-top: 30px;
 }
 
 .name {

@@ -86,16 +86,12 @@ If you’re unsure whether your project fits, feel free to ask.
 
 I offer **clear, practical R support** — from quick problem-solving to ongoing collaboration. If you’re unsure which option fits your situation, feel free to get in touch.
 
-*(Pricing is intended as a guide and may vary depending on the project scope)*
+*(Pricing may vary depending on the project scope)*
 
 ::: card
 ## One-off R Help
 
 Debugging, small questions, quick fixes.
-
-#### Pricing
-
-From NZD 40-60 per case
 :::
 
 ::: card
@@ -117,10 +113,6 @@ Typical use cases:
 -   Live 1:1 session (or async support, if preferred)
 -   Clear explanation in plain English
 -   Improved or corrected R code you can reuse
-
-#### **Pricing**
-
-From NZD 200-300 per hour (1-2 hour sessions)
 :::
 
 ::: card
@@ -143,12 +135,6 @@ Typical use cases:
 -   Reproducible analysis pipeline
 -   Publication- or stakeholder-ready report
 -   Clear written interpretation of results
-
-#### **Pricing**
-
-From NZD 1,990-5,700 per project
-
-*(Scope and pricing depend on scope, project size and timeline)*
 :::
 
 ::: card
@@ -173,12 +159,6 @@ Typical use cases:
 -   A long-term collaborator who understands your data
 
 *Available on a monthly basis.*
-
-#### **Pricing**
-
-From NZD 1,490-4000 per month
-
-*(e.g. 6-20 hours/month; custom arrangements available)*
 :::
 
 ::: card
@@ -191,10 +171,6 @@ This may include:
 -   Learning R from a healthcare or research perspective
 -   Understanding statistics through practical examples
 -   Building reproducible workflows with confidence
-
-#### **Pricing**
-
-From NZD 160-250 per hour
 
 *(Discounts available for students)*
 :::

@@ -6,8 +6,8 @@ format:
     toc: false
 ---
 
-::: banner
-Hi, I’m **Reina**, the founder of **Reina’s Data Studio**.
+::: about-intro
+I’m **Reina**, the founder of **Reina’s Data Studio**.
 
 I help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.
 :::

@@ -9,7 +9,7 @@ These selected projects demonstrate how I approach data: with **clarity, reprodu
 
 For confidential client work, details may be limited.
 
-::::::::: healthcare-box
+:::::::::::: healthcare-box
 ## Healthcare and Research Projects
 
 Projects demonstrating clinical context, statistical analysis and reproducible R workflows.
@@ -70,7 +70,33 @@ Delivered a reproducible analysis pipeline and clear statistical interpretation 
 -   Written interpretation of results
 :::
 :::::
-:::::::::
+
+::::: project-container
+::: project-image
+![](images/Screenshot 2026-04-02 123232.png)
+:::
+
+::: projects
+### [Cancer Variant Dataset - Machine Learning in R](https://www.kaggle.com/code/reinagraham/cancer-variant-dataset-machine-learning-using-r)
+
+#### **Context**
+
+Explored different machine learning models such as Random Forest to differentiate and predict benign and pathogenic genetic variants using a Kaggle dataset. Variables include:
+
+-   Chromosomes
+-   Genes
+-   PolyPhen
+
+#### Outcome
+
+-   Clear data visualisation
+-   Clear interpretation of data
+    -   Accuracy alone can be misleading, especially with imbalanced data
+    -   There is often a trade-off between overall accuracy and balanced predictions
+    -   Real-world data problems are rarely clean and that understanding the limitations of a model is just as important as building one.
+:::
+:::::
+::::::::::::
 
 :::::::::::: general-box
 ## Data Science and General Analytics
