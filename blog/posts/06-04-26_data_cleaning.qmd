@@ -1,0 +1,281 @@
+---
+title: "A Practical Data Cleaning Checklist in R (Step-by-Step Guide)"
+date: 2026-04-06
+description: "A practical checklist for cleaning data in R, covering key steps to prepare your data for analysis."
+categories:
+ - Data Cleaning
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+---
+
+Data cleaning is one of the most important steps in any analysis.
+
+But in practice, it’s easy to miss something:
+
+-   forgetting to check missing values
+-   inconsistent categories
+-   incorrect data types
+
+This post is a **step-by-step checklist** you can follow whenever you clean data in R.
+
+I've wanted to create this article for a long time because I would be referring back to this often as well.
+
+# 0. Load your data and libraries
+
+The first step is, of course, to load your data, but don't forget to load the tools you’ll use as well.
+
+``` r
+library(tidyverse)
+df <- read_csv("your_data.csv") 
+```
+
+# 1. Understand your data first
+
+Before cleaning anything, **look at your data carefully**.
+
+``` r
+glimpse(df)
+summary(df)
+```
+
+Check:
+
+-   What variables do you have?
+-   What are the data types?
+-   Are there obvious issues?
+
+It is very important you actually understand your data before doing anything. I can tell you from my past mistakes, please do not rush anything.
+
+# 2. Fix column names
+
+Messy column names can cause problems later.
+
+``` r
+names(df) 
+```
+
+Common fixes:
+
+-   remove spaces
+-   make lowercase
+-   use consistent naming
+
+``` r
+df <- df %>% rename(
+  Age = age,
+  Income = income) 
+```
+
+💡 Tip: Use `janitor::clean_names()` for quick cleanup - It makes all the variables lower case for consistency.
+
+# 3. Handle missing values
+
+Missing values (`NA`) are everywhere.
+
+Here are some codes you can use to count/view the missing values. I like to actually view the rows with missing values before deciding what to do with them.
+
++-----------------------------------+-------------------------------------------------------------------+
+| Code                              | Meaning                                                           |
++===================================+===================================================================+
+| ``` r                             | Count the number of missing values per column                     |
+| colSums(is.na(df))                |                                                                   |
+| ```                               |                                                                   |
++-----------------------------------+-------------------------------------------------------------------+
+| ``` r                             | Count of NAs per row                                              |
+| rowSums(is.na(df))                |                                                                   |
+| ```                               |                                                                   |
++-----------------------------------+-------------------------------------------------------------------+
+| ``` r                             | Total count of NAs in the entire data frame                       |
+| sum(is.na(df))                    |                                                                   |
+| ```                               |                                                                   |
++-----------------------------------+-------------------------------------------------------------------+
+| ``` r                             | View all the rows with missing values, regardless of column names |
+| df[!complete.cases(df), ]         |                                                                   |
+| ```                               |                                                                   |
++-----------------------------------+-------------------------------------------------------------------+
+| dplyr                             | View the rows where that specific column contains a missing value |
+|                                   |                                                                   |
+| ``` r                             |                                                                   |
+| df %>% filter(is.na(column_name)) |                                                                   |
+| ```                               |                                                                   |
++-----------------------------------+-------------------------------------------------------------------+
+
+Options:
+
+-   remove rows
+-   fill values
+-   leave as is (but be aware)
+
+``` r
+df <- df %>% drop_na()
+# or
+df <- df %>% mutate(income = replace_na(income, 0)) 
+```
+
+# 4. Convert data types
+
+Incorrect types cause many errors.
+
+``` r
+str(df)
+```
+
+shows the <strong>dimensions, column names and data types</strong>.
+
+You could also just use
+
+``` r
+summary(df)
+```
+
+Fix example:
+
+``` r
+df <- df %>% mutate(
+  age = as.numeric(age),
+  date = as.Date(date), 
+  category = as.factor(category)
+  ) 
+```
+
+# 5. Reshape data (if needed)
+
+If your data is not “tidy”, fix the structure.
+
+``` r
+df <- df %>% pivot_longer(
+  cols = c(math, english),
+  names_to = "subject",
+  values_to = "score"
+  ) 
+```
+
+This example is basically saying, "Take the `math` and `english` columns, turn them into variables of a new column called `subject` and store the scores into another new column called `score`".
+
+So the data becomes from this:
+
+| name | math | english |
+|------|------|---------|
+| A    | 80   | 90      |
+| B    | 70   | 85      |
+
+to this:
+
+| name | subject | score |
+|------|---------|-------|
+| A    | math    | 80    |
+| A    | english | 90    |
+| B    | math    | 70    |
+| B    | english | 85    |
+
+You can then later analyse with `group_by(subject)` and create plots more easily.
+
+# 6. Clean text values
+
+Text data often has inconsistencies.
+
+``` r
+df <- df %>%
+  mutate(
+    country = str_trim(country),
+    country = str_to_lower(country)
+    ) 
+```
+
+# 7. Remove duplicates
+
+Duplicate rows can distort results.
+
+Fix:
+
+``` r
+df <- df %>% distinct()
+```
+
+Or based on key columns:
+
+``` r
+df <- df %>% distinct(id, .keep_all = TRUE) 
+```
+
+# 8. Check for outliers
+
+Look for unusual values.
+
+For example, to look for an outlier in the `income` column:
+
+``` r
+summary(df$income)
+
+# Ascending
+df %>% arrange(income)
+
+# Descending
+df %>% arrange(desc(income))
+```
+
+Or visualise:
+
+``` r
+ggplot(df, aes(y = income)) + 
+  geom_boxplot()
+```
+
+Boxplot shows outliers as plots.
+
+Removing or keeping the outliers depends on your data, but generally if it's not a genuine mistake I would keep it. I would then decide again later based on how important these outliers are. Is it worth keeping if it screws my analysis so much?
+
+# 9. Validate your data
+
+Ask:
+
+-   Does everything make sense?
+-   Are there impossible values? (e.g., negative age)
+
+``` r
+df %>% filter(age < 0) 
+```
+
+# 10. Save the cleaned data
+
+Always keep a clean version.
+
+``` r
+write_csv(df, "cleaned_data.csv") 
+```
+
+# Typical workflow
+
+In practice, your workflow often looks like this when these steps are combined:
+
+``` r
+df %>%
+  clean_names() %>%
+  drop_na() %>%
+  mutate(...) %>% 
+  pivot_longer(...) 
+```
+
+But it can get confusing so I personally like to do separate codes. It also makes it easy for others to read your code as well.
+
+# Common mistakes
+
+-   Skipping the “understand your data” step
+-   Cleaning without checking results
+-   Forgetting to change data types
+    -   Especially `characters` when they should be changed to `factors`
+-   Using messy data in analysis
+
+# Final thoughts
+
+Data cleaning is not a single step—it’s a process.
+
+Using a checklist like this helps you:
+
+-   avoid mistakes
+-   create reproducible workflows
+-   build confidence in your analysis
+
+You can come back to this checklist whenever you start a new project.
