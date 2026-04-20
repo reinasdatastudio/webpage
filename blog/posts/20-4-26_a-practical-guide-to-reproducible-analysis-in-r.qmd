@@ -1,0 +1,221 @@
+---
+title: "A Practical Guide to Reproducible Analysis in R"
+date: 2026-04-20
+description: "How to structure your R analysis so it can be easily reproduced, updated, and shared. This guide covers practical steps for building reliable workflows in real-world data projects."
+categories:
+ - Reproducibility
+format:
+  html:
+    include-after-body: blog-footer.html
+toc: true
+---
+
+When working with data, it’s easy to focus on getting results as quickly as possible.
+
+However, one of the most important aspects of data analysis — especially in research and real-world projects — is **reproducibility**.
+
+Reproducibility means:
+
+> Someone else (or your future self) can run your analysis and get the same results.
+
+In this post, I’ll walk through what reproducible analysis means in practice, and how to implement it in R using simple, realistic workflows.
+
+# Why Reproducibility Matters
+
+In real-world analysis, you often need to:
+
+-   revisit your work weeks or months later
+-   update results with new data
+-   share your work with others
+-   ensure results can be trusted
+
+Without reproducibility:
+
+-   results become difficult to verify
+-   small mistakes go unnoticed
+-   analyses cannot be reused
+
+A common situation is:
+
+> “I got this result before, but I’m not sure how I got it.”
+
+Reproducible workflows prevent this.
+
+I wrote an article about [Why Reproducibility Matters in Healthcare Data](13-02-26-why-reproducibility-matters-in-healthcare-data.qmd) previously, which addresses the importance of reproducibility in more details.
+
+# What Makes Analysis Reproducible?
+
+A reproducible analysis should:
+
+1.  Use **script-based workflows** (not manual steps)
+2.  Have **clear structure and organisation**
+3.  Be able to run from start to finish
+4.  Produce consistent outputs
+
+In R, this is very achievable with a few simple practices.
+
+# 1. Use Scripts Instead of Manual Steps
+
+One of the most common mistakes is doing analysis manually:
+
+-   clicking in Excel
+-   running code interactively without saving
+-   copying results into reports
+
+Instead, your entire workflow should be written in scripts.
+
+Example:
+
+``` r
+data <- read.csv("data.csv")
+data_clean <- data |>
+  dplyr::filter(!is.na(value))
+model <- lm(value ~ age, data = data_clean) 
+summary(model)
+```
+
+This ensures:
+
+-   every step is recorded
+-   results can be regenerated
+
+# 2. Organise Your Project Clearly
+
+A simple folder structure goes a long way.
+
+Example:
+
+``` r
+project/
+  data/
+  scripts/
+  output/
+  report.qmd
+```
+
+Meaning, within the `project` folder:
+
+-   `data/` → raw data
+-   `scripts/` → analysis code
+-   `output/` → results (plots, tables)
+-   `report.qmd` → final report
+
+This makes your work easier to understand and maintain.
+
+# 3. Separate Data Cleaning and Analysis
+
+In practice, data cleaning is often the most time-consuming part.
+
+Keep it separate:
+
+``` r
+# scripts/01_clean_data.R
+clean_data <- raw_data |>
+  dplyr::filter(!is.na(value))
+```
+
+``` r
+# scripts/02_analysis.R
+model <- lm(value ~ age, data = clean_data)
+```
+
+This allows you to:
+
+-   reuse cleaned data
+-   debug more easily
+-   update data without rewriting everything
+
+# 4. Use Quarto or R Markdown for Reports
+
+Instead of copying results manually into documents, use:
+
+-   Quarto
+-   R Markdown
+
+Example:
+
+``` r
+## Model Results
+summary(model)
+```
+
+When you re-run the document results update automatically.
+
+This is one of the most powerful aspects of reproducible analysis.
+
+# 5. Avoid Hardcoding Values
+
+Avoid writing things like:
+
+``` r
+data <- read.csv("C:/Users/Reina/Desktop/data.csv")
+```
+
+Instead:
+
+``` r
+data <- read.csv("data/data.csv")
+```
+
+This ensures your project works on different machines.
+
+# 6. Check That Your Workflow Runs End-to-End
+
+A simple but important step:
+
+-   Restart R
+-   Run everything from the beginning
+
+If it works without errors, your analysis is reproducible.
+
+# 7. Document Your Thinking
+
+Reproducibility is not just code — it’s also reasoning.
+
+Include comments:
+
+``` r
+# Removing missing values to avoid bias in model
+data_clean <- data |> 
+  dplyr::filter(!is.na(value))
+```
+
+This helps:
+
+-   others understand your decisions
+-   your future self understand your logic
+
+# A Simple Reproducible Workflow
+
+Putting it together:
+
+1.  Load data
+2.  Clean data
+3.  Analyse
+4.  Generate outputs
+5.  Produce report
+
+All in code, all documented.
+
+# Common Mistakes
+
+Some common issues I often see:
+
+-   running code interactively without saving
+-   mixing cleaned and raw data
+-   manually copying results into reports
+-   unclear file structure
+
+These make analysis difficult to reproduce.
+
+# Final Thoughts
+
+Reproducibility is not about writing perfect code.
+
+It’s about:
+
+> making your analysis reliable, repeatable, and understandable.
+
+Even small steps, like using scripts and organising files, can make a big difference.
+
+Over time, these habits lead to more efficient and trustworthy work.

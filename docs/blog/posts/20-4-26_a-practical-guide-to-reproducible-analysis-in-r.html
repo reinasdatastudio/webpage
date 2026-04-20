@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-04-20">
+<meta name="description" content="How to structure your R analysis so it can be easily reproduced, updated, and shared. This guide covers practical steps for building reliable workflows in real-world data projects.">
 
-<title>Blog Posts – Reina’s Data Studio</title>
+<title>A Practical Guide to Reproducible Analysis in R – Reina’s Data Studio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-614bc5276d02b9573b6a096d945fbc20.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-614bc5276d02b9573b6a096d945fbc20.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +105,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-LE1MD5SGQZ"></script>
 
 <script type="text/javascript">
@@ -109,35 +115,6 @@ gtag('js', new Date());
 gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -148,9 +125,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Reina’s Data Studio</span>
     </a>
   </div>
@@ -161,15 +138,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -178,21 +155,21 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="../blog/index.html">
+    <a class="dropdown-item" href="../../blog/index.html">
  <span class="dropdown-text">Blog EN</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../blog/index-ja.html">
+    <a class="dropdown-item" href="../../blog/index-ja.html">
  <span class="dropdown-text">ブログ JP</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../enquiry.html"> 
+    <a class="nav-link" href="../../enquiry.html"> 
 <span class="menu-text">Enquiry</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../ja.html"> 
+    <a class="nav-link" href="../../ja.html"> 
 <span class="menu-text">日本語</span></a>
   </li>  
 </ul>
@@ -207,21 +184,52 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="RGF0YSUyMENsZWFuaW5n">Data Cleaning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGlzYXRpb24=">Data Visualisation <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UmVwcm9kdWNpYmlsaXR5">Reproducibility <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-reproducibility-matters" id="toc-why-reproducibility-matters" class="nav-link active" data-scroll-target="#why-reproducibility-matters">Why Reproducibility Matters</a></li>
+  <li><a href="#what-makes-analysis-reproducible" id="toc-what-makes-analysis-reproducible" class="nav-link" data-scroll-target="#what-makes-analysis-reproducible">What Makes Analysis Reproducible?</a></li>
+  <li><a href="#use-scripts-instead-of-manual-steps" id="toc-use-scripts-instead-of-manual-steps" class="nav-link" data-scroll-target="#use-scripts-instead-of-manual-steps">1. Use Scripts Instead of Manual Steps</a></li>
+  <li><a href="#organise-your-project-clearly" id="toc-organise-your-project-clearly" class="nav-link" data-scroll-target="#organise-your-project-clearly">2. Organise Your Project Clearly</a></li>
+  <li><a href="#separate-data-cleaning-and-analysis" id="toc-separate-data-cleaning-and-analysis" class="nav-link" data-scroll-target="#separate-data-cleaning-and-analysis">3. Separate Data Cleaning and Analysis</a></li>
+  <li><a href="#use-quarto-or-r-markdown-for-reports" id="toc-use-quarto-or-r-markdown-for-reports" class="nav-link" data-scroll-target="#use-quarto-or-r-markdown-for-reports">4. Use Quarto or R Markdown for Reports</a></li>
+  <li><a href="#avoid-hardcoding-values" id="toc-avoid-hardcoding-values" class="nav-link" data-scroll-target="#avoid-hardcoding-values">5. Avoid Hardcoding Values</a></li>
+  <li><a href="#check-that-your-workflow-runs-end-to-end" id="toc-check-that-your-workflow-runs-end-to-end" class="nav-link" data-scroll-target="#check-that-your-workflow-runs-end-to-end">6. Check That Your Workflow Runs End-to-End</a></li>
+  <li><a href="#document-your-thinking" id="toc-document-your-thinking" class="nav-link" data-scroll-target="#document-your-thinking">7. Document Your Thinking</a></li>
+  <li><a href="#a-simple-reproducible-workflow" id="toc-a-simple-reproducible-workflow" class="nav-link" data-scroll-target="#a-simple-reproducible-workflow">A Simple Reproducible Workflow</a></li>
+  <li><a href="#common-mistakes" id="toc-common-mistakes" class="nav-link" data-scroll-target="#common-mistakes">Common Mistakes</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog Posts</h1>
-</div>
+<h1 class="title">A Practical Guide to Reproducible Analysis in R</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Reproducibility</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    How to structure your R analysis so it can be easily reproduced, updated, and shared. This guide covers practical steps for building reliable workflows in real-world data projects.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 20, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -231,229 +239,193 @@ window.Quarto = {
 </header>
 
 
+<p>When working with data, it’s easy to focus on getting results as quickly as possible.</p>
+<p>However, one of the most important aspects of data analysis — especially in research and real-world projects — is <strong>reproducibility</strong>.</p>
+<p>Reproducibility means:</p>
+<blockquote class="blockquote">
+<p>Someone else (or your future self) can run your analysis and get the same results.</p>
+</blockquote>
+<p>In this post, I’ll walk through what reproducible analysis means in practice, and how to implement it in R using simple, realistic workflows.</p>
+<section id="why-reproducibility-matters" class="level1">
+<h1>Why Reproducibility Matters</h1>
+<p>In real-world analysis, you often need to:</p>
+<ul>
+<li>revisit your work weeks or months later</li>
+<li>update results with new data</li>
+<li>share your work with others</li>
+<li>ensure results can be trusted</li>
+</ul>
+<p>Without reproducibility:</p>
+<ul>
+<li>results become difficult to verify</li>
+<li>small mistakes go unnoticed</li>
+<li>analyses cannot be reused</li>
+</ul>
+<p>A common situation is:</p>
+<blockquote class="blockquote">
+<p>“I got this result before, but I’m not sure how I got it.”</p>
+</blockquote>
+<p>Reproducible workflows prevent this.</p>
+<p>I wrote an article about <a href="../../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html">Why Reproducibility Matters in Healthcare Data</a> previously, which addresses the importance of reproducibility in more details.</p>
+</section>
+<section id="what-makes-analysis-reproducible" class="level1">
+<h1>What Makes Analysis Reproducible?</h1>
+<p>A reproducible analysis should:</p>
+<ol type="1">
+<li>Use <strong>script-based workflows</strong> (not manual steps)</li>
+<li>Have <strong>clear structure and organisation</strong></li>
+<li>Be able to run from start to finish</li>
+<li>Produce consistent outputs</li>
+</ol>
+<p>In R, this is very achievable with a few simple practices.</p>
+</section>
+<section id="use-scripts-instead-of-manual-steps" class="level1">
+<h1>1. Use Scripts Instead of Manual Steps</h1>
+<p>One of the most common mistakes is doing analysis manually:</p>
+<ul>
+<li>clicking in Excel</li>
+<li>running code interactively without saving</li>
+<li>copying results into reports</li>
+</ul>
+<p>Instead, your entire workflow should be written in scripts.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(value))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(value <span class="sc">~</span> age, <span class="at">data =</span> data_clean) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This ensures:</p>
+<ul>
+<li>every step is recorded</li>
+<li>results can be regenerated</li>
+</ul>
+</section>
+<section id="organise-your-project-clearly" class="level1">
+<h1>2. Organise Your Project Clearly</h1>
+<p>A simple folder structure goes a long way.</p>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  data<span class="sc">/</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  scripts<span class="sc">/</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">/</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  report.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Meaning, within the <code>project</code> folder:</p>
+<ul>
+<li><code>data/</code> → raw data</li>
+<li><code>scripts/</code> → analysis code</li>
+<li><code>output/</code> → results (plots, tables)</li>
+<li><code>report.qmd</code> → final report</li>
+</ul>
+<p>This makes your work easier to understand and maintain.</p>
+</section>
+<section id="separate-data-cleaning-and-analysis" class="level1">
+<h1>3. Separate Data Cleaning and Analysis</h1>
+<p>In practice, data cleaning is often the most time-consuming part.</p>
+<p>Keep it separate:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scripts/01_clean_data.R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> raw_data <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scripts/02_analysis.R</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(value <span class="sc">~</span> age, <span class="at">data =</span> clean_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This allows you to:</p>
+<ul>
+<li>reuse cleaned data</li>
+<li>debug more easily</li>
+<li>update data without rewriting everything</li>
+</ul>
+</section>
+<section id="use-quarto-or-r-markdown-for-reports" class="level1">
+<h1>4. Use Quarto or R Markdown for Reports</h1>
+<p>Instead of copying results manually into documents, use:</p>
+<ul>
+<li>Quarto</li>
+<li>R Markdown</li>
+</ul>
+<p>Example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Model Results</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When you re-run the document results update automatically.</p>
+<p>This is one of the most powerful aspects of reproducible analysis.</p>
+</section>
+<section id="avoid-hardcoding-values" class="level1">
+<h1>5. Avoid Hardcoding Values</h1>
+<p>Avoid writing things like:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/Reina/Desktop/data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Instead:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This ensures your project works on different machines.</p>
+</section>
+<section id="check-that-your-workflow-runs-end-to-end" class="level1">
+<h1>6. Check That Your Workflow Runs End-to-End</h1>
+<p>A simple but important step:</p>
+<ul>
+<li>Restart R</li>
+<li>Run everything from the beginning</li>
+</ul>
+<p>If it works without errors, your analysis is reproducible.</p>
+</section>
+<section id="document-your-thinking" class="level1">
+<h1>7. Document Your Thinking</h1>
+<p>Reproducibility is not just code — it’s also reasoning.</p>
+<p>Include comments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing missing values to avoid bias in model</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>data_clean <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(value))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This helps:</p>
+<ul>
+<li>others understand your decisions</li>
+<li>your future self understand your logic</li>
+</ul>
+</section>
+<section id="a-simple-reproducible-workflow" class="level1">
+<h1>A Simple Reproducible Workflow</h1>
+<p>Putting it together:</p>
+<ol type="1">
+<li>Load data</li>
+<li>Clean data</li>
+<li>Analyse</li>
+<li>Generate outputs</li>
+<li>Produce report</li>
+</ol>
+<p>All in code, all documented.</p>
+</section>
+<section id="common-mistakes" class="level1">
+<h1>Common Mistakes</h1>
+<p>Some common issues I often see:</p>
+<ul>
+<li>running code interactively without saving</li>
+<li>mixing cleaned and raw data</li>
+<li>manually copying results into reports</li>
+<li>unclear file structure</li>
+</ul>
+<p>These make analysis difficult to reproduce.</p>
+</section>
+<section id="final-thoughts" class="level1">
+<h1>Final Thoughts</h1>
+<p>Reproducibility is not about writing perfect code.</p>
+<p>It’s about:</p>
+<blockquote class="blockquote">
+<p>making your analysis reliable, repeatable, and understandable.</p>
+</blockquote>
+<p>Even small steps, like using scripts and organising files, can make a big difference.</p>
+<p>Over time, these habits lead to more efficient and trustworthy work.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+&nbsp;
+<hr>
+
+<p style="text-align: center;">If you're working with clinical or research data and would like help building reproducible R workflows, feel free to reach out.</p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>reinasdatastudio@gmail.com</em></span></p>
+
+<p style="text-align: center;"><span style="color: #808080;"><em>@reinas_data.studio</em></span></p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UmVwcm9kdWNpYmlsaXR5" data-listing-date-sort="1776600000000" data-listing-file-modified-sort="1776646816457" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="628">
-<div class="thumbnail"><a href="../blog/posts/20-4-26_a-practical-guide-to-reproducible-analysis-in-r.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/20-4-26_a-practical-guide-to-reproducible-analysis-in-r.html" class="no-external">A Practical Guide to Reproducible Analysis in R</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVwcm9kdWNpYmlsaXR5'); return false;">Reproducibility</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/20-4-26_a-practical-guide-to-reproducible-analysis-in-r.html" class="no-external">
-<p>How to structure your R analysis so it can be easily reproduced, updated, and shared. This guide covers practical steps for building reliable workflows in real-world data projects.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/20-4-26_a-practical-guide-to-reproducible-analysis-in-r.html" class="no-external">
-<div class="listing-date">
-Apr 20, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="RGF0YSUyMENsZWFuaW5n" data-listing-date-sort="1775390400000" data-listing-file-modified-sort="1775385833671" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2292">
-<div class="thumbnail"><a href="../blog/posts/06-04-26_data_cleaning.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/06-04-26_data_cleaning.html" class="no-external">A Practical Data Cleaning Checklist in R (Step-by-Step Guide)</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMENsZWFuaW5n'); return false;">Data Cleaning</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/06-04-26_data_cleaning.html" class="no-external">
-<p>A practical checklist for cleaning data in R, covering key steps to prepare your data for analysis.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/06-04-26_data_cleaning.html" class="no-external">
-<div class="listing-date">
-Apr 06, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="dGlkeXZlcnNlJTJDRGF0YSUyMENsZWFuaW5n" data-listing-date-sort="1774436400000" data-listing-file-modified-sort="1774844852172" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="732">
-<div class="thumbnail"><a href="../blog/posts/26-03-26_tidyverse_explained.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/26-03-26_tidyverse_explained.html" class="no-external">What is the Tidyverse? Simplifying Data Cleaning and Analysis in R</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGlkeXZlcnNl'); return false;">tidyverse</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMENsZWFuaW5n'); return false;">Data Cleaning</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/26-03-26_tidyverse_explained.html" class="no-external">
-<p>Learn what the tidyverse is in R and how it helps you clean, transform, and visualise data in a clear and efficient way.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/26-03-26_tidyverse_explained.html" class="no-external">
-<div class="listing-date">
-Mar 26, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774350000000" data-listing-file-modified-sort="1774430502937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="749">
-<div class="thumbnail"><a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
-
-<img loading="lazy" src="../blog/posts/images/Screenshot_ggirafe.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">ggplot2 Fundamentals (Part 3): Useful ggplot Techniques</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
-<p>Final part of the ggplot series. Learn useful techniques such as creating interactive plots with ggiraph, adjusting axes, and improving readability.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/25-03-26-ggplot_part3.html" class="no-external">
-<div class="listing-date">
-Mar 25, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1774004400000" data-listing-file-modified-sort="1774430538636" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="713">
-<div class="thumbnail"><a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\21-03-26-ggplot_part2_files\figure-html\unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">ggplot2 Fundamentals (Part 2): Structure, Graph Types, and Better Visualisations</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
-<p>A beginner-friendly guide to ggplot2. Learn the basic structure, how to choose the right graph based on your data, and how to make your visualisations more readable.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/21-03-26-ggplot_part2.html" class="no-external">
-<div class="listing-date">
-Mar 21, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="Z2dwbG90MiUyQ0RhdGElMjBWaXN1YWxpc2F0aW9u" data-listing-date-sort="1773658800000" data-listing-file-modified-sort="1774430526245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="715">
-<div class="thumbnail"><a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">ggplot Fundamentals (Part 1): Choosing the Right Graph for Your Data</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGlzYXRpb24='); return false;">Data Visualisation</div>
-
-</div>
-<div class="delink listing-description"><a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
-<p>A beginner-friendly introduction to ggplot2. In this first part of the series, we focus on how to choose the right type of graph for your data by understanding variable types such as continuous and discrete variables.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/18-03-26-choosing-the-right-graph.html" class="no-external">
-<div class="listing-date">
-Mar 17, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1770894000000" data-listing-file-modified-sort="1770963134821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675">
-<div class="thumbnail"><a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">Why Reproducibility Matters in Healthcare Data</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
-<p>Why reproducibility is essential in healthcare data analysis — and how structured R workflows protect accuracy, transparency, and long-term reliability.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/13-02-26-why-reproducibility-matters-in-healthcare-data.html" class="no-external">
-<div class="listing-date">
-Feb 13, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1770807600000" data-listing-file-modified-sort="1770963145742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="603">
-<div class="thumbnail"><a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">From Pharmacy to Data Science: Why I Chose R</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
-<p>My journey from pharmacy to data science—and why R became my go-to language for reproducible analysis.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/12-02-2026-from-pharmacy-to-data-science.html" class="no-external">
-<div class="listing-date">
-Feb 12, 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+&nbsp;
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
