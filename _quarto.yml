@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Reina's Data Studio"
+  title: "Reina Kaino"
   google-analytics: "G-LE1MD5SGQZ"
   navbar:
     right:
@@ -26,14 +26,14 @@ website:
   page-footer:
     left: "© 2025 Reina's Data Studio"
     center:
-      - icon: instagram
-        href: https://www.instagram.com/reinas_data.studio/
       - icon: linkedin
         href: https://www.linkedin.com/in/reijkg2904/
       - icon: github
         href: https://github.com/reinasdatastudio
       - icon: youtube
         href: https://www.youtube.com/@reinas_data.studio
+      - icon: twitter
+        href: https://x.com/r_datastudio
     right: "Webpage made with Quarto"
       
 format:

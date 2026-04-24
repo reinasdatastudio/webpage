@@ -11,10 +11,10 @@ format:
 ![](intro-logo.png){.hero-logo alt="Reina's Data Studio logo"}
 :::
 
-# R Consultant for Data Analysis and Reproducible Workflows
+# Solving Real Data Problems with R
 
 ::: hero-sentence
-*Practical, ethical data solutions - By a former pharmacist with clinical context*
+*Practical, ethical data analysis and solutions - By a former pharmacist with clinical context*
 :::
 
 <button class="button">
@@ -197,7 +197,7 @@ I share practical R tutorials focused on real-world data problems.
 
 [Reina's Data Studio](https://www.youtube.com/@reinas_data.studio)
 
-<iframe src="https://www.youtube.com/embed/ViNVCBWXYak?si=ewS521FpIrfK0TtU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+<iframe src="https://www.youtube.com/embed/gFpzsvtJjJ8?si=NcHQgYrqmAkSdBmT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
 </iframe>
 :::
@@ -207,7 +207,7 @@ I share practical R tutorials focused on real-world data problems.
 
 [Reina's Data Studio JP](https://www.youtube.com/@reinas_data.studio_jp)
 
-<iframe src="https://www.youtube.com/embed/9rVpTYfIIoE?si=5LiSqHWX3YTB0clA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+<iframe src="https://www.youtube.com/embed/HXUbSeNN0fg?si=2Jp1b_zZxNic9Lom" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 
 </iframe>
 :::
