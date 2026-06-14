@@ -39,16 +39,14 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
-
 # translation temp files
 po/*~
 
 # RStudio Connect folder
 rsconnect/
 
-/projects/FAERS/
+_quarto_internal_scss_error.scss
+FAERS/
 
 /.quarto/
 **/*.quarto_ipynb
