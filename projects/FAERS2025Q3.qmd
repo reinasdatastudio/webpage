@@ -24,9 +24,9 @@ This project demonstrates a reproducible workflow for exploratory pharmacovigila
 
 Using structured R scripts and case-level aggregation, I examined:
 
--   Frequently reported adverse reaction terms
--   Case-level reporting patterns
--   Data structure and duplication considerations
+- Frequently reported adverse reaction terms
+- Case-level reporting patterns
+- Data structure and duplication considerations
 
 This analysis is exploratory and intended for structured signal awareness rather than causal inference.
 
@@ -52,21 +52,21 @@ This project explores how reporting patterns can be examined cautiously using a 
 
 ## Data Source
 
--   \[FAERS public dataset (FDA)\](<https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html>)
--   Reporting is voluntary
--   Data includes duplicates and reporting bias
+- \[FAERS public dataset (FDA)\](<https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html>)
+- Reporting is voluntary
+- Data includes duplicates and reporting bias
 
 The most recent data as of current date was downloaded and used. The faers_ascii_2025q3.zip was downloaded from the official United States government website.
 
 The folder includes seven .txt files:
 
--   DEMO25Q3.txt (Demographics)
--   DRUG25Q3.txt (Drug)
--   INDI25Q3.txt (Indication)
--   OUTC25Q3.txt (Outcome)
--   REAC25Q3.txt (Reaction)
--   RPSR25Q3.txt (Report_Sources)
--   THER25Q3.txt (Therapy)
+- DEMO25Q3.txt (Demographics)
+- DRUG25Q3.txt (Drug)
+- INDI25Q3.txt (Indication)
+- OUTC25Q3.txt (Outcome)
+- REAC25Q3.txt (Reaction)
+- RPSR25Q3.txt (Report_Sources)
+- THER25Q3.txt (Therapy)
 
 [![Figure 1: ASCII Entity Relationship Diagram (ERD)](FAERS/Screenshot%202025-12-23%20112042.png){style="text-align: center"}](FAERS/ASC_NTS.pdf)
 
@@ -82,10 +82,10 @@ It is important to note that FAERS data is based on spontaneous reports and does
 
 Several limitations must be considered when interpreting FAERS adverse reaction data such as:
 
--   A single case may include multiple reported reactions
--   Reporting frequency does not equal incidence or risk
--   Duplicate or follow-up reports may exist
--   Reporting is influenced by media attention and regulatory actions
+- A single case may include multiple reported reactions
+- Reporting frequency does not equal incidence or risk
+- Duplicate or follow-up reports may exist
+- Reporting is influenced by media attention and regulatory actions
 
 As a result, counts and trends should be interpreted cautiously and used for signal exploration rather than causal inference.
 
@@ -100,10 +100,10 @@ To ensure traceability and repeatability, the analysis was performed using a scr
 
 The workflow consisted of:
 
--   Importing raw FAERS ASCII files directly into R
--   Performing case-level aggregation to avoid double counting follow-up reports
--   Applying cleaning and transformation steps through documented code
--   Generating tables and figures automatically from the analysis script
+- Importing raw FAERS ASCII files directly into R
+- Performing case-level aggregation to avoid double counting follow-up reports
+- Applying cleaning and transformation steps through documented code
+- Generating tables and figures automatically from the analysis script
 
 This approach ensures the results can be regenerated whenever the dataset is updated and provides a clear audit trail of all processing steps.
 
@@ -139,10 +139,10 @@ colnames(reac)
 
 Key variables include:
 
--   `primaryid`: Unique identifier for each case report
--   `pt`: Preferred Term describing the adverse reaction (MedDRA)
--   `caseid`: Case-level identifier
--   `drug_rec_act`: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.
+- `primaryid`: Unique identifier for each case report
+- `pt`: Preferred Term describing the adverse reaction (MedDRA)
+- `caseid`: Case-level identifier
+- `drug_rec_act`: Drug Recur Action Data if the adverse reaction reappears upon re-administration of the drug.
 
 ### REAC Data Preparation
 
@@ -293,16 +293,16 @@ kable(head(outc))
 
 Key variables include:
 
--   `primaryid`: Unique identifier for each case report
--   `caseid`: Case-level identifier.
--   `outc_cod`: Code of the outcome
-    -   DE = Death
-    -   LT = Life-threatening
-    -   HO = Hospitalisation
-    -   DS = Disability
-    -   CA = Congenital anomaly
-    -   RI = Required intervention
-    -   OT = Other
+- `primaryid`: Unique identifier for each case report
+- `caseid`: Case-level identifier.
+- `outc_cod`: Code of the outcome
+  - DE = Death
+  - LT = Life-threatening
+  - HO = Hospitalisation
+  - DS = Disability
+  - CA = Congenital anomaly
+  - RI = Required intervention
+  - OT = Other
 
 ### OUTC Data Preparation
 
@@ -471,32 +471,32 @@ This demonstrates why spontaneous reporting databases should be used for signal 
 
 It is very important to keep in mind that these are all real-life data with many missing values and errors. It is not possible to know where there may be errors, but a few possibilities include:
 
--   Error submitting an update as a new case
--   Entry error
--   Multiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions
+- Error submitting an update as a new case
+- Entry error
+- Multiple drug administration by one patient leading to identifying the wrong drug as the culprit of adverse reactions
 
 While there are many possible errors to keep in mind, the data has a huge number of cases reported. Larger reporting volume may reveal consistent patterns, but does not remove reporting bias. An increase in reports does not necessarily indicate increased risk. Possible contributions to the bias include:
 
--   Increased prescribing
--   Media attention
--   Regulatory changes
+- Increased prescribing
+- Media attention
+- Regulatory changes
 
 The results should be read and analysed with the potential errors and influences in mind, and any healthcare professionals or researchers who intend to use this as reference should always use their clinical judgement.
 
 ### Key Findings
 
--   Reporting frequency is concentrated in a small subset of reaction terms
--   Most cases contain a limited number of reported reactions
--   Serious outcomes occur across both frequent and infrequent terms
--   Reaction frequency alone does not indicate clinical severity
+- Reporting frequency is concentrated in a small subset of reaction terms
+- Most cases contain a limited number of reported reactions
+- Serious outcomes occur across both frequent and infrequent terms
+- Reaction frequency alone does not indicate clinical severity
 
 ## Potential Use Cases
 
 This type of analysis could support:
 
--   Pharmacovigilance signal review
--   Internal safety discussions
--   Educational summaries
+- Pharmacovigilance signal review
+- Internal safety discussions
+- Educational summaries
 
 ## Conclusion
 

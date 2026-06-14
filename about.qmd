@@ -1,19 +1,14 @@
 ---
-title: "About Reina's Data Studio"
 format: 
   html:
     page-layout: full
     toc: false
 ---
 
-::: about-intro
-I’m **Reina**, the founder of **Reina’s Data Studio**.
-
-I help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.
-:::
-
 ::: {.banner .about}
-### Why I started Reina’s Data Studio
+# About Me
+
+I’m **Reina**, I help researchers, students, technical teams, healthcare professionals and many others work with data clearly, ethically, and confidently using R.
 
 I have always wanted to build a career using R — a language I genuinely enjoy and believe is incredibly powerful, especially for healthcare and research. In reality, R-focused roles are still relatively uncommon, and I reached a point where continuing to search for another traditional role felt limiting rather than motivating.
 
@@ -36,9 +31,9 @@ Coming from pharmacy means I don’t treat data as abstract numbers.
 
 I understand:
 
--   Where healthcare and research data comes from
--   What each variable represents
--   Why accuracy, consistency, and assumptions matter
+- Where healthcare and research data comes from
+- What each variable represents
+- Why accuracy, consistency, and assumptions matter
 
 This allows me to approach analysis with **precision and context**, not just technical skill. It also means I’m especially careful about ethics, privacy, and reproducibility — all of which are critical when working with sensitive data.
 
@@ -46,9 +41,9 @@ This allows me to approach analysis with **precision and context**, not just tec
 
 Clients often describe my working style as:
 
--   Calm and detail-oriented
--   Collaborative and supportive
--   Clear and honest
+- Calm and detail-oriented
+- Collaborative and supportive
+- Clear and honest
 
 I’m not afraid to ask questions — because understanding your goals properly is the fastest way to deliver work you can trust. I adapt to each client’s working style and aim for **100% clarity and satisfaction**, whether that means detailed explanations or straightforward results.
 
@@ -56,9 +51,9 @@ Trust is central to everything I do. I want clients to feel safe sharing their d
 
 ### Values that guide my work
 
--   **Transparency** — clear communication, no unnecessary complexity
--   **Passion for data** — curiosity and care in every project
--   **Education & continuous learning** — knowledge grows, and so should we
+- **Transparency** — clear communication, no unnecessary complexity
+- **Passion for data** — curiosity and care in every project
+- **Education & continuous learning** — knowledge grows, and so should we
 
 These values shape both my consulting work and my teaching.
 
@@ -78,9 +73,9 @@ Because many R resources are only available in English, I especially enjoy helpi
 
 I work best with people who value:
 
--   Mutual respect
--   Collaboration
--   Thoughtful, ethical data work
+- Mutual respect
+- Collaboration
+- Thoughtful, ethical data work
 
 Projects that involve disrespectful communication or a lack of cooperation are not a good fit for my approach.
 

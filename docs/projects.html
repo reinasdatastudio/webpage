@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Projects – Reina’s Data Studio</title>
+<title>Projects – Reina Kaino</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,15 +35,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-614bc5276d02b9573b6a096d945fbc20.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-be87bcf9462d8772fcaa36d740375c1f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,10 +90,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Reina’s Data Studio</span>
+    <span class="navbar-title">Reina Kaino</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -176,13 +176,55 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <p>Projects demonstrating clinical context, statistical analysis and reproducible R workflows.</p>
 <div class="project-container">
 <div class="project-image">
+<p><img src="images/Screenshot 2026-06-14 202139.png" class="img-fluid"></p>
+</div>
+<section id="reproducible-pharmacovigilance-analysis-using-faers-dataset-2" class="level3 projects">
+<h3 class="anchored" data-anchor-id="reproducible-pharmacovigilance-analysis-using-faers-dataset-2"><a href="https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html">Reproducible Pharmacovigilance Analysis using FAERS dataset #2</a></h3>
+<section id="context" class="level4">
+<h4 class="anchored" data-anchor-id="context">Context</h4>
+<p>Explored the FAERS dataset further: This time with extensive data cleaning and data aggregation of REAC, DRUG and DEMO files to further analyse the most commonly reported drugs that cause fatigue and death.</p>
+<ul>
+<li>Many rows in the dataset contain duplicates - DEMO file ensured only the latest primary ID was used</li>
+<li>DEMO file was joined with REAC and DRUG files to ensure those with the same age, sex and the country of residence was not mistakenly de-duplicated</li>
+<li>The combined data was used to visualise the most commonly reported adverse effects</li>
+<li>“Fatigue” and “Death” were among the top most commonly reported adverse effects, therefore the most commonly reported drugs for those adverse effects were further analysed</li>
+<li>Reporting Odds Ratio was used to find the proportion of adverse effects reported for the most commonly reported drugs</li>
+</ul>
+</section>
+<section id="outcome" class="level4">
+<h4 class="anchored" data-anchor-id="outcome">Outcome</h4>
+<ul>
+<li>The top three commonly reported drugs that caused fatigue were Duplilumab, Human Immunogloblin G and Vedolizumab</li>
+<li>The top most commonly reported drug that caused death was Dapagliflozin</li>
+<li>The ROR of Dupilumab was 0.39 with CI of 0.35 and 0.43, meaning it reported fatigue less compared with other drugs</li>
+<li>The ROR of Dapagliflozin was 8.12 with CI of 7.51 and 8.78, indicating disproportionate reporting of death among reports involving dapagliflozin relative to other medications in the database</li>
+</ul>
+<p>Despite there results, FAERS data must be interpreted carefully. The database is based on spontaneous reporting and is therefore subject to substantial reporting bias, incomplete information, duplicate reports, and confounding factors. Consequently, findings generated from FAERS analyses should be viewed as hypothesis-generating rather than evidence of causality.</p>
+</section>
+<section id="github-repository" class="level4">
+<h4 class="anchored" data-anchor-id="github-repository"><a href="https://github.com/reinasdatastudio/faers-pharmacovigilance-analysis/tree/main">GitHub repository</a></h4>
+</section>
+<section id="full-report" class="level4">
+<h4 class="anchored" data-anchor-id="full-report"><a href="https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html">Full Report</a></h4>
+</section>
+<section id="youtube-tutorials" class="level4">
+<h4 class="anchored" data-anchor-id="youtube-tutorials">YouTube Tutorials:</h4>
+<ul>
+<li><p><a href="https://youtu.be/g4BIA83Us6Q">Part 1 | Data Cleaning and Preprocessing</a></p></li>
+<li><p><a href="https://youtu.be/ZY7ZhC5v8_w" class="uri">Part 2 | Joining Data, Visualisation and ROR</a></p></li>
+</ul>
+</section>
+</section>
+</div>
+<div class="project-container">
+<div class="project-image">
 <p><img src="images/clipboard-3704079679.png" class="img-fluid"></p>
 </div>
 <section id="reproducible-pharmacovigilance-analysis-using-faers-2025-q3" class="level3 projects">
 <h3 class="anchored" data-anchor-id="reproducible-pharmacovigilance-analysis-using-faers-2025-q3"><a href="./projects/FAERS2025Q3.html">Reproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)</a></h3>
 <p>Reproducible exploratory analysis of pharmacovigilance data using FAERS.</p>
-<section id="context" class="level4">
-<h4 class="anchored" data-anchor-id="context"><strong>Context</strong></h4>
+<section id="context-1" class="level4">
+<h4 class="anchored" data-anchor-id="context-1"><strong>Context</strong></h4>
 <p>Analysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).</p>
 <ul>
 <li>Case-level aggregation</li>
@@ -190,8 +232,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Cautious interpretation of spontaneous reporting data.</li>
 </ul>
 </section>
-<section id="outcome" class="level4">
-<h4 class="anchored" data-anchor-id="outcome"><strong>Outcome</strong></h4>
+<section id="outcome-1" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-1"><strong>Outcome</strong></h4>
 <p>Delivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.</p>
 <ul>
 <li>Frequently reported reactions do not necessarily correspond to severe outcomes</li>
@@ -207,8 +249,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <section id="hypertension-clinical-treatment-analysis" class="level3 projects">
 <h3 class="anchored" data-anchor-id="hypertension-clinical-treatment-analysis"><a href="./projects/Hypertension-clinical-tx.html">Hypertension Clinical Treatment Analysis</a></h3>
 <p>Reproducible clinical data analysis with clear interpretation for treatment comparison.</p>
-<section id="context-1" class="level4">
-<h4 class="anchored" data-anchor-id="context-1"><strong>Context</strong></h4>
+<section id="context-2" class="level4">
+<h4 class="anchored" data-anchor-id="context-2"><strong>Context</strong></h4>
 <p>Simulated clinical trial dataset comparing treatment outcomes for hypertension patients.</p>
 <ul>
 <li>Cleaned and structured clinical variables</li>
@@ -217,8 +259,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Documented assumptions and analytical workflow</li>
 </ul>
 </section>
-<section id="outcome-1" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-1"><strong>Outcome</strong></h4>
+<section id="outcome-2" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-2"><strong>Outcome</strong></h4>
 <p>Delivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.</p>
 <ul>
 <li>Structured R analysis script</li>
@@ -235,8 +277,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 </div>
 <section id="cancer-variant-dataset---machine-learning-in-r" class="level3 projects">
 <h3 class="anchored" data-anchor-id="cancer-variant-dataset---machine-learning-in-r"><a href="https://www.kaggle.com/code/reinagraham/cancer-variant-dataset-machine-learning-using-r">Cancer Variant Dataset - Machine Learning in R</a></h3>
-<section id="context-2" class="level4">
-<h4 class="anchored" data-anchor-id="context-2"><strong>Context</strong></h4>
+<section id="context-3" class="level4">
+<h4 class="anchored" data-anchor-id="context-3"><strong>Context</strong></h4>
 <p>Explored different machine learning models such as Random Forest to differentiate and predict benign and pathogenic genetic variants using a Kaggle dataset. Variables include:</p>
 <ul>
 <li>Chromosomes</li>
@@ -244,8 +286,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>PolyPhen</li>
 </ul>
 </section>
-<section id="outcome-2" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-2">Outcome</h4>
+<section id="outcome-3" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-3">Outcome</h4>
 <ul>
 <li>Clear data visualisation</li>
 <li>Clear interpretation of data
@@ -269,8 +311,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <section id="forecasting-prices-of-diamonds" class="level3 projects">
 <h3 class="anchored" data-anchor-id="forecasting-prices-of-diamonds"><a href="./projects/diamonds_portfolio.html">Forecasting prices of diamonds</a></h3>
 <p><strong>Statistical exploration and modelling of pricing factors in a high-dimensional dataset.</strong></p>
-<section id="context-3" class="level4">
-<h4 class="anchored" data-anchor-id="context-3"><strong>Context</strong></h4>
+<section id="context-4" class="level4">
+<h4 class="anchored" data-anchor-id="context-4"><strong>Context</strong></h4>
 <p>Dataset analysing how characteristics influence diamond pricing.</p>
 <ul>
 <li>Cleaned and explored multivariate data</li>
@@ -278,8 +320,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Visualised relationships between features and pricing</li>
 </ul>
 </section>
-<section id="outcome-3" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-3"><strong>Outcome</strong></h4>
+<section id="outcome-4" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-4"><strong>Outcome</strong></h4>
 <p>Identified key variables influencing price and demonstrated reproducible modelling workflow.</p>
 <ul>
 <li>Reproducible R script</li>
@@ -296,8 +338,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <section id="e-commerce-sales-analysis-dashboard" class="level3 projects">
 <h3 class="anchored" data-anchor-id="e-commerce-sales-analysis-dashboard"><a href="https://thequeenofdata.shinyapps.io/ecommerceDashboardExample/">e-commerce Sales Analysis Dashboard</a></h3>
 <p><strong>Interactive R Shiny dashboard enabling non-technical users to explore sales performance.</strong></p>
-<section id="context-4" class="level4">
-<h4 class="anchored" data-anchor-id="context-4"><strong>Context</strong></h4>
+<section id="context-5" class="level4">
+<h4 class="anchored" data-anchor-id="context-5"><strong>Context</strong></h4>
 <p>Retail-style dataset requiring dynamic filtering and real-time data exploration.</p>
 <ul>
 <li>Designed and built an interactive Shiny application</li>
@@ -305,8 +347,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Created dynamic visualisations for performance tracking</li>
 </ul>
 </section>
-<section id="outcome-4" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-4"><strong>Outcome</strong></h4>
+<section id="outcome-5" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-5"><strong>Outcome</strong></h4>
 <p>Delivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.</p>
 <ul>
 <li>Fully functional Shiny application</li>
@@ -323,8 +365,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <section id="superstore-r-shiny-dashboard" class="level3 projects">
 <h3 class="anchored" data-anchor-id="superstore-r-shiny-dashboard"><a href="https://thequeenofdata.shinyapps.io/Superstore/">Superstore R Shiny Dashboard</a></h3>
 <p><strong>Exploratory data analysis and visualisation of retail sales data.</strong></p>
-<section id="context-5" class="level4">
-<h4 class="anchored" data-anchor-id="context-5"><strong>Context</strong></h4>
+<section id="context-6" class="level4">
+<h4 class="anchored" data-anchor-id="context-6"><strong>Context</strong></h4>
 <p>Multi-variable retail dataset examining sales performance across regions and categories.</p>
 <ul>
 <li>Cleaned and prepared transactional data</li>
@@ -333,8 +375,8 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Identified performance drivers and segment differences</li>
 </ul>
 </section>
-<section id="outcome-5" class="level4">
-<h4 class="anchored" data-anchor-id="outcome-5"><strong>Outcome</strong></h4>
+<section id="outcome-6" class="level4">
+<h4 class="anchored" data-anchor-id="outcome-6"><strong>Outcome</strong></h4>
 <p>Produced actionable insights into sales distribution, regional performance, and product trends.</p>
 <ul>
 <li>Structured R analysis script</li>
@@ -342,6 +384,15 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <li>Summary of findings</li>
 </ul>
 </section>
+</section>
+</div>
+<div class="project-container">
+<div class="project-image">
+<p><img src="images/clipboard-1371320423.png" class="img-fluid"></p>
+</div>
+<section id="sales-analysis-of-a-coffee-shop-with-power-bi" class="level3 projects">
+<h3 class="anchored" data-anchor-id="sales-analysis-of-a-coffee-shop-with-power-bi"><a href="./projects/PowerBI_CoffeeShop.html">Sales Analysis of a Coffee Shop with Power BI</a></h3>
+<p>A Power BI dashboard providing insight into Store Performance, Peak Sale Times and Product Trends.</p>
 </section>
 </div>
 </section>
@@ -442,6 +493,11 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -764,12 +820,6 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://www.instagram.com/reinas_data.studio/">
-      <i class="bi bi-instagram" role="img">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/reijkg2904/">
       <i class="bi bi-linkedin" role="img">
 </i> 
@@ -784,6 +834,12 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
     <li class="nav-item compact">
     <a class="nav-link" href="https://www.youtube.com/@reinas_data.studio">
       <i class="bi bi-youtube" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://x.com/r_datastudio">
+      <i class="bi bi-twitter" role="img">
 </i> 
     </a>
   </li>  

@@ -27,12 +27,12 @@ format:
 
 ## Why work with me?
 
--   Healthcare background
--   Experience with real clinical data structures
--   Clear communication for non-programmers
--   Reproducible, well-documented R workflows
--   Respect for data privacy and ethics
--   Specialising in Healthcare and Research Data
+- Healthcare background
+- Experience with real clinical data structures
+- Clear communication for non-programmers
+- Reproducible, well-documented R workflows
+- Respect for data privacy and ethics
+- Specialising in Healthcare and Research Data
 :::::
 ::::::
 
@@ -58,12 +58,12 @@ format:
 ::: box-2
 ## Who I help
 
--   Professionals such as research teams, analysts and small companies
--   Students learning R/statistics
--   Technical teams needing workflow improvements
--   Small teams needing reliable R support and assistance with analysis
--   Healthcare professionals working with data
--   Anyone who wants clear, ethical data analysis
+- Professionals such as research teams, analysts and small companies
+- Students learning R/statistics
+- Technical teams needing workflow improvements
+- Small teams needing reliable R support and assistance with analysis
+- Healthcare professionals working with data
+- Anyone who wants clear, ethical data analysis
 
 If you’re unsure whether your project fits, feel free to ask.
 :::
@@ -71,13 +71,13 @@ If you’re unsure whether your project fits, feel free to ask.
 ::: box-3
 ## Tools
 
--   R / tidyverse
--   ggplot2
--   Shiny dashboards
--   Quarto / R Markdown
--   Statistical modelling and inference
--   Forecasting (ARIMA, Prophet)
--   Healthcare & pharmacy-related data
+- R / tidyverse
+- ggplot2
+- Shiny dashboards
+- Quarto / R Markdown
+- Statistical modelling and inference
+- Forecasting (ARIMA, Prophet)
+- Healthcare & pharmacy-related data
 :::
 ::::::
 
@@ -103,16 +103,16 @@ Small problems, urgent questions or when you are stuck and need clarity fast.
 
 Typical use cases:
 
--   Debugging R scripts
--   Help with plots, statistics or models
--   Data wrangling issues
--   Understanding error messages or unexpected results
+- Debugging R scripts
+- Help with plots, statistics or models
+- Data wrangling issues
+- Understanding error messages or unexpected results
 
 #### **What you get**
 
--   Live 1:1 session (or async support, if preferred)
--   Clear explanation in plain English
--   Improved or corrected R code you can reuse
+- Live 1:1 session (or async support, if preferred)
+- Clear explanation in plain English
+- Improved or corrected R code you can reuse
 :::
 
 ::: card
@@ -124,17 +124,17 @@ Healthcare and research projects that need clean, defensible, and reusable resul
 
 Typical use cases:
 
--   Clinical/research or any other data analysis
--   Statistical modelling and interpretation
--   Automated reports using Quarto / R Markdown
--   Forecasting and exploratory analysis
+- Clinical/research or any other data analysis
+- Statistical modelling and interpretation
+- Automated reports using Quarto / R Markdown
+- Forecasting and exploratory analysis
 
 #### **What you get**
 
--   Clean, well-structured R code
--   Reproducible analysis pipeline
--   Publication- or stakeholder-ready report
--   Clear written interpretation of results
+- Clean, well-structured R code
+- Reproducible analysis pipeline
+- Publication- or stakeholder-ready report
+- Clear written interpretation of results
 :::
 
 ::: card
@@ -146,17 +146,17 @@ Teams or individuals who want reliable, long-term R support without hiring full-
 
 Typical use cases:
 
--   Regular analysis or reporting work
--   Code review and workflow improvement
--   Mentoring and upskilling
--   Ongoing troubleshooting and advice
+- Regular analysis or reporting work
+- Code review and workflow improvement
+- Mentoring and upskilling
+- Ongoing troubleshooting and advice
 
 #### **What you get**
 
--   A fixed number of support hours per month
--   Priority response
--   Consistent, context-aware support
--   A long-term collaborator who understands your data
+- A fixed number of support hours per month
+- Priority response
+- Consistent, context-aware support
+- A long-term collaborator who understands your data
 
 *Available on a monthly basis.*
 :::
@@ -168,9 +168,9 @@ If you’re learning R or want to improve how you work with data, I also offer *
 
 This may include:
 
--   Learning R from a healthcare or research perspective
--   Understanding statistics through practical examples
--   Building reproducible workflows with confidence
+- Learning R from a healthcare or research perspective
+- Understanding statistics through practical examples
+- Building reproducible workflows with confidence
 
 *(Discounts available for students)*
 :::

@@ -3,16 +3,56 @@ title: "Projects"
 format:
   html:
     page-layout: full
+    link-external-newwindow: true
 ---
 
 These selected projects demonstrate how I approach data: with **clarity, reproducibility, and practical outcomes**.
 
 For confidential client work, details may be limited.
 
-:::::::::::: healthcare-box
+::::::::::::::: healthcare-box
 ## Healthcare and Research Projects
 
 Projects demonstrating clinical context, statistical analysis and reproducible R workflows.
+
+::::: project-container
+::: project-image
+![](images/Screenshot%202026-06-14%20202139.png)
+:::
+
+::: projects
+### [Reproducible Pharmacovigilance Analysis using FAERS dataset #2](https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html)
+
+#### Context
+
+Explored the FAERS dataset further: This time with extensive data cleaning and data aggregation of REAC, DRUG and DEMO files to further analyse the most commonly reported drugs that cause fatigue and death.
+
+- Many rows in the dataset contain duplicates - DEMO file ensured only the latest primary ID was used
+- DEMO file was joined with REAC and DRUG files to ensure those with the same age, sex and the country of residence was not mistakenly de-duplicated
+- The combined data was used to visualise the most commonly reported adverse effects
+- "Fatigue" and "Death" were among the top most commonly reported adverse effects, therefore the most commonly reported drugs for those adverse effects were further analysed
+- Reporting Odds Ratio was used to find the proportion of adverse effects reported for the most commonly reported drugs
+
+#### Outcome
+
+- The top three commonly reported drugs that caused fatigue were Duplilumab, Human Immunogloblin G and Vedolizumab
+- The top most commonly reported drug that caused death was Dapagliflozin
+- The ROR of Dupilumab was 0.39 with CI of 0.35 and 0.43, meaning it reported fatigue less compared with other drugs
+- The ROR of Dapagliflozin was 8.12 with CI of 7.51 and 8.78, indicating disproportionate reporting of death among reports involving dapagliflozin relative to other medications in the database
+
+Despite there results, FAERS data must be interpreted carefully. The database is based on spontaneous reporting and is therefore subject to substantial reporting bias, incomplete information, duplicate reports, and confounding factors. Consequently, findings generated from FAERS analyses should be viewed as hypothesis-generating rather than evidence of causality.
+
+#### [GitHub repository](https://github.com/reinasdatastudio/faers-pharmacovigilance-analysis/tree/main)
+
+#### [Full Report](https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html)
+
+#### YouTube Tutorials:
+
+- [Part 1 \| Data Cleaning and Preprocessing](https://youtu.be/g4BIA83Us6Q)
+
+- [Part 2 \| Joining Data, Visualisation and ROR](https://youtu.be/ZY7ZhC5v8_w){.uri}
+:::
+:::::
 
 ::::: project-container
 ::: project-image
@@ -28,16 +68,16 @@ Reproducible exploratory analysis of pharmacovigilance data using FAERS.
 
 Analysed the FDA Adverse Event Reporting System (FAERS) 2025 Q3 dataset to examine reporting patterns in adverse reactions (REAC) and clinical outcomes (OUTC).
 
--   Case-level aggregation
--   Handling duplicate reports
--   Cautious interpretation of spontaneous reporting data.
+- Case-level aggregation
+- Handling duplicate reports
+- Cautious interpretation of spontaneous reporting data.
 
 #### **Outcome**
 
 Delivered a structured R workflow demonstrating how large healthcare safety datasets can be cleaned, explored, and interpreted reproducibly.
 
--   Frequently reported reactions do not necessarily correspond to severe outcomes
--   Importance of separating reporting frequency from clinical significance
+- Frequently reported reactions do not necessarily correspond to severe outcomes
+- Importance of separating reporting frequency from clinical significance
 :::
 :::::
 
@@ -55,25 +95,25 @@ Reproducible clinical data analysis with clear interpretation for treatment comp
 
 Simulated clinical trial dataset comparing treatment outcomes for hypertension patients.
 
--   Cleaned and structured clinical variables
--   Performed statistical comparison between treatment groups
--   Created publication-style visualisations
--   Documented assumptions and analytical workflow
+- Cleaned and structured clinical variables
+- Performed statistical comparison between treatment groups
+- Created publication-style visualisations
+- Documented assumptions and analytical workflow
 
 #### **Outcome**
 
 Delivered a reproducible analysis pipeline and clear statistical interpretation that could be reused across similar trials.
 
--   Structured R analysis script
--   Cleaned dataset
--   Visualisations suitable for reporting
--   Written interpretation of results
+- Structured R analysis script
+- Cleaned dataset
+- Visualisations suitable for reporting
+- Written interpretation of results
 :::
 :::::
 
 ::::: project-container
 ::: project-image
-![](images/Screenshot 2026-04-02 123232.png)
+![](images/Screenshot%202026-04-02%20123232.png)
 :::
 
 ::: projects
@@ -83,22 +123,22 @@ Delivered a reproducible analysis pipeline and clear statistical interpretation 
 
 Explored different machine learning models such as Random Forest to differentiate and predict benign and pathogenic genetic variants using a Kaggle dataset. Variables include:
 
--   Chromosomes
--   Genes
--   PolyPhen
+- Chromosomes
+- Genes
+- PolyPhen
 
 #### Outcome
 
--   Clear data visualisation
--   Clear interpretation of data
-    -   Accuracy alone can be misleading, especially with imbalanced data
-    -   There is often a trade-off between overall accuracy and balanced predictions
-    -   Real-world data problems are rarely clean and that understanding the limitations of a model is just as important as building one.
+- Clear data visualisation
+- Clear interpretation of data
+  - Accuracy alone can be misleading, especially with imbalanced data
+  - There is often a trade-off between overall accuracy and balanced predictions
+  - Real-world data problems are rarely clean and that understanding the limitations of a model is just as important as building one.
 :::
 :::::
-::::::::::::
+:::::::::::::::
 
-:::::::::::: general-box
+::::::::::::::: general-box
 ## Data Science and General Analytics
 
 Broader data science projects showcasing modelling, visualisation and application design.
@@ -117,17 +157,17 @@ Broader data science projects showcasing modelling, visualisation and applicatio
 
 Dataset analysing how characteristics influence diamond pricing.
 
--   Cleaned and explored multivariate data
--   Built regression models to assess price drivers
--   Visualised relationships between features and pricing
+- Cleaned and explored multivariate data
+- Built regression models to assess price drivers
+- Visualised relationships between features and pricing
 
 #### **Outcome**
 
 Identified key variables influencing price and demonstrated reproducible modelling workflow.
 
--   Reproducible R script
--   Model output and interpretation
--   Visualisations
+- Reproducible R script
+- Model output and interpretation
+- Visualisations
 :::
 :::::
 
@@ -145,17 +185,17 @@ Identified key variables influencing price and demonstrated reproducible modelli
 
 Retail-style dataset requiring dynamic filtering and real-time data exploration.
 
--   Designed and built an interactive Shiny application
--   Implemented reactive filters and summary panels
--   Created dynamic visualisations for performance tracking
+- Designed and built an interactive Shiny application
+- Implemented reactive filters and summary panels
+- Created dynamic visualisations for performance tracking
 
 #### **Outcome**
 
 Delivered a user-friendly dashboard that allows stakeholders to explore trends and metrics of sales, customer behaviour and product analysis without writing code.
 
--   Fully functional Shiny application
--   Structured and documented R code
--   Deployment-ready project structure
+- Fully functional Shiny application
+- Structured and documented R code
+- Deployment-ready project structure
 :::
 :::::
 
@@ -173,21 +213,33 @@ Delivered a user-friendly dashboard that allows stakeholders to explore trends a
 
 Multi-variable retail dataset examining sales performance across regions and categories.
 
--   Cleaned and prepared transactional data
--   Conducted exploratory data analysis
--   Built visualisations to highlight key trends and patterns
--   Identified performance drivers and segment differences
+- Cleaned and prepared transactional data
+- Conducted exploratory data analysis
+- Built visualisations to highlight key trends and patterns
+- Identified performance drivers and segment differences
 
 #### **Outcome**
 
 Produced actionable insights into sales distribution, regional performance, and product trends.
 
--   Structured R analysis script
--   Clear visualisations
--   Summary of findings
+- Structured R analysis script
+- Clear visualisations
+- Summary of findings
 :::
 :::::
-::::::::::::
+
+::::: project-container
+
+::: project-image
+![](images/clipboard-1371320423.png)
+:::
+
+::: projects
+### [Sales Analysis of a Coffee Shop with Power BI](projects/PowerBI_CoffeeShop.qmd)
+A Power BI dashboard providing insight into Store Performance, Peak Sale Times and Product Trends.
+:::
+:::::
+:::::::::::::::
 
 \
 
