@@ -52,5 +52,3 @@ rsconnect/
 
 /.quarto/
 **/*.quarto_ipynb
-
-/_quarto_internal_scss_error.scss
