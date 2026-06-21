@@ -5,6 +5,7 @@ date: "2025-12-21"
 format:
   html:
     page-layout: article
+    code-fold: true
     toc: true
     toc-location: right
     cap-location: bottom
@@ -120,7 +121,7 @@ frequently reported events are not necessarily severe, and severe outcomes are n
 
 ## REAC Table Overview
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: REAC table
 reac <- fread(
   "FAERS/REAC25Q3.txt",
@@ -182,7 +183,7 @@ reac_new <- reac_new %>%
 
 #### Check for missing data
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Check for missing data
 kable(reac_new %>%   summarise(across(c(caseid, pt), ~sum(is.na(.)))))
 ```
@@ -195,7 +196,7 @@ No missing data observed in `caseid` and `pt`.
 
 Count how many cases have n number of adverse reactions.
 
-```{r echo=FALSE}
+```{r}
 
 reac_per_case <- reac_new %>%
   distinct(caseid, pt) %>%
@@ -203,7 +204,7 @@ reac_per_case <- reac_new %>%
 #Same as reac_per_case <- reac |> dplyr::count(primaryid)
 ```
 
-```{r echo=FALSE}
+```{r}
 #Count the number of reactions per case (E.g. 100 cases have 1 reaction etc.) 
 reac_count <- reac_per_case %>% count(`Number of reaction`) %>% rename(num_reactions = `Number of reaction`, num_cases = n)
 kable(head(reac_count, 5))
@@ -248,7 +249,7 @@ As expected, the number of cases decreases as the number of adverse reactions in
 The following table summarises the most frequently reported preferred terms in the dataset.\
 These represent reporting concentration rather than confirmed drug risk.
 
-```{r echo=FALSE}
+```{r}
 top_pt <- reac_new %>%
   count(pt) %>%
   arrange(desc(n)) %>%
@@ -257,7 +258,7 @@ top_pt <- reac_new %>%
 kable(top_pt)
 ```
 
-```{r echo=FALSE, fig.cap="Figure 3: A bar graph of top 15 pt terms"}
+```{r fig.cap="Figure 3: A bar graph of top 15 pt terms"}
 
 ggplot(top_pt, aes(x = reorder(pt, -Count), y = Count)) +
   geom_col() +
@@ -277,7 +278,7 @@ While REAC shows what is reported, OUTC shows the consequence of those reports.
 
 Now we will look at the OUTC25Q3.txt file to find the distribution of the severity of adverse effects.
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Convert OUTC25Q3.txt to a table
 
 outc <- fread(
@@ -306,14 +307,14 @@ Key variables include:
 
 ### OUTC Data Preparation
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Checking for any missing data
 
 knitr::kable(head(outc %>%
   summarise(across(c(primaryid, caseid, outc_cod), ~sum(is.na(.))))))
 ```
 
-```{r echo=FALSE}
+```{r}
 #Remove `primaryid` and any duplicate rows
 outc_cleaned <- outc %>%
   distinct() %>%
@@ -322,7 +323,7 @@ outc_cleaned <- outc %>%
 
 ### OUTC Data Analysis
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Count of Outcome Code
 top_outc <- outc_cleaned %>%
   count(outc_cod) %>%
@@ -346,7 +347,7 @@ The number of "Deaths" are well above the adverse effect of 19,165 in the REAC t
 
 There is no clear cut as to what is categorised as serious and what is not, but for the purpose of this report, DE and LT will be categorised as "Serious", HO as "Moderate" and others as "Non-serious".
 
-```{r echo=FALSE, fig.cap="Figure 5: Categorising Severity of Outcome and the total count of each severity"}
+```{r fig.cap="Figure 5: Categorising Severity of Outcome and the total count of each severity"}
 outc_serious <- outc_cleaned %>%
   filter(outc_cod == "DE" | outc_cod == "LT")
 
@@ -370,7 +371,7 @@ ggplot(outc_category_count, aes(reorder(x=category, -total_count), y=total_count
 
 ### Combining REAC and OUTC Tables
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Summarised REAC table
 reac_summary <- data.table(
   caseid = reac_per_case$caseid,
@@ -381,7 +382,7 @@ reac_summary <- data.table(
 kable(head(reac_summary, 10))
 ```
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Summarised OUTC table
 #Categorise cases
 outc_serious$Severity <- "Severe"
@@ -393,7 +394,7 @@ outc_summary <- bind_rows(outc_serious, outc_moderate, outc_non_serious)
 kable(head(outc_summary, 10))
 ```
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Combining Reaction and Outcome Summary Table
 
 reac_outc <- reac_summary %>%
@@ -402,7 +403,7 @@ reac_outc <- reac_summary %>%
 kable(head(reac_outc, 15))
 ```
 
-```{r echo=FALSE}
+```{r}
 #| tbl-cap: Check for missing data
 
 kable(reac_outc %>%
@@ -411,7 +412,7 @@ kable(reac_outc %>%
 
 Many of the cases has missing outcomes - This shows the realness of data gathering; as the outcome reporting is optional many cases will report reactions caused by drugs only. Because this is an important part of the analysis, the missing values are (By R default) included as "NA". i.e. No outcome recorded.
 
-```{r echo=FALSE, fig.cap="Figure 6: A bar graph visualising the severity of adverse reactions"}
+```{r fig.cap="Figure 6: A bar graph visualising the severity of adverse reactions"}
 ggplot(reac_outc, aes(x = Severity)) +
   geom_bar() +
   theme_minimal()
@@ -425,7 +426,7 @@ kable(reac_outc %>%
 
 Only 65.1% of FAERS cases report outcome data. Severity analyses therefore reflect a subset of reports and may underestimate true risk.
 
-```{r echo=FALSE, fig.cap="Figure 7: A histogram showing how many cases reported what number of reactions, coloured with severity"}
+```{r fig.cap="Figure 7: A histogram showing how many cases reported what number of reactions, coloured with severity"}
 ggplot(reac_outc, aes(x = n_reactions, fill = Severity)) +
   geom_histogram(binwidth = 1, position = "identity", alpha = 0.6) +
   labs(
@@ -437,7 +438,7 @@ ggplot(reac_outc, aes(x = n_reactions, fill = Severity)) +
   theme_minimal()
 ```
 
-```{r echo=FALSE, fig.cap="Figure 8: Severe outcomes by number of reported reactions"}
+```{r fig.cap="Figure 8: Severe outcomes by number of reported reactions"}
 
 plot_data <- reac_outc %>%
   group_by(five_or_more_reactions) %>%
