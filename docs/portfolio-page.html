@@ -174,13 +174,13 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 
 
 <div id="ja-banner" class="banner">
-<section id="view-my-portfolio-here" class="level2">
-<h2 class="anchored" data-anchor-id="view-my-portfolio-here">View my portfolio here</h2>
+<section id="download-my-portfolio-here" class="level2">
+<h2 class="anchored" data-anchor-id="download-my-portfolio-here">Download my Portfolio here</h2>
 <section id="portfolio" class="level3">
-<h3 class="anchored" data-anchor-id="portfolio"><a href="portfolio.pdf">Portfolio</a></h3>
+<h3 class="anchored" data-anchor-id="portfolio"><a href="portfolio.pdf" target="_blank">Portfolio</a></h3>
 </section>
 <section id="ポートフォリオ" class="level3">
-<h3 class="anchored" data-anchor-id="ポートフォリオ"><a href="portfolio_ja.pdf">ポートフォリオ</a></h3>
+<h3 class="anchored" data-anchor-id="ポートフォリオ"><a href="portfolio_ja.pdf" target="_blank">ポートフォリオ</a></h3>
 </section>
 </section>
 </div>
@@ -275,11 +275,6 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
-            // target, if specified
-            link.setAttribute("target", "_blank");
-            if (link.getAttribute("rel") === null) {
-              link.setAttribute("rel", "noopener");
-            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
