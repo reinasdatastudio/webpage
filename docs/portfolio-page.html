@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ja – Reina Kaino</title>
+<title>Portfolio – Reina Kaino</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -132,11 +132,11 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <span class="menu-text">Enquiry</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./ja.html" aria-current="page"> 
+    <a class="nav-link" href="./ja.html"> 
 <span class="menu-text">日本語</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./portfolio-page.html"> 
+    <a class="nav-link active" href="./portfolio-page.html" aria-current="page"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
 </ul>
@@ -152,45 +152,36 @@ gtag('config', 'G-LE1MD5SGQZ', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Portfolio</h1>
+</div>
 
 
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <div id="ja-banner" class="banner">
-<div class="hero-image">
-<p><img src="intro-logo.png" class="hero-logo img-fluid" alt="Reina's Data Studio logo"></p>
-</div>
-<section id="rデータ解析サポート" class="level2">
-<h2 class="anchored" data-anchor-id="rデータ解析サポート">Rデータ解析サポート</h2>
-<p>Reina’s Data Studio では、さまざまな分野のデータ解析を <strong>再現性と正確さを重視したRワークフロー</strong>でサポートしています。</p>
-<p>薬剤師のバックグラウンドがあるため、データを単なる数値として扱うのではなく、前提条件や解釈の妥当性まで意識した分析を行います。特に医療・研究データを扱う際には、慎重な解釈を大切にしています。</p>
+<section id="view-my-portfolio-here" class="level2">
+<h2 class="anchored" data-anchor-id="view-my-portfolio-here">View my portfolio here</h2>
+<section id="portfolio" class="level3">
+<h3 class="anchored" data-anchor-id="portfolio"><a href="portfolio.pdf">Portfolio</a></h3>
 </section>
-<section id="主なサポート内容" class="level2">
-<h2 class="anchored" data-anchor-id="主なサポート内容">主なサポート内容</h2>
-<ul>
-<li>統計解析および結果の解釈</li>
-<li>データの整理・前処理</li>
-<li>Rコードのデバッグ・改善</li>
-<li>Quarto / R Markdown による再現可能なレポート作成のアシスタント</li>
-<li>研究・解析内容の英日コミュニケーション補助</li>
-</ul>
+<section id="ポートフォリオ" class="level3">
+<h3 class="anchored" data-anchor-id="ポートフォリオ"><a href="portfolio_ja.pdf">ポートフォリオ</a></h3>
 </section>
-<section id="日本語でご相談いただけます" class="level2">
-<h2 class="anchored" data-anchor-id="日本語でご相談いただけます">日本語でご相談いただけます</h2>
-<p>「英語で説明するのが不安」<br>
-「まずは相談だけしたい」</p>
-<p>といった段階でも問題ありません。<br>
-内容が固まっていなくても、誰でもお気軽にご連絡ください。</p>
-<button class="button">
-<p><a href="enquiry.html">お問い合わせはこちら</a></p>
-</button>
-<center>
-Email: reinasdatastudio@gmail.com
-</center>
-<center>
-（詳細なサービス内容は英語ページに掲載しています）
-</center>
 </section>
 </div>
 
@@ -284,6 +275,11 @@ Email: reinasdatastudio@gmail.com
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

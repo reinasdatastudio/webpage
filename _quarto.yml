@@ -22,7 +22,9 @@ website:
         text: Enquiry
       - href: ja.qmd
         text: 日本語
-
+      - href: portfolio-page.qmd
+        text: Portfolio
+        
   page-footer:
     left: "© 2025 Reina's Data Studio"
     center:

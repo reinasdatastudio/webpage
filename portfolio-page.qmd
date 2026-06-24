@@ -1,0 +1,16 @@
+---
+title: "Portfolio"
+format: 
+  html:
+    page-layout: full
+    toc: false
+---
+
+
+::: {#ja-banner .banner}
+## View my portfolio here 
+
+### [Portfolio](portfolio.pdf){target="_blank"}
+
+### [ポートフォリオ](portfolio_ja.pdf){target="_blank"}
+:::

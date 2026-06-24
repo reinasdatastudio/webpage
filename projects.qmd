@@ -21,7 +21,7 @@ Projects demonstrating clinical context, statistical analysis and reproducible R
 :::
 
 ::: projects
-### [Reproducible Pharmacovigilance Analysis using FAERS dataset #2](https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html)
+### [Exploring Potential Drug Safety Signals using the FDA Adverse Event Reporting System (FAERS)](https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html)
 
 #### Context
 
@@ -42,7 +42,7 @@ Explored the FAERS dataset further: This time with extensive data cleaning and d
 
 Despite there results, FAERS data must be interpreted carefully. The database is based on spontaneous reporting and is therefore subject to substantial reporting bias, incomplete information, duplicate reports, and confounding factors. Consequently, findings generated from FAERS analyses should be viewed as hypothesis-generating rather than evidence of causality.
 
-#### [GitHub repository](https://github.com/reinasdatastudio/faers-pharmacovigilance-analysis/tree/main)
+#### [GitHub repository](https://github.com/reinasdatastudio/faers-pharmacovigilance-analysis)
 
 #### [Full Report](https://reinasdatastudio.github.io/faers-pharmacovigilance-analysis/FAERS_Report.html)
 
@@ -60,7 +60,7 @@ Despite there results, FAERS data must be interpreted carefully. The database is
 :::
 
 ::: projects
-### [Reproducible Pharmacovigilance Analysis Using FAERS (2025 Q3)](projects/FAERS2025Q3.qmd)
+### [Reproducible Pharmacovigilance Analysis Using FAERS](projects/FAERS2025Q3.qmd)
 
 Reproducible exploratory analysis of pharmacovigilance data using FAERS.
 
@@ -78,6 +78,8 @@ Delivered a structured R workflow demonstrating how large healthcare safety data
 
 - Frequently reported reactions do not necessarily correspond to severe outcomes
 - Importance of separating reporting frequency from clinical significance
+
+#### [GitHub repository](https://github.com/reinasdatastudio/faers-reproducible-workflow)
 :::
 :::::
 
@@ -87,7 +89,7 @@ Delivered a structured R workflow demonstrating how large healthcare safety data
 :::
 
 ::: projects
-### [Hypertension Clinical Treatment Analysis](projects/Hypertension-clinical-tx.Rmd)
+### [Clinical Trial Analysis of Hypertension Treatments](projects/Hypertension-clinical-tx.Rmd)
 
 Reproducible clinical data analysis with clear interpretation for treatment comparison.
 
@@ -108,6 +110,8 @@ Delivered a reproducible analysis pipeline and clear statistical interpretation 
 - Cleaned dataset
 - Visualisations suitable for reporting
 - Written interpretation of results
+
+#### [GitHub repository](https://github.com/reinasdatastudio/clinical-trial-hypertension-analysis)
 :::
 :::::
 
@@ -117,7 +121,7 @@ Delivered a reproducible analysis pipeline and clear statistical interpretation 
 :::
 
 ::: projects
-### [Cancer Variant Dataset - Machine Learning in R](https://www.kaggle.com/code/reinagraham/cancer-variant-dataset-machine-learning-using-r)
+### [Machine Learning for Cancer Variant Pathogenicity Classification](https://www.kaggle.com/code/reinagraham/cancer-variant-dataset-machine-learning-using-r)
 
 #### **Context**
 
@@ -134,6 +138,8 @@ Explored different machine learning models such as Random Forest to differentiat
   - Accuracy alone can be misleading, especially with imbalanced data
   - There is often a trade-off between overall accuracy and balanced predictions
   - Real-world data problems are rarely clean and that understanding the limitations of a model is just as important as building one.
+  
+#### [GitHub repository](https://github.com/reinasdatastudio/cancer-variant-machine-learning)
 :::
 :::::
 :::::::::::::::
@@ -149,7 +155,7 @@ Broader data science projects showcasing modelling, visualisation and applicatio
 :::
 
 ::: projects
-### [Forecasting prices of diamonds](projects/diamonds_portfolio.Rmd)
+### [Diamond Price Prediction using Statistical and Machine Learning Models](projects/diamonds_portfolio.Rmd)
 
 **Statistical exploration and modelling of pricing factors in a high-dimensional dataset.**
 
@@ -168,6 +174,8 @@ Identified key variables influencing price and demonstrated reproducible modelli
 - Reproducible R script
 - Model output and interpretation
 - Visualisations
+
+#### [GitHub repository](https://github.com/reinasdatastudio/diamond-price-prediction)
 :::
 :::::
 
@@ -196,6 +204,8 @@ Delivered a user-friendly dashboard that allows stakeholders to explore trends a
 - Fully functional Shiny application
 - Structured and documented R code
 - Deployment-ready project structure
+
+#### [GitHub repository](https://github.com/reinasdatastudio/ecommerce-sales-dashboard)
 :::
 :::::
 
@@ -225,6 +235,8 @@ Produced actionable insights into sales distribution, regional performance, and 
 - Structured R analysis script
 - Clear visualisations
 - Summary of findings
+
+#### [GitHub repository](https://github.com/reinasdatastudio/superstore-business-intelligence-dashboard)
 :::
 :::::
 
@@ -235,8 +247,10 @@ Produced actionable insights into sales distribution, regional performance, and 
 :::
 
 ::: projects
-### [Sales Analysis of a Coffee Shop with Power BI](projects/PowerBI_CoffeeShop.qmd)
+### [Sales Analysis of a Coffee Shop with Power BI](projects/PowerBI_COffeeShop.qmd)
 A Power BI dashboard providing insight into Store Performance, Peak Sale Times and Product Trends.
+
+
 :::
 :::::
 :::::::::::::::
